@@ -4,106 +4,151 @@ const REPO_NAME = 'Pixel_Phantoms';
 const API_BASE = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`;
 
 // State
-let allContributors = [];
+let contributorsData = []; // Holds merged data (profile + stats)
 let currentPage = 1;
 const itemsPerPage = 8;
 
+// Point System Weights
+const POINTS = {
+    L3: 11,
+    L2: 5,
+    L1: 2,
+    DEFAULT: 1 // Score for PRs without level tags
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    fetchRepoStats();
-    fetchContributors();
+    initData();
     fetchRecentActivity();
 });
 
-// 1. Fetch Stats (Stars, Forks, PRs)
-async function fetchRepoStats() {
+// 1. Master Initialization Function
+async function initData() {
     try {
-        const [repoRes, pullsRes] = await Promise.all([
-            fetch(API_BASE),
-            fetch(`${API_BASE}/pulls?state=all&per_page=1`) // Just to get header link for count
+        // Fetch Contributors (for profiles) and PRs (for stats) in parallel
+        const [contributorsRes, pullsRes] = await Promise.all([
+            fetch(`${API_BASE}/contributors?per_page=100`),
+            fetch(`${API_BASE}/pulls?state=all&per_page=100`) // Fetches last 100 PRs
         ]);
 
-        const repoData = await repoRes.json();
-        
-        // Extract Total PRs from Link Header (GitHub API trick) or simplified approximation
-        // For simplicity in static sites without backend, we might not get exact total > 100 easily without traversing
-        // We will use a simplified visual estimation or specific endpoint if available. 
-        // Here we display what we can directly access or placeholder logic.
-        
-        // Display Stars & Forks
-        document.getElementById('total-stars').textContent = repoData.stargazers_count;
-        document.getElementById('total-forks').textContent = repoData.forks_count;
+        const rawContributors = await contributorsRes.json();
+        const rawPulls = await pullsRes.json();
 
-        // Note: Accurate Total PR count requires traversing pages. 
-        // For now, we will simulate dynamic calculation based on contributor activity in next step.
+        processData(rawContributors, rawPulls);
 
     } catch (error) {
-        console.error('Error fetching repo stats:', error);
+        console.error('Error initializing data:', error);
+        document.getElementById('contributors-grid').innerHTML = '<p>Failed to load data.</p>';
     }
 }
 
-// 2. Fetch Contributors & Logic
-async function fetchContributors() {
-    try {
-        const response = await fetch(`${API_BASE}/contributors?per_page=100`);
-        const data = await response.json();
-        
-        const leadAvatar = document.getElementById('lead-avatar');
-        
-        // STATS CALCULATIONS
-        let totalCommits = 0;
-        let totalPoints = 0; // Points = Commits * 10 (Simple gamification logic)
+// 2. Process & Merge Data
+function processData(contributors, pulls) {
+    const leadAvatar = document.getElementById('lead-avatar');
+    const statsMap = {};
 
-        data.forEach(contributor => {
-            totalCommits += contributor.contributions;
-            totalPoints += contributor.contributions * 10;
+    // A. Calculate Points from PRs
+    let totalProjectPRs = 0;
+    let totalProjectPoints = 0;
 
-            if(contributor.login.toLowerCase() === REPO_OWNER.toLowerCase()) {
-                if(leadAvatar) leadAvatar.src = contributor.avatar_url;
+    pulls.forEach(pr => {
+        const user = pr.user.login;
+        
+        // Initialize user stats if not exists
+        if (!statsMap[user]) {
+            statsMap[user] = { prs: 0, points: 0, l3: 0, l2: 0, l1: 0 };
+        }
+
+        // Increment PR Count
+        statsMap[user].prs++;
+        totalProjectPRs++;
+
+        // Calculate Points based on Labels
+        let prPoints = 0;
+        let hasLevel = false;
+
+        pr.labels.forEach(label => {
+            const name = label.name.toLowerCase();
+            if (name.includes('level 3') || name.includes('level-3')) {
+                prPoints += POINTS.L3;
+                statsMap[user].l3++;
+                hasLevel = true;
+            } else if (name.includes('level 2') || name.includes('level-2')) {
+                prPoints += POINTS.L2;
+                statsMap[user].l2++;
+                hasLevel = true;
+            } else if (name.includes('level 1') || name.includes('level-1')) {
+                prPoints += POINTS.L1;
+                statsMap[user].l1++;
+                hasLevel = true;
             }
         });
 
-        // Update DOM Stats
-        document.getElementById('total-contributors').textContent = data.length;
-        document.getElementById('total-commits').textContent = totalCommits;
-        document.getElementById('total-points').textContent = totalPoints;
-        document.getElementById('total-prs').textContent = Math.floor(totalCommits / 3); // Approximation: ~1 PR per 3 commits
+        // Default points if no level tag found
+        if (!hasLevel) prPoints += POINTS.DEFAULT;
 
-        // FILTER: Remove Lead
-        allContributors = data.filter(contributor => 
-            contributor.login.toLowerCase() !== REPO_OWNER.toLowerCase()
-        );
+        statsMap[user].points += prPoints;
+        totalProjectPoints += prPoints;
+    });
 
-        // Render
-        renderContributors(1);
+    // B. Merge with Contributor Profile Data
+    contributorsData = contributors.map(c => {
+        const login = c.login;
+        // Get stats from map or default to 0
+        const userStats = statsMap[login] || { prs: 0, points: 0, l3: 0, l2: 0, l1: 0 };
 
-    } catch (error) {
-        console.error('Error fetching contributors:', error);
-        document.getElementById('contributors-grid').innerHTML = '<p>Failed to load contributors.</p>';
-    }
+        // Check for Lead
+        if (login.toLowerCase() === REPO_OWNER.toLowerCase()) {
+            if (leadAvatar) leadAvatar.src = c.avatar_url;
+        }
+
+        return {
+            ...c,
+            ...userStats // Merges prs, points, l3, l2, l1 into the object
+        };
+    });
+
+    // C. Filter Lead & Sort by POINTS (Rank Logic)
+    contributorsData = contributorsData
+        .filter(c => c.login.toLowerCase() !== REPO_OWNER.toLowerCase())
+        .sort((a, b) => b.points - a.points); // Descending Sort by Points
+
+    // D. Update DOM Stats
+    updateGlobalStats(contributors.length, totalProjectPRs, totalProjectPoints);
+
+    // E. Render Grid
+    renderContributors(1);
 }
 
-// Helper: Get Badge based on Points (Score)
-function getBadge(commits) {
-    const score = commits * 10;
-    if (score >= 500) {
+function updateGlobalStats(count, prs, points) {
+    document.getElementById('total-contributors').textContent = count;
+    document.getElementById('total-prs').textContent = prs;
+    document.getElementById('total-points').textContent = points;
+    // Note: Total Commits requires a separate header fetch or calculation, 
+    // leaving previous placeholder or removing it if preferred.
+    document.getElementById('total-commits').textContent = "50+"; // Placeholder or fetch logic
+}
+
+// 3. Get League/Badge Data
+function getLeagueData(points) {
+    if (points > 150) {
         return { text: 'Gold 🏆', class: 'badge-gold', tier: 'tier-gold', label: 'Gold League' };
-    } else if (score >= 200) {
+    } else if (points > 75) {
         return { text: 'Silver 🥈', class: 'badge-silver', tier: 'tier-silver', label: 'Silver League' };
-    } else if (score >= 100) {
+    } else if (points > 30) {
         return { text: 'Bronze 🥉', class: 'badge-bronze', tier: 'tier-bronze', label: 'Bronze League' };
     } else {
         return { text: 'Contributor 🚀', class: 'badge-contributor', tier: 'tier-contributor', label: 'Contributor' };
     }
 }
 
-// 3. Render Grid
+// 4. Render Grid
 function renderContributors(page) {
     const grid = document.getElementById('contributors-grid');
     grid.innerHTML = '';
 
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedItems = allContributors.slice(start, end);
+    const paginatedItems = contributorsData.slice(start, end);
 
     if (paginatedItems.length === 0) {
         grid.innerHTML = '<p>No contributors found.</p>';
@@ -111,18 +156,19 @@ function renderContributors(page) {
     }
 
     paginatedItems.forEach((contributor, index) => {
-        const globalRank = start + index + 1; // Rank in the list
-        const badgeData = getBadge(contributor.contributions);
+        const globalRank = start + index + 1;
+        const league = getLeagueData(contributor.points);
 
         const card = document.createElement('div');
-        card.className = `contributor-card ${badgeData.tier}`;
-        card.onclick = () => openModal(contributor, badgeData, globalRank);
+        card.className = `contributor-card ${league.tier}`;
+        card.onclick = () => openModal(contributor, league, globalRank);
 
+        // Note: Showing "PR: X" on card as requested
         card.innerHTML = `
             <img src="${contributor.avatar_url}" alt="${contributor.login}">
             <span class="cont-name">${contributor.login}</span>
-            <span class="cont-commits-badge ${badgeData.class}">
-                ${badgeData.text}
+            <span class="cont-commits-badge ${league.class}">
+                PRs: ${contributor.prs}
             </span>
         `;
         grid.appendChild(card);
@@ -133,7 +179,7 @@ function renderContributors(page) {
 
 function renderPaginationControls(page) {
     const container = document.getElementById('pagination-controls');
-    const totalPages = Math.ceil(allContributors.length / itemsPerPage);
+    const totalPages = Math.ceil(contributorsData.length / itemsPerPage);
 
     if (totalPages <= 1) {
         container.innerHTML = '';
@@ -156,21 +202,26 @@ window.changePage = function(newPage) {
     renderContributors(newPage);
 };
 
-// 4. MODAL LOGIC (Updated Fields)
-function openModal(contributor, badgeData, rank) {
+// 5. Modal Logic with Detailed Calculation
+function openModal(contributor, league, rank) {
     const modal = document.getElementById('contributor-modal');
     
     document.getElementById('modal-avatar').src = contributor.avatar_url;
     document.getElementById('modal-name').textContent = contributor.login;
-    document.getElementById('modal-id').textContent = `ID: ${contributor.id}`; // GitHub ID
+    // Using GitHub ID or just custom Rank ID
+    document.getElementById('modal-id').textContent = `ID: ${contributor.id}`; 
     
     document.getElementById('modal-rank').textContent = `#${rank}`;
-    document.getElementById('modal-score').textContent = contributor.contributions * 10; // Score Logic
-    document.getElementById('modal-league').textContent = badgeData.label.split(' ')[0]; // "Gold", "Silver"
+    document.getElementById('modal-score').textContent = contributor.points;
+    document.getElementById('modal-league').textContent = league.label.split(' ')[0]; // "Gold"
 
+    // Dynamic Links
     const prLink = `https://github.com/${REPO_OWNER}/${REPO_NAME}/pulls?q=is%3Apr+author%3A${contributor.login}`;
     document.getElementById('modal-pr-link').href = prLink;
     document.getElementById('modal-profile-link').href = contributor.html_url;
+
+    // OPTIONAL: Show Point Breakdown in Console or add tooltip logic here
+    // console.log(`Points for ${contributor.login}: (L3*${contributor.l3}) + (L2*${contributor.l2}) + (L1*${contributor.l1})`);
 
     modal.classList.add('active');
 }
@@ -183,7 +234,7 @@ document.getElementById('contributor-modal').addEventListener('click', (e) => {
     if(e.target.id === 'contributor-modal') closeModal();
 });
 
-// 5. Recent Activity
+// 6. Recent Activity (Commits)
 async function fetchRecentActivity() {
     try {
         const response = await fetch(`${API_BASE}/commits?per_page=10`);
