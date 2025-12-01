@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/home-gsap.css">
     <link rel="stylesheet" href="../css/back-to-top.css">
-    
     <link rel="stylesheet" href="../css/leaderboard.css">
     
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -32,16 +31,16 @@
             <header class="hud-top-bar">
                 <div class="header-title">
                     <h1 class="glitch-text" data-text="LEADERBOARD_MATRIX">LEADERBOARD_MATRIX</h1>
-                    <span class="sub-text">:: SYSTEM_OVERRIDE // V.2.0.4 ::</span>
+                    <span class="sub-text">:: SYSTEM_OVERRIDE // PHYSICS_ENGINE_ACTIVE ::</span>
                 </div>
                 <div class="header-stats">
                     <div class="stat-pill">
                         <span class="label">PING</span>
-                        <span class="val green" id="ping-counter">12ms</span>
+                        <span class="val green" id="ping-counter">--ms</span>
                     </div>
                     <div class="stat-pill">
-                        <span class="label">UPTIME</span>
-                        <span class="val blue">99.9%</span>
+                        <span class="label">DATA_STREAM</span>
+                        <span class="val blue">SYNCED</span>
                     </div>
                 </div>
             </header>
@@ -72,29 +71,29 @@
                     <div class="physics-grid">
                         <div class="physics-stat">
                             <h4><i class="fas fa-tachometer-alt"></i> Velocity (V)</h4>
-                            <p>Commit Frequency / Time</p>
-                            <div class="bar-container"><div class="bar-fill" style="width: 85%"></div></div>
+                            <p>Commit Frequency / 30 Days</p>
+                            <div class="bar-container"><div class="bar-fill" style="width: 0%"></div></div>
                         </div>
                         <div class="physics-stat">
                             <h4><i class="fas fa-weight-hanging"></i> Mass (M)</h4>
-                            <p>Lines of Code + Complexity</p>
-                            <div class="bar-container"><div class="bar-fill" style="width: 60%"></div></div>
+                            <p>PR Complexity (Labels)</p>
+                            <div class="bar-container"><div class="bar-fill" style="width: 0%"></div></div>
                         </div>
                         <div class="physics-stat">
                             <h4><i class="fas fa-meteor"></i> Impact (F)</h4>
-                            <p>F = M x A (PR Merges)</p>
-                            <div class="bar-container"><div class="bar-fill" style="width: 92%"></div></div>
+                            <p>Total XP (F = M x V + Events)</p>
+                            <div class="bar-container"><div class="bar-fill" style="width: 0%"></div></div>
                         </div>
                     </div>
                     <div class="physics-note">
-                        > The leaderboard algorithm calculates your <strong>Contribution Momentum</strong>. Consistent code pushes increase your velocity, while complex PRs add mass to your score.
+                        > The algorithm treats code as matter. <strong>Higher Complexity PRs</strong> add Mass. <strong>Frequent merges</strong> increase Velocity. <strong>Event Attendance</strong> provides a raw Momentum boost (+200 XP).
                     </div>
                 </div>
 
                 <div class="bento-item stat-tile s1">
                     <div class="tile-icon"><i class="fas fa-user-astronaut"></i></div>
                     <div class="tile-info">
-                        <h3>Total Agents</h3>
+                        <h3>Active Agents</h3>
                         <h2 id="total-contributors">0</h2>
                     </div>
                 </div>
@@ -118,7 +117,7 @@
                         <span><i class="fas fa-list-ol"></i> TOP_CONTRIBUTORS</span>
                         <div class="search-box">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="search-input" placeholder="Search ID...">
+                            <input type="text" id="search-input" placeholder="Search Agent ID...">
                         </div>
                     </div>
                     <div class="table-wrapper">
@@ -127,22 +126,20 @@
                                 <tr>
                                     <th>RANK</th>
                                     <th>OPERATOR</th>
-                                    <th>LEAGUE</th>
+                                    <th>CLASS</th>
                                     <th>VELOCITY</th>
                                     <th>XP</th>
                                     <th>STATUS</th>
                                 </tr>
                             </thead>
-                            <tbody id="leaderboard-body">
-                                </tbody>
+                            <tbody id="leaderboard-body"></tbody>
                         </table>
                     </div>
                 </div>
 
                 <div class="bento-item graph-panel">
                     <div class="panel-label">ACTIVITY_WAVEFORM</div>
-                    <div class="chart-bars" id="chart-bars">
-                        </div>
+                    <div class="chart-bars" id="chart-bars"></div>
                 </div>
 
             </div>
@@ -156,7 +153,6 @@
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
     <script src="../js/leaderboard.js"></script>
 
     <script>
