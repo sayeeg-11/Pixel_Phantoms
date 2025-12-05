@@ -50,45 +50,55 @@ This repository welcomes **students, beginners, and open-source contributors**.
 
 # 📦 How to Install & Run Locally
 
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- Git (for cloning the repository)
+- Optional: VS Code with Live Server extension for better development experience
+
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/your-username/pixel-phantoms-website.git
 cd pixel-phantoms-website
-````
+```
 
 ### 2️⃣ Run the Website
 
 You can:
 
-* Open `index.html` directly in your browser
+* **Option 1:** Open `index.html` directly in your browser by double-clicking the file or dragging it into the browser window.
   OR
-* Use **Live Server** (VS Code Recommended):
+* **Option 2:** Use **Live Server** (Recommended for development):
+  - Install the Live Server extension in VS Code.
+  - Right-click on `index.html` in the file explorer.
+  - Select **"Open with Live Server"**.
 
-  ```bash
-  Right-click → Open with Live Server
-  ```
+The website will open in your default browser at `http://127.0.0.1:5500/` (or similar local server address).
 
 ---
 
 # 📁 Project Structure
 
 ```
-Pixel_Phantoms/
+pixel-phantoms-website/
 │
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   └── feature_request.md
-│   └── workflows/
-│       └── (action files if any)
+├── index.html
+├── about.html
+├── contact.html
+├── team.html
+├── events.html
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
 │
 ├── assets/
 │   ├── demo.png
 │   ├── host-event.jpg
-│   ├── logo.png
-│   └── ... other images
+│   └── logo.png
 │
 ├── css/
+│   ├── style.css
+│   ├── home-gsap.css
 │   ├── back-to-top.css
 │   ├── community.css
 │   ├── contact.css
@@ -96,15 +106,17 @@ Pixel_Phantoms/
 │   ├── events.css
 │   ├── gallery.css
 │   ├── help.css
-│   ├── home-gsap.css
 │   ├── join-us.css
 │   ├── privacy.css
 │   ├── projects.css
-│   ├── style.css
-│   ├── terms.css
-│   └── ...more styles
+│   └── terms.css
+│
+├── data/
+│   └── events.json
 │
 ├── js/
+│   ├── back-to-top.js
+│   ├── community.js
 │   ├── contact.js
 │   ├── contributors.js
 │   ├── events.js
@@ -122,42 +134,31 @@ Pixel_Phantoms/
 │   ├── terms.js
 │   └── theme.js
 │
-├── pages/
-│   ├── community.html
-│   ├── contributors.html
-│   ├── gallery.html
-│   ├── help.html
-│   ├── join-us.html
-│   ├── privacy.html
-│   ├── projects.html
-│   ├── terms.html
-│   └── about.html
-│
-├── data/
-│   └── events.json
-│
-├── index.html
-├── about.html
-├── contact.html
-├── events.html
-├── team.html
-│
-├── README.md
-├── LICENSE
-├── CONTRIBUTING.md
-└── CODE_OF_CONDUCT.md
-
+└── pages/
+    ├── community.html
+    ├── contributors.html
+    ├── gallery.html
+    ├── help.html
+    ├── join-us.html
+    ├── privacy.html
+    ├── projects.html
+    └── terms.html
 ```
 
 ---
 
 # 🎨 Screenshot / Demo
 
-*Add your screenshots here*
+Here are some screenshots of the Pixel Phantoms website:
 
-```
-assets/demo.png
-```
+### Home Page
+![Home Page Demo](assets/demo.png)
+
+### Logo
+![Pixel Phantoms Logo](assets/logo.png)
+
+### Host Event
+![Host Event Image](assets/host-event.jpg)
 
 ---
 
