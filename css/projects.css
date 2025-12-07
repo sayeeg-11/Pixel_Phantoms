@@ -452,3 +452,181 @@ input:checked + .slider:before {
     .panel-header { justify-content: center; }
     .panel-line { display: none; }
 }
+
+/* =========================================
+   COPY TO CLIPBOARD STYLES FOR CODE SNIPPETS
+   ========================================= */
+
+/* Code snippet container with copy button */
+.code-snippet-container {
+    position: relative;
+    margin: 20px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: rgba(10, 10, 20, 0.8);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    animation: slideInUp 0.5s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(0, 170, 255, 0.1);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.code-language {
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.copy-btn {
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--text-primary);
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.copy-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.copy-btn.copied {
+    background: #00ff88;
+    border-color: #00ff88;
+    color: #000;
+}
+
+.copy-btn.copied i {
+    color: #000;
+}
+
+.copy-btn i {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+.copy-btn:hover i,
+.copy-btn.copied i {
+    color: white;
+}
+
+/* Code content */
+.code-content {
+    padding: 15px;
+    overflow-x: auto;
+    max-height: 300px;
+    color: #e0f7ff;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    tab-size: 2;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Syntax highlighting for different languages */
+.code-content .keyword {
+    color: #ff0055;
+    font-weight: bold;
+}
+
+.code-content .string {
+    color: #00ff88;
+}
+
+.code-content .function {
+    color: #00aaff;
+}
+
+.code-content .comment {
+    color: #5c7080;
+    font-style: italic;
+}
+
+.code-content .number {
+    color: #ffbd2e;
+}
+
+.code-content .operator {
+    color: #ff0055;
+}
+
+/* Notification for successful copy */
+.copy-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 255, 136, 0.9);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+}
+
+.copy-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animation for copy button */
+@keyframes copyPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.copy-btn.copied {
+    animation: copyPulse 0.5s ease;
+}
+
+.project-card .code-snippet-container {
+    margin: 15px -20px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+}
+
+.project-card .code-header {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.project-card .code-content {
+    max-height: 200px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.5);
+}
