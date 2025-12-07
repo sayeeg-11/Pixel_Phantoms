@@ -1,23 +1,23 @@
 [
     {
-        "title": "AI Workshop: Intro to Machine Learning",
-        "date": "March 15, 2025",
-        "location": "Auditorium",
-        "description": "A hands-on introduction to AI and ML concepts.",
+        "title": "Winter Code Jam 2025",
+        "date": "December 10, 2025",
+        "location": "Main Auditorium",
+        "description": "End the year with a code-fest! Solve algorithmic challenges and win exciting prizes.",
         "link": "#"
     },
     {
-        "title": "Hackathon: CodeStorm 2025",
-        "date": "April 10-11, 2025",
+        "title": "Cloud Computing Summit",
+        "date": "January 15, 2026",
+        "location": "Seminar Hall 1",
+        "description": "Learn about AWS, Azure, and Google Cloud from certified industry experts.",
+        "link": "#"
+    },
+    {
+        "title": "HackTheFuture 2026",
+        "date": "February 10, 2026",
         "location": "Innovation Lab",
-        "description": "24-hour hackathon open to all students.",
-        "link": "#"
-    },
-    {
-        "title": "UI/UX Creative Minds Meetup",
-        "date": "May 3, 2025",
-        "location": "Seminar Hall 3",
-        "description": "Design meetup for UI/UX enthusiasts.",
+        "description": "A 48-hour hackathon focused on building sustainable tech solutions.",
         "link": "#"
     }
 ]

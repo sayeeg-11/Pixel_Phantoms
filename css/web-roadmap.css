@@ -1,0 +1,230 @@
+/* --- Roadmap Layout Variables --- */
+:root {
+    --roadmap-line-color: #333;
+    --roadmap-node-bg: #0a0a0a;
+    --roadmap-node-border: #00ff41;
+    --roadmap-text-color: #eee;
+    --spine-width: 6px;
+}
+
+.roadmap-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: #050505;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.glitch-text {
+    font-size: 3rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--roadmap-node-border);
+    text-shadow: 2px 2px 0px #ff00ff;
+}
+
+.subtitle {
+    color: #888;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 10px;
+}
+
+/* --- Wrapper & Spine --- */
+.roadmap-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+/* The central vertical line */
+.roadmap-spine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: var(--spine-width);
+    background: var(--roadmap-line-color);
+    transform: translateX(-50%);
+    z-index: 0;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.1);
+}
+
+/* --- Phases --- */
+.phase-block {
+    position: relative;
+    margin-bottom: 80px;
+    z-index: 1;
+}
+
+/* Phase Title (The "Hub") */
+.phase-header {
+    background: #000;
+    border: 2px solid var(--roadmap-node-border);
+    color: var(--roadmap-node-border);
+    padding: 15px 30px;
+    width: fit-content;
+    margin: 0 auto 40px; /* Center it */
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    z-index: 2;
+}
+
+/* --- Modules (The "Nodes") --- */
+.modules-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 40px; /* Space between rows */
+}
+
+.module-node {
+    position: relative;
+    width: 40%; /* Leaves space for center */
+    padding: 20px;
+    background: var(--roadmap-node-bg);
+    border: 1px solid #333;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover Effects */
+.module-node:hover {
+    border-color: var(--roadmap-node-border);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 255, 65, 0.15);
+}
+
+.module-node h4 {
+    color: #fff;
+    margin: 0 0 5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.module-node p {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- Alternating Layout (Left / Right) --- */
+/* Left Side Nodes */
+.module-node.left {
+    margin-left: 5%; /* Align to left side of container */
+    margin-right: auto;
+    text-align: right;
+}
+
+/* Right Side Nodes */
+.module-node.right {
+    margin-left: auto;
+    margin-right: 5%; /* Align to right side */
+    text-align: left;
+}
+
+/* --- Connectors (The Lines) --- */
+.module-node::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 15%; /* Reach towards center spine */
+    height: 2px;
+    background: var(--roadmap-line-color);
+    transition: background 0.3s;
+}
+
+/* Connector positioning */
+.module-node.left::after {
+    right: -25%; /* Extend out to spine */
+    width: 25%;
+}
+
+.module-node.right::after {
+    left: -25%;
+    width: 25%;
+}
+
+/* Node Dot on Spine */
+.module-node::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border: 2px solid var(--roadmap-line-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    transition: border-color 0.3s, background 0.3s;
+}
+
+.module-node.left::before {
+    right: -26%; /* Position exactly on spine */
+    margin-right: -6px; /* Half of width */
+}
+
+.module-node.right::before {
+    left: -26%;
+    margin-left: -6px;
+}
+
+/* Hover State for Connectors */
+.module-node:hover::after {
+    background: var(--roadmap-node-border);
+}
+.module-node:hover::before {
+    border-color: var(--roadmap-node-border);
+    background: var(--roadmap-node-border);
+}
+
+/* --- Status Styles (Locked vs Unlocked) --- */
+.module-node[data-status="locked"] {
+    opacity: 0.6;
+    border-color: #333;
+    pointer-events: none; /* Disable clicking if locked */
+    filter: grayscale(1);
+}
+
+.module-node[data-status="locked"]:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .roadmap-spine {
+        left: 20px;
+    }
+    
+    .module-node {
+        width: 80%;
+        margin-left: 50px !important; /* Force all to right of spine */
+        text-align: left !important;
+    }
+
+    .module-node.left::after,
+    .module-node.right::after {
+        left: -30px;
+        right: auto;
+        width: 30px;
+    }
+
+    .module-node.left::before,
+    .module-node.right::before {
+        left: -38px;
+        right: auto;
+    }
+    
+    .phase-header {
+        margin-left: 50px; /* Align phase header too */
+        margin-right: 0;
+    }
+}

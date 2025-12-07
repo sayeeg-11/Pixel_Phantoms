@@ -5,37 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Phantoms | Contact</title>
     <link rel="stylesheet" href="css/contact.css"> 
+    <link rel="stylesheet" href="css/home-gsap.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="hacker-theme">
 
-<header>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="assets/logo.png" alt="Pixel Phantoms Logo">
-            <span>Pixel Phantoms</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-             <li><a href="events.html">Events</a></li>
-             <li><a href="team.html">Team</a></li>
-            <li><a class="active" href="contact.html">Contact</a></li>
-            <li>
-                <div class="theme-toggle">
-                    <input type="checkbox" id="theme-switch" class="theme-switch">
-                    <label for="theme-switch" class="theme-label">
-                        <div class="toggle-thumb"></div>
-                        <span class="sun-icon">☀️</span>
-                        <span class="moon-icon">🌙</span>
-                    </label>
-                </div>
-            </li>
-        </ul>
-    </nav>
-</header>
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-content" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
 
-    <div class="main-content">
+    <div id="navbar-placeholder"></div>
+    <script src="js/navbar.js"></script>
+    <script>renderNavbar('');</script>
+
+    
+    <main id="main-content" id="main-content" tabindex="-1">
         <section class="contact-section">
             <div class="section-header">
                 <h2>Get in Touch</h2>
@@ -128,7 +114,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>

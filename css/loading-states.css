@@ -1,0 +1,192 @@
+/* =========================================
+   LOADING STATES & SPINNERS
+   ========================================= */
+
+/* Loading spinner base */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+.spinner-dark {
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: var(--accent-color);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Button loading states */
+.btn-loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.btn-outline.btn-loading::after {
+    border: 3px solid rgba(0, 170, 255, 0.1);
+    border-top-color: var(--accent-color);
+}
+
+/* Form loading overlay */
+.form-loading {
+    position: relative;
+}
+
+.form-loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 10;
+    border-radius: inherit;
+}
+
+.form-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    margin-left: -20px;
+    border: 4px solid rgba(0, 170, 255, 0.1);
+    border-top-color: var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 11;
+}
+
+[data-theme="dark"] .form-loading::before {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* Progress bars */
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 170, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 10px 0;
+    display: none;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-color), #0088cc);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Loading skeletons */
+.skeleton {
+    background: linear-gradient(90deg, 
+        var(--border-color) 25%, 
+        var(--bg-secondary) 50%, 
+        var(--border-color) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+.skeleton-text {
+    height: 12px;
+    margin-bottom: 8px;
+}
+
+.skeleton-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Success/Error states */
+.btn-success {
+    background-color: #00cc66 !important;
+}
+
+.btn-error {
+    background-color: #ff4444 !important;
+}
+
+.success-checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.success-checkmark::after {
+    content: '✓';
+    color: white;
+    font-weight: bold;
+}
+
+.error-cross {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.error-cross::after {
+    content: '✗';
+    color: white;
+    font-weight: bold;
+}
+
+/* Loading text */
+.loading-text {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.loading-text::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}
+
+/* Disabled state with loading */
+[disabled].btn-loading {
+    cursor: not-allowed;
+}

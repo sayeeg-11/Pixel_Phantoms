@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | System Access</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home-gsap.css">
+    <link rel="stylesheet" href="../css/back-to-top.css">
+    <link rel="stylesheet" href="../css/login.css"> 
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="hacker-theme">
+
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-login" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
+    
+    <canvas id="cyber-rain-canvas"></canvas>
+
+    <div id="navbar-placeholder"></div>
+    <script src="../js/navbar.js"></script>
+    <script>renderNavbar('../');</script>
+
+    <div class="main-content" id="main-login" tabindex="-1">
+        <section class="login-hero">
+            <div id="hacker-stats-overlay"></div>
+            
+            <div class="terminal-box">
+                <p class="console-text login-text" id="dynamic-login-message">> SYSTEM_ACCESS_POINT</p>
+            </div>
+            <div class="static-overlay"></div>
+        </section>
+
+        <section class="login-section">
+            <div class="login-container">
+                <div class="login-card" id="access-card">
+                    <div class="system-status-bar">
+                        <span class="status-indicator"></span>
+                        <div class="status-value" id="login-status-value">STATUS_IDLE</div>
+                    </div>
+                    
+                    <div class="auth-tabs">
+                        <button class="tab-btn active" id="login-tab-btn" data-target="login">AGENT_LOGIN</button>
+                        <button class="tab-btn" id="signup-tab-btn" data-target="signup">NEW_PROTOCOL</button>
+                    </div>
+
+                    <form id="auth-form">
+                        
+                        <div id="login-view" class="auth-view active">
+                            <h2 class="form-title">AGENT LOGIN</h2>
+                            <p class="form-desc">Enter your credentials to initiate verification.</p>
+                            
+                            <div class="input-group">
+                                <label for="username"><i class="fas fa-user-circle"></i> CODENAME</label>
+                                <input type="text" id="username" placeholder="e.g. Neo_One" required>
+                                <div class="error-message" id="username-error"></div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="password"><i class="fas fa-key"></i> PASSKEY</label>
+                                <input type="password" id="password" placeholder="••••••••" required>
+                                <div class="error-message" id="password-error"></div>
+                            </div>
+                            
+                            <div class="options-row">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    Remember Host ID
+                                </label>
+                                <a href="#" class="forgot-link">Forgot Passkey?</a>
+                            </div>
+
+                            <button type="submit" id="login-btn" class="btn-primary" data-loading="true">
+                                <i class="fas fa-arrow-alt-circle-right"></i> START_VERIFICATION
+                            </button>
+                        </div>
+                        
+                        <div id="signup-view" class="auth-view">
+                            <h2 class="form-title">NEW AGENT REGISTRATION</h2>
+                            <p class="form-desc">Create your new secure codename and passkey.</p>
+                            
+                            <div class="input-group">
+                                <label for="new-username"><i class="fas fa-user-plus"></i> NEW CODENAME</label>
+                                <input type="text" id="new-username" placeholder="e.g. Phoenix_01" required>
+                                <div class="error-message" id="new-username-error"></div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="new-email"><i class="fas fa-envelope"></i> EMAIL KEY</label>
+                                <input type="email" id="new-email" placeholder="agent@pp.com" required>
+                                <div class="error-message" id="new-email-error"></div>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="new-password"><i class="fas fa-lock"></i> CHOOSE PASSKEY</label>
+                                <input type="password" id="new-password" placeholder="••••••••" required>
+                                <div class="error-message" id="new-password-error"></div>
+                            </div>
+                            
+                            <button type="submit" id="signup-btn" class="btn-primary" data-loading="true">
+                                <i class="fas fa-user-check"></i> REGISTER_AGENT_ID
+                            </button>
+                        </div>
+
+                        <div id="verification-view" class="auth-view">
+                            <div class="verification-display">
+                                <div class="verification-icon">
+                                    <i class="fas fa-fingerprint fa-spin"></i>
+                                </div>
+                                <h3 id="verification-title">INITIATING SCREENING...</h3>
+                                <p id="verification-message" class="text-secondary">Please wait while the system processes the request.</p>
+                            </div>
+                            <button type="button" id="back-to-login-btn" class="btn-secondary" style="margin-top: 30px;">
+                                <i class="fas fa-undo"></i> RETURN_TO_LOGIN
+                            </button>
+                        </div>
+                        
+                        <div id="form-feedback" class="feedback-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/footer.js"></script>
+    <script>renderFooter('../');</script>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/back-to-top.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</body>
+</html>

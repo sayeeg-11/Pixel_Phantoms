@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Global Command Center</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/home-gsap.css">
+    <link rel="stylesheet" href="../css/back-to-top.css">
+    
+    <link rel="stylesheet" href="../css/leaderboard.css">
+    <link rel="stylesheet" href="../css/stats-widget.css">
+    <link rel="stylesheet" href="../css/timeline.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="hacker-theme hud-mode">
+
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-leaderboard" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
+
+    <div id="navbar-placeholder"></div>
+
+    <div class="dashboard-container" id="main-leaderboard" tabindex="-1">
+        
+        <aside class="hud-sidebar">
+            <div class="sidebar-icon active" data-target="dashboard-view"><i class="fas fa-chart-pie"></i></div>
+            <div class="sidebar-icon" data-target="teams-view"><i class="fas fa-users"></i></div>
+            <div class="sidebar-icon" data-target="projects-view"><i class="fas fa-cube"></i></div>
+            <div class="sidebar-icon" data-target="achievements-view"><i class="fas fa-trophy"></i></div>
+            <div class="sidebar-icon" data-target="settings-view"><i class="fas fa-cog"></i></div>
+        </aside>
+
+        <main class="hud-main">
+            
+            <header class="hud-top-bar">
+                <div class="header-title">
+                    <h1 class="glitch-text" id="page-title" data-text="PERFORMANCE_MATRIX">PERFORMANCE_MATRIX</h1>
+                    <span class="sub-text" id="page-subtitle">:: SYSTEM_OVERRIDE // EVENT_PROTOCOL_V2 ::</span>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-pill">
+                        <span class="label">PING</span>
+                        <span class="val green" id="ping-counter">12ms</span>
+                    </div>
+                    <div class="stat-pill">
+                        <span class="label">DATA_STREAM</span>
+                        <span class="val blue">SYNCED</span>
+                    </div>
+                    <button class="btn-refresh" id="refresh-leaderboard" data-loading="true">
+                        <i class="fas fa-sync-alt"></i> REFRESH
+                    </button>
+                </div>
+            </header>
+
+            <!-- QUICK STATS WIDGET -->
+            <div class="quick-stats-widget" id="quick-stats-widget">
+                <div class="widget-header">
+                    <h2 class="widget-title">
+                        <i class="fas fa-tachometer-alt"></i> QUICK STATS DASHBOARD
+                    </h2>
+                    <button class="widget-refresh" id="refresh-stats">
+                        <i class="fas fa-sync-alt"></i> Refresh Stats
+                    </button>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card" id="active-projects-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="stat-value" id="active-projects-count">0</h3>
+                        <p class="stat-label">Active Projects</p>
+                        <div class="stat-trend">
+                            <span class="trend-up">↑ 12% this week</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card" id="upcoming-events-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="stat-value" id="upcoming-events-count">0</h3>
+                        <p class="stat-label">Upcoming Events</p>
+                        <div class="stat-trend">
+                            <span class="trend-neutral">3 new this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card" id="recent-contributions-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="stat-value" id="recent-contributions-count">0</h3>
+                        <p class="stat-label">Recent Contributions</p>
+                        <div class="stat-trend">
+                            <span class="trend-up">↑ 25% this week</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <h3 class="activity-title">
+                        <i class="fas fa-history"></i> RECENT ACTIVITY
+                    </h3>
+                    <ul class="activity-list" id="recent-activity-list">
+                        <!-- Activity items will be populated by JavaScript -->
+                        <li class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p>Loading recent activity...</p>
+                                <span class="activity-time">Just now</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="dashboard-view" class="hud-section active">
+                <div class="bento-grid">
+                    <div class="bento-item stage-3d-panel">
+                        <div class="panel-label">ARTIFACT_CONTROLLER</div>
+                        <div class="scene-3d">
+                            <div class="cube-wrapper" id="cube">
+                                <div class="face front"><div></div></div>
+                                <div class="face back"><div></div></div>
+                                <div class="face right"><div></div></div>
+                                <div class="face left"><div></div></div>
+                                <div class="face top"><div></div></div>
+                                <div class="face bottom"><div></div></div>
+                                <div class="inner-core"></div>
+                            </div>
+                        </div>
+                        <div class="control-text"><i class="fas fa-mouse-pointer"></i> HOVER TO ROTATE</div>
+                    </div>
+
+                    <div class="bento-item physics-panel">
+                        <div class="panel-label">GAMIFIED_PHYSICS_ENGINE</div>
+                        <div class="physics-grid">
+                            <div class="physics-stat">
+                                <h4><i class="fas fa-tachometer-alt"></i> Velocity (V)</h4>
+                                <div class="bar-container"><div class="bar-fill" style="width: 85%"></div></div>
+                            </div>
+                            <div class="physics-stat">
+                                <h4><i class="fas fa-weight-hanging"></i> Mass (M)</h4>
+                                <div class="bar-container"><div class="bar-fill" style="width: 60%"></div></div>
+                            </div>
+                            <div class="physics-stat">
+                                <h4><i class="fas fa-meteor"></i> Impact (F)</h4>
+                                <div class="bar-container"><div class="bar-fill" style="width: 92%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bento-item stat-tile s1">
+                        <div class="tile-icon"><i class="fas fa-user-astronaut"></i></div>
+                        <div class="tile-info"><h3>Performers</h3><h2 id="total-performers">0</h2></div>
+                    </div>
+                    <div class="bento-item stat-tile s2">
+                        <div class="tile-icon"><i class="fas fa-calendar-check"></i></div>
+                        <div class="tile-info"><h3>Events Held</h3><h2 id="total-events">0</h2></div>
+                    </div>
+                    <div class="bento-item stat-tile s3">
+                        <div class="tile-icon"><i class="fas fa-users"></i></div>
+                        <div class="tile-info"><h3>Total Attendance</h3><h2 id="total-attendance">0</h2></div>
+                    </div>
+
+                    <div class="bento-item table-panel">
+                        <div class="panel-header">
+                            <div>ACTIVE_AGENTS</div>
+                            <div style="display: flex; gap: 15px;">
+                                <div class="search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" id="search-input" placeholder="Filter agents...">
+                                </div>
+                                <button class="export-btn" id="export-leaderboard" data-loading="true">
+                                    <i class="fas fa-download"></i> Export
+                                </button>
+                            </div>
+                        </div>
+                        <div class="table-wrapper">
+                            <table class="hud-table">
+                                <thead>
+                                    <tr>
+                                        <th>RANK</th>
+                                        <th>AGENT</th>
+                                        <th>CLASS</th>
+                                        <th>VELOCITY</th>
+                                        <th>XP</th>
+                                        <th>STATUS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="leaderboard-body">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bento-item graph-panel">
+                        <div class="panel-label">ACTIVITY_WAVEFORM</div>
+                        <div class="chart-bars" id="chart-bars"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="teams-view" class="hud-section">
+                <div class="roster-grid">
+                    <div class="roster-card">
+                        <div class="roster-header">
+                            <div class="roster-icon gold"><i class="fas fa-crown"></i></div>
+                            <h3>GOLD CLASS</h3>
+                        </div>
+                        <ul class="roster-list" id="roster-gold"></ul>
+                    </div>
+                    <div class="roster-card">
+                        <div class="roster-header">
+                            <div class="roster-icon silver"><i class="fas fa-shield-alt"></i></div>
+                            <h3>SILVER CLASS</h3>
+                        </div>
+                        <ul class="roster-list" id="roster-silver"></ul>
+                    </div>
+                    <div class="roster-card">
+                        <div class="roster-header">
+                            <div class="roster-icon bronze"><i class="fas fa-medal"></i></div>
+                            <h3>BRONZE CLASS</h3>
+                        </div>
+                        <ul class="roster-list" id="roster-bronze"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="projects-view" class="hud-section">
+                <h2 class="section-heading">Projects & Modules</h2>
+                <div class="module-sections">
+                    <h3 class="section-title-module"> Enhanced Module Design (Discipline Tracks)</h3>
+                    <div class="discipline-track-container">
+                        <a href="web-roadmap.html" class="track-card" data-track="WEB">
+                            <h4>Discipline Track: WEB</h4>
+                            <p><strong>Challenge Focus:</strong> Full-Stack Security & Deployment</p>
+                            <p class="complexity-level level-high">Complexity: High</p>
+                        </a>
+                        <a href="#" class="track-card" data-track="AI">
+                            <h4>Discipline Track: AI</h4>
+                            <p><strong>Challenge Focus:</strong> Model Deployment & Reinforcement Learning</p>
+                            <p class="complexity-level level-high">Complexity: High</p>
+                        </a>
+                        <a href="#" class="track-card" data-track="DATA">
+                            <h4>Discipline Track: DATA</h4>
+                            <p><strong>Challenge Focus:</strong> Real-time Stream Processing & Predictive Analytics</p>
+                            <p class="complexity-level level-high">Complexity: High</p>
+                        </a>
+                        <a href="#" class="track-card" data-track="APP">
+                            <h4>Discipline Track: APP</h4>
+                            <p><strong>Challenge Focus:</strong> Cross-Platform Development & Embedded Systems Integration</p>
+                            <p class="complexity-level level-high">Complexity: High</p>
+                        </a>
+                        <a href="#" class="track-card" data-track="BOT">
+                            <h4>Discipline Track: BOT</h4>
+                            <p><strong>Challenge Focus:</strong> NLP Intent Recognition & Autonomous Robotics</p>
+                            <p class="complexity-level level-high">Complexity: High</p>
+                        </a>
+                        <a href="#" class="track-card new-track" data-track="NEW">
+                            <h4>Discipline Track: New Track (suggested)</h4>
+                            <p><strong>Challenge Focus:</strong> IoT/Cybersecurity Implementation</p>
+                            <p class="complexity-level level-medium-high">Complexity: Medium/High</p>
+                        </a>
+                    </div>
+                    
+                    <hr class="section-divider">
+                    
+                    <h3 class="section-title-module"> Standardization & Clarity for Candidates</h3>
+                    <div class="info-card-container">
+                        <div class="info-card">
+                            <h4>Candidate's Rulebook</h4>
+                            <ul>
+                                <li><strong>Standardized Rules:</strong> Provides easily digestible guidelines for participation, eligibility, ethical conduct, and submission requirements.</li>
+                                <li><strong>Transparency of Scoring:</strong> Clearly documents how the MCS is calculated (e.g., criteria for code quality, documentation, and functionality).</li>
+                                <li><strong>Leaderboard Logic:</strong> Explicitly defines the weighting factors ($Weight_i$) used in the Domination Metric, allowing students to plan their competition strategy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <hr class="section-divider">
+                    
+                    <h3 class="section-title-module"> Integration of R&D Archives</h3>
+                    <div class="info-card-container">
+                        <div class="info-card">
+                            <h4>R&D Archives Scoring & Knowledge Base</h4>
+                            <ul>
+                                <li><strong>Bonus Points:</strong> Students earn direct bonus points in the Domination Metric for high-quality, relevant research, tools, or proof-of-concepts contributed to the Archives.</li>
+                                <li><strong>Knowledge Base:</strong> The Archives will serve as a valuable, categorized resource for all participants, linked directly to the Discipline Tracks.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="achievements-view" class="hud-section">
+                <div class="achievements-container">
+                    <h2 class="section-title">ACHIEVEMENTS & BADGES</h2>
+                    <div class="achievements-grid" id="achievements-grid">
+                        </div>
+                    
+                    <div class="comparison-section">
+                        <h3>COMPARE YOUR PERFORMANCE</h3>
+                        <div class="comparison-controls">
+                            <select id="compare-user-select">
+                                <option value="">Select a user to compare</option>
+                                </select>
+                            <button id="compare-btn" class="btn-primary" data-loading="true">Compare</button>
+                        </div>
+                        <div class="comparison-results" id="comparison-results">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+<div id="settings-view" class="hud-section">
+    <div class="profile-container">
+        <div class="profile-header-panel">
+            <div class="profile-cover"></div>
+            <div class="profile-identity">
+                <div class="profile-avatar-wrapper">
+                    <img src="../assets/logo.png" id="profile-avatar-img" alt="Agent Avatar">
+                    <div class="rank-orb">#01</div>
+                </div>
+                <div class="profile-main-info">
+                    <h2 id="profile-name-display">UNKNOWN AGENT</h2>
+                    <span class="profile-badge">TITAN CLASS ACCESS</span>
+                </div>
+                <div class="profile-actions">
+                    <button class="btn-secondary" onclick="resetProfileData()"><i class="fas fa-undo"></i> Reset</button>
+                    <button class="btn-primary" onclick="saveProfileData()" data-loading="true"><i class="fas fa-save"></i> Save Protocols</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-content-grid">
+            
+            <div class="profile-card">
+                <div class="card-header">
+                    <i class="fas fa-user-shield"></i> <span>IDENTITY_PROTOCOL</span>
+                </div>
+                <div class="card-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Agent Name</label>
+                            <input type="text" id="p-name" class="hud-input" placeholder="Enter Full Name">
+                        </div>
+                        <div class="form-group">
+                            <label>Codename (Username)</label>
+                            <input type="text" id="p-username" class="hud-input" placeholder="@username" readonly value="@neo_one">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Secure Email</label>
+                            <input type="email" id="p-email" class="hud-input" placeholder="agent@pixelphantoms.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Comms Uplink (Phone)</label>
+                            <input type="text" id="p-phone" class="hud-input" placeholder="+91 98765xxxxx">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Bio / Mission Statement</label>
+                        <textarea id="p-bio" class="hud-input" rows="3" placeholder="Describe your objective..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-card">
+                <div class="card-header">
+                    <i class="fas fa-microchip"></i> <span>SKILL_MATRIX & ACADEMICS</span>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Base of Operations (College)</label>
+                        <input type="text" id="p-college" class="hud-input" placeholder="University / Organization Name">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Graduation Cycle</label>
+                            <input type="number" id="p-grad-year" class="hud-input" placeholder="2025">
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Discipline</label>
+                            <select id="p-track" class="hud-select full-width">
+                                <option value="Web Security">Web Security</option>
+                                <option value="AI/ML">AI / Neural Nets</option>
+                                <option value="App Dev">App Development</option>
+                                <option value="Blockchain">Blockchain / Web3</option>
+                                <option value="IoT">IoT & Robotics</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="social-inputs-section">
+                        <label>Network Nodes</label>
+                        <div class="input-with-icon">
+                            <i class="fab fa-github"></i>
+                            <input type="text" id="p-github" class="hud-input" placeholder="GitHub URL">
+                        </div>
+                        <div class="input-with-icon">
+                            <i class="fab fa-linkedin"></i>
+                            <input type="text" id="p-linkedin" class="hud-input" placeholder="LinkedIn URL">
+                        </div>
+                        <div class="input-with-icon">
+                            <i class="fas fa-globe"></i>
+                            <input type="text" id="p-portfolio" class="hud-input" placeholder="Portfolio URL">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RECENT ACTIVITY TIMELINE SECTION -->
+        <div class="activity-timeline-section">
+            <div class="timeline-header">
+                <h2 class="timeline-title">
+                    <i class="fas fa-history"></i> RECENT ACTIVITY TIMELINE
+                </h2>
+                <div class="timeline-controls">
+                    <button class="timeline-btn" id="timeline-refresh">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="timeline-btn" id="timeline-add">
+                        <i class="fas fa-plus"></i> Add Activity
+                    </button>
+                    <button class="timeline-btn active" id="timeline-all">
+                        <i class="fas fa-list"></i> All
+                    </button>
+                </div>
+            </div>
+
+            <!-- Timeline Filters -->
+            <div class="timeline-filters" id="timeline-filters">
+                <div class="filter-tag active" data-filter="all">
+                    <i class="fas fa-layer-group"></i> All Activities
+                    <span class="count" id="count-all">0</span>
+                </div>
+                <div class="filter-tag" data-filter="project">
+                    <i class="fas fa-rocket"></i> Projects
+                    <span class="count" id="count-projects">0</span>
+                </div>
+                <div class="filter-tag" data-filter="event">
+                    <i class="fas fa-calendar-alt"></i> Events
+                    <span class="count" id="count-events">0</span>
+                </div>
+                <div class="filter-tag" data-filter="contribution">
+                    <i class="fas fa-code-branch"></i> Contributions
+                    <span class="count" id="count-contributions">0</span>
+                </div>
+                <div class="filter-tag" data-filter="achievement">
+                    <i class="fas fa-trophy"></i> Achievements
+                    <span class="count" id="count-achievements">0</span>
+                </div>
+            </div>
+
+            <!-- Timeline Container -->
+            <div class="timeline-container" id="timeline-container">
+                <!-- Timeline items will be populated by JavaScript -->
+                <div class="timeline-loading" id="timeline-loading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Loading activity timeline...</p>
+                </div>
+            </div>
+
+            <!-- Add Activity Modal (Hidden by default) -->
+            <div id="add-activity-modal" class="modal-overlay" style="display: none;">
+                <div class="modal-container" style="max-width: 500px;">
+                    <button class="close-modal" onclick="closeAddActivityModal()">&times;</button>
+                    
+                    <div class="modal-header">
+                        <h2><i class="fas fa-plus-circle"></i> Add New Activity</h2>
+                        <p class="modal-subtitle">Log your recent achievement or participation</p>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="activity-form">
+                            <div class="form-group">
+                                <label>Activity Type</label>
+                                <select id="activity-type" class="hud-select full-width">
+                                    <option value="project">Project Joined</option>
+                                    <option value="event">Event Attended</option>
+                                    <option value="contribution">Contribution Made</option>
+                                    <option value="achievement">Achievement Earned</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" id="activity-title" class="hud-input" placeholder="Enter activity title" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="activity-description" class="hud-input" rows="3" placeholder="Describe the activity..."></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" id="activity-date" class="hud-input" value="<?php echo date('Y-m-d'); ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label>Points Earned</label>
+                                    <input type="number" id="activity-points" class="hud-input" placeholder="0" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Project/Event Name (Optional)</label>
+                                <input type="text" id="activity-context" class="hud-input" placeholder="e.g., Winter Code Jam 2025">
+                            </div>
+
+                            <div class="modal-actions">
+                                <button type="button" class="modal-btn secondary-btn" onclick="closeAddActivityModal()">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="modal-btn primary-btn">
+                                    <i class="fas fa-save"></i> Save Activity
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        </main>
+    </div> <div id="contributor-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            
+            <div class="modal-header">
+                <img id="modal-avatar" src="" alt="Contributor">
+                <h2 id="modal-name">Username</h2>
+                <p id="modal-id" class="modal-subtitle">ID: --</p>
+                <div id="modal-league-badge" class="modal-league-tag"></div>
+            </div>
+
+            <div class="modal-stats-row">
+                <div class="modal-stat">
+                    <span class="stat-label">Rank</span>
+                    <span class="stat-number" id="modal-rank">#0</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-label">Points</span>
+                    <span class="stat-number" id="modal-score">0</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-label">PRs</span>
+                    <span class="stat-number" id="modal-prs">0</span>
+                </div>
+                <div class="modal-stat">
+                    <span class="stat-label">Commits</span>
+                    <span class="stat-number" id="modal-commits">0</span>
+                </div>
+            </div>
+
+            <div class="modal-progress-section">
+                <h3>Progress Overview</h3>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p id="progress-text">Level Progress: 0%</p>
+                </div>
+            </div>
+
+            <div class="modal-achievements-section">
+                <h3>Achievements</h3>
+                <div class="modal-achievements-grid" id="modal-achievements">
+                    </div>
+            </div>
+
+            <!-- NEW RECENT ACTIVITY SECTION -->
+            <div class="modal-activity-section" style="margin-top: 20px;">
+                <h3>Recent Activity</h3>
+                <div class="mini-timeline" id="modal-activity-timeline">
+                    <div class="mini-activity">
+                        <i class="fas fa-code-branch"></i>
+                        <span>PR #42 merged yesterday</span>
+                    </div>
+                    <div class="mini-activity">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attended 3 events this month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <a href="#" id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
+                    <i class="fas fa-code-branch"></i> View Pull Requests
+                </a>
+                <a href="#" id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
+                    <i class="fab fa-github"></i> GitHub Profile
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="js/leaderboard-enhanced.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/back-to-top.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="../js/leaderboard.js"></script>
+    <script src="../js/quick-stats.js"></script>
+    <script src="../js/timeline.js"></script>
+
+    <script>
+        renderNavbar('../');
+        renderFooter('../');
+    </script>
+</body>
+</html>

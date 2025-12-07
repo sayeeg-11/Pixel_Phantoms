@@ -8,15 +8,22 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/back-to-top.css">
     <link rel="stylesheet" href="../css/terms.css">
+    <link rel="stylesheet" href="../css/home-gsap.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="hacker-theme">
+
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-terms" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
     <script>renderNavbar('../');</script>
 
-    <div class="main-content">
+    <div class="main-content" id="main-terms" tabindex="-1">
         <header class="terms-header">
             <div class="header-content">
                 <h1>Platform Terms of Service</h1>

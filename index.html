@@ -4,25 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Phantoms | The Future of Tech</title>
+    <meta name="description" content="Pixel Phantoms - A cutting-edge student tech community focused on coding, design, and innovation. Join our hackathons, workshops, and skill development programs.">
     
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/loading-states.css">
     <link rel="stylesheet" href="css/home-gsap.css"> 
     <link rel="stylesheet" href="css/back-to-top.css">
+    <link rel="stylesheet" href="css/stats-widget.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="hacker-theme">
 
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-content" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
+    </a>
+
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
 
-    <main id="main-container">
-        
+    <main id="main-content" tabindex="-1">
         <section class="hero-section" id="hero">
-            <div class="grid-overlay"></div>
+            <div class="grid-overlay" aria-hidden="true"></div>
             <div class="hero-content">
-                <h1 class="hero-glitch" data-text="PIXEL_PHANTOMS">PIXEL_PHANTOMS</h1>
-                <div class="terminal-box">
+                <h1 class="hero-glitch" data-text="PIXEL_PHANTOMS">
+                    <span aria-hidden="true">PIXEL_PHANTOMS</span>
+                    <span class="sr-only">Pixel Phantoms</span>
+                </h1>
+                <div class="terminal-box" role="status" aria-live="polite">
                     <p class="console-text">> Initializing student_community.exe...</p>
                     <p class="console-text">> Loading modules: [Code, Design, Chaos]...</p>
                     <p class="console-text success">> Status: ONLINE</p>
@@ -31,34 +41,35 @@
                 <div class="hero-cta-group">
                     <a href="pages/join-us.html" class="btn-cyber">
                         <span class="btn-content">JOIN_PROTOCOL</span>
-                        <span class="btn-glitch"></span>
+                        <span class="btn-glitch" aria-hidden="true"></span>
+                        <span class="sr-only">Join Pixel Phantoms Community</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <section class="hackathon-spotlight">
+        <section class="hackathon-spotlight" aria-labelledby="hackathon-heading">
             <div class="section-header-terminal">
-                <h2><i class="fas fa-code"></i> HACKATHON_INCOMING</h2>
-                <div class="line-scanner"></div>
+                <h2 id="hackathon-heading"><i class="fas fa-code" aria-hidden="true"></i> HACKATHON_INCOMING</h2>
+                <div class="line-scanner" aria-hidden="true"></div>
             </div>
             <div class="hackathon-layout">
-                <div class="hack-main-card" data-tilt>
-                    <div class="hack-badge blink">REGISTRATION OPEN</div>
-                    <img src="https://picsum.photos/seed/hackathon_hero/800/600" alt="Hackathon Coding" class="hack-bg-img">
+                <article class="hack-main-card" data-tilt>
+                    <div class="hack-badge blink" aria-label="Registration Open">REGISTRATION OPEN</div>
+                    <img src="https://picsum.photos/seed/hackathon_hero/800/600" alt="Students collaborating at a hackathon coding event" class="hack-bg-img">
                     <div class="hack-overlay">
                         <h3>CODESTORM_2025</h3>
                         <p>The ultimate test of logic. Build the future in 24 hours.</p>
                         <div class="hack-meta">
-                            <span><i class="far fa-calendar-alt"></i> April 10-11</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Innovation Lab</span>
+                            <span><i class="far fa-calendar-alt" aria-hidden="true"></i> April 10-11</span>
+                            <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Innovation Lab</span>
                         </div>
-                        <a href="events.html" class="btn-hollow">Details &rarr;</a>
+                        <a href="events.html" class="btn-hollow">Details <span aria-hidden="true">&rarr;</span></a>
                     </div>
-                </div>
+                </article>
                 <div class="hack-details-grid">
                     <div class="detail-box track-box">
-                        <h4><i class="fas fa-random"></i> Tracks</h4>
+                        <h4><i class="fas fa-random" aria-hidden="true"></i> Tracks</h4>
                         <ul>
                             <li>AI/ML Revolution</li>
                             <li>Blockchain Defense</li>
@@ -66,11 +77,11 @@
                         </ul>
                     </div>
                     <div class="detail-box prize-box">
-                        <h4><i class="fas fa-trophy"></i> Bounty</h4>
+                        <h4><i class="fas fa-trophy" aria-hidden="true"></i> Bounty</h4>
                         <p class="prize-pool">₹50,000+</p>
                     </div>
                     <div class="detail-box sponsors-box">
-                        <h4><i class="fas fa-handshake"></i> Sponsors</h4>
+                        <h4><i class="fas fa-handshake" aria-hidden="true"></i> Sponsors</h4>
                         <div class="sponsor-logos">
                             <span>GitHub</span> <span>Polygon</span>
                         </div>
@@ -79,76 +90,82 @@
             </div>
         </section>
 
-        <section class="cyber-seminars">
+        <section class="cyber-seminars" aria-labelledby="seminars-heading">
             <div class="container">
-                <h2 class="section-header-glitch" data-text="LIVE_TRANSMISSIONS">LIVE_TRANSMISSIONS</h2>
+                <h2 class="section-header-glitch" data-text="LIVE_TRANSMISSIONS" id="seminars-heading">
+                    <span aria-hidden="true">LIVE_TRANSMISSIONS</span>
+                    <span class="sr-only">Live Transmissions</span>
+                </h2>
                 <p class="section-sub">> Connecting to global knowledge streams...</p>
                 
                 <div class="seminar-grid">
-                    <div class="seminar-card reveal-card">
-                        <div class="sem-status live">● LIVE NOW</div>
-                        <img src="https://picsum.photos/seed/tech_talk/400/250" alt="System Architecture Stream" class="sem-img">
+                    <article class="seminar-card reveal-card">
+                        <div class="sem-status live" aria-label="Live Now">● LIVE NOW</div>
+                        <img src="https://picsum.photos/seed/tech_talk/400/250" alt="Dr. Alan Grant presenting System Architecture" class="sem-img">
                         <div class="sem-info">
                             <h3>System Architecture 101</h3>
                             <p>Speaker: Dr. Alan Grant</p>
-                            <a href="#" class="link-terminal">Join Stream_</a>
+                            <a href="#" class="link-terminal">Join Stream<span aria-hidden="true">_</span></a>
                         </div>
-                    </div>
-                    <div class="seminar-card reveal-card">
-                        <div class="sem-status upcoming">● UPCOMING</div>
-                        <img src="https://picsum.photos/seed/web3_future/400/250" alt="Web3 Future Stream" class="sem-img">
+                    </article>
+                    <article class="seminar-card reveal-card">
+                        <div class="sem-status upcoming" aria-label="Upcoming">● UPCOMING</div>
+                        <img src="https://picsum.photos/seed/web3_future/400/250" alt="Web3 technology visualization" class="sem-img">
                         <div class="sem-info">
                             <div class="sem-date">Nov 28 // 18:00</div>
                             <h3>The Future of Web3</h3>
-                            <p>Guest: Satoshi (Maybe?)</p>
+                            <p>Guest: Industry Expert Panel</p>
                             <button class="btn-sm">Remind_Me</button>
                         </div>
-                    </div>
-                    <div class="seminar-card reveal-card">
-                        <div class="sem-status upcoming">● UPCOMING</div>
-                        <img src="https://picsum.photos/seed/devops_career/400/250" alt="DevOps Panel Stream" class="sem-img">
+                    </article>
+                    <article class="seminar-card reveal-card">
+                        <div class="sem-status upcoming" aria-label="Upcoming">● UPCOMING</div>
+                        <img src="https://picsum.photos/seed/devops_career/400/250" alt="DevOps professionals in discussion" class="sem-img">
                         <div class="sem-info">
                             <div class="sem-date">Dec 02 // 20:00</div>
                             <h3>Career in DevOps</h3>
                             <p>Panel Discussion</p>
                             <button class="btn-sm">Remind_Me</button>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="skill-tree-section">
+        <section class="skill-tree-section" aria-labelledby="skills-heading">
             <div class="container">
-                <h2 class="section-header-glitch" data-text="UPGRADE_SKILLS">UPGRADE_SKILLS</h2>
+                <h2 class="section-header-glitch" data-text="UPGRADE_SKILLS" id="skills-heading">
+                    <span aria-hidden="true">UPGRADE_SKILLS</span>
+                    <span class="sr-only">Upgrade Skills</span>
+                </h2>
                 
                 <div class="skill-path-wrapper">
                     <div class="skill-node reveal-node">
-                        <div class="node-icon"><i class="fab fa-python"></i></div>
+                        <div class="node-icon"><i class="fab fa-python" aria-hidden="true"></i></div>
                         <h4>Python_Mastery</h4>
                         <span class="node-level">Lvl 1</span>
                     </div>
                     
-                    <div class="connector reveal-node"></div> 
+                    <div class="connector reveal-node" aria-hidden="true"></div> 
                     
                     <div class="skill-node reveal-node">
-                        <div class="node-icon"><i class="fab fa-react"></i></div>
+                        <div class="node-icon"><i class="fab fa-react" aria-hidden="true"></i></div>
                         <h4>React_Core</h4>
                         <span class="node-level">Lvl 2</span>
                     </div>
                     
-                    <div class="connector reveal-node"></div> 
+                    <div class="connector reveal-node" aria-hidden="true"></div> 
                     
                     <div class="skill-node reveal-node">
-                        <div class="node-icon"><i class="fas fa-robot"></i></div>
+                        <div class="node-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
                         <h4>AI_Neural_Nets</h4>
                         <span class="node-level">Lvl 3</span>
                     </div>
                     
-                    <div class="connector reveal-node"></div> 
+                    <div class="connector reveal-node" aria-hidden="true"></div> 
                     
                     <div class="skill-node reveal-node">
-                        <div class="node-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="node-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
                         <h4>System_Arch</h4>
                         <span class="node-level">Lvl 4</span>
                     </div>
@@ -160,57 +177,64 @@
             </div>
         </section>
 
-        <section class="project-mainframe">
+        <section class="project-mainframe" aria-labelledby="projects-heading">
             <div class="container">
-                <h2 class="section-header-glitch" data-text="PROJECT_ARCHIVE">PROJECT_ARCHIVE</h2>
+                <h2 class="section-header-glitch" data-text="PROJECT_ARCHIVE" id="projects-heading">
+                    <span aria-hidden="true">PROJECT_ARCHIVE</span>
+                    <span class="sr-only">Project Archive</span>
+                </h2>
                 <div class="project-matrix">
-                    <div class="proj-card" style="background-image: url('https://picsum.photos/seed/p1/400/300');">
+                    <article class="proj-card" style="background-image: url('https://picsum.photos/seed/p1/400/300');">
                         <div class="proj-content">
                             <h3>CyberDeck_OS</h3>
                             <p>A custom Linux distro for hackers.</p>
                         </div>
-                    </div>
-                    <div class="proj-card" style="background-image: url('https://picsum.photos/seed/p2/400/300');">
+                    </article>
+                    <article class="proj-card" style="background-image: url('https://picsum.photos/seed/p2/400/300');">
                         <div class="proj-content">
                             <h3>Neon_City</h3>
                             <p>WebGL interactive experience.</p>
                         </div>
-                    </div>
-                    <div class="proj-card" style="background-image: url('https://picsum.photos/seed/p3/400/300');">
+                    </article>
+                    <article class="proj-card" style="background-image: url('https://picsum.photos/seed/p3/400/300');">
                         <div class="proj-content">
                             <h3>Bot_Net_V2</h3>
                             <p>Discord automation bot.</p>
                         </div>
-                    </div>
-                    <div class="proj-card" style="background-image: url('https://picsum.photos/seed/p4/400/300');">
+                    </article>
+                    <article class="proj-card" style="background-image: url('https://picsum.photos/seed/p4/400/300');">
                         <div class="proj-content">
                             <h3>Crypto_Vault</h3>
                             <p>Secure decentralized storage.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section class="terminal-updates">
+        <section class="terminal-updates" aria-label="Community Updates">
             <div class="terminal-window">
                 <div class="terminal-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="dot red" aria-hidden="true"></span>
+                    <span class="dot yellow" aria-hidden="true"></span>
+                    <span class="dot green" aria-hidden="true"></span>
                     <span class="title">admin@hosts:~</span>
                 </div>
                 <div class="terminal-body">
                     <div class="log-entry"><span class="timestamp">[14:00]</span> <span class="user">root:</span> <span class="msg">Server migration complete.</span></div>
                     <div class="log-entry"><span class="timestamp">[09:30]</span> <span class="user">mod:</span> <span class="msg warning">Winter Mentorship slots filling (85%).</span></div>
                     <div class="log-entry"><span class="timestamp">[18:45]</span> <span class="user">sys:</span> <span class="msg highlight">New Workshop added.</span></div>
-                    <div class="typing-indicator">_</div>
+                    <div class="typing-indicator" aria-hidden="true">_</div>
                 </div>
             </div>
         </section>
-    </div>
 
-        <section class="leaderboard-preview">
+        <section class="leaderboard-preview" aria-labelledby="leaderboard-heading">
             <div class="container">
-                <h2 class="section-header-glitch" data-text="TOP_AGENTS">TOP_AGENTS</h2>
+                <h2 class="section-header-glitch" data-text="TOP_AGENTS" id="leaderboard-heading">
+                    <span aria-hidden="true">TOP_AGENTS</span>
+                    <span class="sr-only">Top Contributors Leaderboard</span>
+                </h2>
         
                 <div class="lb-layout">
                     <div class="lb-main">
@@ -224,61 +248,143 @@
                         </div>
                     </div>
 
-            <div class="league-system">
-                <h3 class="sys-header"><i class="fas fa-unlock-alt"></i> CLEARANCE_LEVELS</h3>
-                
-                <div class="league-card gold">
-                    <div class="league-icon"><i class="fas fa-crown"></i></div>
-                    <div class="league-info">
-                        <h4>Gold Class <span class="xp-req">15,000+ XP</span></h4>
-                        <p>Unlock: Core Team Access & Letter of Recommendation</p>
-                    </div>
+                    <aside class="league-system" aria-label="Clearance Levels">
+                        <h3 class="sys-header"><i class="fas fa-unlock-alt" aria-hidden="true"></i> CLEARANCE_LEVELS</h3>
+                        
+                        <div class="league-card gold">
+                            <div class="league-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+                            <div class="league-info">
+                                <h4>Gold Class <span class="xp-req">15,000+ XP</span></h4>
+                                <p>Unlock: Core Team Access & Letter of Recommendation</p>
+                            </div>
+                        </div>
+
+                        <div class="league-card silver">
+                            <div class="league-icon"><i class="fas fa-tshirt" aria-hidden="true"></i></div>
+                            <div class="league-info">
+                                <h4>Silver Class <span class="xp-req">7,500+ XP</span></h4>
+                                <p>Unlock: Exclusive Pixel Phantoms Merch</p>
+                            </div>
+                        </div>
+
+                        <div class="league-card bronze">
+                            <div class="league-icon"><i class="fab fa-discord" aria-hidden="true"></i></div>
+                            <div class="league-info">
+                                <h4>Bronze Class <span class="xp-req">3,000+ XP</span></h4>
+                                <p>Unlock: VIP Discord Role & Profile Badge</p>
+                            </div>
+                        </div>
+                        
+                        <div class="league-card rookie">
+                            <div class="league-icon"><i class="fas fa-code" aria-hidden="true"></i></div>
+                            <div class="league-info">
+                                <h4>Rookie <span class="xp-req">0+ XP</span></h4>
+                                <p>Status: Active Contributor</p>
+                            </div>
+                        </div>
+                    </aside>
                 </div>
 
-                <div class="league-card silver">
-                    <div class="league-icon"><i class="fas fa-tshirt"></i></div>
-                    <div class="league-info">
-                        <h4>Silver Class <span class="xp-req">7,500+ XP</span></h4>
-                        <p>Unlock: Exclusive Pixel Phantoms Merch</p>
-                    </div>
-                </div>
+                <p class="lb-footer">> Contributions are calculated based on merged PR complexity.</p>
+            </div>
+        </section>
 
-                <div class="league-card bronze">
-                    <div class="league-icon"><i class="fab fa-discord"></i></div>
-                    <div class="league-info">
-                        <h4>Bronze Class <span class="xp-req">3,000+ XP</span></h4>
-                        <p>Unlock: VIP Discord Role & Profile Badge</p>
+         <!-- QUICK STATS WIDGET FOR HOME PAGE -->
+        <section class="quick-stats-widget" id="home-quick-stats">
+            <div class="widget-header">
+                <h2 class="widget-title">
+                    <i class="fas fa-chart-line"></i> COMMUNITY SNAPSHOT
+                </h2>
+                <button class="widget-refresh" onclick="refreshHomeStats()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card" onclick="window.location.href='pages/projects.html'">
+                    <div class="stat-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="stat-value" id="home-active-projects">8</h3>
+                    <p class="stat-label">Active Projects</p>
+                    <div class="stat-trend">
+                        <span class="trend-up">↑ 12% this week</span>
                     </div>
                 </div>
                 
-                <div class="league-card rookie">
-                    <div class="league-icon"><i class="fas fa-code"></i></div>
-                    <div class="league-info">
-                        <h4>Rookie <span class="xp-req">0+ XP</span></h4>
-                        <p>Status: Active Contributor</p>
+                <div class="stat-card" onclick="window.location.href='pages/events.html'">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="stat-value" id="home-upcoming-events">3</h3>
+                    <p class="stat-label">Upcoming Events</p>
+                    <div class="stat-trend">
+                        <span class="trend-neutral">3 new this month</span>
+                    </div>
+                </div>
+                
+                <div class="stat-card" onclick="window.open('https://github.com/sayeeg-11/Pixel_Phantoms', '_blank')">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <h3 class="stat-value" id="home-recent-contributions">50+</h3>
+                    <p class="stat-label">Contributions</p>
+                    <div class="stat-trend">
+                        <span class="trend-up">↑ 25% this week</span>
                     </div>
                 </div>
             </div>
-
-        <p class="lb-footer">> Contributions are calculated based on merged PR complexity.</p>
-    </div>
+            
+            <div class="recent-activity">
+                <h3 class="activity-title">
+                    <i class="fas fa-history"></i> RECENT COMMUNITY ACTIVITY
+                </h3>
+                <ul class="activity-list" id="home-recent-activity">
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Community reached 50+ active members milestone</p>
+                            <span class="activity-time">Yesterday</span>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>New project "Neural Nexus" launched</p>
+                            <span class="activity-time">3 days ago</span>
+                        </div>
+                    </li>
+                    <li class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="activity-content">
+                            <p>Winter Code Jam 2025 registrations opened</p>
+                            <span class="activity-time">1 week ago</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
-        <section class="functional-grid">
+        <nav class="functional-grid" aria-label="Quick Links">
             <a href="pages/help.html" class="func-card">
-                <div class="func-icon"><i class="fas fa-life-ring"></i></div>
+                <div class="func-icon"><i class="fas fa-life-ring" aria-hidden="true"></i></div>
                 <div class="func-text"><h3>GET_HELP()</h3><p>Execute support protocols.</p></div>
             </a>
             <a href="pages/terms.html" class="func-card">
-                <div class="func-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="func-icon"><i class="fas fa-shield-alt" aria-hidden="true"></i></div>
                 <div class="func-text"><h3>PRIVACY_POLICY</h3><p>Read encryption standards.</p></div>
             </a>
             <a href="pages/contributors.html" class="func-card">
-                <div class="func-icon"><i class="fas fa-code-branch"></i></div>
+                <div class="func-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></div>
                 <div class="func-text"><h3>CONTRIBUTORS</h3><p>View source code.</p></div>
             </a>
-        </section>
-
+        </nav>
     </main>
 
     <div id="footer-placeholder" style="position: relative; z-index: 2;"></div>
@@ -292,12 +398,100 @@
         // Render these immediately so the theme.js can find the toggle switch
         renderNavbar();
         renderFooter();
+        
+        // Focus management for skip link
+        document.addEventListener('DOMContentLoaded', function() {
+            const skipLink = document.getElementById('skip-link');
+            const mainContent = document.getElementById('main-content');
+            
+            skipLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                mainContent.setAttribute('tabindex', '-1');
+                mainContent.focus();
+            });
+        });
     </script>
 
     <script src="js/theme.js"></script>
     <script src="js/back-to-top.js"></script>
     <script src="js/home-gsap.js"></script>
     <script src="js/home-leaderboard.js"></script>
+    <script src="js/leaderboard-enhanced.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/touch-support.js"></script>
+    <script src="js/loading-states.js"></script>
+
+        <script>
+        // Home page quick stats functionality
+        function refreshHomeStats() {
+            const btn = document.querySelector('#home-quick-stats .widget-refresh i');
+            const projectsCount = document.getElementById('home-active-projects');
+            const eventsCount = document.getElementById('home-upcoming-events');
+            const contributionsCount = document.getElementById('home-recent-contributions');
+            
+            btn.classList.add('spinning');
+            btn.parentElement.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Update with random data for demo
+                const newProjects = Math.floor(Math.random() * 3) + 8;
+                const newEvents = Math.floor(Math.random() * 2) + 3;
+                const newContributions = Math.floor(Math.random() * 10) + 50;
+                
+                // Animate numbers
+                animateNumber(projectsCount, newProjects);
+                animateNumber(eventsCount, newEvents);
+                animateNumber(contributionsCount, newContributions);
+                
+                btn.classList.remove('spinning');
+                btn.parentElement.disabled = false;
+                
+                // Show success animation
+                const widget = document.getElementById('home-quick-stats');
+                widget.style.boxShadow = '0 0 20px rgba(0, 255, 136, 0.3)';
+                setTimeout(() => {
+                    widget.style.boxShadow = '';
+                }, 1000);
+                
+                // Add activity log
+                const activityList = document.getElementById('home-recent-activity');
+                const newActivity = document.createElement('li');
+                newActivity.className = 'activity-item';
+                newActivity.innerHTML = `
+                    <div class="activity-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p>Stats manually refreshed</p>
+                        <span class="activity-time">Just now</span>
+                    </div>
+                `;
+                activityList.insertBefore(newActivity, activityList.firstChild);
+                
+                // Keep only 3 items
+                if (activityList.children.length > 3) {
+                    activityList.removeChild(activityList.lastChild);
+                }
+                
+            }, 1000);
+        }
+        
+        function animateNumber(element, targetValue) {
+            const current = parseInt(element.textContent) || 0;
+            const increment = targetValue > current ? 1 : -1;
+            let currentValue = current;
+            
+            const interval = setInterval(() => {
+                currentValue += increment;
+                element.textContent = currentValue;
+                
+                if (currentValue === targetValue) {
+                    clearInterval(interval);
+                }
+            }, 20);
+        }
+    </script>
 
 </body>
 </html>

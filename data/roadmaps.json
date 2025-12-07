@@ -1,0 +1,91 @@
+{
+  "web": {
+    "title": "Full_Stack_Protocol_v2.0",
+    "description": "Initialize sequence: Zero to Hero. Execute learning modules in order.",
+    "phases": [
+      {
+        "id": "phase_1",
+        "title": "PHASE_01: The_Foundation",
+        "status": "unlocked",
+        "modules": [
+          {
+            "title": "HTML5 Semantics",
+            "desc": "Structure of the web. SEO and Accessibility protocols.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML"
+          },
+          {
+            "title": "CSS3 Styling",
+            "desc": "Visual layer. Flexbox, Grid, and Responsive Design.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/CSS"
+          },
+          {
+            "title": "Version Control (Git)",
+            "desc": "Time travel for code. Commit, Push, Branch.",
+            "link": "https://git-scm.com/doc"
+          }
+        ]
+      },
+      {
+        "id": "phase_2",
+        "title": "PHASE_02: Logic_Injection",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "JavaScript Core",
+            "desc": "Variables, Functions, Loops, and ES6+ Syntax.",
+            "link": "https://javascript.info/"
+          },
+          {
+            "title": "DOM Manipulation",
+            "desc": "Controlling the Matrix. Event Listeners and Dynamic HTML.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          },
+          {
+            "title": "Async Operations",
+            "desc": "Promises, Async/Await, and Fetching APIs.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+          }
+        ]
+      },
+      {
+        "id": "phase_3",
+        "title": "PHASE_03: Framework_Architecture",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "React.js",
+            "desc": "Component-based UI. Props, State, and Hooks.",
+            "link": "https://react.dev/learn"
+          },
+          {
+            "title": "State Management",
+            "desc": "Redux Toolkit or Context API for complex data flow.",
+            "link": "https://redux-toolkit.js.org/"
+          },
+          {
+            "title": "Tailwind CSS",
+            "desc": "Utility-first styling for rapid development.",
+            "link": "https://tailwindcss.com/"
+          }
+        ]
+      },
+      {
+        "id": "phase_4",
+        "title": "PHASE_04: Server_Side_Ops",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Node.js & Express",
+            "desc": "JavaScript runtime. Building REST APIs.",
+            "link": "https://nodejs.org/en/docs/"
+          },
+          {
+            "title": "Database Systems",
+            "desc": "MongoDB (NoSQL) or PostgreSQL (SQL). Data persistence.",
+            "link": "https://www.mongodb.com/basics"
+          }
+        ]
+      }
+    ]
+  }
+}

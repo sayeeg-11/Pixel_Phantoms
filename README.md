@@ -50,23 +50,29 @@ This repository welcomes **students, beginners, and open-source contributors**.
 
 # 📦 How to Install & Run Locally
 
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- Git (for cloning the repository)
+- Optional: VS Code with Live Server extension for better development experience
+
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/your-username/pixel-phantoms-website.git
 cd pixel-phantoms-website
-````
+```
 
 ### 2️⃣ Run the Website
 
 You can:
 
-* Open `index.html` directly in your browser
+* **Option 1:** Open `index.html` directly in your browser by double-clicking the file or dragging it into the browser window.
   OR
-* Use **Live Server** (VS Code Recommended):
+* **Option 2:** Use **Live Server** (Recommended for development):
+  - Install the Live Server extension in VS Code.
+  - Right-click on `index.html` in the file explorer.
+  - Select **"Open with Live Server"**.
 
-  ```bash
-  Right-click → Open with Live Server
-  ```
+The website will open in your default browser at `http://127.0.0.1:5500/` (or similar local server address).
 
 ---
 
@@ -75,62 +81,84 @@ You can:
 ```
 pixel-phantoms-website/
 │
-├── frontend/
-│   ├── index.html
-│   ├── about.html
-│   ├── contact.html
-│   ├── team.html
-│   ├── events.html
-│   ├── pages/
-│   │   ├── gallery.html
-│   │   ├── community.html
-│   │   ├── projects.html
-│   │   └── join-us.html
-│   ├── assets/
-│   │   ├── images/
-│   │   ├── icons/
-│   │   ├── fonts/
-│   │   ├── data/
-│   │   └── gallery/
-│   ├── components/
-│   │   ├── navbar.html
-│   │   ├── footer.html
-│   │   └── cards.html
-│   ├── css/
-│   │   ├── styles.css
-│   │   ├── light-mode.css
-│   │   ├── dark-mode.css
-│   │   └── components/
-│   └── js/
-│       ├── script.js
-│       └── modules/
-│
-├── docs/
-│   ├── API_DOCS.md
-│   ├── CONTRIBUTING.md
-│   ├── ROADMAP.md
-│   └── DESIGN_GUIDELINES.md
-│
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── workflows/
-│
-├── .gitignore
-├── README.md
+├── index.html
+├── about.html
+├── contact.html
+├── team.html
+├── events.html
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
 ├── LICENSE
-└── SECURITY.md
+├── README.md
+│
+├── assets/
+│   ├── demo.png
+│   ├── host-event.jpg
+│   └── logo.png
+│
+├── css/
+│   ├── style.css
+│   ├── home-gsap.css
+│   ├── back-to-top.css
+│   ├── community.css
+│   ├── contact.css
+│   ├── contributors.css
+│   ├── events.css
+│   ├── gallery.css
+│   ├── help.css
+│   ├── join-us.css
+│   ├── privacy.css
+│   ├── projects.css
+│   └── terms.css
+│
+├── data/
+│   └── events.json
+│
+├── js/
+│   ├── back-to-top.js
+│   ├── community.js
+│   ├── contact.js
+│   ├── contributors.js
+│   ├── events.js
+│   ├── footer.js
+│   ├── gallery.js
+│   ├── help.js
+│   ├── home-gsap.js
+│   ├── home-leaderboard.js
+│   ├── join-us.js
+│   ├── main.js
+│   ├── navbar.js
+│   ├── privacy.js
+│   ├── projects.js
+│   ├── scripts.js
+│   ├── terms.js
+│   └── theme.js
+│
+└── pages/
+    ├── community.html
+    ├── contributors.html
+    ├── gallery.html
+    ├── help.html
+    ├── join-us.html
+    ├── privacy.html
+    ├── projects.html
+    └── terms.html
 ```
 
 ---
 
 # 🎨 Screenshot / Demo
 
-*Add your screenshots here*
+Here are some screenshots of the Pixel Phantoms website:
 
-```
-assets/demo.png
-```
+### Home Page
+![Home Page Demo](assets/demo.png)
+
+### Logo
+![Pixel Phantoms Logo](assets/logo.png)
+
+### Host Event
+![Host Event Image](assets/host-event.jpg)
 
 ---
 

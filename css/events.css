@@ -10,22 +10,31 @@
 .events-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Force 3 columns on desktop */
-    gap: 30px;
+    
+    /* FIX: Set a generous, fixed gap to ensure spacing between rows */
+    gap: 70px 30px; /* Increased vertical gap to 70px, horizontal gap 30px */
+    
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
     min-height: 400px;
+    
+    isolation: isolate; 
+    align-items: start;
+    grid-auto-rows: auto;
 }
 
 @media (max-width: 992px) {
     .events-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 70px 20px; /* Increased vertical gap */
     }
 }
 
 @media (max-width: 600px) {
     .events-container {
         grid-template-columns: 1fr;
+        gap: 70px 0; /* Increased vertical gap */
     }
 }
 
@@ -38,15 +47,24 @@
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* Maintain 100% height to match column siblings */
+    height: 100%; 
     position: relative;
-    overflow: hidden;
+    overflow: visible; 
+    /* Base z-index */
+    z-index: 1; 
+
+    /* FIX: Remove margin-bottom previously used. We rely purely on the 70px grid gap now. */
+    margin-bottom: 0; 
 }
 
 .event-card:hover {
-    transform: translateY(-8px);
+    /* Lifted position */
+    transform: translateY(-8px); 
     box-shadow: 0 15px 30px rgba(0,0,0,0.15);
     border-color: var(--accent-color);
+    /* Guarantee this card is above its neighbors */
+    z-index: 10; 
 }
 
 .event-card h2 {
@@ -70,12 +88,35 @@
     text-align: center;
 }
 
+/* FIX: Consistent Card Height (re-added from previous solution) */
 .event-description {
     margin-top: 15px;
     color: var(--text-secondary);
     line-height: 1.6;
-    flex-grow: 1;
+    flex-grow: 1; 
+    
+    /* Enforce a max height for uniform cards */
+    max-height: 100px; 
+    overflow-y: auto; 
+    
+    /* Scrollbar aesthetics */
+    padding-right: 10px; 
+    margin-right: -10px; 
 }
+
+.event-description::-webkit-scrollbar {
+    width: 6px;
+}
+
+.event-description::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.5); 
+    border-radius: 3px;
+}
+
+.event-description::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
 
 .btn-event {
     display: inline-block;
@@ -89,6 +130,9 @@
     font-weight: 600;
     text-align: center;
     transition: all 0.3s;
+    /* Ensure the button is always on top (higher z-index than card:hover) */
+    position: relative; 
+    z-index: 15; 
 }
 
 .btn-event:hover {
@@ -101,7 +145,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px auto;
+    /* Adjust margin based on new larger gap */
+    margin: 40px auto 40px auto; 
     gap: 15px;
 }
 
@@ -137,7 +182,8 @@
     padding: 80px 20px;
     background: linear-gradient(180deg, var(--bg-primary) 0%, var(--card-bg) 100%);
     border-top: 1px solid var(--border-color);
-    margin-top: 40px;
+    /* Adjust margin-top to place the section correctly after the event grid */
+    margin-top: 0; 
 }
 
 .organize-container {
@@ -177,7 +223,7 @@
     opacity: 0.9;
 }
 
-/* Form Styles - Renamed to prevent conflict with footer */
+/* Form Styles */
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -186,7 +232,7 @@
 
 .form-group {
     margin-bottom: 20px;
-    display: block; /* Ensures stacking */
+    display: block; 
 }
 
 .form-group label {
@@ -243,7 +289,10 @@
 }
 
 /* Countdown Styles */
-.countdown-hidden { display: none; }
+#countdown-section.countdown-hidden {
+    display: none !important;
+}
+
 #countdown-section {
     margin-top: 40px;
     padding: 30px;
@@ -251,8 +300,9 @@
     border-radius: 20px;
     border: 1px solid var(--border-color);
     backdrop-filter: blur(10px);
-    display: inline-block;
+    display: inline-block; 
 }
+
 #countdown-section h3 { margin: 0 0 20px 0; color: var(--text-secondary); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; }
 #countdown-timer { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
 .time-unit { display: flex; flex-direction: column; align-items: center; position: relative; }

@@ -14,12 +14,17 @@
 </head>
 <body class="hacker-theme">
 
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-projects" class="skip-to-content" id="skip-link">
+        <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
+
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
     <script>renderNavbar('../');</script>
 
-    <div class="main-content">
+    <div class="main-content" id="main-projects" tabindex="-1">
         
         <section class="hero-section project-hero">
             <div class="grid-overlay"></div>
@@ -63,7 +68,7 @@
                                     <div class="stat"><span>200+</span> <small>Participants</small></div>
                                 </div>
                                 <div class="featured-actions">
-                                    <a href="#" class="btn-cyber btn-wobble">JOIN_PROGRAM</a>
+                                    <a href="#" class="btn-cyber btn-wobble" data-loading="true">JOIN_PROGRAM</a>
                                     <div class="toggle-wrapper">
                                         <label class="switch">
                                             <input type="checkbox" id="wobble-toggle">
@@ -86,23 +91,23 @@
                     <div class="panel-line"></div>
                 </div>
                 <div class="filter-container">
-                    <button class="btn-glitch-filter active" data-filter="all">
+                    <button class="btn-glitch-filter active" data-filter="all" data-loading="true">
                         <span class="text">ALL_MODULES</span>
                         <span class="decoration"></span>
                     </button>
-                    <button class="btn-glitch-filter" data-filter="web">
+                    <button class="btn-glitch-filter" data-filter="web" data-loading="true">
                         <span class="text">WEB_NOISE</span>
                         <span class="decoration"></span>
                     </button>
-                    <button class="btn-glitch-filter" data-filter="ai">
+                    <button class="btn-glitch-filter" data-filter="ai" data-loading="true">
                         <span class="text">NEURAL_NETS</span>
                         <span class="decoration"></span>
                     </button>
-                    <button class="btn-glitch-filter" data-filter="app">
+                    <button class="btn-glitch-filter" data-filter="app" data-loading="true">
                         <span class="text">MOBILE_OPS</span>
                         <span class="decoration"></span>
                     </button>
-                    <button class="btn-glitch-filter" data-filter="hardware">
+                    <button class="btn-glitch-filter" data-filter="hardware" data-loading="true">
                         <span class="text">HARDWARE_HACKS</span>
                         <span class="decoration"></span>
                     </button>
@@ -134,7 +139,7 @@
                                 <span>[JS_Core]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -160,7 +165,7 @@
                                 <span>[Discord.py]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -186,7 +191,7 @@
                                 <span>[Dart]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -212,7 +217,7 @@
                                 <span>[Sensors]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -238,7 +243,7 @@
                                 <span>[REST_API]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -264,7 +269,7 @@
                                 <span>[PyTorch]</span>
                             </div>
                             <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
+                                <a href="#" class="btn-terminal" data-loading="true">Execute_Demo ></a>
                                 <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                             </div>
                         </div>
@@ -286,6 +291,7 @@
     <script src="../js/back-to-top.js"></script>
     <script src="../js/home-gsap.js"></script> 
     <script src="../js/projects.js"></script> 
+    <script src="../js/copy-clipboard.js"></script>
 
 </body>
 </html>

@@ -1,8 +1,9 @@
 /* =========================================
    1. GLOBAL THEME & UTILITIES
    ========================================= */
-/* UPDATED: Removed hardcoded background/text colors to allow inheritance from style.css */
-.hacker-theme {
+/* Import Font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+body, .hacker-theme {
     font-family: 'JetBrains Mono', monospace;
     overflow-x: hidden;
     line-height: 1.6;
@@ -749,6 +750,12 @@
     color: var(--text-primary);
 }
 
+.lb-stats {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
 .lb-league-tag {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -767,6 +774,28 @@
 }
 
 .lb-loader { padding: 40px; text-align: center; color: var(--text-secondary); animation: blink 1.5s infinite; }
+
+.lb-footer-enhanced {
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.1);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+}
+
+.lb-scoring-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.scoring-item {
+    background: rgba(0, 170, 255, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 170, 255, 0.2);
+}
 
 /* --- RIGHT: LEAGUE SYSTEM CARDS --- */
 .league-system {
@@ -894,6 +923,263 @@
     font-size: 0.9rem;
 }
 
+/* --- MODAL STYLES FOR HOME PAGE --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-container {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    border: 1px solid var(--border-color);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    background: var(--panel-bg);
+    border: var(--panel-border);
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.close-modal:hover {
+    color: var(--neon-cyan);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.modal-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid var(--neon-cyan);
+}
+
+.modal-subtitle {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.modal-league-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: var(--bg-primary);
+    color: var(--neon-cyan);
+    border: 1px solid var(--neon-cyan);
+}
+
+.modal-stats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.modal-stat {
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+}
+
+.stat-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+/* Progress Section */
+.modal-progress-section {
+    margin-bottom: 30px;
+}
+
+.modal-progress-section h3 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
+
+.progress-container {
+    background: rgba(0,0,0,0.2);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 15px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.progress-text {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
+/* Achievements Section */
+.modal-achievements-section {
+    margin-bottom: 30px;
+}
+
+.modal-achievements-section h3 {
+    margin-top: 0;
+    color: var(--text-main);
+    font-size: 1.2rem;
+}
+
+.modal-achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.modal-achievement {
+    display: flex;
+    gap: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.modal-achievement i {
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.modal-achievement h5 {
+    margin: 0 0 5px 0;
+    color: var(--text-main);
+    font-size: 0.9rem;
+}
+
+.modal-achievement p {
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+}
+
+.no-achievements {
+    text-align: center;
+    color: var(--text-dim);
+    font-style: italic;
+    padding: 20px;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: grid;
+    gap: 10px;
+}
+
+.modal-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary-btn {
+    background: var(--neon-cyan);
+    color: #000;
+}
+
+.primary-btn:hover {
+    background: #00d0ff;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 1px solid var(--text-dim);
+    color: var(--text-main);
+}
+
+.secondary-btn:hover {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+}
+
+/* Responsive fixes for modal */
+@media (max-width: 600px) {
+    .modal-container { 
+        width: 95%; 
+        padding: 20px; 
+    }
+    
+    .modal-stats-row { 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+    
+    .modal-achievements-grid { 
+        grid-template-columns: 1fr; 
+    }
+}
+
 /* Animations */
 @keyframes blink { 
     50% { opacity: 0; } 
@@ -922,4 +1208,34 @@
     .skill-path-wrapper { flex-direction: column; }
     .connector { width: 3px; height: 40px; }
     .btn-cyber { padding: 15px 30px; font-size: 0.9rem; }
+}
+
+/* =========================================
+   10. GLOBAL HEADER ALIGNMENT FIXES
+   ========================================= */
+/* Forces centering and correct font for headers on all sub-pages */
+.privacy-hero,
+.help-hero,
+.gallery-hero,
+.events-hero,
+.terms-header,
+.contact-section .section-header,
+.content > h2:first-child /* For About Page */
+{
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.privacy-hero h1,
+.help-hero h1,
+.gallery-hero h1,
+.events-hero h1,
+.terms-header h1,
+.section-header h2,
+.content > h2 {
+    font-family: 'JetBrains Mono', monospace !important;
+    text-shadow: 2px 2px 0px var(--accent-color);
 }

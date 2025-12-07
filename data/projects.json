@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "title": "Neural Nexus",
+        "status": "active",
+        "description": "AI-powered neural network visualization tool",
+        "tech": ["Python", "TensorFlow", "React"]
+    },
+    {
+        "id": 2,
+        "title": "Quantum Quest",
+        "status": "active", 
+        "description": "Quantum computing simulation platform",
+        "tech": ["JavaScript", "Three.js", "Node.js"]
+    },
+    {
+        "id": 3,
+        "title": "Cyber Sentinel",
+        "status": "active",
+        "description": "Real-time cybersecurity monitoring system",
+        "tech": ["Python", "Django", "Redis"]
+    },
+    {
+        "id": 4,
+        "title": "Data Flow",
+        "status": "active",
+        "description": "Interactive data pipeline visualization",
+        "tech": ["React", "D3.js", "Express"]
+    },
+    {
+        "id": 5,
+        "title": "Code Canvas",
+        "status": "active",
+        "description": "Visual programming environment",
+        "tech": ["TypeScript", "Vue.js", "WebGL"]
+    },
+    {
+        "id": 6,
+        "title": "Pixel Portal",
+        "status": "active",
+        "description": "Community collaboration platform",
+        "tech": ["Next.js", "MongoDB", "Socket.io"]
+    },
+    {
+        "id": 7,
+        "title": "VR Vision",
+        "status": "active",
+        "description": "Virtual reality development framework",
+        "tech": ["Unity", "C#", "Blender"]
+    },
+    {
+        "id": 8,
+        "title": "Block Beacon",
+        "status": "active",
+        "description": "Blockchain transaction tracker",
+        "tech": ["Solidity", "Ethereum", "React"]
+    }
+]
