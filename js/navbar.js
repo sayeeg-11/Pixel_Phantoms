@@ -23,7 +23,7 @@ function renderNavbar(basePath = '') {
             <li><a href="${basePath}contact.html">Contact</a></li>
             <li>
                 <div class="theme-toggle">
-                    <input type="checkbox" id="theme-switch" class="theme-switch">
+                    <input type="checkbox" id="theme-switch" class="theme-switch" aria-label="Toggle theme">
                     <label for="theme-switch" class="theme-label">
                         <div class="toggle-thumb"></div>
                         <span class="sun-icon">☀️</span>

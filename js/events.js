@@ -61,14 +61,9 @@ async function loadEvents() {
     mergedEvents.forEach(e => uniqueMap.set(e.title.trim().toLowerCase(), e));
     allEvents = Array.from(uniqueMap.values());
 
-    // Sort: Nearest date first
-    allEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    // Setup Countdown
-    setupCountdown(allEvents);
-
-    // Initial Render
-    renderPage(1);
+    } catch (error) {
+        container.innerHTML = `<p class="error-msg">Unable to load events 😢</p>`;
+    }
 }
 
 function renderPage(page) {

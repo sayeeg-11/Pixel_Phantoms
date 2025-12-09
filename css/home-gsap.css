@@ -541,6 +541,7 @@ body, .hacker-theme {
 
 .proj-card {
     height: 250px;
+    background: url('assets/demo.png') center/cover no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;

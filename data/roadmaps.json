@@ -1,0 +1,185 @@
+{
+  "web": {
+    "title": "Full_Stack_Protocol_v2.0",
+    "description": "Initialize sequence: Zero to Hero. Execute learning modules in order.",
+    "phases": [
+      {
+        "id": "phase_1",
+        "title": "PHASE_01: The_Foundation",
+        "status": "unlocked",
+        "modules": [
+          {
+            "title": "HTML5 Semantics",
+            "desc": "Structure of the web. SEO and Accessibility protocols.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/HTML"
+          },
+          {
+            "title": "CSS3 Styling",
+            "desc": "Visual layer. Flexbox, Grid, and Responsive Design.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/CSS"
+          },
+          {
+            "title": "Version Control (Git)",
+            "desc": "Time travel for code. Commit, Push, Branch.",
+            "link": "https://git-scm.com/doc"
+          }
+        ]
+      },
+      {
+        "id": "phase_2",
+        "title": "PHASE_02: Logic_Injection",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "JavaScript Core",
+            "desc": "Variables, Functions, Loops, and ES6+ Syntax.",
+            "link": "https://javascript.info/"
+          },
+          {
+            "title": "DOM Manipulation",
+            "desc": "Controlling the Matrix. Event Listeners and Dynamic HTML.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          },
+          {
+            "title": "Async Operations",
+            "desc": "Promises, Async/Await, and Fetching APIs.",
+            "link": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous"
+          }
+        ]
+      },
+      {
+        "id": "phase_3",
+        "title": "PHASE_03: Framework_Architecture",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "React.js",
+            "desc": "Component-based UI. Props, State, and Hooks.",
+            "link": "https://react.dev/learn"
+          },
+          {
+            "title": "State Management",
+            "desc": "Redux Toolkit or Context API for complex data flow.",
+            "link": "https://redux-toolkit.js.org/"
+          },
+          {
+            "title": "Tailwind CSS",
+            "desc": "Utility-first styling for rapid development.",
+            "link": "https://tailwindcss.com/"
+          }
+        ]
+      },
+      {
+        "id": "phase_4",
+        "title": "PHASE_04: Server_Side_Ops",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Node.js & Express",
+            "desc": "JavaScript runtime. Building REST APIs.",
+            "link": "https://nodejs.org/en/docs/"
+          },
+          {
+            "title": "Database Systems",
+            "desc": "MongoDB (NoSQL) or PostgreSQL (SQL). Data persistence.",
+            "link": "https://www.mongodb.com/basics"
+          }
+        ]
+      }
+    ]
+  },
+  "ai": {
+    "title": "AI_ML_Protocol_v1.0",
+    "description": "Initialize sequence: Data to Intelligence. Model training initiated.",
+    "phases": [
+      {
+        "id": "phase_1",
+        "title": "PHASE_01: Neural_Foundations",
+        "status": "unlocked",
+        "modules": [
+          {
+            "title": "Python Syntax",
+            "desc": "The language of AI. Lists, Dictionaries, and Control Flow.",
+            "link": "https://docs.python.org/3/tutorial/"
+          },
+          {
+            "title": "Math for ML",
+            "desc": "Linear Algebra (Matrices) and Calculus (Gradient Descent).",
+            "link": "https://www.khanacademy.org/math/linear-algebra"
+          },
+          {
+            "title": "Statistics & Probability",
+            "desc": "Understanding distributions, mean, variance, and bias.",
+            "link": "https://www.khanacademy.org/math/statistics-probability"
+          }
+        ]
+      },
+      {
+        "id": "phase_2",
+        "title": "PHASE_02: Data_Engineering",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "NumPy Matrices",
+            "desc": "High-performance multidimensional array computing.",
+            "link": "https://numpy.org/doc/stable/user/absolute_beginners.html"
+          },
+          {
+            "title": "Pandas Manipulation",
+            "desc": "Dataframes, cleaning, and preparation for models.",
+            "link": "https://pandas.pydata.org/docs/user_guide/10min.html"
+          },
+          {
+            "title": "Data Visualization",
+            "desc": "Matplotlib & Seaborn. Seeing the patterns in noise.",
+            "link": "https://matplotlib.org/stable/tutorials/introductory/quick_start.html"
+          }
+        ]
+      },
+      {
+        "id": "phase_3",
+        "title": "PHASE_03: Model_Training",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Scikit-Learn Basics",
+            "desc": "Regression, Classification, and Clustering algorithms.",
+            "link": "https://scikit-learn.org/stable/getting_started.html"
+          },
+          {
+            "title": "Model Evaluation",
+            "desc": "Accuracy, Precision, Recall, and F1-Score metrics.",
+            "link": "https://scikit-learn.org/stable/modules/model_evaluation.html"
+          },
+          {
+            "title": "Deep Learning Intro",
+            "desc": "Neural Networks basics with PyTorch or TensorFlow.",
+            "link": "https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html"
+          }
+        ]
+      },
+      {
+        "id": "phase_4",
+        "title": "PHASE_04: Project_Challenges",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Housing Price Predictor",
+            "desc": "Regression project. Predict value based on features.",
+            "link": "https://www.kaggle.com/c/house-prices-advanced-regression-techniques"
+          },
+          {
+            "title": "Image Classifier",
+            "desc": "Computer Vision. CNNs to identify objects in images.",
+            "link": "https://www.kaggle.com/c/cifar-10"
+          },
+          {
+            "title": "Sentiment Analysis",
+            "desc": "NLP. Analyze text to determine positive/negative emotion.",
+            "link": "https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews"
+          }
+        ]
+      }
+    ]
+  }
+}

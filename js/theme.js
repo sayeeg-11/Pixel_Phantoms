@@ -25,5 +25,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    console.log("Pixel Phantoms website loaded with theme: " + savedTheme);
+
 });

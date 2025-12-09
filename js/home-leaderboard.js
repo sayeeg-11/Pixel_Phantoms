@@ -39,23 +39,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function initLeaderboard() {
     const container = document.getElementById('lb-rows');
+    if (!container) return;
+
+    // Show loading state
+    container.innerHTML = `<div style="padding:20px; text-align:center;">Scanning database...</div>`;
+
     try {
-        // Fetch all required data in parallel
-        const [pulls, csvText] = await Promise.all([
-            fetchAllPulls(),
-            fetchEventCSV()
-        ]);
-        
-        // Process data
-        const attendanceData = parseAttendanceCSV(csvText);
-        const leaderboard = calculateLeaderboard(pulls, attendanceData);
-        const topContributors = getTopContributors(leaderboard);
-        
-        // Use the enhanced rendering function
-        renderHomeLeaderboard(topContributors);
+        const pulls = await fetchAllPulls();
+        const scores = calculateScores(pulls);
+        const topContributors = getTopContributors(scores);
+
+        // Cache successful data
+        localStorage.setItem('leaderboardData', JSON.stringify(topContributors));
+
+        renderLeaderboard(topContributors);
     } catch (error) {
         console.error("Leaderboard Sync Failed:", error);
-        if(container) container.innerHTML = `<div style="padding:20px; text-align:center; color:#ff5f56;">Connection Lost. Retrying uplink...</div>`;
+
+        // Try to load from cache
+        const cachedData = localStorage.getItem('leaderboardData');
+        if (cachedData) {
+            const cachedContributors = JSON.parse(cachedData);
+            renderLeaderboard(cachedContributors, true); // true indicates cached data
+        } else {
+            renderErrorUI(container, error);
+        }
+    }
+}
+
+function renderErrorUI(container, error) {
+    let errorMessage = "Data unavailable";
+    let retryText = "Retry";
+
+    if (error.message.includes('403') || error.message.includes('rate limit')) {
+        errorMessage = "GitHub API rate limit exceeded. Please try again later.";
+        retryText = "Retry Later";
+    } else if (error.message.includes('404')) {
+        errorMessage = "Repository not found or access denied.";
+    } else if (!navigator.onLine) {
+        errorMessage = "No internet connection.";
+    }
+
+    container.innerHTML = `
+        <div style="padding:20px; text-align:center; color:#ff5f56;">
+            <div>${errorMessage}</div>
+            <button id="retry-btn" style="margin-top:10px; padding:5px 10px; background:#00aaff; color:#000; border:none; cursor:pointer;">${retryText}</button>
+        </div>
+    `;
+
+    // Add retry functionality
+    const retryBtn = document.getElementById('retry-btn');
+    if (retryBtn) {
+        retryBtn.addEventListener('click', () => {
+            initLeaderboard();
+        });
     }
 }
 
@@ -65,12 +102,16 @@ async function fetchAllPulls() {
     while (page <= 3) {
         try {
             const res = await fetch(`${API_BASE}/pulls?state=all&per_page=100&page=${page}`);
-            if (!res.ok) break;
+            if (!res.ok) {
+                throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+            }
             const data = await res.json();
             if (!data.length) break;
             pulls = pulls.concat(data);
             page++;
-        } catch (e) { break; }
+        } catch (e) {
+            throw new Error(`Failed to fetch pull requests: ${e.message}`);
+        }
     }
     return pulls;
 }
@@ -179,11 +220,10 @@ function getLeagueInfo(xp) {
     return LEAGUES.ROOKIE;
 }
 
-// Enhanced rendering function that uses the new leaderboard-enhanced.js features
-function renderHomeLeaderboard(contributors) {
+function renderLeaderboard(contributors, isCached = false) {
     const container = document.getElementById('lb-rows');
     if (!container) return;
-    
+
     container.innerHTML = ''; // Clear loader
 
     if (contributors.length === 0) {
@@ -191,14 +231,21 @@ function renderHomeLeaderboard(contributors) {
         return;
     }
 
+    // Add cached data indicator if applicable
+    if (isCached) {
+        const cachedIndicator = document.createElement('div');
+        cachedIndicator.style.cssText = 'padding:5px; text-align:center; font-size:12px; color:#888; margin-bottom:10px;';
+        cachedIndicator.textContent = 'Showing cached data - Last updated data unavailable';
+        container.appendChild(cachedIndicator);
+    }
+
     contributors.forEach((contributor, index) => {
         const rank = index + 1;
         const league = getLeagueInfo(contributor.xp);
-        
+
         const row = document.createElement('div');
         row.className = `lb-row rank-${rank}`;
-        
-        // Enhanced display showing both PRs and events
+
         row.innerHTML = `
             <div class="lb-rank">
                 <div class="lb-rank-badge">${rank}</div>
@@ -213,14 +260,9 @@ function renderHomeLeaderboard(contributors) {
                 ${contributor.xp.toLocaleString()} XP
             </div>
         `;
-        
-        // Add click event to open detailed modal
-        row.addEventListener('click', () => {
-            openHomeModal(contributor);
-        });
-        
+
         container.appendChild(row);
-        
+
         // Add subtle entrance animation
         row.style.opacity = 0;
         row.style.transform = "translateY(10px)";
@@ -230,15 +272,4 @@ function renderHomeLeaderboard(contributors) {
             row.style.transform = "translateY(0)";
         }, index * 100);
     });
-    
-    // Add footer with info about the scoring system
-    const footer = document.createElement('div');
-    footer.className = 'lb-footer-enhanced';
-    footer.innerHTML = `
-        <div class="lb-scoring-info">
-            <span class="scoring-item">PR Levels: L1=200pt, L2=500pt, L3=1100pt</span>
-            <span class="scoring-item">Events: 250pt each</span>
-        </div>
-    `;
-    container.appendChild(footer);
 }

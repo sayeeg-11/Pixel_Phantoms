@@ -6,11 +6,9 @@
     <title>Pixel Phantoms | The Future of Tech</title>
     <meta name="description" content="Pixel Phantoms - A cutting-edge student tech community focused on coding, design, and innovation. Join our hackathons, workshops, and skill development programs.">
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/loading-states.css">
-    <link rel="stylesheet" href="css/home-gsap.css"> 
-    <link rel="stylesheet" href="css/back-to-top.css">
-    <link rel="stylesheet" href="css/stats-widget.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/home-gsap.min.css">
+    <link rel="stylesheet" href="css/back-to-top.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -54,9 +52,9 @@
                 <div class="line-scanner" aria-hidden="true"></div>
             </div>
             <div class="hackathon-layout">
-                <article class="hack-main-card" data-tilt>
-                    <div class="hack-badge blink" aria-label="Registration Open">REGISTRATION OPEN</div>
-                    <img src="https://picsum.photos/seed/hackathon_hero/800/600" alt="Students collaborating at a hackathon coding event" class="hack-bg-img">
+                <div class="hack-main-card" data-tilt>
+                    <div class="hack-badge blink">REGISTRATION OPEN</div>
+                    <img src="https://picsum.photos/seed/hackathon_hero/800/600" alt="Hackathon Coding" class="hack-bg-img" loading="lazy">
                     <div class="hack-overlay">
                         <h3>CODESTORM_2025</h3>
                         <p>The ultimate test of logic. Build the future in 24 hours.</p>
@@ -99,29 +97,28 @@
                 <p class="section-sub">> Connecting to global knowledge streams...</p>
                 
                 <div class="seminar-grid">
-                    <article class="seminar-card reveal-card">
-                        <div class="sem-status live" aria-label="Live Now">● LIVE NOW</div>
-                        <img src="https://picsum.photos/seed/tech_talk/400/250" alt="Dr. Alan Grant presenting System Architecture" class="sem-img">
+                    <div class="seminar-card reveal-card">
+                        <div class="sem-status live">● LIVE NOW</div>
+                        <img src="https://picsum.photos/seed/tech_talk/400/250" alt="System Architecture Stream" class="sem-img" loading="lazy">
                         <div class="sem-info">
                             <h3>System Architecture 101</h3>
                             <p>Speaker: Dr. Alan Grant</p>
                             <a href="#" class="link-terminal">Join Stream<span aria-hidden="true">_</span></a>
                         </div>
-                    </article>
-                    <article class="seminar-card reveal-card">
-                        <div class="sem-status upcoming" aria-label="Upcoming">● UPCOMING</div>
-                        <img src="https://picsum.photos/seed/web3_future/400/250" alt="Web3 technology visualization" class="sem-img">
+                    </div>
+                    <div class="seminar-card reveal-card">
+                        <div class="sem-status upcoming">● UPCOMING</div>
+                        <img src="https://picsum.photos/seed/web3_future/400/250" alt="Web3 Future Stream" class="sem-img" loading="lazy">
                         <div class="sem-info">
                             <div class="sem-date">Nov 28 // 18:00</div>
                             <h3>The Future of Web3</h3>
                             <p>Guest: Industry Expert Panel</p>
                             <button class="btn-sm">Remind_Me</button>
                         </div>
-                    </article>
-                    <article class="seminar-card reveal-card">
-                        <div class="sem-status upcoming" aria-label="Upcoming">● UPCOMING</div>
-                        <img src="https://picsum.photos/seed/devops_career/400/250" alt="DevOps professionals in discussion" class="sem-img">
-                        <div class="sem-info">
+                    </div>
+                    <div class="seminar-card reveal-card">
+                        <div class="sem-status upcoming">● UPCOMING</div>
+                        <img src="https://picsum.photos/seed/devops_career/400/250" alt="DevOps Panel Stream" class="sem-img" loading="laz                        <div class="sem-info">
                             <div class="sem-date">Dec 02 // 20:00</div>
                             <h3>Career in DevOps</h3>
                             <p>Panel Discussion</p>
@@ -392,8 +389,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <script src="js/navbar.js"></script>
-    <script src="js/footer.js"></script>
+    <script src="js/navbar.min.js"></script>
+    <script src="js/footer.min.js"></script>
     <script>
         // Render these immediately so the theme.js can find the toggle switch
         renderNavbar();
@@ -412,86 +409,55 @@
         });
     </script>
 
-    <script src="js/theme.js"></script>
-    <script src="js/back-to-top.js"></script>
-    <script src="js/home-gsap.js"></script>
-    <script src="js/home-leaderboard.js"></script>
-    <script src="js/leaderboard-enhanced.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="js/touch-support.js"></script>
-    <script src="js/loading-states.js"></script>
+    <script src="js/theme.min.js"></script>
+    <script src="js/back-to-top.min.js"></script>
+    <script src="js/home-gsap.min.js"></script>
+    <script src="js/home-leaderboard.min.js"></script>
 
-        <script>
-        // Home page quick stats functionality
-        function refreshHomeStats() {
-            const btn = document.querySelector('#home-quick-stats .widget-refresh i');
-            const projectsCount = document.getElementById('home-active-projects');
-            const eventsCount = document.getElementById('home-upcoming-events');
-            const contributionsCount = document.getElementById('home-recent-contributions');
-            
-            btn.classList.add('spinning');
-            btn.parentElement.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Update with random data for demo
-                const newProjects = Math.floor(Math.random() * 3) + 8;
-                const newEvents = Math.floor(Math.random() * 2) + 3;
-                const newContributions = Math.floor(Math.random() * 10) + 50;
-                
-                // Animate numbers
-                animateNumber(projectsCount, newProjects);
-                animateNumber(eventsCount, newEvents);
-                animateNumber(contributionsCount, newContributions);
-                
-                btn.classList.remove('spinning');
-                btn.parentElement.disabled = false;
-                
-                // Show success animation
-                const widget = document.getElementById('home-quick-stats');
-                widget.style.boxShadow = '0 0 20px rgba(0, 255, 136, 0.3)';
-                setTimeout(() => {
-                    widget.style.boxShadow = '';
-                }, 1000);
-                
-                // Add activity log
-                const activityList = document.getElementById('home-recent-activity');
-                const newActivity = document.createElement('li');
-                newActivity.className = 'activity-item';
-                newActivity.innerHTML = `
-                    <div class="activity-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <div class="activity-content">
-                        <p>Stats manually refreshed</p>
-                        <span class="activity-time">Just now</span>
-                    </div>
-                `;
-                activityList.insertBefore(newActivity, activityList.firstChild);
-                
-                // Keep only 3 items
-                if (activityList.children.length > 3) {
-                    activityList.removeChild(activityList.lastChild);
-                }
-                
-            }, 1000);
-        }
-        
-        function animateNumber(element, targetValue) {
-            const current = parseInt(element.textContent) || 0;
-            const increment = targetValue > current ? 1 : -1;
-            let currentValue = current;
-            
-            const interval = setInterval(() => {
-                currentValue += increment;
-                element.textContent = currentValue;
-                
-                if (currentValue === targetValue) {
-                    clearInterval(interval);
-                }
-            }, 20);
-        }
-    </script>
+<!-- FEEDBACK WIDGET -->
+<div id="feedback-widget" aria-hidden="false">
+  <button id="feedback-toggle" aria-label="Open feedback form" aria-expanded="false" title="Send feedback">
+    <span class="ff-icon" aria-hidden="true">✉️</span>
+  </button>
+
+  <div id="feedback-panel" role="dialog" aria-modal="true" aria-labelledby="feedback-title" tabindex="-1">
+    <header class="ff-header">
+      <h3 id="feedback-title">Send Feedback</h3>
+      <button class="ff-close" aria-label="Close feedback form">&times;</button>
+    </header>
+
+    <form id="feedback-form" novalidate>
+      <label for="fb-name">Name (optional)</label>
+      <input id="fb-name" name="name" type="text" placeholder="Your name">
+
+      <label for="fb-email">Email (optional)</label>
+      <input id="fb-email" name="email" type="email" placeholder="you@example.com">
+
+      <label for="fb-message">Suggestions / Issue</label>
+      <textarea id="fb-message" name="message" rows="4" required placeholder="Describe feedback or bug..."></textarea>
+
+      <div class="ff-rating" aria-hidden="false">
+        <span class="rating-label">Rating</span>
+        <div id="star-rating" role="radiogroup" aria-label="Star rating (1 to 5)">
+          <button type="button" class="star" data-value="1" aria-label="1 star" role="radio" aria-checked="false">★</button>
+          <button type="button" class="star" data-value="2" aria-label="2 stars" role="radio" aria-checked="false">★</button>
+          <button type="button" class="star" data-value="3" aria-label="3 stars" role="radio" aria-checked="false">★</button>
+          <button type="button" class="star" data-value="4" aria-label="4 stars" role="radio" aria-checked="false">★</button>
+          <button type="button" class="star" data-value="5" aria-label="5 stars" role="radio" aria-checked="false">★</button>
+        </div>
+      </div>
+
+      <div class="ff-actions">
+        <button type="submit" class="btn-cyber small">Submit</button>
+        <button type="button" id="ff-dismiss" class="btn-link">Dismiss</button>
+      </div>
+
+      <div id="ff-status" role="status" aria-live="polite" class="ff-status" hidden></div>
+    </form>
+  </div>
+</div>
+
+<script src="js/feedback.js"></script>
 
 </body>
 </html>
