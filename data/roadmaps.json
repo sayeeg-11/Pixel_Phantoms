@@ -387,5 +387,111 @@
         ]
       }
     ]
+  },
+  "bot": {
+    "title": "Bot_Construct_Protocol_v1.0",
+    "description": "Initialize sequence: Discord Automation. Python & API focus.",
+    "phases": [
+      {
+        "id": "phase_1",
+        "title": "PHASE_01: Initialization",
+        "status": "unlocked",
+        "modules": [
+          {
+            "title": "Discord Dev Portal",
+            "desc": "Creating applications, bots, and generating tokens.",
+            "link": "https://discord.com/developers/applications",
+            "icon": "fa-brands fa-discord"
+          },
+          {
+            "title": "Python Primer",
+            "desc": "Async/Await syntax and basic Python structures.",
+            "link": "https://docs.python.org/3/library/asyncio.html",
+            "icon": "fa-brands fa-python"
+          },
+          {
+            "title": "Discord.py Setup",
+            "desc": "Installing the library and coding your first 'Hello World'.",
+            "link": "https://discordpy.readthedocs.io/en/stable/intro.html",
+            "icon": "fa-solid fa-robot"
+          }
+        ]
+      },
+      {
+        "id": "phase_2",
+        "title": "PHASE_02: Command_Control",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Events & Listeners",
+            "desc": "Reacting to messages, joins, and reactions.",
+            "link": "https://discordpy.readthedocs.io/en/stable/api.html#event-reference",
+            "icon": "fa-solid fa-ear-listen"
+          },
+          {
+            "title": "Embed Visuals",
+            "desc": "Creating rich media responses with colors and fields.",
+            "link": "https://discordpy.readthedocs.io/en/stable/api.html#embed",
+            "icon": "fa-solid fa-image"
+          },
+          {
+            "title": "Slash Commands",
+            "desc": "Modern interaction handlers and UI components.",
+            "link": "https://discord.com/developers/docs/interactions/application-commands",
+            "icon": "fa-solid fa-slash"
+          }
+        ]
+      },
+      {
+        "id": "phase_3",
+        "title": "PHASE_03: Data_Persistence",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "MongoDB Atlas",
+            "desc": "Cloud database for storing user XP and economy data.",
+            "link": "https://www.mongodb.com/cloud/atlas",
+            "icon": "fa-solid fa-database"
+          },
+          {
+            "title": "API Consumption",
+            "desc": "Fetching external data (Weather, Crypto, News).",
+            "link": "https://realpython.com/python-requests/",
+            "icon": "fa-solid fa-cloud-arrow-down"
+          },
+          {
+            "title": "Cogs & Extensions",
+            "desc": "Organizing code into modular extensions.",
+            "link": "https://discordpy.readthedocs.io/en/stable/ext/commands/cogs.html",
+            "icon": "fa-solid fa-folder-tree"
+          }
+        ]
+      },
+      {
+        "id": "phase_4",
+        "title": "PHASE_04: Deployment_Ops",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Hosting Services",
+            "desc": "Deploying 24/7 on Railway, Heroku, or VPS.",
+            "link": "https://railway.app/",
+            "icon": "fa-solid fa-server"
+          },
+          {
+            "title": "Dockerizing Bots",
+            "desc": "Containerizing your application for consistency.",
+            "link": "https://docs.docker.com/get-started/",
+            "icon": "fa-brands fa-docker"
+          },
+          {
+            "title": "Sharding",
+            "desc": "Scaling architecture for thousands of servers.",
+            "link": "https://discordpy.readthedocs.io/en/stable/api.html#discord.AutoShardedClient",
+            "icon": "fa-solid fa-network-wired"
+          }
+        ]
+      }
+    ]
   }
 }
