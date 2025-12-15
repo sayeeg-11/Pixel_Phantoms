@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Add theme keyboard shortcut info
+    setTimeout(() => {
+        console.log('💡 Toggle dark/light mode theme');
+    }, 5000);
+
     // Add scroll-to-top functionality
     const scrollToTopBtn = document.createElement('button');
     scrollToTopBtn.innerHTML = '↑';

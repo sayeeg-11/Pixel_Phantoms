@@ -3574,3 +3574,97 @@ main:focus {
         scroll-behavior: auto;
     }
 }
+
+/* Add to existing animations section */
+@keyframes pulse {
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    }
+    50% { 
+        opacity: 0.7; 
+        transform: scale(1.05); 
+    }
+}
+
+@keyframes slideInLeft {
+    from { 
+        transform: translateX(-20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+/* Theme status indicator */
+.theme-status-indicator {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 9999;
+    opacity: 0.9;
+    backdrop-filter: blur(10px);
+    animation: slideInLeft 0.3s ease;
+}
+
+.theme-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+/* Theme toggle feedback */
+.theme-toggle-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    border: 2px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .theme-status-indicator {
+        bottom: 80px; /* Above mobile nav */
+        left: 10px;
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-status-indicator {
+        display: none; /* Hide on very small screens */
+    }
+}
