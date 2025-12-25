@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="css/scroll-progress.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/back-to-top.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/back-to-top.css">    <link rel="stylesheet" href="css/cursor-effect.css">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="scroll-progress-container">
@@ -68,29 +67,35 @@
             <div class="focus-areas">
                 <h3 id="focus-areas-heading">Focus Areas</h3>
                 <div class="focus-grid" role="list">
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fas fa-laptop-code icon" aria-hidden="true"></i>
                         <h4>Web Development</h4>
+                        <p class="focus-card-desc">Full-stack development with modern frameworks and tools</p>
                     </div>
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fas fa-code icon" aria-hidden="true"></i>
                         <h4>Programming</h4>
+                        <p class="focus-card-desc">Data structures, algorithms, and competitive coding</p>
                     </div>
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fas fa-paint-brush icon" aria-hidden="true"></i>
                         <h4>Design</h4>
+                        <p class="focus-card-desc">UI/UX design principles and creative visual solutions</p>
                     </div>
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fas fa-microchip icon" aria-hidden="true"></i>
                         <h4>Embedded Systems</h4>
+                        <p class="focus-card-desc">IoT, microcontrollers, and hardware programming</p>
                     </div>
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fab fa-github icon" aria-hidden="true"></i>
                         <h4>Open Source</h4>
+                        <p class="focus-card-desc">Collaborative development and community contributions</p>
                     </div>
-                    <div class="focus-card" role="listitem">
+                    <div class="focus-card" role="listitem" tabindex="0">
                         <i class="fas fa-users icon" aria-hidden="true"></i>
                         <h4>Community Learning</h4>
+                        <p class="focus-card-desc">Peer-to-peer learning and knowledge sharing</p>
                     </div>
                 </div>
             </div>
@@ -186,9 +191,9 @@
 </section>
 
     <div id="footer-placeholder"></div>
-    <script src="js/footer.min.js"></script>
+    <script src="js/footer.js"></script>
     <script>
-        renderFooter();
+        renderFooter('');
     </script>
 
 <script src="js/theme.min.js"></script>

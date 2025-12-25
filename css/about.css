@@ -283,26 +283,53 @@
 
 .focus-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    padding: 0 20px;
 }
 
 .focus-card {
     background: var(--card-bg);
-    padding: 30px 20px;
+    padding: 40px 24px;
     border-radius: 16px;
     text-align: center;
-    border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    
+    /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Enhanced border with neon accent */
+    border: 2px solid rgba(0, 170, 255, 0.2);
+    
+    /* Multi-layer shadow for depth */
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 170, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: fadeInUp 0.6s ease-out backwards;
+    
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    
+    animation: focus-card-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes focus-card-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .focus-card:nth-child(1) { animation-delay: 0.1s; }
@@ -312,65 +339,163 @@
 .focus-card:nth-child(5) { animation-delay: 0.5s; }
 .focus-card:nth-child(6) { animation-delay: 0.6s; }
 
+/* Shimmer effect */
 .focus-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent-color), #0088cc);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 170, 255, 0.1) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) translateY(-100%);
+    transition: transform 0.6s;
+    pointer-events: none;
+}
+
+/* Ripple effect */
+.focus-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 170, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s, opacity 0.6s;
+    pointer-events: none;
+    opacity: 0;
 }
 
 .focus-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    border-color: var(--accent-color);
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--neon-cyan);
+    
+    /* Strong neon glow */
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(0, 170, 255, 0.4),
+        0 0 60px rgba(0, 170, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Inner glow for depth */
+    background: linear-gradient(
+        135deg, 
+        var(--card-bg) 0%,
+        rgba(0, 170, 255, 0.03) 100%
+    );
 }
 
 .focus-card:hover::before {
-    transform: scaleX(1);
+    transform: translateX(100%) translateY(100%);
+}
+
+.focus-card:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0.6s;
+}
+
+/* Focus state for accessibility */
+.focus-card:focus-visible {
+    outline: 3px solid var(--neon-cyan);
+    outline-offset: 4px;
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--neon-cyan);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(0, 170, 255, 0.4),
+        0 0 60px rgba(0, 170, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--accent-color);
-    transition: all 0.3s ease;
+    font-size: 3rem;
+    margin-bottom: 24px;
+    color: var(--text-secondary);
+    
+    /* Glow effect */
+    filter: drop-shadow(0 0 8px transparent);
+    
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
 }
 
-.icon::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 3px;
-    background: var(--border-color);
-    border-radius: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
 .focus-card:hover .icon {
-    transform: scale(1.2) rotate(5deg);
-    color: #0088cc;
+    transform: scale(1.15) translateY(-4px) rotate(5deg);
 }
 
-.focus-card:hover .icon::after {
-    opacity: 1;
+/* Unique color per card */
+.focus-card:nth-child(1):hover .icon,
+.focus-card:nth-child(1):focus-visible .icon {
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+.focus-card:nth-child(2):hover .icon,
+.focus-card:nth-child(2):focus-visible .icon {
+    color: var(--neon-green);
+    filter: drop-shadow(0 0 12px var(--neon-green));
+}
+
+.focus-card:nth-child(3):hover .icon,
+.focus-card:nth-child(3):focus-visible .icon {
+    color: var(--neon-purple);
+    filter: drop-shadow(0 0 12px var(--neon-purple));
+}
+
+.focus-card:nth-child(4):hover .icon,
+.focus-card:nth-child(4):focus-visible .icon {
+    color: #ff0055;
+    filter: drop-shadow(0 0 12px #ff0055);
+}
+
+.focus-card:nth-child(5):hover .icon,
+.focus-card:nth-child(5):focus-visible .icon {
+    color: #ffbd2e;
+    filter: drop-shadow(0 0 12px #ffbd2e);
+}
+
+.focus-card:nth-child(6):hover .icon,
+.focus-card:nth-child(6):focus-visible .icon {
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 12px var(--neon-cyan));
 }
 
 .focus-card h4 {
-    margin: 0;
+    margin: 0 0 12px 0;
     color: var(--text-primary);
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.focus-card:hover h4,
+.focus-card:focus-visible h4 {
+    color: var(--neon-cyan);
+}
+
+.focus-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.focus-card:hover .focus-card-desc,
+.focus-card:focus-visible .focus-card-desc {
+    opacity: 1;
 }
 
 /* Committee Section */
@@ -519,12 +644,21 @@
     }
     
     .focus-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
+        padding: 0 15px;
     }
     
     .focus-card {
-        padding: 25px 15px;
+        padding: 30px 20px;
+    }
+    
+    .focus-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .focus-card-desc {
+        font-size: 0.85rem;
     }
     
     .committee-grid {
@@ -535,6 +669,14 @@
     .member-card {
         padding: 25px 15px;
         min-height: 130px;
+    }
+}
+
+/* Tablet landscape - 3 column to 2 column transition */
+@media (max-width: 992px) {
+    .focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 }
 
@@ -556,7 +698,29 @@
         font-size: 1.8rem;
     }
     
-    .focus-grid,
+    .focus-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 10px;
+    }
+    
+    .focus-card {
+        padding: 30px 20px;
+    }
+    
+    .icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .focus-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .focus-card-desc {
+        font-size: 0.85rem;
+    }
+    
     .committee-grid {
         grid-template-columns: 1fr;
     }
@@ -579,23 +743,18 @@
         transition-duration: 0.01ms !important;
     }
     
-    .hero-section::before {
-        animation: none;
+    .hero-section::before,
+    .focus-card,
+    .focus-card::before,
+    .focus-card::after,
+    .icon {
+        animation: none !important;
+        transition: none !important;
     }
     
-    /* Remove all animations for users who prefer reduced motion */
-    .hero-content,
-    .hero-title,
-    .hero-title::after,
-    .hero-subtitle,
-    .motto,
-    .section-title,
-    .section-title::after,
-    .mission-description,
-    .focus-areas h3,
-    .focus-card,
-    .member-card {
-        animation: none !important;
+    /* Keep functional transforms but remove animations */
+    .focus-card:hover {
+        transform: none;
     }
 }
 

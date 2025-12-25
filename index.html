@@ -8,12 +8,13 @@
     
     <link rel="stylesheet" href="css/scroll-progress.css">
     <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/share-button.css">
-    <link rel="stylesheet" href="css/home-gsap.min.css">
-    <link rel="stylesheet" href="css/back-to-top.min.css">
+    <link rel="stylesheet" href="css/home-gsap.min.css">    <link rel="stylesheet" href="css/cursor-effect.css">    <link rel="stylesheet" href="css/back-to-top.min.css">
     <link rel="stylesheet" href="css/stats-widget.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 </head>
 <body class="hacker-theme">
     <div id="scroll-progress-container">
@@ -395,17 +396,17 @@
         </nav>
     </main>
 
-    <div id="footer-placeholder" style="position: relative; z-index: 2;"></div>
+    <div id="footer-placeholder"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <script src="js/navbar.min.js"></script>
-    <script src="js/footer.min.js"></script>
+    <script src="js/footer.js"></script>
     <script>
         // Render these immediately so the theme.js can find the toggle switch
         renderNavbar();
-        renderFooter();
+        renderFooter('');
         
         // Focus management for skip link
         document.addEventListener('DOMContentLoaded', function() {
@@ -421,12 +422,9 @@
     </script>
 
     <script src="js/theme.min.js"></script>
+    <script src="js/cursor-effect.js"></script>
     <script src="js/back-to-top.min.js"></script>
-    <script src="js/home-gsap.min.js"></script>
-    <script src="js/home-leaderboard.min.js"></script>
-    <script src="js/quick-stats.js"></script>
-    <script src="js/theme-enhanced.js"></script>
-    <script src="js/share-button.js"></script>
+
     
     <script>
         // Initialize quick stats widget for home page
