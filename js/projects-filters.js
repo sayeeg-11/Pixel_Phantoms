@@ -38,79 +38,62 @@ function initQuickFilters() {
     
     // Function to filter projects
     function filterProjects() {
-        let visibleCount = 0;
-        const totalCount = projectCards.length;
+    let visibleCount = 0;
+    const projectCards = document.querySelectorAll('.project-card');
+    const totalCount = projectCards.length;
+    
+    projectCards.forEach(card => {
+        // Use specific classes to avoid grabbing the wrong HTML content
+        const category = card.getAttribute('data-category');
+        const difficulty = card.getAttribute('data-difficulty');
+        const tech = card.getAttribute('data-tech');
+        const status = card.getAttribute('data-status');
+        const isNew = card.getAttribute('data-new') === 'true';
         
-        projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            const difficulty = card.getAttribute('data-difficulty');
-            const tech = card.getAttribute('data-tech');
-            const status = card.getAttribute('data-status');
-            const isNew = card.getAttribute('data-new') === 'true';
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const description = card.querySelector('p').textContent.toLowerCase();
-            
-            let showCard = true;
-            
-            // Apply category filter
-            if (activeFilters.category !== 'all' && category !== activeFilters.category) {
+        // Target text ONLY from the actual project headers and descriptions
+        const titleEl = card.querySelector('h3');
+        const descEl = card.querySelector('.card-content > p'); // Specific child selector
+        
+        const title = titleEl ? titleEl.textContent.toLowerCase() : "";
+        const description = descEl ? descEl.textContent.toLowerCase() : "";
+        
+        let showCard = true;
+        
+        // Category Filter
+        if (activeFilters.category !== 'all' && category !== activeFilters.category) {
+            showCard = false;
+        }
+        
+        // Quick Filter
+        if (activeFilters.quick !== 'all') {
+            switch(activeFilters.quick) {
+                case 'beginner': if (difficulty !== 'beginner') showCard = false; break;
+                case 'javascript': if (tech !== 'javascript') showCard = false; break;
+                case 'active': if (status !== 'active') showCard = false; break;
+                case 'new': if (!isNew) showCard = false; break;
+            }
+        }
+        
+        // Search Filter - only checks relevant text
+        if (activeFilters.search) {
+            const searchTerm = activeFilters.search.toLowerCase();
+            if (!title.includes(searchTerm) && !description.includes(searchTerm)) {
                 showCard = false;
             }
-            
-            // Apply quick filter
-            if (activeFilters.quick !== 'all') {
-                switch(activeFilters.quick) {
-                    case 'beginner':
-                        if (difficulty !== 'beginner') showCard = false;
-                        break;
-                    case 'javascript':
-                        if (tech !== 'javascript') showCard = false;
-                        break;
-                    case 'active':
-                        if (status !== 'active') showCard = false;
-                        break;
-                    case 'new':
-                        if (!isNew) showCard = false;
-                        break;
-                }
-            }
-            
-            // Apply search filter
-            if (activeFilters.search) {
-                const searchTerm = activeFilters.search.toLowerCase();
-                const matchesSearch = title.includes(searchTerm) || 
-                                    description.includes(searchTerm) ||
-                                    card.querySelector('.tech-stack-terminal').textContent.toLowerCase().includes(searchTerm);
-                if (!matchesSearch) showCard = false;
-            }
-            
-            // Show/hide card with animation
-            if (showCard) {
-                visibleCount++;
-                gsap.to(card, {
-                    duration: 0.3,
-                    opacity: 1,
-                    scale: 1,
-                    display: 'flex',
-                    ease: 'power2.out'
-                });
-            } else {
-                gsap.to(card, {
-                    duration: 0.3,
-                    opacity: 0,
-                    scale: 0.9,
-                    display: 'none',
-                    ease: 'power2.in'
-                });
-            }
-        });
+        }
         
-        // Update results counter
-        updateResultsCounter(visibleCount, totalCount);
-        
-        // Show no results message if needed
-        showNoResultsMessage(visibleCount);
-    }
+        // Show/hide card
+        if (showCard) {
+            visibleCount++;
+            gsap.to(card, { duration: 0.3, opacity: 1, scale: 1, display: 'flex' });
+        } else {
+            gsap.to(card, { duration: 0.3, opacity: 0, scale: 0.9, display: 'none' });
+        }
+    });
+    
+    updateResultsCounter(visibleCount, totalCount);
+    showNoResultsMessage(visibleCount);
+}
     
     // Category filter buttons
     document.querySelectorAll('.btn-glitch-filter').forEach(btn => {

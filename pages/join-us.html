@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Phantoms | Join Protocol</title>
     
+    <link rel="stylesheet" href="../css/scroll-progress.css">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/home-gsap.css"> 
+    <link rel="stylesheet" href="../css/cursor-effect.css">
     <link rel="stylesheet" href="../css/back-to-top.css">
     
     <link rel="stylesheet" href="../css/join-us.css">
@@ -15,6 +16,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="hacker-theme">
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-container" class="skip-to-content" id="skip-link">
@@ -126,7 +130,7 @@
 
     </main>
 
-    <div id="footer-placeholder" style="position: relative; z-index: 2;"></div>
+    <div id="footer-placeholder"></div>
 
     <script src="../js/navbar.js"></script>
     <script src="../js/footer.js"></script>
@@ -135,6 +139,7 @@
         renderFooter('../');
     </script>
     <script src="../js/theme.js"></script>
+    <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -142,5 +147,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
     
     <script src="../js/join-us.js"></script>
+    <script src="../js/scroll-progress.js"></script>
 </body>
 </html>

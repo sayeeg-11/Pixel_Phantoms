@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Phantoms | Project Mainframe</title>
     
+    <link rel="stylesheet" href="../css/scroll-progress.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cursor-effect.css">
     <link rel="stylesheet" href="../css/favorites.css">
     <link rel="stylesheet" href="../css/projects.css">
     <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
     <link rel="stylesheet" href="../css/projects.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="hacker-theme">
+    <div id="scroll-progress-container">
+        <div id="scroll-progress-bar"></div>
+    </div>
 
     <a href="#main-projects" class="skip-to-content" id="skip-link">
         <i class="fas fa-forward"></i> Skip to Main Content
@@ -173,181 +177,180 @@
         </section>
 
         <section class="content project-matrix-section">
-            <div class="container">
-                <div class="projects-grid" id="projects-grid">
-                    
-                    <article class="cyber-card project-card" data-category="web" data-tilt 
-                             data-difficulty="beginner" data-tech="javascript" data-status="active" data-new="false">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/pixel1/600/400" alt="Pixel Phantoms Website" loading="lazy">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-beginner">Beginner</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#WEB_001</span>
-                                <span class="status-dot online"></span>
-                            </div>
-                            <h3>Pixel_Phantoms_Official</h3>
-                            <p>The central command hub. A dynamic community platform featuring live leaderboards and dark mode protocols.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[HTML5]</span>
-                                <span>[CSS3]</span>
-                                <span>[JS_Core]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                                <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cyber-card project-card" data-category="ai" data-tilt 
-                             data-difficulty="advanced" data-tech="python" data-status="active" data-new="false">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/ai_robo/600/400" alt="AI Chatbot">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-advanced">Advanced</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#AI_099</span>
-                                <span class="status-dot processing"></span>
-                            </div>
-                            <h3>Phantom_Bot_V2</h3>
-                            <p>An autonomous discord sentinel utilizing NLP to moderate comms and manage event protocols.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[Python]</span>
-                                <span>[TensorFlow]</span>
-                                <span>[Discord.py]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                                <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cyber-card project-card" data-category="app" data-tilt 
-                             data-difficulty="intermediate" data-tech="dart" data-status="active" data-new="true">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/app_dev/600/400" alt="Campus App" loading="lazy">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#MOB_404</span>
-                                <span class="status-dot online"></span>
-                            </div>
-                            <h3>Campus_Connect_App</h3>
-                            <p>Mobile interface for student tracking systems. Attendance, notes, and canteen logistics in real-time.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[Flutter]</span>
-                                <span>[Firebase]</span>
-                                <span>[Dart]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                                <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cyber-card project-card" data-category="hardware" data-tilt
-                             data-difficulty="advanced" data-tech="cpp" data-status="warning" data-new="false">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/iot/600/400" alt="IoT Smart Home" loading="lazy">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-advanced">Advanced</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#IOT_X1</span>
-                                <span class="status-dot warning"></span>
-                            </div>
-                            <h3>Smart_Lab_Matrix</h3>
-                            <p>Automated environment control system. Sensors dictate lighting and atmospheric conditions.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[Arduino]</span>
-                                <span>[C++]</span>
-                                <span>[Sensors]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a href="../pages/hardware-roadmap.html" class="btn-terminal">View_Blueprints ></a>
-                                <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cyber-card project-card" data-category="web" data-tilt 
-                             data-difficulty="intermediate" data-tech="javascript" data-status="active" data-new="false">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/crypto/600/400" alt="Crypto Dashboard" loading="lazy">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#WEB_CRYPTO</span>
-                                <span class="status-dot online"></span>
-                            </div>
-                            <h3>Crypto_Tracker_Dash</h3>
-                            <p>Real-time visualization of decentralized currency markets via public API streams.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[React]</span>
-                                <span>[Chart.js]</span>
-                                <span>[REST_API]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                                <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cyber-card project-card" data-category="ai" data-tilt
-                             data-difficulty="beginner" data-tech="python" data-status="active" data-new="false">
-                        <div class="card-border-top"></div>
-                        <div class="card-image-wrapper">
-                            <img src="https://picsum.photos/seed/vision/600/400" alt="Computer Vision" loading="lazy">
-                            <div class="glitch-overlay"></div>
-                            <div class="scan-line"></div>
-                        </div>
-                        <div class="difficulty-badge difficulty-beginner">Beginner</div>
-                        <div class="card-content">
-                            <div class="card-header">
-                                <span class="project-id">#CV_EYE</span>
-                                <span class="status-dot processing"></span>
-                            </div>
-                            <h3>Sign_Lang_Recognizer</h3>
-                            <p>Computer vision protocol interpreting manual communication into digital text streams.</p>
-                            <div class="tech-stack-terminal">
-                                <span>[OpenCV]</span>
-                                <span>[Python]</span>
-                                <span>[PyTorch]</span>
-                            </div>
-                            <div class="card-actions">
-                                <a href="#" class="btn-terminal">Execute_Demo ></a>
-                                <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
+    <div class="container">
+        <div class="projects-grid" id="projects-grid">
+            
+            <article class="cyber-card project-card" data-category="web" data-tilt 
+                     data-difficulty="beginner" data-tech="javascript" data-status="active" data-new="false">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/pixel1/600/400" alt="Pixel Phantoms Website" loading="lazy">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
                 </div>
-            </div>
-        </section>
+                <div class="difficulty-badge difficulty-beginner">Beginner</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#WEB_001</span>
+                        <span class="status-dot online"></span>
+                    </div>
+                    <h3>Pixel_Phantoms_Official</h3>
+                    <p>The central command hub. A dynamic community platform featuring live leaderboards and dark mode protocols.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[HTML5]</span>
+                        <span>[CSS3]</span>
+                        <span>[JS_Core]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
 
+            <article class="cyber-card project-card" data-category="ai" data-tilt 
+                     data-difficulty="advanced" data-tech="python" data-status="active" data-new="false">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/ai_robo/600/400" alt="AI Chatbot">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="difficulty-badge difficulty-advanced">Advanced</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#AI_099</span>
+                        <span class="status-dot processing"></span>
+                    </div>
+                    <h3>Phantom_Bot_V2</h3>
+                    <p>An autonomous discord sentinel utilizing NLP to moderate comms and manage event protocols.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[Python]</span>
+                        <span>[TensorFlow]</span>
+                        <span>[Discord.py]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cyber-card project-card" data-category="app" data-tilt 
+                     data-difficulty="intermediate" data-tech="dart" data-status="active" data-new="true">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/app_dev/600/400" alt="Campus App" loading="lazy">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#MOB_404</span>
+                        <span class="status-dot online"></span>
+                    </div>
+                    <h3>Campus_Connect_App</h3>
+                    <p>Mobile interface for student tracking systems. Attendance, notes, and canteen logistics in real-time.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[Flutter]</span>
+                        <span>[Firebase]</span>
+                        <span>[Dart]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cyber-card project-card" data-category="hardware" data-tilt
+                     data-difficulty="advanced" data-tech="cpp" data-status="warning" data-new="false">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/iot/600/400" alt="IoT Smart Home" loading="lazy">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="difficulty-badge difficulty-advanced">Advanced</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#IOT_X1</span>
+                        <span class="status-dot warning"></span>
+                    </div>
+                    <h3>Smart_Lab_Matrix</h3>
+                    <p>Automated environment control system. Sensors dictate lighting and atmospheric conditions.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[Arduino]</span>
+                        <span>[C++]</span>
+                        <span>[Sensors]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="../pages/hardware-roadmap.html" class="btn-terminal">View_Blueprints ></a>
+                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cyber-card project-card" data-category="web" data-tilt 
+                     data-difficulty="intermediate" data-tech="javascript" data-status="active" data-new="false">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/crypto/600/400" alt="Crypto Dashboard" loading="lazy">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#WEB_CRYPTO</span>
+                        <span class="status-dot online"></span>
+                    </div>
+                    <h3>Crypto_Tracker_Dash</h3>
+                    <p>Real-time visualization of decentralized currency markets via public API streams.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[React]</span>
+                        <span>[Chart.js]</span>
+                        <span>[REST_API]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="cyber-card project-card" data-category="ai" data-tilt
+                     data-difficulty="beginner" data-tech="python" data-status="active" data-new="false">
+                <div class="card-border-top"></div>
+                <div class="card-image-wrapper">
+                    <img src="https://picsum.photos/seed/vision/600/400" alt="Computer Vision" loading="lazy">
+                    <div class="glitch-overlay"></div>
+                    <div class="scan-line"></div>
+                </div>
+                <div class="difficulty-badge difficulty-beginner">Beginner</div>
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-id">#CV_EYE</span>
+                        <span class="status-dot processing"></span>
+                    </div>
+                    <h3>Sign_Lang_Recognizer</h3>
+                    <p>Computer vision protocol interpreting manual communication into digital text streams.</p>
+                    <div class="tech-stack-terminal">
+                        <span>[OpenCV]</span>
+                        <span>[Python]</span>
+                        <span>[PyTorch]</span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="#" class="btn-terminal">Execute_Demo ></a>
+                        <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
     </div>
 
     <div id="footer-placeholder"></div>
@@ -357,12 +360,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/home-gsap.js"></script> 
     <script src="../js/projects.js"></script> 
     <script src="../js/copy-clipboard.js"></script>
     <script src="../js/projects-filters.js"></script>
     <script src="../js/favorites.js"></script>
+    <script src="../js/scroll-progress.js"></script>
 
     <button class="print-button" onclick="window.print()">
         <i class="fas fa-print"></i> Print This Page

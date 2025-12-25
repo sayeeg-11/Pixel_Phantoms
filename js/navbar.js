@@ -39,6 +39,31 @@ function renderNavbar(basePath = '') {
 
     // Initialize mobile menu functionality
     initMobileMenu();
+    
+    // Set active nav item based on current page
+    setActiveNavItem();
+}
+
+// Set the active nav item based on the current page URL
+function setActiveNavItem() {
+    // Get current page filename
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(function(link) {
+        // Remove active class from all links
+        link.classList.remove('active');
+        
+        // Get the href and extract the filename
+        const href = link.getAttribute('href');
+        if (href) {
+            const linkPage = href.split('/').pop();
+            // Check if this link matches the current page
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+            }
+        }
+    });
 }
 
 function initMobileMenu() {
@@ -180,7 +205,7 @@ function initMobileMenu() {
             
             if ((isAtTop && e.touches[0].clientY > touchStartY) || 
                 (isAtBottom && e.touches[0].clientY < touchStartY)) {
-                e.preventDefault();
+
             }
         }
     }, { passive: false });

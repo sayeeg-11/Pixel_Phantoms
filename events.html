@@ -14,9 +14,11 @@
     <link rel="icon" href="assets/logo.png">
 
 
+    <link rel="stylesheet" href="css/scroll-progress.css">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/events.css" />
     <link rel="stylesheet" href="css/home-gsap.css" />
+    <link rel="stylesheet" href="css/cursor-effect.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
@@ -29,6 +31,9 @@
   </head>
 
   <body class="hacker-theme">
+    <div id="scroll-progress-container">
+      <div id="scroll-progress-bar"></div>
+    </div>
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-events" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward"></i> Skip to Main Content
@@ -119,14 +124,16 @@
     </main>
 
     <div id="footer-placeholder"></div>
-    <script src="js/footer.min.js"></script>
-<script>
-    renderFooter();
-</script>
+    <script src="js/footer.js"></script>
+    <script>
+        renderFooter('');
+    </script>
 
 
     <script src="js/theme.js"></script>
+    <script src="js/cursor-effect.js"></script>
     <script src="js/events.js"></script>
     <script src="js/back-to-top.js"></script>
+    <script src="js/scroll-progress.js"></script>
   </body>
 </html>

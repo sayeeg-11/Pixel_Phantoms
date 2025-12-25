@@ -1,68 +1,531 @@
-/* About Page Styles with Enhanced Shadows */
+/* About Page Styles with Enhanced Visual Appeal */
 
-/* Main content sections */
-.content {
-    max-width: 1200px;
-    margin: 60px auto;
-    padding: 0 20px;
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--accent-color), #0088cc);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 80px;
 }
 
-.content > h2 {
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    100% { transform: scale(1.2); opacity: 0.6; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    animation: slideInDown 1s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    animation: expandWidth 1s ease-out 0.5s forwards;
+    transform-origin: center;
+    transform: translateX(-50%) scaleX(0);
+}
+
+@keyframes expandWidth {
+    to {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+.hero-subtitle {
+    margin-top: 40px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.motto {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    font-style: italic;
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: bounceIn 1.2s ease-out 0.8s both;
+}
+
+@keyframes bounceIn {
+    0%, 20%, 40%, 60%, 80%, 100% {
+        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(.9, .9, .9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(.97, .97, .97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.motto:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.motto::before {
+    content: '"';
+    position: absolute;
+    left: -15px;
+    top: -15px;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.motto::after {
+    content: '"';
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Content Sections */
+.content-section {
+    padding: 80px 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
     color: var(--text-primary);
     position: relative;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    animation: slideInLeft 0.8s ease-out;
 }
 
-.content > h2::after {
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.section-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
-    height: 3px;
-    background: var(--accent-color);
+    height: 4px;
+    background: linear-gradient(to right, var(--accent-color), #0088cc);
     border-radius: 2px;
+    animation: expandWidth 0.8s ease-out 0.3s forwards;
+    transform-origin: center;
+    transform: translateX(-50%) scaleX(0);
 }
 
-.content > p {
-    font-size: 1.1rem;
+/* Mission Section */
+.mission-section {
+    background: var(--bg-primary);
+}
+
+.mission-description {
+    font-size: 1.2rem;
     line-height: 1.8;
     color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background: var(--card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 8px 25px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out 0.3s both;
 }
 
-.content > p:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15), 0 12px 30px rgba(0, 0, 0, 0.1);
+.mission-description::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), #0088cc);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease;
+}
+
+.mission-description:hover::before {
+    transform: scaleX(1);
+}
+
+.mission-description:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     transform: translateY(-5px);
 }
 
-/* Core Committee Section */
-.content:nth-child(2) {
-    background: var(--card-bg);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 15px 40px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-    margin-top: 80px;
-    margin-bottom: 80px;
+.focus-areas h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 40px 0 30px;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 1s ease-out 0.5s both;
 }
 
-.content:nth-child(2) > h2 {
-    margin-top: 0;
+.focus-areas h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: 2px;
 }
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
+.focus-card {
+    background: var(--card-bg);
+    padding: 40px 24px;
+    border-radius: 16px;
+    text-align: center;
+    
+    /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Enhanced border with neon accent */
+    border: 2px solid rgba(0, 170, 255, 0.2);
+    
+    /* Multi-layer shadow for depth */
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 170, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    
+    animation: focus-card-enter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+@keyframes focus-card-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.focus-card:nth-child(1) { animation-delay: 0.1s; }
+.focus-card:nth-child(2) { animation-delay: 0.2s; }
+.focus-card:nth-child(3) { animation-delay: 0.3s; }
+.focus-card:nth-child(4) { animation-delay: 0.4s; }
+.focus-card:nth-child(5) { animation-delay: 0.5s; }
+.focus-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Shimmer effect */
+.focus-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(0, 170, 255, 0.1) 50%,
+        transparent 70%
+    );
+    transform: translateX(-100%) translateY(-100%);
+    transition: transform 0.6s;
+    pointer-events: none;
+}
+
+/* Ripple effect */
+.focus-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 170, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s, opacity 0.6s;
+    pointer-events: none;
+    opacity: 0;
+}
+
 
 /* Committee Grid - Enhanced layout */
+
+.focus-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--neon-cyan);
+    
+    /* Strong neon glow */
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(0, 170, 255, 0.4),
+        0 0 60px rgba(0, 170, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    
+    /* Inner glow for depth */
+    background: linear-gradient(
+        135deg, 
+        var(--card-bg) 0%,
+        rgba(0, 170, 255, 0.03) 100%
+    );
+}
+
+.focus-card:hover::before {
+    transform: translateX(100%) translateY(100%);
+}
+
+.focus-card:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    transition: width 0s, height 0s, opacity 0.6s;
+}
+
+/* Focus state for accessibility */
+.focus-card:focus-visible {
+    outline: 3px solid var(--neon-cyan);
+    outline-offset: 4px;
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--neon-cyan);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.2),
+        0 0 30px rgba(0, 170, 255, 0.4),
+        0 0 60px rgba(0, 170, 255, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    color: var(--text-secondary);
+    
+    /* Glow effect */
+    filter: drop-shadow(0 0 8px transparent);
+    
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.focus-card:hover .icon {
+    transform: scale(1.15) translateY(-4px) rotate(5deg);
+}
+
+/* Unique color per card */
+.focus-card:nth-child(1):hover .icon,
+.focus-card:nth-child(1):focus-visible .icon {
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+.focus-card:nth-child(2):hover .icon,
+.focus-card:nth-child(2):focus-visible .icon {
+    color: var(--neon-green);
+    filter: drop-shadow(0 0 12px var(--neon-green));
+}
+
+.focus-card:nth-child(3):hover .icon,
+.focus-card:nth-child(3):focus-visible .icon {
+    color: var(--neon-purple);
+    filter: drop-shadow(0 0 12px var(--neon-purple));
+}
+
+.focus-card:nth-child(4):hover .icon,
+.focus-card:nth-child(4):focus-visible .icon {
+    color: #ff0055;
+    filter: drop-shadow(0 0 12px #ff0055);
+}
+
+.focus-card:nth-child(5):hover .icon,
+.focus-card:nth-child(5):focus-visible .icon {
+    color: #ffbd2e;
+    filter: drop-shadow(0 0 12px #ffbd2e);
+}
+
+.focus-card:nth-child(6):hover .icon,
+.focus-card:nth-child(6):focus-visible .icon {
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 12px var(--neon-cyan));
+}
+
+.focus-card h4 {
+    margin: 0 0 12px 0;
+    color: var(--text-primary);
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.focus-card:hover h4,
+.focus-card:focus-visible h4 {
+    color: var(--neon-cyan);
+}
+
+.focus-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.focus-card:hover .focus-card-desc,
+.focus-card:focus-visible .focus-card-desc {
+    opacity: 1;
+}
+
+/* Committee Section */
+.committee-section {
+    background: linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary));
+    position: relative;
+}
+
+.committee-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #ffa502);
+}
+
+.committee-section .container {
+    max-width: 1400px;
+}
+
+.committee-section .section-title::after {
+    background: linear-gradient(to right, #ff6b6b, #ffa502);
+}
+
+/* Committee Grid */
 .committee-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -82,10 +545,24 @@
     position: relative;
     overflow: hidden;
     min-height: 180px;
+=======
+/* Member Cards with Enhanced Design */
+.member-card {
+    background: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     gap: 12px;
 }
 
@@ -125,6 +602,34 @@
     border-radius: 50%;
     bottom: 5px;
     transition: all 0.3s ease;
+
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.member-card:nth-child(odd) { animation-delay: 0.1s; }
+.member-card:nth-child(even) { animation-delay: 0.2s; }
+
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--accent-color), #0088cc);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.member-card:hover::before {
+    transform: scaleX(1);
 }
 
 /* Member Name Styling */
@@ -133,6 +638,11 @@
     color: var(--text-primary);
     font-size: 1.2rem;
     font-weight: 600;
+
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 1.3rem;
+    font-weight: 700;
     line-height: 1.3;
     transition: all 0.3s ease;
 }
@@ -140,8 +650,11 @@
 /* Member Role Styling */
 .member-card p {
     color: var(--accent-color);
+
     font-size: 0.95rem;
     font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
     margin: 0;
     opacity: 0.9;
     transition: all 0.3s ease;
@@ -332,6 +845,22 @@
 @media (max-width: 900px) {
     .committee-grid {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    
+    .motto {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .mission-description {
+        font-size: 1.1rem;
+        padding: 25px;
     }
 }
 
@@ -344,6 +873,53 @@
     .content:nth-child(2) {
         padding: 25px 20px;
         margin: 40px 20px;
+    .hero-section {
+        padding: 70px 20px;
+    }
+    
+    .hero-title {
+        font-size: 2.3rem;
+    }
+    
+    .hero-title::after {
+        width: 70px;
+        bottom: -10px;
+    }
+    
+    .motto {
+        font-size: 1.3rem;
+        padding: 12px 20px;
+    }
+    
+    .content-section {
+        padding: 60px 20px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .mission-description {
+        font-size: 1rem;
+        padding: 20px;
+    }
+    
+    .focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .focus-card {
+        padding: 30px 20px;
+    }
+    
+    .focus-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .focus-card-desc {
+        font-size: 0.85rem;
     }
     
     .committee-grid {
@@ -403,17 +979,69 @@
     .member-avatar {
         width: 55px;
         height: 55px;
+    .member-card {
+        padding: 25px 15px;
+        min-height: 130px;
+    }
+}
+
+/* Tablet landscape - 3 column to 2 column transition */
+@media (max-width: 992px) {
+    .focus-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
     }
 }
 
 @media (max-width: 480px) {
+    .hero-section {
+        padding: 50px 15px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .motto {
+        font-size: 1.1rem;
+        padding: 10px 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .focus-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 10px;
+    }
+    
+    .focus-card {
+        padding: 30px 20px;
+    }
+    
+    .icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .focus-card h4 {
+        font-size: 1.2rem;
+    }
+    
+    .focus-card-desc {
+        font-size: 0.85rem;
+    }
+    
     .committee-grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
     
-    .content > h2 {
-        font-size: 2rem;
+    .focus-card,
+    .member-card {
+        padding: 20px 15px;
     }
     
     .content > p {
@@ -547,7 +1175,56 @@
     .member-card.president,
     .member-card.vp {
         animation: none;
+    .mission-description {
+        font-size: 0.95rem;
     }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .hero-section::before,
+    .focus-card,
+    .focus-card::before,
+    .focus-card::after,
+    .icon {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    /* Keep functional transforms but remove animations */
+    .focus-card:hover {
+        transform: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero-section {
+        background: var(--accent-color);
+    }
+    
+    .motto {
+        background: white;
+        color: black;
+    }
+    
+    .focus-card,
+    .member-card,
+    .mission-description {
+        border: 2px solid var(--text-primary);
+    }
+}
+
+/* Focus indicators for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /*Footer*/
