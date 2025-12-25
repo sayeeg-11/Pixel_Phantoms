@@ -28,10 +28,6 @@
 
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
-    <script src="js/navbar.js"></script>
-    <script>
-      renderNavbar("");
-    </script>
 
     <main id="main-content" tabindex="-1">
       <section class="hero-section" id="hero">
@@ -531,10 +527,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <!-- <script src="js/navbar.min.js"></script> -->
+    <script src="js/navbar.min.js"></script>
     <script src="js/footer.min.js"></script>
     <script>
       // Render these immediately so the theme.js can find the toggle switch
+      renderNavbar();
       renderFooter();
 
       // Focus management for skip link
