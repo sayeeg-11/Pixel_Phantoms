@@ -117,6 +117,7 @@
 }
 
 .platform-card {
+    height: 100%;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 20px;
@@ -129,14 +130,13 @@
     transition: transform 0.1s ease-out;
     cursor: pointer;
 }
-
-.card-content {
-    padding: 40px 30px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transform: translateZ(30px);
+ 
+.platform-card .card-content {
+  padding: 40px 30px 45px;                     /* more bottom space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateZ(30px);
 }
 
 .platform-card::after {
@@ -179,6 +179,30 @@
     transform: translateZ(20px);
 }
 
+.platform-card .action-btn {
+  margin-top: auto;
+  align-self: center;
+
+  min-width: 160px;
+  height: 44px;
+  padding: 0 24px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+ 
+@media (max-width: 768px) {
+  .platform-card .action-btn {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+ 
 .action-btn {
     background: transparent;
     border: 2px solid var(--border-color);
