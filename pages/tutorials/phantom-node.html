@@ -1,125 +1,145 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tutorial: Phantom Node | Pixel Phantoms</title>
-    
-    <link rel="stylesheet" href="../../css/scroll-progress.css">
-    <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/back-to-top.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    
+
+    <link rel="stylesheet" href="../../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <link rel="stylesheet" href="../../css/back-to-top.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        .tutorial-content {
-            max-width: 800px;
-            margin: 100px auto;
-            padding: 20px;
-            color: #eee;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .tutorial-header {
-            border-bottom: 2px solid #ffd700;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-        }
-        .tutorial-header h1 {
-            color: #ffd700;
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-        .meta-data {
-            color: #888;
-            font-size: 0.9rem;
-        }
-        h2 {
-            color: #fff;
-            margin-top: 40px;
-            border-left: 4px solid #ffd700;
-            padding-left: 15px;
-        }
-        .component-list {
-            background: #111;
-            padding: 20px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            list-style: none;
-        }
-        .component-list li {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .price { color: #00ff41; }
-        code {
-            background: #222;
-            padding: 2px 5px;
-            border-radius: 3px;
-            color: #ff9100;
-        }
-        pre {
-            background: #111;
-            padding: 15px;
-            overflow-x: auto;
-            border: 1px solid #333;
-            color: #ccc;
-        }
-        .warning-box {
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid red;
-            padding: 15px;
-            margin: 20px 0;
-            color: #ffaaaa;
-        }
+      .tutorial-content {
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        color: #eee;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .tutorial-header {
+        border-bottom: 2px solid #ffd700;
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+      }
+      .tutorial-header h1 {
+        color: #ffd700;
+        font-size: 2.5rem;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      }
+      .meta-data {
+        color: #888;
+        font-size: 0.9rem;
+      }
+      h2 {
+        color: #fff;
+        margin-top: 40px;
+        border-left: 4px solid #ffd700;
+        padding-left: 15px;
+      }
+      .component-list {
+        background: #111;
+        padding: 20px;
+        border: 1px solid #333;
+        border-radius: 8px;
+        list-style: none;
+      }
+      .component-list li {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .price {
+        color: #00ff41;
+      }
+      code {
+        background: #222;
+        padding: 2px 5px;
+        border-radius: 3px;
+        color: #ff9100;
+      }
+      pre {
+        background: #111;
+        padding: 15px;
+        overflow-x: auto;
+        border: 1px solid #333;
+        color: #ccc;
+      }
+      .warning-box {
+        background: rgba(255, 0, 0, 0.1);
+        border: 1px solid red;
+        padding: 15px;
+        margin: 20px 0;
+        color: #ffaaaa;
+      }
     </style>
-</head>
-<body class="hacker-theme">
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
     <script src="../../js/navbar.js"></script>
-    <script>renderNavbar('../../');</script>
+    <script>
+      renderNavbar('../../');
+    </script>
 
     <div class="tutorial-content">
-        <div class="tutorial-header">
-            <h1>PROJECT: PHANTOM_NODE</h1>
-            <p class="meta-data">>> DIFFICULTY: BEGINNER | EST. COST: $4.50 | TIME: 45 MINS</p>
-        </div>
+      <div class="tutorial-header">
+        <h1>PROJECT: PHANTOM_NODE</h1>
+        <p class="meta-data">>> DIFFICULTY: BEGINNER | EST. COST: $4.50 | TIME: 45 MINS</p>
+      </div>
 
-        <p>This protocol will guide you through constructing a basic IoT sensor node capable of reporting temperature data to the cloud via MQTT. This is the fundamental unit of the Pixel Phantoms hardware network.</p>
+      <p>
+        This protocol will guide you through constructing a basic IoT sensor node capable of
+        reporting temperature data to the cloud via MQTT. This is the fundamental unit of the Pixel
+        Phantoms hardware network.
+      </p>
 
-        <h2>// 01_ACQUIRE_HARDWARE</h2>
-        <ul class="component-list">
-            <li><span>ESP8266 (NodeMCU or Wemos D1 Mini)</span> <span class="price">~$3.00</span></li>
-            <li><span>DHT11 Temperature Sensor</span> <span class="price">~$1.00</span></li>
-            <li><span>Jumper Wires (Female-to-Female)</span> <span class="price">~$0.50</span></li>
-            <li><span>Micro-USB Cable</span> <span class="price">(Existing)</span></li>
-        </ul>
+      <h2>// 01_ACQUIRE_HARDWARE</h2>
+      <ul class="component-list">
+        <li><span>ESP8266 (NodeMCU or Wemos D1 Mini)</span> <span class="price">~$3.00</span></li>
+        <li><span>DHT11 Temperature Sensor</span> <span class="price">~$1.00</span></li>
+        <li><span>Jumper Wires (Female-to-Female)</span> <span class="price">~$0.50</span></li>
+        <li><span>Micro-USB Cable</span> <span class="price">(Existing)</span></li>
+      </ul>
 
-        <h2>// 02_WIRING_DIAGRAM</h2>
-        <p>Connect the components as follows. Ensure the board is disconnected from power while wiring.</p>
-        <pre>
+      <h2>// 02_WIRING_DIAGRAM</h2>
+      <p>
+        Connect the components as follows. Ensure the board is disconnected from power while wiring.
+      </p>
+      <pre>
 ESP8266      DHT11
 ------------------
 3V3 (or 5V)  -> VCC (+)
 GND          -> GND (-)
 D1 (GPIO 5)  -> DATA (Signal)
-        </pre>
+        </pre
+      >
 
-        <div class="warning-box">
-            <i class="fas fa-exclamation-triangle"></i> WARNING: Double-check your VCC and GND connections. Reversing polarity will fry your sensor instantly.
-        </div>
+      <div class="warning-box">
+        <i class="fas fa-exclamation-triangle"></i> WARNING: Double-check your VCC and GND
+        connections. Reversing polarity will fry your sensor instantly.
+      </div>
 
-        <h2>// 03_FLASH_FIRMWARE</h2>
-        <p>1. Install the <code>Arduino IDE</code>.<br>
-        2. Add ESP8266 board manager URL in Preferences.<br>
-        3. Install the <code>DHT sensor library</code> by Adafruit.</p>
+      <h2>// 03_FLASH_FIRMWARE</h2>
+      <p>
+        1. Install the <code>Arduino IDE</code>.<br />
+        2. Add ESP8266 board manager URL in Preferences.<br />
+        3. Install the <code>DHT sensor library</code> by Adafruit.
+      </p>
 
-        <pre><code>
+      <pre><code>
 #include &lt;ESP8266WiFi.h&gt;
 #include &lt;DHT.h&gt;
 
@@ -144,21 +164,24 @@ void loop() {
 }
         </code></pre>
 
-        <h2>// 04_DEPLOYMENT</h2>
-        <p>Upload the code and open the Serial Monitor (115200 baud). You should see temperature readings streaming in. You have successfully initialized a Phantom Node.</p>
-        
-        <p style="margin-top: 50px; text-align: center;">
-            <a href="../hardware-roadmap.html" class="btn-cyber">RETURN TO ROADMAP</a>
-        </p>
+      <h2>// 04_DEPLOYMENT</h2>
+      <p>
+        Upload the code and open the Serial Monitor (115200 baud). You should see temperature
+        readings streaming in. You have successfully initialized a Phantom Node.
+      </p>
 
+      <p style="margin-top: 50px; text-align: center">
+        <a href="../hardware-roadmap.html" class="btn-cyber">RETURN TO ROADMAP</a>
+      </p>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../../js/footer.js"></script>
-    <script>renderFooter('../../');</script>
+    <script>
+      renderFooter('../../');
+    </script>
     <script src="../../js/theme.js"></script>
     <script src="../../js/back-to-top.js"></script>
     <script src="../../js/scroll-progress.js"></script>
-
-</body>
+  </body>
 </html>

@@ -1,49 +1,49 @@
 /* Provides a glowing cursor follow effect for desktop users */
 
 #cursor-highlight {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, var(--accent-color, #00aaff) 0%, transparent 70%);
-    opacity: 0.1;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 999;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
-    transition: opacity 0.3s ease;
-    will-change: transform;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent-color, #00aaff) 0%, transparent 70%);
+  opacity: 0.1;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: opacity 0.3s ease;
+  will-change: transform;
 }
 
 /* Hide on touch devices */
 @media (pointer: coarse) {
-    #cursor-highlight {
-        display: none;
-    }
+  #cursor-highlight {
+    display: none;
+  }
 }
 
 /* Hide on mobile viewports */
 @media (max-width: 768px) {
-    #cursor-highlight {
-        display: none;
-    }
+  #cursor-highlight {
+    display: none;
+  }
 }
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-    #cursor-highlight {
-        transition: none;
-    }
+  #cursor-highlight {
+    transition: none;
+  }
 }
 
 /* Dark theme specific adjustments */
-[data-theme="dark"] #cursor-highlight {
-    opacity: 0.15;
+[data-theme='dark'] #cursor-highlight {
+  opacity: 0.15;
 }
 
 /* Light theme specific adjustments */
-[data-theme="light"] #cursor-highlight {
-    opacity: 0.08;
+[data-theme='light'] #cursor-highlight {
+  opacity: 0.08;
 }

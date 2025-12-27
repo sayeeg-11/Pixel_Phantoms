@@ -1,12 +1,12 @@
-function renderFooter(basePath = "") {
-    const placeholder = document.getElementById("footer-placeholder");
-    
-    if (!placeholder) {
-        console.warn('Footer placeholder not found');
-        return;
-    }
+function renderFooter(basePath = '') {
+  const placeholder = document.getElementById('footer-placeholder');
 
-    const footerHTML = `
+  if (!placeholder) {
+    console.warn('Footer placeholder not found');
+    return;
+  }
+
+  const footerHTML = `
     <footer class="site-footer dynamic-electronic">
         <div class="signal-grid" aria-hidden="true">
             <div class="signal-line horizontal"></div>
@@ -90,6 +90,6 @@ function renderFooter(basePath = "") {
         </div>
     </footer>
     `;
-    
-    placeholder.innerHTML = footerHTML;
+
+  placeholder.innerHTML = footerHTML;
 }

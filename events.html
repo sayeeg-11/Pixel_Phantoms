@@ -1,20 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore upcoming events at Pixel Phantoms: hackathons, workshops, meetups, and webinars. Join the community and level up your skills.">
-    <meta property="og:title" content="Pixel Phantoms | Events">
-    <meta property="og:description" content="Explore upcoming events at Pixel Phantoms: hackathons, workshops, meetups, and webinars. Join the community and level up your skills.">
-    <meta property="og:image" content="assets/logo.png">
-    <meta property="og:url" content="https://pixelphantoms.com/events.html">
-    <meta property="og:type" content="website">
-    <link rel="canonical" href="https://pixelphantoms.com/events.html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore upcoming events at Pixel Phantoms: hackathons, workshops, meetups, and webinars. Join the community and level up your skills."
+    />
+    <meta property="og:title" content="Pixel Phantoms | Events" />
+    <meta
+      property="og:description"
+      content="Explore upcoming events at Pixel Phantoms: hackathons, workshops, meetups, and webinars. Join the community and level up your skills."
+    />
+    <meta property="og:image" content="assets/logo.png" />
+    <meta property="og:url" content="https://pixelphantoms.com/events.html" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://pixelphantoms.com/events.html" />
     <title>Pixel Phantoms | Events</title>
-    <link rel="icon" href="assets/logo.png">
+    <link rel="icon" href="assets/logo.png" />
 
-
-    <link rel="stylesheet" href="css/scroll-progress.css">
+    <link rel="stylesheet" href="css/scroll-progress.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/events.css" />
     <link rel="stylesheet" href="css/home-gsap.css" />
@@ -72,9 +77,8 @@
           </div>
           <p id="next-event-name" class="highlight-event"></p>
           <p class="countdown-note">
-  No events scheduled immediately at the moment. Please check back later.
-</p>
-
+            No events scheduled immediately at the moment. Please check back later.
+          </p>
         </div>
       </section>
 
@@ -88,37 +92,46 @@
 
       <section class="organize-section">
         <div class="organize-container">
-            <div class="organize-content">
-                <h2> Host an Event</h2>
-                <p>Have an idea for a workshop or hackathon? Submit your proposal!</p>
-                <form id="organize-form">
-                    <div class="form-row">
-                        <div class="form-group"> <label>Event Title</label>
-                            <input type="text" id="event-title" placeholder="e.g. Intro to DevOps" required>
-                        </div>
-                        <div class="form-group"> <label>Event Type</label>
-                            <select id="event-type">
-                                <option value="workshop">Workshop</option>
-                                <option value="hackathon">Hackathon</option>
-                                <option value="meetup">Meetup</option>
-                                <option value="webinar">Webinar</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">  <label for="event-date">Proposed Date</label>
-                         <input type="date"id="event-date"name="event-date"required>
-  <small id="event-date-error" class="field-error"></small>
-                    </div>
-                    <div class="form-group"> <label>Description</label>
-                        <textarea id="event-desc" rows="4" placeholder="Briefly describe the event goal..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-organize">Submit Proposal</button>
-                    <div id="organize-feedback" class="feedback-message"></div>
-                </form>
-            </div>
-            <div class="organize-image">
-                <img src="assets/host-event.jpg" alt="Host an Event Illustration" loading="lazy">
-            </div>
+          <div class="organize-content">
+            <h2>Host an Event</h2>
+            <p>Have an idea for a workshop or hackathon? Submit your proposal!</p>
+            <form id="organize-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Event Title</label>
+                  <input type="text" id="event-title" placeholder="e.g. Intro to DevOps" required />
+                </div>
+                <div class="form-group">
+                  <label>Event Type</label>
+                  <select id="event-type">
+                    <option value="workshop">Workshop</option>
+                    <option value="hackathon">Hackathon</option>
+                    <option value="meetup">Meetup</option>
+                    <option value="webinar">Webinar</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="event-date">Proposed Date</label>
+                <input type="date" id="event-date" name="event-date" required />
+                <small id="event-date-error" class="field-error"></small>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  id="event-desc"
+                  rows="4"
+                  placeholder="Briefly describe the event goal..."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-organize">Submit Proposal</button>
+              <div id="organize-feedback" class="feedback-message"></div>
+            </form>
+          </div>
+          <div class="organize-image">
+            <img src="assets/host-event.jpg" alt="Host an Event Illustration" loading="lazy" />
+          </div>
         </div>
       </section>
     </main>
@@ -126,9 +139,8 @@
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>
     <script>
-        renderFooter('');
+      renderFooter('');
     </script>
-
 
     <script src="js/theme.js"></script>
     <script src="js/cursor-effect.js"></script>

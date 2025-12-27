@@ -1,173 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Contributors</title>
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/contributors.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/contributors.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-contributors" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-contributors" tabindex="-1">
-        <section class="content contributors-section">
-            <div class="section-header">
-                <h1>Our Amazing Contributors</h1>
-                <p>Meet the talented developers who make Pixel Phantoms better every day.</p>
-            </div>
+      <section class="content contributors-section">
+        <div class="section-header">
+          <h1>Our Amazing Contributors</h1>
+          <p>Meet the talented developers who make Pixel Phantoms better every day.</p>
+        </div>
 
-            <!-- UPDATED STATS SECTION -->
-            <div class="stats-grid">
-                <div class="stats-card">
-                    <h3>Total Contributors</h3>
-                    <p id="total-contributors">Loading...</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Total Commits</h3>
-                    <p id="total-commits">Loading...</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Total PRs</h3>
-                    <p id="total-prs">Loading...</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Total Points</h3>
-                    <p id="total-points">Loading...</p>
-                </div>
-                <div class="stats-card">
-                    <h3>GitHub Stars</h3>
-                    <p id="total-stars">Loading...</p>
-                </div>
-                <div class="stats-card">
-                    <h3>Forks</h3>
-                    <p id="total-forks">Loading...</p>
-                </div>
-            </div>
-            <!-- END OF STATS SECTION -->
+        <!-- UPDATED STATS SECTION -->
+        <div class="stats-grid">
+          <div class="stats-card">
+            <h3>Total Contributors</h3>
+            <p id="total-contributors">Loading...</p>
+          </div>
+          <div class="stats-card">
+            <h3>Total Commits</h3>
+            <p id="total-commits">Loading...</p>
+          </div>
+          <div class="stats-card">
+            <h3>Total PRs</h3>
+            <p id="total-prs">Loading...</p>
+          </div>
+          <div class="stats-card">
+            <h3>Total Points</h3>
+            <p id="total-points">Loading...</p>
+          </div>
+          <div class="stats-card">
+            <h3>GitHub Stars</h3>
+            <p id="total-stars">Loading...</p>
+          </div>
+          <div class="stats-card">
+            <h3>Forks</h3>
+            <p id="total-forks">Loading...</p>
+          </div>
+        </div>
+        <!-- END OF STATS SECTION -->
 
-            <div class="lead-container">
-                <div class="project-lead-card">
-                    <div class="lead-badge">👑 Project Lead</div>
-                    <img src="https://avatars.githubusercontent.com/u/1234567?v=4" id="lead-avatar" alt="Lead">
-                    <h3 id="lead-name">Sayee Gosavi</h3>
-                    <p class="role">Leading the project vision and development.</p>
-                    <div class="lead-socials">
-                        <a href="https://github.com/sayeeg-11" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
+        <div class="lead-container">
+          <div class="project-lead-card">
+            <div class="lead-badge">👑 Project Lead</div>
+            <img
+              src="https://avatars.githubusercontent.com/u/1234567?v=4"
+              id="lead-avatar"
+              alt="Lead"
+            />
+            <h3 id="lead-name">Sayee Gosavi</h3>
+            <p class="role">Leading the project vision and development.</p>
+            <div class="lead-socials">
+              <a href="https://github.com/sayeeg-11" target="_blank"
+                ><i class="fab fa-github"></i
+              ></a>
             </div>
+          </div>
+        </div>
 
-            <h2>Top Contributors</h2>
-            <div class="contributors-grid" id="contributors-grid"></div>
-            
-            <div id="pagination-controls" class="pagination-container"></div>
+        <h2>Top Contributors</h2>
+        <div class="contributors-grid" id="contributors-grid"></div>
 
-            <h2 class="mt-large">Recent Contribution Activity</h2>
-            <div class="activity-container" id="activity-list">
-                <div class="loading-text">Fetching latest commits...</div>
-            </div>
+        <div id="pagination-controls" class="pagination-container"></div>
 
-            <h2 class="mt-large">Want to Contribute?</h2>
-            <p class="text-center">Join our community and help improve Pixel Phantoms</p>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h3>Create an Issue</h3>
-                    <p>Describe your change and wait for assignment.</p>
-                </div>
-                <div class="step-card">
-                    <i class="fab fa-github-alt"></i>
-                    <h3>Fork Repo</h3>
-                    <p>Fork the main repository to your GitHub account.</p>
-                </div>
-                <div class="step-card">
-                    <i class="fas fa-code-branch"></i>
-                    <h3>Create Branch</h3>
-                    <p>Create a feature branch for your changes.</p>
-                </div>
-                <div class="step-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Make Changes</h3>
-                    <p>Implement your features or bug fixes.</p>
-                </div>
-                <div class="step-card">
-                    <i class="fas fa-upload"></i>
-                    <h3>Submit PR</h3>
-                    <p>Create a pull request for review.</p>
-                </div>
-            </div>
-        </section>
+        <h2 class="mt-large">Recent Contribution Activity</h2>
+        <div class="activity-container" id="activity-list">
+          <div class="loading-text">Fetching latest commits...</div>
+        </div>
+
+        <h2 class="mt-large">Want to Contribute?</h2>
+        <p class="text-center">Join our community and help improve Pixel Phantoms</p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>Create an Issue</h3>
+            <p>Describe your change and wait for assignment.</p>
+          </div>
+          <div class="step-card">
+            <i class="fab fa-github-alt"></i>
+            <h3>Fork Repo</h3>
+            <p>Fork the main repository to your GitHub account.</p>
+          </div>
+          <div class="step-card">
+            <i class="fas fa-code-branch"></i>
+            <h3>Create Branch</h3>
+            <p>Create a feature branch for your changes.</p>
+          </div>
+          <div class="step-card">
+            <i class="fas fa-code"></i>
+            <h3>Make Changes</h3>
+            <p>Implement your features or bug fixes.</p>
+          </div>
+          <div class="step-card">
+            <i class="fas fa-upload"></i>
+            <h3>Submit PR</h3>
+            <p>Create a pull request for review.</p>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div id="contributor-modal" class="modal-overlay">
-        <div class="modal-container">
-            <button class="close-modal" onclick="closeModal()" aria-label="Close modal">&times;</button>
-            
-            <div class="modal-header">
-                <img id="modal-avatar" src="" alt="Contributor">
-                <h2 id="modal-name">Username</h2>
-                <p id="modal-id" class="modal-subtitle">ID: --</p>
-                <div id="modal-league-badge" class="modal-league-tag"></div>
-            </div>
+      <div class="modal-container">
+        <button class="close-modal" onclick="closeModal()" aria-label="Close modal">&times;</button>
 
-            <div class="modal-stats-row">
-                <div class="modal-stat">
-                    <span class="stat-label">Rank</span>
-                    <span class="stat-number" id="modal-rank">#0</span>
-                </div>
-                <div class="modal-stat">
-                    <span class="stat-label">Points</span>
-                    <span class="stat-number" id="modal-score">0</span>
-                </div>
-                <div class="modal-stat">
-                    <span class="stat-label">PRs</span>
-                    <span class="stat-number" id="modal-prs">0</span>
-                </div>
-                <div class="modal-stat">
-                    <span class="stat-label">Commits</span>
-                    <span class="stat-number" id="modal-commits">0</span>
-                </div>
-            </div>
-
-            <div class="modal-actions">
-                <a href="#" id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
-                    <i class="fas fa-code-branch"></i> View Pull Requests
-                </a>
-                <a href="#" id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
-                    <i class="fab fa-github"></i> GitHub Profile
-                </a>
-            </div>
+        <div class="modal-header">
+          <img id="modal-avatar" src="" alt="Contributor" />
+          <h2 id="modal-name">Username</h2>
+          <p id="modal-id" class="modal-subtitle">ID: --</p>
+          <div id="modal-league-badge" class="modal-league-tag"></div>
         </div>
+
+        <div class="modal-stats-row">
+          <div class="modal-stat">
+            <span class="stat-label">Rank</span>
+            <span class="stat-number" id="modal-rank">#0</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">Points</span>
+            <span class="stat-number" id="modal-score">0</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">PRs</span>
+            <span class="stat-number" id="modal-prs">0</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">Commits</span>
+            <span class="stat-number" id="modal-commits">0</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
+            <i class="fas fa-code-branch"></i> View Pull Requests
+          </a>
+          <a href="#" id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
+            <i class="fab fa-github"></i> GitHub Profile
+          </a>
+        </div>
+      </div>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
     <script>
-        renderFooter('../');
+      renderFooter('../');
     </script>
-
 
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/contributors.js"></script>
     <script src="../js/scroll-progress.js"></script>
-</body>
+  </body>
 </html>

@@ -1,148 +1,181 @@
 /* system-design-road.css */
 :root {
-    --sys-purple: #a855f7;
-    --sys-indigo: #6366f1;
-    --glass-bg: rgba(10, 10, 10, 0.9);
+  --sys-purple: #a855f7;
+  --sys-indigo: #6366f1;
+  --glass-bg: rgba(10, 10, 10, 0.9);
 }
 
 .centered-header {
-    text-align: center;
-    margin-top: 100px;
-    margin-bottom: 50px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .roadmap-wrapper {
-    position: relative;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    min-height: 100vh;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
 }
 
 .roadmap-spine {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, transparent, var(--sys-purple), var(--sys-indigo), transparent);
-    transform: translateX(-50%);
-    z-index: 0;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--sys-purple),
+    var(--sys-indigo),
+    transparent
+  );
+  transform: translateX(-50%);
+  z-index: 0;
 }
 
 .roadmap-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 60px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
 }
 
 .chapter-node {
-    position: relative;
-    width: 44%;
-    background: var(--glass-bg);
-    border: 1px solid #333;
-    border-radius: 20px;
-    padding: 30px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    z-index: 1;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  width: 44%;
+  background: var(--glass-bg);
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.chapter-node.left { align-self: flex-start; text-align: right; }
-.chapter-node.right { align-self: flex-end; text-align: left; }
+.chapter-node.left {
+  align-self: flex-start;
+  text-align: right;
+}
+.chapter-node.right {
+  align-self: flex-end;
+  text-align: left;
+}
 
 .chapter-node:hover {
-    border-color: var(--sys-purple);
-    transform: translateY(-5px);
+  border-color: var(--sys-purple);
+  transform: translateY(-5px);
 }
 
 .chapter-node::after {
-    content: "";
-    position: absolute;
-    top: 35px;
-    width: 16px;
-    height: 16px;
-    background: var(--sys-purple);
-    border-radius: 50%;
-    box-shadow: 0 0 12px var(--sys-purple);
+  content: '';
+  position: absolute;
+  top: 35px;
+  width: 16px;
+  height: 16px;
+  background: var(--sys-purple);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--sys-purple);
 }
-.chapter-node.left::after { right: -13.5%; }
-.chapter-node.right::after { left: -13.5%; }
+.chapter-node.left::after {
+  right: -13.5%;
+}
+.chapter-node.right::after {
+  left: -13.5%;
+}
 
 .node-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.chapter-node.left .node-header { flex-direction: row-reverse; }
+.chapter-node.left .node-header {
+  flex-direction: row-reverse;
+}
 
 .node-header h3 {
-    color: var(--sys-purple);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
-    margin: 0;
+  color: var(--sys-purple);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .toggle-btn {
-    background: rgba(168, 85, 247, 0.1);
-    border: 1px solid var(--sys-purple);
-    color: var(--sys-purple);
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid var(--sys-purple);
+  color: var(--sys-purple);
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
 }
 
 .toggle-btn.active {
-    background: var(--sys-purple);
-    color: #000;
-    transform: rotate(45deg);
+  background: var(--sys-purple);
+  color: #000;
+  transform: rotate(45deg);
 }
 
 .chapter-details {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-    opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s;
+  opacity: 0;
 }
 
 .chapter-details.open {
-    max-height: 1000px;
-    opacity: 1;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #222;
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #222;
 }
 
 .module-link {
-    display: block;
-    color: #999;
-    text-decoration: none;
-    padding: 12px;
-    margin: 8px 0;
-    background: rgba(255,255,255,0.03);
-    border-radius: 8px;
-    transition: 0.3s;
+  display: block;
+  color: #999;
+  text-decoration: none;
+  padding: 12px;
+  margin: 8px 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
 .module-link:hover {
-    color: #fff;
-    background: rgba(168, 85, 247, 0.2);
-    padding-left: 20px;
+  color: #fff;
+  background: rgba(168, 85, 247, 0.2);
+  padding-left: 20px;
 }
 
 @media (max-width: 768px) {
-    .roadmap-spine { left: 20px; }
-    .chapter-node { width: 85%; align-self: flex-end; text-align: left; }
-    .chapter-node.left .node-header { flex-direction: row; }
-    .chapter-node.left::after, .chapter-node.right::after { left: -34px; }
+  .roadmap-spine {
+    left: 20px;
+  }
+  .chapter-node {
+    width: 85%;
+    align-self: flex-end;
+    text-align: left;
+  }
+  .chapter-node.left .node-header {
+    flex-direction: row;
+  }
+  .chapter-node.left::after,
+  .chapter-node.right::after {
+    left: -34px;
+  }
 }

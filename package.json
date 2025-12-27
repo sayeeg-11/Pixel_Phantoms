@@ -1,0 +1,38 @@
+{
+  "name": "pixel_phantoms",
+  "version": "1.0.0",
+  "description": "- [👻 Pixel Phantoms — From Students, For Students](#-pixel-phantoms--from-students-for-students) - [🌟 Project Overview](#-project-overview) - [🚀 Why This Project Matters](#-why-this-project-matters) - [📦 How to Install & Run Locally](#-how-to-install--run-locally) - [📁 Project Structure](#-project-structure) - [🎨 Screenshot / Demo](#-screenshot--demo) - [🤝 How to Contribute](#-how-to-contribute) - [🧑‍💻 Core Committee — 2024–25](#-core-committee--202425) - [🛠 Tech Stack](#-tech-stack) - [🗺️ Project Roadmap](#-project-roadmap) - [📝 Issues](#-issues) - [📌 License](#-license) - [🔥 Contributors](#-contributors) - [📫 Contact](#-contact)",
+  "main": "compress-images.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{js,css,html}\"",
+    "format:check": "prettier --check \"**/*.{js,css,html}\"",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4"
+  },
+  "type": "module"
+}

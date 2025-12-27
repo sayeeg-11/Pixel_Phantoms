@@ -1,125 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Privacy Protocol</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/privacy.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/privacy.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-privacy" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-privacy" tabindex="-1">
-        
-        <section class="privacy-hero">
-            <div class="hero-content">
-                <h1 id="dynamic-title"></h1>
-                <p class="hero-subtitle">Transparency is our source code. Here is how we handle your data.</p>
-                <div class="last-updated">Last Update: <span>November 26, 2025</span></div>
+      <section class="privacy-hero">
+        <div class="hero-content">
+          <h1 id="dynamic-title"></h1>
+          <p class="hero-subtitle">
+            Transparency is our source code. Here is how we handle your data.
+          </p>
+          <div class="last-updated">Last Update: <span>November 26, 2025</span></div>
+        </div>
+      </section>
+
+      <section class="policy-container">
+        <div class="policy-wrapper">
+          <div class="policy-section reveal-text">
+            <h2>1. Data Collection Protocol</h2>
+            <p>
+              We collect minimal data required to facilitate community interactions. This includes
+              your GitHub username, Discord ID, and email address provided during registration. We
+              do not store passwords; all authentication is handled via OAuth tokens.
+            </p>
+          </div>
+
+          <div class="policy-section reveal-text">
+            <h2>2. Usage of Information</h2>
+            <p>Your data is used exclusively for:</p>
+            <ul class="policy-list">
+              <li>Updating the live leaderboard.</li>
+              <li>Verifying hackathon submissions.</li>
+              <li>Sending critical community announcements (no spam).</li>
+            </ul>
+          </div>
+
+          <div class="policy-section reveal-text">
+            <h2>3. Third-Party Services</h2>
+            <p>We utilize trusted third-party services to maintain our infrastructure:</p>
+            <ul class="policy-list">
+              <li><strong>GitHub API:</strong> For fetching contribution data.</li>
+              <li><strong>Firebase/Supabase:</strong> For real-time database management.</li>
+              <li><strong>Discord Webhooks:</strong> For notifications.</li>
+            </ul>
+          </div>
+
+          <div class="policy-section reveal-text">
+            <h2>4. Cookies & Local Storage</h2>
+            <p>
+              We use Local Storage to save your "Dark Mode" preference and session tokens. No
+              tracking cookies are used for advertising purposes.
+            </p>
+          </div>
+        </div>
+
+        <aside class="policy-sidebar">
+          <div class="stamps-container reveal-stamps">
+            <h3>Infrastructure & Compliance</h3>
+            <p>Our platform adheres to the following standards:</p>
+
+            <div class="stamps-grid">
+              <div class="stamp-box">
+                <img src="https://via.placeholder.com/100?text=SSL+Secure" alt="SSL Secure" />
+                <span>256-bit Encryption</span>
+              </div>
+              <div class="stamp-box">
+                <img src="https://via.placeholder.com/100?text=GDPR" alt="GDPR Compliant" />
+                <span>GDPR Ready</span>
+              </div>
+              <div class="stamp-box">
+                <img src="https://via.placeholder.com/100?text=MIT+License" alt="Open Source" />
+                <span>MIT Licensed</span>
+              </div>
+              <div class="stamp-box">
+                <img src="https://via.placeholder.com/100?text=ISO" alt="ISO Standard" />
+                <span>ISO Pending</span>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <section class="policy-container">
-            <div class="policy-wrapper">
-                
-                <div class="policy-section reveal-text">
-                    <h2>1. Data Collection Protocol</h2>
-                    <p>We collect minimal data required to facilitate community interactions. This includes your GitHub username, Discord ID, and email address provided during registration. We do not store passwords; all authentication is handled via OAuth tokens.</p>
-                </div>
-
-                <div class="policy-section reveal-text">
-                    <h2>2. Usage of Information</h2>
-                    <p>Your data is used exclusively for:</p>
-                    <ul class="policy-list">
-                        <li>Updating the live leaderboard.</li>
-                        <li>Verifying hackathon submissions.</li>
-                        <li>Sending critical community announcements (no spam).</li>
-                    </ul>
-                </div>
-
-                <div class="policy-section reveal-text">
-                    <h2>3. Third-Party Services</h2>
-                    <p>We utilize trusted third-party services to maintain our infrastructure:</p>
-                    <ul class="policy-list">
-                        <li><strong>GitHub API:</strong> For fetching contribution data.</li>
-                        <li><strong>Firebase/Supabase:</strong> For real-time database management.</li>
-                        <li><strong>Discord Webhooks:</strong> For notifications.</li>
-                    </ul>
-                </div>
-
-                <div class="policy-section reveal-text">
-                    <h2>4. Cookies & Local Storage</h2>
-                    <p>We use Local Storage to save your "Dark Mode" preference and session tokens. No tracking cookies are used for advertising purposes.</p>
-                </div>
-
-            </div>
-
-            <aside class="policy-sidebar">
-                <div class="stamps-container reveal-stamps">
-                    <h3>Infrastructure & Compliance</h3>
-                    <p>Our platform adheres to the following standards:</p>
-                    
-                    <div class="stamps-grid">
-                        <div class="stamp-box">
-                            <img src="https://via.placeholder.com/100?text=SSL+Secure" alt="SSL Secure">
-                            <span>256-bit Encryption</span>
-                        </div>
-                        <div class="stamp-box">
-                            <img src="https://via.placeholder.com/100?text=GDPR" alt="GDPR Compliant">
-                            <span>GDPR Ready</span>
-                        </div>
-                        <div class="stamp-box">
-                            <img src="https://via.placeholder.com/100?text=MIT+License" alt="Open Source">
-                            <span>MIT Licensed</span>
-                        </div>
-                        <div class="stamp-box">
-                            <img src="https://via.placeholder.com/100?text=ISO" alt="ISO Standard">
-                            <span>ISO Pending</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-privacy reveal-stamps">
-                    <h4>Have Privacy Concerns?</h4>
-                    <p>Directly contact our Data Protection Officer.</p>
-                    <a href="mailto:privacy@pixelphantoms.com" class="btn-privacy">Contact DPO</a>
-                </div>
-            </aside>
-
-        </section>
-
+          <div class="contact-privacy reveal-stamps">
+            <h4>Have Privacy Concerns?</h4>
+            <p>Directly contact our Data Protection Officer.</p>
+            <a href="mailto:privacy@pixelphantoms.com" class="btn-privacy">Contact DPO</a>
+          </div>
+        </aside>
+      </section>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <script src="../js/privacy.js"></script>
     <script src="../js/scroll-progress.js"></script>
-
-</body>
+  </body>
 </html>

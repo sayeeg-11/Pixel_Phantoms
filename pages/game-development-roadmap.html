@@ -1,54 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Development Roadmap - Pixel Phantoms</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/game-development-roadmap.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/navbar.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/game-development-roadmap.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
     <div id="navbar-placeholder"></div>
 
     <main class="roadmap-main">
-        <section class="roadmap-hero">
-            <h1 class="glitch-text">GAME_DEV_PROTOCOL</h1>
-            <p class="subtitle">Initialize sequence: Zero to Hero</p>
-            <p class="description">Master the art of game creation with this 9-step protocols.</p>
-        </section>
+      <section class="roadmap-hero">
+        <h1 class="glitch-text">GAME_DEV_PROTOCOL</h1>
+        <p class="subtitle">Initialize sequence: Zero to Hero</p>
+        <p class="description">Master the art of game creation with this 9-step protocols.</p>
+      </section>
 
-        <div class="roadmap-wrapper">
-            <div class="roadmap-spine"></div>
-            <div id="roadmap-content">
-                <div class="loading-state">
-                    <p style="text-align:center; color:#00ff41;">LOADING_ASSETS...</p>
-                </div>
-            </div>
+      <div class="roadmap-wrapper">
+        <div class="roadmap-spine"></div>
+        <div id="roadmap-content">
+          <div class="loading-state">
+            <p style="text-align: center; color: #00ff41">LOADING_ASSETS...</p>
+          </div>
         </div>
+      </div>
 
-        <section class="roadmap-feedback">
-            <h2>Feedback</h2>
-            <p>Did you find this roadmap helpful? <a href="/contact.html">Let us know!</a></p>
-        </section>
+      <section class="roadmap-feedback">
+        <h2>Feedback</h2>
+        <p>Did you find this roadmap helpful? <a href="/contact.html">Let us know!</a></p>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="../js/navbar.js"></script>
-    <script>if(typeof renderNavbar === 'function') renderNavbar('../');</script>
+    <script>
+      if (typeof renderNavbar === 'function') renderNavbar('../');
+    </script>
     <script src="../js/footer.js"></script>
-    <script>if(typeof renderFooter === 'function') renderFooter('../');</script>
+    <script>
+      if (typeof renderFooter === 'function') renderFooter('../');
+    </script>
     <script src="../js/game-development-roadmap.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/scroll-progress.js"></script>
-</body>
+  </body>
 </html>

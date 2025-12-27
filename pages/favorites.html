@@ -1,153 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | My Favorites</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/favorites.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/favorites.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <main class="main-content">
-        <section class="hero-section">
-            <div class="grid-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-glitch" data-text="MY_FAVORITES">MY_FAVORITES</h1>
-                <div class="terminal-box">
-                    <p class="console-text">> Accessing personal vault...</p>
-                    <p class="console-text">> Loading bookmarked projects...</p>
-                    <p class="console-text success">> Favorites loaded successfully.</p>
-                </div>
-            </div>
-        </section>
+      <section class="hero-section">
+        <div class="grid-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-glitch" data-text="MY_FAVORITES">MY_FAVORITES</h1>
+          <div class="terminal-box">
+            <p class="console-text">> Accessing personal vault...</p>
+            <p class="console-text">> Loading bookmarked projects...</p>
+            <p class="console-text success">> Favorites loaded successfully.</p>
+          </div>
+        </div>
+      </section>
 
-        <section class="favorites-section">
-            <div class="container">
-                <div class="favorites-header">
-                    <h2><i class="fas fa-heart"></i> MY BOOKMARKED PROJECTS</h2>
-                    <div class="favorites-actions">
-                        <button class="btn-hollow" id="export-favorites">
-                            <i class="fas fa-download"></i> Export
-                        </button>
-                        <button class="btn-hollow" id="import-favorites">
-                            <i class="fas fa-upload"></i> Import
-                        </button>
-                        <button class="btn-hollow" id="clear-all-favorites">
-                            <i class="fas fa-trash-alt"></i> Clear All
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="empty-favorites" id="empty-favorites-state">
-                    <i class="fas fa-heart-broken"></i>
-                    <h3>No favorites yet!</h3>
-                    <p>You haven't bookmarked any projects yet.</p>
-                    <p>Browse projects and click the <i class="fas fa-heart"></i> icon to add them here.</p>
-                    <a href="../pages/projects.html" class="btn-cyber">
-                        <i class="fas fa-rocket"></i> Explore Projects
-                    </a>
-                </div>
-                
-                <div class="projects-grid" id="favorites-grid">
-                    <!-- Favorites will be loaded here dynamically -->
-                </div>
-                
-                <div class="favorites-stats">
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3 class="stat-value" id="total-favorites">0</h3>
-                        <p class="stat-label">Total Favorites</p>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="stat-value" id="unique-tech">0</h3>
-                        <p class="stat-label">Unique Technologies</p>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <h3 class="stat-value" id="oldest-favorite">--</h3>
-                        <p class="stat-label">Oldest Favorite</p>
-                    </div>
-                </div>
+      <section class="favorites-section">
+        <div class="container">
+          <div class="favorites-header">
+            <h2><i class="fas fa-heart"></i> MY BOOKMARKED PROJECTS</h2>
+            <div class="favorites-actions">
+              <button class="btn-hollow" id="export-favorites">
+                <i class="fas fa-download"></i> Export
+              </button>
+              <button class="btn-hollow" id="import-favorites">
+                <i class="fas fa-upload"></i> Import
+              </button>
+              <button class="btn-hollow" id="clear-all-favorites">
+                <i class="fas fa-trash-alt"></i> Clear All
+              </button>
             </div>
-        </section>
+          </div>
+
+          <div class="empty-favorites" id="empty-favorites-state">
+            <i class="fas fa-heart-broken"></i>
+            <h3>No favorites yet!</h3>
+            <p>You haven't bookmarked any projects yet.</p>
+            <p>Browse projects and click the <i class="fas fa-heart"></i> icon to add them here.</p>
+            <a href="../pages/projects.html" class="btn-cyber">
+              <i class="fas fa-rocket"></i> Explore Projects
+            </a>
+          </div>
+
+          <div class="projects-grid" id="favorites-grid">
+            <!-- Favorites will be loaded here dynamically -->
+          </div>
+
+          <div class="favorites-stats">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h3 class="stat-value" id="total-favorites">0</h3>
+              <p class="stat-label">Total Favorites</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-code"></i>
+              </div>
+              <h3 class="stat-value" id="unique-tech">0</h3>
+              <p class="stat-label">Unique Technologies</p>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="fas fa-calendar"></i>
+              </div>
+              <h3 class="stat-value" id="oldest-favorite">--</h3>
+              <p class="stat-label">Oldest Favorite</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/favorites.js"></script>
     <script src="../js/scroll-progress.js"></script>
     <script>
-        // Initialize favorites page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Wait for favorites manager to initialize
-            setTimeout(() => {
-                if (window.FavoritesManager) {
-                    loadFavoritesPage();
-                }
-            }, 500);
-            
-            function loadFavoritesPage() {
-                const favorites = window.FavoritesManager.getFavorites();
-                const grid = document.getElementById('favorites-grid');
-                const emptyState = document.getElementById('empty-favorites-state');
-                
-                if (favorites.length === 0) {
-                    if (emptyState) emptyState.style.display = 'block';
-                    if (grid) grid.style.display = 'none';
-                    return;
-                }
-                
-                // Show grid, hide empty state
-                if (emptyState) emptyState.style.display = 'none';
-                if (grid) grid.style.display = 'grid';
-                
-                // Load each favorite project
-                favorites.forEach(projectId => {
-                    const projectData = window.FavoritesManager.getProjectData(projectId);
-                    if (projectData) {
-                        createFavoriteCard(projectData);
-                    }
-                });
-                
-                // Update stats
-                updateFavoritesStats(favorites);
-                
-                // Setup action buttons
-                setupActionButtons();
+      // Initialize favorites page
+      document.addEventListener('DOMContentLoaded', function () {
+        // Wait for favorites manager to initialize
+        setTimeout(() => {
+          if (window.FavoritesManager) {
+            loadFavoritesPage();
+          }
+        }, 500);
+
+        function loadFavoritesPage() {
+          const favorites = window.FavoritesManager.getFavorites();
+          const grid = document.getElementById('favorites-grid');
+          const emptyState = document.getElementById('empty-favorites-state');
+
+          if (favorites.length === 0) {
+            if (emptyState) emptyState.style.display = 'block';
+            if (grid) grid.style.display = 'none';
+            return;
+          }
+
+          // Show grid, hide empty state
+          if (emptyState) emptyState.style.display = 'none';
+          if (grid) grid.style.display = 'grid';
+
+          // Load each favorite project
+          favorites.forEach(projectId => {
+            const projectData = window.FavoritesManager.getProjectData(projectId);
+            if (projectData) {
+              createFavoriteCard(projectData);
             }
-            
-            function createFavoriteCard(projectData) {
-                const grid = document.getElementById('favorites-grid');
-                if (!grid) return;
-                
-                const card = document.createElement('article');
-                card.className = 'cyber-card project-card';
-                card.setAttribute('data-project-id', projectData.id);
-                
-                card.innerHTML = `
+          });
+
+          // Update stats
+          updateFavoritesStats(favorites);
+
+          // Setup action buttons
+          setupActionButtons();
+        }
+
+        function createFavoriteCard(projectData) {
+          const grid = document.getElementById('favorites-grid');
+          if (!grid) return;
+
+          const card = document.createElement('article');
+          card.className = 'cyber-card project-card';
+          card.setAttribute('data-project-id', projectData.id);
+
+          card.innerHTML = `
                     <div class="card-border-top"></div>
                     <div class="card-image-wrapper">
                         <img src="https://picsum.photos/seed/${projectData.id}/600/400" alt="${projectData.title}" loading="lazy">
@@ -181,104 +191,106 @@
                         </div>
                     </div>
                 `;
-                
-                grid.appendChild(card);
-                
-                // Add event listener to bookmark button
-                const bookmarkBtn = card.querySelector('.project-bookmark-btn');
-                if (bookmarkBtn) {
-                    bookmarkBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        window.FavoritesManager.toggleFavorite(projectData.id);
-                        card.remove();
-                        loadFavoritesPage(); // Reload page
-                    });
-                }
-                
-                // Add event listener to remove button
-                const removeBtn = card.querySelector('.remove-favorite');
-                if (removeBtn) {
-                    removeBtn.addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        window.FavoritesManager.removeFavorite(projectData.id);
-                        card.remove();
-                        loadFavoritesPage(); // Reload page
-                    });
-                }
+
+          grid.appendChild(card);
+
+          // Add event listener to bookmark button
+          const bookmarkBtn = card.querySelector('.project-bookmark-btn');
+          if (bookmarkBtn) {
+            bookmarkBtn.addEventListener('click', function (e) {
+              e.stopPropagation();
+              window.FavoritesManager.toggleFavorite(projectData.id);
+              card.remove();
+              loadFavoritesPage(); // Reload page
+            });
+          }
+
+          // Add event listener to remove button
+          const removeBtn = card.querySelector('.remove-favorite');
+          if (removeBtn) {
+            removeBtn.addEventListener('click', function (e) {
+              e.stopPropagation();
+              window.FavoritesManager.removeFavorite(projectData.id);
+              card.remove();
+              loadFavoritesPage(); // Reload page
+            });
+          }
+        }
+
+        function updateFavoritesStats(favorites) {
+          // Update total count
+          const totalEl = document.getElementById('total-favorites');
+          if (totalEl) totalEl.textContent = favorites.length;
+
+          // Calculate unique technologies
+          const techSet = new Set();
+          favorites.forEach(projectId => {
+            const data = window.FavoritesManager.getProjectData(projectId);
+            if (data && data.tech) {
+              data.tech.forEach(t => techSet.add(t));
             }
-            
-            function updateFavoritesStats(favorites) {
-                // Update total count
-                const totalEl = document.getElementById('total-favorites');
-                if (totalEl) totalEl.textContent = favorites.length;
-                
-                // Calculate unique technologies
-                const techSet = new Set();
-                favorites.forEach(projectId => {
-                    const data = window.FavoritesManager.getProjectData(projectId);
-                    if (data && data.tech) {
-                        data.tech.forEach(t => techSet.add(t));
-                    }
-                });
-                
-                const uniqueTechEl = document.getElementById('unique-tech');
-                if (uniqueTechEl) uniqueTechEl.textContent = techSet.size;
-                
-                // Find oldest favorite
-                let oldestDate = null;
-                favorites.forEach(projectId => {
-                    const data = window.FavoritesManager.getProjectData(projectId);
-                    if (data && data.timestamp) {
-                        const date = new Date(data.timestamp);
-                        if (!oldestDate || date < oldestDate) {
-                            oldestDate = date;
-                        }
-                    }
-                });
-                
-                const oldestEl = document.getElementById('oldest-favorite');
-                if (oldestEl && oldestDate) {
-                    const daysAgo = Math.floor((new Date() - oldestDate) / (1000 * 60 * 60 * 24));
-                    oldestEl.textContent = `${daysAgo}d ago`;
-                }
+          });
+
+          const uniqueTechEl = document.getElementById('unique-tech');
+          if (uniqueTechEl) uniqueTechEl.textContent = techSet.size;
+
+          // Find oldest favorite
+          let oldestDate = null;
+          favorites.forEach(projectId => {
+            const data = window.FavoritesManager.getProjectData(projectId);
+            if (data && data.timestamp) {
+              const date = new Date(data.timestamp);
+              if (!oldestDate || date < oldestDate) {
+                oldestDate = date;
+              }
             }
-            
-            function setupActionButtons() {
-                // Export button
-                const exportBtn = document.getElementById('export-favorites');
-                if (exportBtn) {
-                    exportBtn.addEventListener('click', () => {
-                        window.FavoritesManager.exportFavorites();
-                    });
-                }
-                
-                // Import button
-                const importBtn = document.getElementById('import-favorites');
-                if (importBtn) {
-                    importBtn.addEventListener('click', () => {
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.accept = '.json';
-                        input.onchange = (e) => {
-                            window.FavoritesManager.importFavorites(e.target.files[0]);
-                            setTimeout(loadFavoritesPage, 1000);
-                        };
-                        input.click();
-                    });
-                }
-                
-                // Clear all button
-                const clearBtn = document.getElementById('clear-all-favorites');
-                if (clearBtn) {
-                    clearBtn.addEventListener('click', () => {
-                        if (confirm('Are you sure you want to remove ALL favorites? This cannot be undone.')) {
-                            window.FavoritesManager.clearAllFavorites();
-                            loadFavoritesPage();
-                        }
-                    });
-                }
-            }
-        });
+          });
+
+          const oldestEl = document.getElementById('oldest-favorite');
+          if (oldestEl && oldestDate) {
+            const daysAgo = Math.floor((new Date() - oldestDate) / (1000 * 60 * 60 * 24));
+            oldestEl.textContent = `${daysAgo}d ago`;
+          }
+        }
+
+        function setupActionButtons() {
+          // Export button
+          const exportBtn = document.getElementById('export-favorites');
+          if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+              window.FavoritesManager.exportFavorites();
+            });
+          }
+
+          // Import button
+          const importBtn = document.getElementById('import-favorites');
+          if (importBtn) {
+            importBtn.addEventListener('click', () => {
+              const input = document.createElement('input');
+              input.type = 'file';
+              input.accept = '.json';
+              input.onchange = e => {
+                window.FavoritesManager.importFavorites(e.target.files[0]);
+                setTimeout(loadFavoritesPage, 1000);
+              };
+              input.click();
+            });
+          }
+
+          // Clear all button
+          const clearBtn = document.getElementById('clear-all-favorites');
+          if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+              if (
+                confirm('Are you sure you want to remove ALL favorites? This cannot be undone.')
+              ) {
+                window.FavoritesManager.clearAllFavorites();
+                loadFavoritesPage();
+              }
+            });
+          }
+        }
+      });
     </script>
-</body>
+  </body>
 </html>

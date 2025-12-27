@@ -1,376 +1,478 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Project Mainframe</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cursor-effect.css">
-    <link rel="stylesheet" href="../css/favorites.css">
-    <link rel="stylesheet" href="../css/projects.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/projects.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+    <link rel="stylesheet" href="../css/favorites.css" />
+    <link rel="stylesheet" href="../css/projects.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/projects.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <a href="#main-projects" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-projects" tabindex="-1">
-        
-        <section class="hero-section project-hero">
-            <div class="grid-overlay"></div>
-            <div class="hero-content">
-                <h1 class="hero-glitch" data-text="SYSTEM_ARCHIVES">SYSTEM_ARCHIVES</h1>
-                <div class="terminal-box">
-                    <p class="console-text">> Accessing secure vault...</p>
-                    <p class="console-text">> Decrypting project files...</p>
-                    <p class="console-text success">> Access Granted. Welcome, Phantom.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="featured-project-section">
-            <div class="container">
-                <div class="panel-header">
-                    <i class="fas fa-satellite-dish"></i> LIVE_TRANSMISSION
-                    <div class="panel-line"></div>
-                </div>
-                
-                <div class="featured-card-wrapper">
-                    <div class="cyber-card featured-card" id="wocs-card">
-                        <div class="live-indicator">
-                            <span class="blink-dot"></span> LIVE :: WINTER_OF_CODE_SOCIAL
-                        </div>
-                        
-                        <div class="featured-content">
-                            <div class="featured-visual">
-                                <img src="https://picsum.photos/seed/wocs/800/400" alt="Winter of Code Social" class="glitch-img" loading="lazy">
-                                <div class="scan-line"></div>
-                            </div>
-                            <div class="featured-details">
-                                <h2><i class="fas fa-snowflake"></i> Winter of Code Social</h2>
-                                <p class="terminal-text">
-                                    > Current Status: <span class="highlight-green">ACTIVE</span><br>
-                                    > Mission: Open Source Collaboration<br>
-                                    > A month-long program designed to introduce students to the world of open source.
-                                </p>
-                                <div class="featured-stats">
-                                    <div class="stat"><span>50+</span> <small>PRs Merged</small></div>
-                                    <div class="stat"><span>200+</span> <small>Participants</small></div>
-                                </div>
-                                <div class="featured-actions">
-                                    <a class="btn-cyber btn-wobble disabled" tabindex="-1" data-loading="true">JOIN_PROGRAM</a>
-                                    <div class="toggle-wrapper">
-                                        <label class="switch">
-                                            <input type="checkbox" id="wobble-toggle">
-                                            <span class="slider round"></span>
-                                        </label>
-                                        <span class="toggle-label">ACTIVATE_WOBBLE_PHYSICS</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="control-panel-section">
-            <div class="container">
-                <div class="panel-header">
-                    <i class="fas fa-microchip"></i> FILTER_PROTOCOL
-                    <div class="panel-line"></div>
-                </div>
-                
-                <div class="search-box">
-                    <input type="text" id="project-search" placeholder="Search projects by name or tech..." autocomplete="off">
-                    <i class="fas fa-search"></i>
-                </div>
-                
-                <div class="quick-filter-tags" id="quick-filters">
-                    <span class="filter-tag active" data-filter="all">
-                        <i class="fas fa-layer-group"></i> All Projects
-                        <span class="count" id="count-all">6</span>
-                    </span>
-                    <span class="filter-tag beginner-friendly" data-filter="beginner">
-                        <i class="fas fa-seedling"></i> Beginner Friendly
-                        <span class="count" id="count-beginner">2</span>
-                    </span>
-                    <span class="filter-tag javascript" data-filter="javascript">
-                        <i class="fab fa-js"></i> JavaScript
-                        <span class="count" id="count-javascript">3</span>
-                    </span>
-                    <span class="filter-tag active-project" data-filter="active">
-                        <i class="fas fa-rocket"></i> Active
-                        <span class="count" id="count-active">5</span>
-                    </span>
-                    <span class="filter-tag new-project" data-filter="new">
-                        <i class="fas fa-star"></i> New
-                        <span class="count" id="count-new">1</span>
-                    </span>
-                </div>
-                
-                <div class="filter-container">
-                    <button class="btn-glitch-filter active" data-filter="all">
-                        <span class="text">ALL_MODULES</span>
-                        <span class="decoration"></span>
-                    </button>
-                    <button class="btn-glitch-filter" data-filter="web">
-                        <span class="text">WEB_NOISE</span>
-                        <span class="decoration"></span>
-                    </button>
-                    <button class="btn-glitch-filter" data-filter="ai">
-                        <span class="text">NEURAL_NETS</span>
-                        <span class="decoration"></span>
-                    </button>
-                    <button class="btn-glitch-filter" data-filter="app">
-                        <span class="text">MOBILE_OPS</span>
-                        <span class="decoration"></span>
-                    </button>
-                    <button class="btn-glitch-filter" data-filter="hardware">
-                        <span class="text">HARDWARE_HACKS</span>
-                        <span class="decoration"></span>
-                    </button>
-                    
-                    <button class="filter-mobile-toggle" id="mobile-filter-toggle">
-                        <i class="fas fa-filter"></i> Show More Filters
-                    </button>
-                </div>
-                
-                <div class="filter-results" id="filter-results">
-                    <div class="results-count">
-                        Showing <strong id="showing-count">6</strong> of <strong id="total-count">6</strong> projects
-                    </div>
-                    <button class="reset-filters" id="reset-filters">
-                        <i class="fas fa-redo"></i> Reset Filters
-                    </button>
-                </div>
-                
-                <div class="filter-dropdown">
-                    <select id="mobile-filter-select">
-                        <option value="all">All Projects</option>
-                        <option value="beginner">Beginner Friendly</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="active">Active Projects</option>
-                        <option value="new">New Projects</option>
-                        <option value="web">Web Development</option>
-                        <option value="ai">AI/ML</option>
-                        <option value="app">Mobile Apps</option>
-                        <option value="hardware">Hardware</option>
-                    </select>
-                </div>
-            </div>
-        </section>
-
-        <section class="content project-matrix-section">
-    <div class="container">
-        <div class="projects-grid" id="projects-grid">
-            
-            <article class="cyber-card project-card" data-category="web" data-tilt 
-                     data-difficulty="beginner" data-tech="javascript" data-status="active" data-new="false">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/pixel1/600/400" alt="Pixel Phantoms Website" loading="lazy">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-beginner">Beginner</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#WEB_001</span>
-                        <span class="status-dot online"></span>
-                    </div>
-                    <h3>Pixel_Phantoms_Official</h3>
-                    <p>The central command hub. A dynamic community platform featuring live leaderboards and dark mode protocols.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[HTML5]</span>
-                        <span>[CSS3]</span>
-                        <span>[JS_Core]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cyber-card project-card" data-category="ai" data-tilt 
-                     data-difficulty="advanced" data-tech="python" data-status="active" data-new="false">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/ai_robo/600/400" alt="AI Chatbot">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-advanced">Advanced</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#AI_099</span>
-                        <span class="status-dot processing"></span>
-                    </div>
-                    <h3>Phantom_Bot_V2</h3>
-                    <p>An autonomous discord sentinel utilizing NLP to moderate comms and manage event protocols.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[Python]</span>
-                        <span>[TensorFlow]</span>
-                        <span>[Discord.py]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cyber-card project-card" data-category="app" data-tilt 
-                     data-difficulty="intermediate" data-tech="dart" data-status="active" data-new="true">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/app_dev/600/400" alt="Campus App" loading="lazy">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#MOB_404</span>
-                        <span class="status-dot online"></span>
-                    </div>
-                    <h3>Campus_Connect_App</h3>
-                    <p>Mobile interface for student tracking systems. Attendance, notes, and canteen logistics in real-time.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[Flutter]</span>
-                        <span>[Firebase]</span>
-                        <span>[Dart]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cyber-card project-card" data-category="hardware" data-tilt
-                     data-difficulty="advanced" data-tech="cpp" data-status="warning" data-new="false">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/iot/600/400" alt="IoT Smart Home" loading="lazy">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-advanced">Advanced</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#IOT_X1</span>
-                        <span class="status-dot warning"></span>
-                    </div>
-                    <h3>Smart_Lab_Matrix</h3>
-                    <p>Automated environment control system. Sensors dictate lighting and atmospheric conditions.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[Arduino]</span>
-                        <span>[C++]</span>
-                        <span>[Sensors]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="../pages/hardware-roadmap.html" class="btn-terminal">View_Blueprints ></a>
-                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cyber-card project-card" data-category="web" data-tilt 
-                     data-difficulty="intermediate" data-tech="javascript" data-status="active" data-new="false">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/crypto/600/400" alt="Crypto Dashboard" loading="lazy">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#WEB_CRYPTO</span>
-                        <span class="status-dot online"></span>
-                    </div>
-                    <h3>Crypto_Tracker_Dash</h3>
-                    <p>Real-time visualization of decentralized currency markets via public API streams.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[React]</span>
-                        <span>[Chart.js]</span>
-                        <span>[REST_API]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
-                        <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="cyber-card project-card" data-category="ai" data-tilt
-                     data-difficulty="beginner" data-tech="python" data-status="active" data-new="false">
-                <div class="card-border-top"></div>
-                <div class="card-image-wrapper">
-                    <img src="https://picsum.photos/seed/vision/600/400" alt="Computer Vision" loading="lazy">
-                    <div class="glitch-overlay"></div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="difficulty-badge difficulty-beginner">Beginner</div>
-                <div class="card-content">
-                    <div class="card-header">
-                        <span class="project-id">#CV_EYE</span>
-                        <span class="status-dot processing"></span>
-                    </div>
-                    <h3>Sign_Lang_Recognizer</h3>
-                    <p>Computer vision protocol interpreting manual communication into digital text streams.</p>
-                    <div class="tech-stack-terminal">
-                        <span>[OpenCV]</span>
-                        <span>[Python]</span>
-                        <span>[PyTorch]</span>
-                    </div>
-                    <div class="card-actions">
-                        <a href="#" class="btn-terminal">Execute_Demo ></a>
-                        <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-            </article>
-
+      <section class="hero-section project-hero">
+        <div class="grid-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-glitch" data-text="SYSTEM_ARCHIVES">SYSTEM_ARCHIVES</h1>
+          <div class="terminal-box">
+            <p class="console-text">> Accessing secure vault...</p>
+            <p class="console-text">> Decrypting project files...</p>
+            <p class="console-text success">> Access Granted. Welcome, Phantom.</p>
+          </div>
         </div>
-    </div>
-</section>
+      </section>
+
+      <section class="featured-project-section">
+        <div class="container">
+          <div class="panel-header">
+            <i class="fas fa-satellite-dish"></i> LIVE_TRANSMISSION
+            <div class="panel-line"></div>
+          </div>
+
+          <div class="featured-card-wrapper">
+            <div class="cyber-card featured-card" id="wocs-card">
+              <div class="live-indicator">
+                <span class="blink-dot"></span> LIVE :: WINTER_OF_CODE_SOCIAL
+              </div>
+
+              <div class="featured-content">
+                <div class="featured-visual">
+                  <img
+                    src="https://picsum.photos/seed/wocs/800/400"
+                    alt="Winter of Code Social"
+                    class="glitch-img"
+                    loading="lazy"
+                  />
+                  <div class="scan-line"></div>
+                </div>
+                <div class="featured-details">
+                  <h2><i class="fas fa-snowflake"></i> Winter of Code Social</h2>
+                  <p class="terminal-text">
+                    > Current Status: <span class="highlight-green">ACTIVE</span><br />
+                    > Mission: Open Source Collaboration<br />
+                    > A month-long program designed to introduce students to the world of open
+                    source.
+                  </p>
+                  <div class="featured-stats">
+                    <div class="stat"><span>50+</span> <small>PRs Merged</small></div>
+                    <div class="stat"><span>200+</span> <small>Participants</small></div>
+                  </div>
+                  <div class="featured-actions">
+                    <a class="btn-cyber btn-wobble disabled" tabindex="-1" data-loading="true"
+                      >JOIN_PROGRAM</a
+                    >
+                    <div class="toggle-wrapper">
+                      <label class="switch">
+                        <input type="checkbox" id="wobble-toggle" />
+                        <span class="slider round"></span>
+                      </label>
+                      <span class="toggle-label">ACTIVATE_WOBBLE_PHYSICS</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="control-panel-section">
+        <div class="container">
+          <div class="panel-header">
+            <i class="fas fa-microchip"></i> FILTER_PROTOCOL
+            <div class="panel-line"></div>
+          </div>
+
+          <div class="search-box">
+            <input
+              type="text"
+              id="project-search"
+              placeholder="Search projects by name or tech..."
+              autocomplete="off"
+            />
+            <i class="fas fa-search"></i>
+          </div>
+
+          <div class="quick-filter-tags" id="quick-filters">
+            <span class="filter-tag active" data-filter="all">
+              <i class="fas fa-layer-group"></i> All Projects
+              <span class="count" id="count-all">6</span>
+            </span>
+            <span class="filter-tag beginner-friendly" data-filter="beginner">
+              <i class="fas fa-seedling"></i> Beginner Friendly
+              <span class="count" id="count-beginner">2</span>
+            </span>
+            <span class="filter-tag javascript" data-filter="javascript">
+              <i class="fab fa-js"></i> JavaScript
+              <span class="count" id="count-javascript">3</span>
+            </span>
+            <span class="filter-tag active-project" data-filter="active">
+              <i class="fas fa-rocket"></i> Active
+              <span class="count" id="count-active">5</span>
+            </span>
+            <span class="filter-tag new-project" data-filter="new">
+              <i class="fas fa-star"></i> New
+              <span class="count" id="count-new">1</span>
+            </span>
+          </div>
+
+          <div class="filter-container">
+            <button class="btn-glitch-filter active" data-filter="all">
+              <span class="text">ALL_MODULES</span>
+              <span class="decoration"></span>
+            </button>
+            <button class="btn-glitch-filter" data-filter="web">
+              <span class="text">WEB_NOISE</span>
+              <span class="decoration"></span>
+            </button>
+            <button class="btn-glitch-filter" data-filter="ai">
+              <span class="text">NEURAL_NETS</span>
+              <span class="decoration"></span>
+            </button>
+            <button class="btn-glitch-filter" data-filter="app">
+              <span class="text">MOBILE_OPS</span>
+              <span class="decoration"></span>
+            </button>
+            <button class="btn-glitch-filter" data-filter="hardware">
+              <span class="text">HARDWARE_HACKS</span>
+              <span class="decoration"></span>
+            </button>
+
+            <button class="filter-mobile-toggle" id="mobile-filter-toggle">
+              <i class="fas fa-filter"></i> Show More Filters
+            </button>
+          </div>
+
+          <div class="filter-results" id="filter-results">
+            <div class="results-count">
+              Showing <strong id="showing-count">6</strong> of
+              <strong id="total-count">6</strong> projects
+            </div>
+            <button class="reset-filters" id="reset-filters">
+              <i class="fas fa-redo"></i> Reset Filters
+            </button>
+          </div>
+
+          <div class="filter-dropdown">
+            <select id="mobile-filter-select">
+              <option value="all">All Projects</option>
+              <option value="beginner">Beginner Friendly</option>
+              <option value="javascript">JavaScript</option>
+              <option value="active">Active Projects</option>
+              <option value="new">New Projects</option>
+              <option value="web">Web Development</option>
+              <option value="ai">AI/ML</option>
+              <option value="app">Mobile Apps</option>
+              <option value="hardware">Hardware</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="content project-matrix-section">
+        <div class="container">
+          <div class="projects-grid" id="projects-grid">
+            <article
+              class="cyber-card project-card"
+              data-category="web"
+              data-tilt
+              data-difficulty="beginner"
+              data-tech="javascript"
+              data-status="active"
+              data-new="false"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img
+                  src="https://picsum.photos/seed/pixel1/600/400"
+                  alt="Pixel Phantoms Website"
+                  loading="lazy"
+                />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-beginner">Beginner</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#WEB_001</span>
+                  <span class="status-dot online"></span>
+                </div>
+                <h3>Pixel_Phantoms_Official</h3>
+                <p>
+                  The central command hub. A dynamic community platform featuring live leaderboards
+                  and dark mode protocols.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[HTML5]</span>
+                  <span>[CSS3]</span>
+                  <span>[JS_Core]</span>
+                </div>
+                <div class="card-actions">
+                  <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                  <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="cyber-card project-card"
+              data-category="ai"
+              data-tilt
+              data-difficulty="advanced"
+              data-tech="python"
+              data-status="active"
+              data-new="false"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img src="https://picsum.photos/seed/ai_robo/600/400" alt="AI Chatbot" />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-advanced">Advanced</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#AI_099</span>
+                  <span class="status-dot processing"></span>
+                </div>
+                <h3>Phantom_Bot_V2</h3>
+                <p>
+                  An autonomous discord sentinel utilizing NLP to moderate comms and manage event
+                  protocols.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[Python]</span>
+                  <span>[TensorFlow]</span>
+                  <span>[Discord.py]</span>
+                </div>
+                <div class="card-actions">
+                  <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                  <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="cyber-card project-card"
+              data-category="app"
+              data-tilt
+              data-difficulty="intermediate"
+              data-tech="dart"
+              data-status="active"
+              data-new="true"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img
+                  src="https://picsum.photos/seed/app_dev/600/400"
+                  alt="Campus App"
+                  loading="lazy"
+                />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#MOB_404</span>
+                  <span class="status-dot online"></span>
+                </div>
+                <h3>Campus_Connect_App</h3>
+                <p>
+                  Mobile interface for student tracking systems. Attendance, notes, and canteen
+                  logistics in real-time.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[Flutter]</span>
+                  <span>[Firebase]</span>
+                  <span>[Dart]</span>
+                </div>
+                <div class="card-actions">
+                  <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                  <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="cyber-card project-card"
+              data-category="hardware"
+              data-tilt
+              data-difficulty="advanced"
+              data-tech="cpp"
+              data-status="warning"
+              data-new="false"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img
+                  src="https://picsum.photos/seed/iot/600/400"
+                  alt="IoT Smart Home"
+                  loading="lazy"
+                />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-advanced">Advanced</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#IOT_X1</span>
+                  <span class="status-dot warning"></span>
+                </div>
+                <h3>Smart_Lab_Matrix</h3>
+                <p>
+                  Automated environment control system. Sensors dictate lighting and atmospheric
+                  conditions.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[Arduino]</span>
+                  <span>[C++]</span>
+                  <span>[Sensors]</span>
+                </div>
+                <div class="card-actions">
+                  <a href="../pages/hardware-roadmap.html" class="btn-terminal"
+                    >View_Blueprints ></a
+                  >
+                  <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="cyber-card project-card"
+              data-category="web"
+              data-tilt
+              data-difficulty="intermediate"
+              data-tech="javascript"
+              data-status="active"
+              data-new="false"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img
+                  src="https://picsum.photos/seed/crypto/600/400"
+                  alt="Crypto Dashboard"
+                  loading="lazy"
+                />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-intermediate">Intermediate</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#WEB_CRYPTO</span>
+                  <span class="status-dot online"></span>
+                </div>
+                <h3>Crypto_Tracker_Dash</h3>
+                <p>
+                  Real-time visualization of decentralized currency markets via public API streams.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[React]</span>
+                  <span>[Chart.js]</span>
+                  <span>[REST_API]</span>
+                </div>
+                <div class="card-actions">
+                  <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                  <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <article
+              class="cyber-card project-card"
+              data-category="ai"
+              data-tilt
+              data-difficulty="beginner"
+              data-tech="python"
+              data-status="active"
+              data-new="false"
+            >
+              <div class="card-border-top"></div>
+              <div class="card-image-wrapper">
+                <img
+                  src="https://picsum.photos/seed/vision/600/400"
+                  alt="Computer Vision"
+                  loading="lazy"
+                />
+                <div class="glitch-overlay"></div>
+                <div class="scan-line"></div>
+              </div>
+              <div class="difficulty-badge difficulty-beginner">Beginner</div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="project-id">#CV_EYE</span>
+                  <span class="status-dot processing"></span>
+                </div>
+                <h3>Sign_Lang_Recognizer</h3>
+                <p>
+                  Computer vision protocol interpreting manual communication into digital text
+                  streams.
+                </p>
+                <div class="tech-stack-terminal">
+                  <span>[OpenCV]</span>
+                  <span>[Python]</span>
+                  <span>[PyTorch]</span>
+                </div>
+                <div class="card-actions">
+                  <a href="#" class="btn-terminal">Execute_Demo ></a>
+                  <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
-    <script src="../js/home-gsap.js"></script> 
-    <script src="../js/projects.js"></script> 
+    <script src="../js/home-gsap.js"></script>
+    <script src="../js/projects.js"></script>
     <script src="../js/copy-clipboard.js"></script>
     <script src="../js/projects-filters.js"></script>
     <script src="../js/favorites.js"></script>
     <script src="../js/scroll-progress.js"></script>
 
     <button class="print-button" onclick="window.print()">
-        <i class="fas fa-print"></i> Print This Page
+      <i class="fas fa-print"></i> Print This Page
     </button>
-</body>
+  </body>
 </html>

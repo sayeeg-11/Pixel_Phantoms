@@ -1,139 +1,141 @@
 /* Scroll Buttons - Both Top and Bottom */
 .scroll-button {
-    position: fixed;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+  position: fixed;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .scroll-button.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
 }
 
 #back-to-top {
-    bottom: 100px;
-    background: var(--accent-color, #00aaff);
-    transform: translateX(100px);
+  bottom: 100px;
+  background: var(--accent-color, #00aaff);
+  transform: translateX(100px);
 }
 
 #back-to-top:hover {
-    background: linear-gradient(135deg, var(--accent-color), #0088cc);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.5);
+  background: linear-gradient(135deg, var(--accent-color), #0088cc);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.5);
 }
 
 #back-to-top:active {
-    transform: translateY(-3px) scale(0.98);
+  transform: translateY(-3px) scale(0.98);
 }
 
 #scroll-to-bottom {
-    bottom: 30px;
-    background: var(--neon-green, #0aff9d);
-    color: #000;
-    transform: translateX(100px);
+  bottom: 30px;
+  background: var(--neon-green, #0aff9d);
+  color: #000;
+  transform: translateX(100px);
 }
 
 #scroll-to-bottom:hover {
-    background: linear-gradient(135deg, #0aff9d, #00ff88);
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(10, 255, 157, 0.5);
+  background: linear-gradient(135deg, #0aff9d, #00ff88);
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(10, 255, 157, 0.5);
 }
 
 #scroll-to-bottom:active {
-    transform: translateY(-3px) scale(0.98);
+  transform: translateY(-3px) scale(0.98);
 }
 
 #back-to-top:focus-visible,
 #scroll-to-bottom:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 4px;
+  outline: 3px solid var(--accent-color);
+  outline-offset: 4px;
 }
 
 .scroll-button::before {
-    content: attr(aria-label);
-    position: absolute;
-    right: calc(100% + 10px);
-    background: rgba(0, 0, 0, 0.9);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    font-family: inherit;
+  content: attr(aria-label);
+  position: absolute;
+  right: calc(100% + 10px);
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  font-family: inherit;
 }
 
 .scroll-button:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
-    .scroll-button {
-        right: 20px;
-        width: 45px;
-        height: 45px;
-        font-size: 1rem;
-    }
-    
-    #back-to-top {
-        bottom: 80px;
-    }
-    
-    #scroll-to-bottom {
-        bottom: 20px;
-    }
-    
-    .scroll-button::before {
-        display: none;
-    }
+  .scroll-button {
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+
+  #back-to-top {
+    bottom: 80px;
+  }
+
+  #scroll-to-bottom {
+    bottom: 20px;
+  }
+
+  .scroll-button::before {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
-    .scroll-button {
-        right: 15px;
-        width: 40px;
-        height: 40px;
-        font-size: 0.9rem;
-    }
-    
-    #back-to-top {
-        bottom: 70px;
-    }
-    
-    #scroll-to-bottom {
-        bottom: 15px;
-    }
+  .scroll-button {
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  #back-to-top {
+    bottom: 70px;
+  }
+
+  #scroll-to-bottom {
+    bottom: 15px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .scroll-button {
-        transition: opacity 0.2s ease, visibility 0.2s ease;
-    }
-    
-    .scroll-button:hover {
-        transform: none;
-    }
+  .scroll-button {
+    transition:
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  .scroll-button:hover {
+    transform: none;
+  }
 }
 
 @media (prefers-contrast: high) {
-    .scroll-button {
-        border: 2px solid currentColor;
-    }
+  .scroll-button {
+    border: 2px solid currentColor;
+  }
 }

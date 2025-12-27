@@ -1,133 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Community</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cursor-effect.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/community.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/community.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-community" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <main class="main-content" id="main-community" tabindex="-1">
-        
-        <section class="community-hero">
-            <canvas id="hero-canvas"></canvas>
-            <div class="hero-content reveal">
-                <h1>Join the <span class="highlight">Phantoms</span></h1>
-                <p>Connect with developers, designers, and tech enthusiasts. Collaborate on open-source projects and grow together.</p>
-                <a href="https://discord.gg/your-invite-link" target="_blank" rel="noopener" class="cta-button">
-                    <i class="fab fa-discord"></i> Join Discord Server
-                </a>
+      <section class="community-hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content reveal">
+          <h1>Join the <span class="highlight">Phantoms</span></h1>
+          <p>
+            Connect with developers, designers, and tech enthusiasts. Collaborate on open-source
+            projects and grow together.
+          </p>
+          <a
+            href="https://discord.gg/your-invite-link"
+            target="_blank"
+            rel="noopener"
+            class="cta-button"
+          >
+            <i class="fab fa-discord"></i> Join Discord Server
+          </a>
+        </div>
+      </section>
+
+      <section class="content stats-section reveal">
+        <div class="stat-box">
+          <h2 class="counter" data-target="500">0</h2>
+          <p>Community Members</p>
+        </div>
+        <div class="stat-box">
+          <h2 class="counter" data-target="50">0</h2>
+          <p>Open Source Projects</p>
+        </div>
+        <div class="stat-box">
+          <h2 class="counter" data-target="120">0</h2>
+          <p>Workshops Hosted</p>
+        </div>
+      </section>
+
+      <section class="content platforms-section reveal">
+        <h2 class="section-title">Where We Hangout</h2>
+        <div class="platforms-grid">
+          <div class="platform-card discord" data-tilt>
+            <div class="card-content">
+              <div class="icon-box"><i class="fab fa-discord"></i></div>
+              <h3>Discord Community</h3>
+              <p>Our primary hub for discussions, help, and events.</p>
+              <button onclick="copyLink('https://discord.gg/pixelphantoms')" class="action-btn">
+                Copy Invite
+              </button>
             </div>
-        </section>
+          </div>
 
-        <section class="content stats-section reveal">
-            <div class="stat-box">
-                <h2 class="counter" data-target="500">0</h2>
-                <p>Community Members</p>
+          <div class="platform-card github" data-tilt>
+            <div class="card-content">
+              <div class="icon-box"><i class="fab fa-github"></i></div>
+              <h3>Open Source</h3>
+              <p>Contribute to our projects and build your portfolio.</p>
+              <a
+                href="https://github.com/sayeeg-11/Pixel_Phantoms"
+                target="_blank"
+                rel="noopener"
+                class="action-btn"
+                >View Repos</a
+              >
             </div>
-            <div class="stat-box">
-                <h2 class="counter" data-target="50">0</h2>
-                <p>Open Source Projects</p>
+          </div>
+
+          <div class="platform-card linkedin" data-tilt>
+            <div class="card-content">
+              <div class="icon-box"><i class="fab fa-linkedin"></i></div>
+              <h3>Professional Network</h3>
+              <p>Connect with alumni and industry professionals.</p>
+              <a
+                href="https://www.linkedin.com/company/pixel-phantoms/"
+                target="_blank"
+                rel="noopener"
+                class="action-btn"
+                >Follow Us</a
+              >
             </div>
-            <div class="stat-box">
-                <h2 class="counter" data-target="120">0</h2>
-                <p>Workshops Hosted</p>
+          </div>
+
+          <div class="platform-card instagram" data-tilt>
+            <div class="card-content">
+              <div class="icon-box"><i class="fab fa-instagram"></i></div>
+              <h3>Moments</h3>
+              <p>Highlights from our events and workshops.</p>
+              <a
+                href="https://www.instagram.com/pixelphantoms/"
+                target="_blank"
+                rel="noopener"
+                class="action-btn"
+                >See Photos</a
+              >
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="content platforms-section reveal">
-            <h2 class="section-title">Where We Hangout</h2>
-            <div class="platforms-grid">
-                
-                <div class="platform-card discord" data-tilt>
-                    <div class="card-content">
-                        <div class="icon-box"><i class="fab fa-discord"></i></div>
-                        <h3>Discord Community</h3>
-                        <p>Our primary hub for discussions, help, and events.</p>
-                        <button onclick="copyLink('https://discord.gg/pixelphantoms')" class="action-btn">Copy Invite</button>
-                    </div>
-                </div>
+      <section class="content values-section reveal">
+        <h2 class="section-title">Why You Should Join</h2>
+        <div class="three-column-wrapper">
+          <div class="info-table-card">
+            <div class="table-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Collaborate</h3>
+            <div class="divider"></div>
+            <p>Work on real-world projects in teams.</p>
+          </div>
 
-                <div class="platform-card github" data-tilt>
-                    <div class="card-content">
-                        <div class="icon-box"><i class="fab fa-github"></i></div>
-                        <h3>Open Source</h3>
-                        <p>Contribute to our projects and build your portfolio.</p>
-                        <a href="https://github.com/sayeeg-11/Pixel_Phantoms" target="_blank" rel="noopener" class="action-btn">View Repos</a>
-                    </div>
-                </div>
+          <div class="info-table-card">
+            <div class="table-icon"><i class="fas fa-lightbulb"></i></div>
+            <h3>Learn</h3>
+            <div class="divider"></div>
+            <p>Weekly workshops and peer learning.</p>
+          </div>
 
-                <div class="platform-card linkedin" data-tilt>
-                    <div class="card-content">
-                        <div class="icon-box"><i class="fab fa-linkedin"></i></div>
-                        <h3>Professional Network</h3>
-                        <p>Connect with alumni and industry professionals.</p>
-                        <a href="https://www.linkedin.com/company/pixel-phantoms/" target="_blank" rel="noopener" class="action-btn">Follow Us</a>
-                    </div>
-                </div>
-
-                <div class="platform-card instagram" data-tilt>
-                    <div class="card-content">
-                        <div class="icon-box"><i class="fab fa-instagram"></i></div>
-                        <h3>Moments</h3>
-                        <p>Highlights from our events and workshops.</p>
-                        <a href="https://www.instagram.com/pixelphantoms/" target="_blank" rel="noopener" class="action-btn">See Photos</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="content values-section reveal">
-            <h2 class="section-title">Why You Should Join</h2>
-            <div class="three-column-wrapper">
-                <div class="info-table-card">
-                    <div class="table-icon"><i class="fas fa-code-branch"></i></div>
-                    <h3>Collaborate</h3>
-                    <div class="divider"></div>
-                    <p>Work on real-world projects in teams.</p>
-                </div>
-                
-                <div class="info-table-card">
-                    <div class="table-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Learn</h3>
-                    <div class="divider"></div>
-                    <p>Weekly workshops and peer learning.</p>
-                </div>
-                
-                <div class="info-table-card">
-                    <div class="table-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Grow</h3>
-                    <div class="divider"></div>
-                    <p>Build your resume and professional network.</p>
-                </div>
-            </div>
-        </section>
-
+          <div class="info-table-card">
+            <div class="table-icon"><i class="fas fa-rocket"></i></div>
+            <h3>Grow</h3>
+            <div class="divider"></div>
+            <p>Build your resume and professional network.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/theme.js"></script>
     <script src="../js/cursor-effect.js"></script>
@@ -136,6 +171,5 @@
     <script src="../js/back-to-top.js"></script>
     <script src="../js/community.js"></script>
     <script src="../js/scroll-progress.js"></script>
-
-</body>
+  </body>
 </html>

@@ -1,136 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Help Center</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/help.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/help.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
-     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-help" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-help" tabindex="-1">
-        
-        <section class="help-hero">
-            <div class="hero-content">
-                <h1 class="hero-title">How can we help you?</h1>
-                <p class="hero-subtitle">Search for answers regarding events, community, and technical support.</p>
-                <div class="search-wrapper">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" class="help-search" placeholder="Describe your issue (e.g., 'discord invite', 'event registration')...">
-                </div>
+      <section class="help-hero">
+        <div class="hero-content">
+          <h1 class="hero-title">How can we help you?</h1>
+          <p class="hero-subtitle">
+            Search for answers regarding events, community, and technical support.
+          </p>
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="help-search"
+              placeholder="Describe your issue (e.g., 'discord invite', 'event registration')..."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="help-grid-section">
+        <h2 class="section-title">Browse Topics</h2>
+        <div class="help-grid">
+          <div class="help-card">
+            <div class="icon-box"><i class="fas fa-flag-checkered"></i></div>
+            <h3>Getting Started</h3>
+            <p>
+              New to Pixel Phantoms? Learn how to join our Discord, set up your GitHub, and become
+              an active member.
+            </p>
+            <a href="../index.html" class="read-more">Read Guide &rarr;</a>
+          </div>
+
+          <div class="help-card">
+            <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
+            <h3>Events & Registration</h3>
+            <p>
+              Issues with registering for hackathons? Missing a participation certificate? Find
+              solutions here.
+            </p>
+            <a href="../events.html" class="read-more">Read Guide &rarr;</a>
+          </div>
+
+          <div class="help-card">
+            <div class="icon-box"><i class="fas fa-terminal"></i></div>
+            <h3>Technical Support</h3>
+            <p>
+              Trouble installing software for a workshop? Code breaking during a project? Get
+              technical help.
+            </p>
+            <a href="#" class="read-more">Read Guide &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="team-scroll-wrapper" style="overflow: hidden">
+        <div class="team-intro">
+          <h2>Meet Your Support Team</h2>
+          <p>Scroll down to browse our dedicated mentors.</p>
+        </div>
+
+        <div class="horizontal-container">
+          <div class="team-panel panel-1">
+            <div class="team-desc-card">
+              <span class="role-badge">Community Lead</span>
+              <h3>Sayee Gosavi</h3>
+              <p>
+                Specializes in community onboarding and Discord management. Reach out to Sayee if
+                you are having trouble verifying your student status or accessing private channels.
+              </p>
+              <p class="extra-info">"Community is the heart of code."</p>
             </div>
-        </section>
+          </div>
 
-        <section class="help-grid-section">
-            <h2 class="section-title">Browse Topics</h2>
-            <div class="help-grid">
-                <div class="help-card">
-                    <div class="icon-box"><i class="fas fa-flag-checkered"></i></div>
-                    <h3>Getting Started</h3>
-                    <p>New to Pixel Phantoms? Learn how to join our Discord, set up your GitHub, and become an active member.</p>
-                    <a href="../index.html" class="read-more">Read Guide &rarr;</a>
-                </div>
-
-                <div class="help-card">
-                    <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
-                    <h3>Events & Registration</h3>
-                    <p>Issues with registering for hackathons? Missing a participation certificate? Find solutions here.</p>
-                    <a href="../events.html" class="read-more">Read Guide &rarr;</a>
-                </div>
-
-                <div class="help-card">
-                    <div class="icon-box"><i class="fas fa-terminal"></i></div>
-                    <h3>Technical Support</h3>
-                    <p>Trouble installing software for a workshop? Code breaking during a project? Get technical help.</p>
-                    <a href="#" class="read-more">Read Guide &rarr;</a>
-                </div>
+          <div class="team-panel panel-2">
+            <div class="team-desc-card">
+              <span class="role-badge">Tech Lead</span>
+              <h3>Harsh Pawar</h3>
+              <p>
+                The go-to person for installation issues (VS Code, Git, Node.js). If your
+                environment isn't working during a workshop, Harsh is the one to ping.
+              </p>
+              <p class="extra-info">"It works on my machine... and I'll make it work on yours."</p>
             </div>
-        </section>
+          </div>
 
-        <section class="team-scroll-wrapper" style="overflow: hidden;">
-            <div class="team-intro">
-                <h2>Meet Your Support Team</h2>
-                <p>Scroll down to browse our dedicated mentors.</p>
+          <div class="team-panel panel-3">
+            <div class="team-desc-card">
+              <span class="role-badge">Event Coordinator</span>
+              <h3>Laxmi Shingne</h3>
+              <p>
+                Handles all event-related logistics. Contact Laxmi for certificate corrections, team
+                formation issues during hackathons, or event schedule conflicts.
+              </p>
+              <p class="extra-info">"Organization beats chaos every time."</p>
             </div>
-            
-            <div class="horizontal-container">
-                <div class="team-panel panel-1">
-                    <div class="team-desc-card">
-                        <span class="role-badge">Community Lead</span>
-                        <h3>Sayee Gosavi</h3>
-                        <p>Specializes in community onboarding and Discord management. Reach out to Sayee if you are having trouble verifying your student status or accessing private channels.</p>
-                        <p class="extra-info">"Community is the heart of code."</p>
-                    </div>
-                </div>
+          </div>
 
-                <div class="team-panel panel-2">
-                    <div class="team-desc-card">
-                        <span class="role-badge">Tech Lead</span>
-                        <h3>Harsh Pawar</h3>
-                        <p>The go-to person for installation issues (VS Code, Git, Node.js). If your environment isn't working during a workshop, Harsh is the one to ping.</p>
-                        <p class="extra-info">"It works on my machine... and I'll make it work on yours."</p>
-                    </div>
-                </div>
-
-                <div class="team-panel panel-3">
-                    <div class="team-desc-card">
-                        <span class="role-badge">Event Coordinator</span>
-                        <h3>Laxmi Shingne</h3>
-                        <p>Handles all event-related logistics. Contact Laxmi for certificate corrections, team formation issues during hackathons, or event schedule conflicts.</p>
-                        <p class="extra-info">"Organization beats chaos every time."</p>
-                    </div>
-                </div>
-
-                <div class="team-panel panel-4">
-                    <div class="team-desc-card">
-                        <span class="role-badge">Mentor</span>
-                        <h3>Mohit Jagtap</h3>
-                        <p>Provides general project guidance and code reviews. Mohit helps students structure their hackathon projects and choose the right tech stack.</p>
-                        <p class="extra-info">"Clean code is happy code."</p>
-                    </div>
-                </div>
+          <div class="team-panel panel-4">
+            <div class="team-desc-card">
+              <span class="role-badge">Mentor</span>
+              <h3>Mohit Jagtap</h3>
+              <p>
+                Provides general project guidance and code reviews. Mohit helps students structure
+                their hackathon projects and choose the right tech stack.
+              </p>
+              <p class="extra-info">"Clean code is happy code."</p>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <section class="help-cta">
-            <div class="cta-content">
-                <h2>Still need help?</h2>
-                <p>If you couldn't find the answer above, submit a direct ticket.</p>
-                <a href="../contact.html" class="btn-primary">Contact Support</a>
-            </div>
-        </section>
-
+      <section class="help-cta">
+        <div class="cta-content">
+          <h2>Still need help?</h2>
+          <p>If you couldn't find the answer above, submit a direct ticket.</p>
+          <a href="../contact.html" class="btn-primary">Contact Support</a>
+        </div>
+      </section>
     </div>
     <script src="../js/back-to-top.js"></script>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/theme.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../js/help.js"></script>
     <script src="../js/scroll-progress.js"></script>
-</body>
+  </body>
 </html>

@@ -1,28 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Join Protocol</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cursor-effect.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    
-    <link rel="stylesheet" href="../css/join-us.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+
+    <link rel="stylesheet" href="../css/join-us.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-container" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="cursor-highlight"></div>
@@ -30,104 +36,116 @@
     <div id="navbar-placeholder"></div>
 
     <main id="main-container" tabindex="-1">
-        
-        <section class="hero-section" id="hero">
-            <div class="grid-overlay"></div>
-            <div class="hero-content">
-                <div class="glitch-wrapper">
-                    <h1 class="hero-glitch" data-text="INIT_RECRUITMENT">INIT_RECRUITMENT</h1>
-                </div>
-                
-                <div class="terminal-box typing-box">
-                    <div id="hero-terminal-text"></div>
-                    <span class="typing-cursor">_</span>
-                </div>
-                
-                <div class="mission-status-bar">
-                    <div class="status-label">SYSTEM_STATUS:</div>
-                    <div class="status-value">ACCEPTING_NEW_NODES</div>
-                    <div class="status-indicator"></div>
-                </div>
+      <section class="hero-section" id="hero">
+        <div class="grid-overlay"></div>
+        <div class="hero-content">
+          <div class="glitch-wrapper">
+            <h1 class="hero-glitch" data-text="INIT_RECRUITMENT">INIT_RECRUITMENT</h1>
+          </div>
+
+          <div class="terminal-box typing-box">
+            <div id="hero-terminal-text"></div>
+            <span class="typing-cursor">_</span>
+          </div>
+
+          <div class="mission-status-bar">
+            <div class="status-label">SYSTEM_STATUS:</div>
+            <div class="status-value">ACCEPTING_NEW_NODES</div>
+            <div class="status-indicator"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cyber-steps-section">
+        <div class="container">
+          <div class="section-header-terminal">
+            <h2><i class="fas fa-network-wired"></i> CONNECTION_PROTOCOL</h2>
+            <div class="line-scanner"></div>
+          </div>
+
+          <div class="join-steps-grid">
+            <div class="step-card" data-step="1">
+              <div class="card-border"></div>
+              <div class="step-header">
+                <span class="step-number">01</span>
+                <div class="step-icon-wrapper"><i class="fab fa-discord"></i></div>
+              </div>
+              <h3>Establish Uplink</h3>
+              <p>
+                Enter our digital HQ on Discord. This is where the hive mind collaborates, shares
+                intel, and forms teams.
+              </p>
+              <div class="step-action">
+                <a
+                  href="https://discord.gg/your-invite-link"
+                  target="_blank"
+                  class="btn-glitch-effect"
+                >
+                  <span class="text">JOIN_SERVER</span>
+                  <span class="decoration"></span>
+                </a>
+              </div>
             </div>
-        </section>
 
-        <section class="cyber-steps-section">
-            <div class="container">
-                <div class="section-header-terminal">
-                    <h2><i class="fas fa-network-wired"></i> CONNECTION_PROTOCOL</h2>
-                    <div class="line-scanner"></div>
-                </div>
-
-                <div class="join-steps-grid">
-                    
-                    <div class="step-card" data-step="1">
-                        <div class="card-border"></div>
-                        <div class="step-header">
-                            <span class="step-number">01</span>
-                            <div class="step-icon-wrapper"><i class="fab fa-discord"></i></div>
-                        </div>
-                        <h3>Establish Uplink</h3>
-                        <p>Enter our digital HQ on Discord. This is where the hive mind collaborates, shares intel, and forms teams.</p>
-                        <div class="step-action">
-                            <a href="https://discord.gg/your-invite-link" target="_blank" class="btn-glitch-effect">
-                                <span class="text">JOIN_SERVER</span>
-                                <span class="decoration"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="step-card" data-step="2">
-                        <div class="card-border"></div>
-                        <div class="step-header">
-                            <span class="step-number">02</span>
-                            <div class="step-icon-wrapper"><i class="fas fa-fingerprint"></i></div>
-                        </div>
-                        <h3>Verify Identity</h3>
-                        <p>Submit your credentials via our intake form to generate your unique Phantom ID and gain role access.</p>
-                        <div class="step-action">
-                            <a href="login.html" target="_blank" class="btn-hollow-tech">
-                                <i class="fas fa-external-link-alt"></i> ACCESS_FORM
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="step-card" data-step="3">
-                        <div class="card-border"></div>
-                        <div class="step-header">
-                            <span class="step-number">03</span>
-                            <div class="step-icon-wrapper"><i class="fas fa-code-branch"></i></div>
-                        </div>
-                        <h3>Sync Repository</h3>
-                        <p>Star and fork the 'Pixel_Phantoms' main repo. Your contributions will determine your rank on the leaderboard.</p>
-                        <div class="step-action">
-                            <a href="https://github.com/sayeeg-11/Pixel_Phantoms" target="_blank" class="btn-hollow-tech">
-                                <i class="fab fa-github"></i> FORK_REPO
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="step-card" data-step="2">
+              <div class="card-border"></div>
+              <div class="step-header">
+                <span class="step-number">02</span>
+                <div class="step-icon-wrapper"><i class="fas fa-fingerprint"></i></div>
+              </div>
+              <h3>Verify Identity</h3>
+              <p>
+                Submit your credentials via our intake form to generate your unique Phantom ID and
+                gain role access.
+              </p>
+              <div class="step-action">
+                <a href="login.html" target="_blank" class="btn-hollow-tech">
+                  <i class="fas fa-external-link-alt"></i> ACCESS_FORM
+                </a>
+              </div>
             </div>
-        </section>
 
-        <section class="terminal-updates">
-            <div class="container">
-                <h2 class="section-header-glitch center-text" data-text="LIVE_FEED">LIVE_FEED</h2>
-                <div class="terminal-window glass-panel">
-                    <div class="terminal-header">
-                        <div class="traffic-lights">
-                            <span class="light red"></span>
-                            <span class="light yellow"></span>
-                            <span class="light green"></span>
-                        </div>
-                        <span class="title">root@pixel_phantoms:~/logs</span>
-                    </div>
-                    <div class="terminal-body" id="live-terminal-body">
-                        </div>
-                </div>
+            <div class="step-card" data-step="3">
+              <div class="card-border"></div>
+              <div class="step-header">
+                <span class="step-number">03</span>
+                <div class="step-icon-wrapper"><i class="fas fa-code-branch"></i></div>
+              </div>
+              <h3>Sync Repository</h3>
+              <p>
+                Star and fork the 'Pixel_Phantoms' main repo. Your contributions will determine your
+                rank on the leaderboard.
+              </p>
+              <div class="step-action">
+                <a
+                  href="https://github.com/sayeeg-11/Pixel_Phantoms"
+                  target="_blank"
+                  class="btn-hollow-tech"
+                >
+                  <i class="fab fa-github"></i> FORK_REPO
+                </a>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
+      <section class="terminal-updates">
+        <div class="container">
+          <h2 class="section-header-glitch center-text" data-text="LIVE_FEED">LIVE_FEED</h2>
+          <div class="terminal-window glass-panel">
+            <div class="terminal-header">
+              <div class="traffic-lights">
+                <span class="light red"></span>
+                <span class="light yellow"></span>
+                <span class="light green"></span>
+              </div>
+              <span class="title">root@pixel_phantoms:~/logs</span>
+            </div>
+            <div class="terminal-body" id="live-terminal-body"></div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -135,18 +153,18 @@
     <script src="../js/navbar.js"></script>
     <script src="../js/footer.js"></script>
     <script>
-        renderNavbar('../');
-        renderFooter('../');
+      renderNavbar('../');
+      renderFooter('../');
     </script>
     <script src="../js/theme.js"></script>
     <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-    
+
     <script src="../js/join-us.js"></script>
     <script src="../js/scroll-progress.js"></script>
-</body>
+  </body>
 </html>

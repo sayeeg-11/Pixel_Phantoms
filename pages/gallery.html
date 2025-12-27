@@ -1,145 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Gallery</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/cursor-effect.css">
-    <link rel="stylesheet" href="../css/gallery.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+    <link rel="stylesheet" href="../css/gallery.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
-     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-gallery" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-gallery" tabindex="-1">
-        <section class="gallery-hero">
-            <div class="hero-content">
-                <h1>Moments & Memories</h1>
-                <p>A visual archive of our journey, achievements, and the fun we have along the way.</p>
-            </div>
-        </section>
+      <section class="gallery-hero">
+        <div class="hero-content">
+          <h1>Moments & Memories</h1>
+          <p>A visual archive of our journey, achievements, and the fun we have along the way.</p>
+        </div>
+      </section>
 
-        <nav class="gallery-nav">
-            <a href="#hackathons" class="filter-btn active">Hackathons</a>
-            <a href="#workshops" class="filter-btn">Workshops</a>
-            <a href="#meetups" class="filter-btn">Community</a>
-        </nav>
+      <nav class="gallery-nav">
+        <a href="#hackathons" class="filter-btn active">Hackathons</a>
+        <a href="#workshops" class="filter-btn">Workshops</a>
+        <a href="#meetups" class="filter-btn">Community</a>
+      </nav>
 
-        <section id="hackathons" class="gallery-section reveal">
-            <div class="section-header">
-                <h2><i class="fas fa-code"></i> Hackathons</h2>
-                <p>Innovation marathons where code meets creativity.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/hack1/600/400" alt="Hackathon Brainstorming" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/hack2/400/600" alt="Coding Session" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/hack3/600/400" alt="Team Presentation" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/hack4/600/600" alt="Winners Ceremony" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/hack5/600/400" alt="Late Night Coding" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-            </div>
-        </section>
+      <section id="hackathons" class="gallery-section reveal">
+        <div class="section-header">
+          <h2><i class="fas fa-code"></i> Hackathons</h2>
+          <p>Innovation marathons where code meets creativity.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/hack1/600/400"
+              alt="Hackathon Brainstorming"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/hack2/400/600"
+              alt="Coding Session"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/hack3/600/400"
+              alt="Team Presentation"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/hack4/600/600"
+              alt="Winners Ceremony"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/hack5/600/400"
+              alt="Late Night Coding"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </div>
+      </section>
 
-        <section id="workshops" class="gallery-section reveal">
-            <div class="section-header">
-                <h2><i class="fas fa-chalkboard-teacher"></i> Workshops</h2>
-                <p>Hands-on learning sessions on the latest tech.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/work1/500/500" alt="AI Workshop" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/work2/600/400" alt="Web Dev Bootcamp" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/work3/400/600" alt="Robotics Session" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/work4/600/400" alt="Guest Speaker" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-            </div>
-        </section>
+      <section id="workshops" class="gallery-section reveal">
+        <div class="section-header">
+          <h2><i class="fas fa-chalkboard-teacher"></i> Workshops</h2>
+          <p>Hands-on learning sessions on the latest tech.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://picsum.photos/seed/work1/500/500" alt="AI Workshop" loading="lazy" />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/work2/600/400"
+              alt="Web Dev Bootcamp"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/work3/400/600"
+              alt="Robotics Session"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/work4/600/400"
+              alt="Guest Speaker"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </div>
+      </section>
 
-        <section id="meetups" class="gallery-section reveal">
-            <div class="section-header">
-                <h2><i class="fas fa-users"></i> Community Meetups</h2>
-                <p>Fun, networking, and building connections.</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/meet1/600/400" alt="Community Gathering" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/meet2/600/400" alt="Pizza Party" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/meet3/500/500" alt="Group Photo" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/meet4/600/800" alt="Discussion Circle" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/seed/meet5/600/400" alt="Fun Activities" loading="lazy">
-                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
-                </div>
-            </div>
-        </section>
+      <section id="meetups" class="gallery-section reveal">
+        <div class="section-header">
+          <h2><i class="fas fa-users"></i> Community Meetups</h2>
+          <p>Fun, networking, and building connections.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/meet1/600/400"
+              alt="Community Gathering"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://picsum.photos/seed/meet2/600/400" alt="Pizza Party" loading="lazy" />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img src="https://picsum.photos/seed/meet3/500/500" alt="Group Photo" loading="lazy" />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/meet4/600/800"
+              alt="Discussion Circle"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+          <div class="gallery-item">
+            <img
+              src="https://picsum.photos/seed/meet5/600/400"
+              alt="Fun Activities"
+              loading="lazy"
+            />
+            <div class="overlay"><i class="fas fa-search-plus"></i></div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div id="caption"></div>
+      <span class="close-lightbox">&times;</span>
+      <img class="lightbox-content" id="lightbox-img" />
+      <div id="caption"></div>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/theme.js"></script>
     <script src="../js/cursor-effect.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/gallery.js"></script>
     <script src="../js/scroll-progress.js"></script>
-
-</body>
+  </body>
 </html>

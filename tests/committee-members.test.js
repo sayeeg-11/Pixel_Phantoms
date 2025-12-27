@@ -40,7 +40,7 @@ describe('Committee Members Section', () => {
   });
 
   it('should have accessible member cards with proper ARIA attributes', () => {
-    cy.get('.member-card').each(($card) => {
+    cy.get('.member-card').each($card => {
       cy.wrap($card).should('have.attr', 'role', 'listitem');
       cy.wrap($card).should('have.attr', 'tabindex', '0');
       cy.wrap($card).should('have.attr', 'aria-label');
@@ -72,15 +72,18 @@ describe('Committee Members Section', () => {
 
   it('should maintain visual hierarchy for key roles', () => {
     // Director should be visually distinct
-    cy.get('.member-card.director').should('have.css', 'border-top-color')
+    cy.get('.member-card.director')
+      .should('have.css', 'border-top-color')
       .and('not.eq', 'rgba(0, 0, 0, 0)');
 
     // President should be visually distinct
-    cy.get('.member-card.president').should('have.css', 'border-top-color')
+    cy.get('.member-card.president')
+      .should('have.css', 'border-top-color')
       .and('not.eq', 'rgba(0, 0, 0, 0)');
 
     // VP should be visually distinct
-    cy.get('.member-card.vp').should('have.css', 'border-top-color')
+    cy.get('.member-card.vp')
+      .should('have.css', 'border-top-color')
       .and('not.eq', 'rgba(0, 0, 0, 0)');
   });
 });

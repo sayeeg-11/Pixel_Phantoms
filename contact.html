@@ -1,138 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Contact</title>
-    <link rel="icon" href="assets/logo.png">
+    <link rel="icon" href="assets/logo.png" />
 
-    <link rel="stylesheet" href="css/scroll-progress.css">
-    <link rel="stylesheet" href="css/contact.css"> 
-    <link rel="stylesheet" href="css/home-gsap.css">
-    <link rel="stylesheet" href="css/cursor-effect.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+    <link rel="stylesheet" href="css/scroll-progress.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/home-gsap.css" />
+    <link rel="stylesheet" href="css/cursor-effect.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-content" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="js/navbar.js"></script>
-    <script>renderNavbar('');</script>
+    <script>
+      renderNavbar('');
+    </script>
 
-    
     <main id="main-content" tabindex="-1">
-        <section class="contact-section">
-            <div class="section-header">
-                <h2>Get in Touch</h2>
-                <p class="contact-desc">Have a question? We'd love to hear from you.</p>
-            </div>
+      <section class="contact-section">
+        <div class="section-header">
+          <h2>Get in Touch</h2>
+          <p class="contact-desc">Have a question? We'd love to hear from you.</p>
+        </div>
 
-            <div class="contact-container">
-                
-                <div class="contact-box-wrapper">
-                    <div class="contact-box">
-                        <form id="contact-form">
-                            <h3>Send a Message</h3>
-                            
-                            <div class="input-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" placeholder="John Doe" required minlength="2" maxlength="50">
-                                <div class="error-message" id="name-error"></div>
-                            </div>
+        <div class="contact-container">
+          <div class="contact-box-wrapper">
+            <div class="contact-box">
+              <form id="contact-form">
+                <h3>Send a Message</h3>
 
-                            <div class="input-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" placeholder="john@example.com" required>
-                                <div class="error-message" id="email-error"></div>
-                            </div>
-
-                            <div class="input-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" placeholder="Type your message here..." required minlength="10" maxlength="500"></textarea>
-                                <div class="char-counter">
-                                    <span id="char-count">0</span><span>/500</span>
-                                </div>
-                                <div class="error-message" id="message-error"></div>
-                            </div>
-
-                            <button type="submit" class="btn-submit">
-                                Send Message <i class="fas fa-paper-plane"></i>
-                            </button>
-                            
-                            <div id="form-feedback" class="feedback-message"></div>
-                        </form>
-                    </div>
+                <div class="input-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="John Doe"
+                    required
+                    minlength="2"
+                    maxlength="50"
+                  />
+                  <div class="error-message" id="name-error"></div>
                 </div>
 
-                <div class="contact-info-wrapper">
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>Nashik, Maharashtra</p>
-                            </div>
-                        </div>
-
-                        <div class="info-card">
-                            <div class="icon-circle"><i class="fab fa-discord"></i></div>
-                            <div>
-                                <h4>Community</h4>
-                                <a class="disabled" tabindex="-1">Join Discord</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="faq-section">
-                        <h3>Frequently Asked Questions</h3>
-                        
-                        <details class="faq-item">
-                            <summary>How can I join Pixel Phantoms?</summary>
-                            <p>You can join by hopping into our Discord server or watching out for our recruitment drives announced on the Events page.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>Is this community beginner friendly?</summary>
-                            <p>Absolutely! Our motto is "From Students, For Students." We have mentorship programs specifically for beginners.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>Can I contribute to Open Source projects?</summary>
-                            <p>Yes! Check out our GitHub organization or the Projects page to find repositories looking for contributors.</p>
-                        </details>
-                    </div>
+                <div class="input-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" placeholder="john@example.com" required />
+                  <div class="error-message" id="email-error"></div>
                 </div>
+
+                <div class="input-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    placeholder="Type your message here..."
+                    required
+                    minlength="10"
+                    maxlength="500"
+                  ></textarea>
+                  <div class="char-counter"><span id="char-count">0</span><span>/500</span></div>
+                  <div class="error-message" id="message-error"></div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                  Send Message <i class="fas fa-paper-plane"></i>
+                </button>
+
+                <div id="form-feedback" class="feedback-message"></div>
+              </form>
             </div>
-        </section>
+          </div>
+
+          <div class="contact-info-wrapper">
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <h4>Email</h4>
+                  <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+                <div>
+                  <h4>Location</h4>
+                  <p>Nashik, Maharashtra</p>
+                </div>
+              </div>
+
+              <div class="info-card">
+                <div class="icon-circle"><i class="fab fa-discord"></i></div>
+                <div>
+                  <h4>Community</h4>
+                  <a class="disabled" tabindex="-1">Join Discord</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-section">
+              <h3>Frequently Asked Questions</h3>
+
+              <details class="faq-item">
+                <summary>How can I join Pixel Phantoms?</summary>
+                <p>
+                  You can join by hopping into our Discord server or watching out for our
+                  recruitment drives announced on the Events page.
+                </p>
+              </details>
+
+              <details class="faq-item">
+                <summary>Is this community beginner friendly?</summary>
+                <p>
+                  Absolutely! Our motto is "From Students, For Students." We have mentorship
+                  programs specifically for beginners.
+                </p>
+              </details>
+
+              <details class="faq-item">
+                <summary>Can I contribute to Open Source projects?</summary>
+                <p>
+                  Yes! Check out our GitHub organization or the Projects page to find repositories
+                  looking for contributors.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>
     <script>
-        renderFooter('');
+      renderFooter('');
     </script>
-
 
     <script src="js/theme.min.js"></script>
     <script src="js/cursor-effect.js"></script>
     <script src="js/contact.min.js"></script>
     <script src="js/scroll-progress.js"></script>
-</body>
+  </body>
 </html>

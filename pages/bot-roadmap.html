@@ -1,69 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Bot Protocol</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/bot-roadmap.css">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/bot-roadmap.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content">
-        
-        <section class="roadmap-header">
-            <div class="header-content">
-                <h1 class="glitch-text" data-text="BOT_PROTOCOL">BOT_PROTOCOL</h1>
-                <p class="subtitle">v1.0 // DISCORD_AUTOMATION_SEQUENCE</p>
-                
-                <div class="status-container">
-                    <div class="status-item">
-                        <span class="status-label">OFFICIAL_BOT:</span>
-                        <span id="bot-status" class="status-value pending">CONNECTING...</span>
-                    </div>
-                    <div class="status-item">
-                        <span class="status-label">LATENCY:</span>
-                        <span id="bot-ping" class="status-value">-- ms</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="roadmap-header">
+        <div class="header-content">
+          <h1 class="glitch-text" data-text="BOT_PROTOCOL">BOT_PROTOCOL</h1>
+          <p class="subtitle">v1.0 // DISCORD_AUTOMATION_SEQUENCE</p>
 
-        <div class="roadmap-wrapper">
-            <div class="roadmap-spine"></div>
-            
-            <div id="roadmap-content" class="roadmap-content">
-                <div class="loading-text">INITIALIZING_CONSTRUCT...</div>
+          <div class="status-container">
+            <div class="status-item">
+              <span class="status-label">OFFICIAL_BOT:</span>
+              <span id="bot-status" class="status-value pending">CONNECTING...</span>
             </div>
+            <div class="status-item">
+              <span class="status-label">LATENCY:</span>
+              <span id="bot-ping" class="status-value">-- ms</span>
+            </div>
+          </div>
         </div>
+      </section>
 
+      <div class="roadmap-wrapper">
+        <div class="roadmap-spine"></div>
+
+        <div id="roadmap-content" class="roadmap-content">
+          <div class="loading-text">INITIALIZING_CONSTRUCT...</div>
+        </div>
+      </div>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
-    
-    <script src="../js/bot-roadmap.js"></script> 
-    <script src="../js/scroll-progress.js"></script>
 
-</body>
+    <script src="../js/bot-roadmap.js"></script>
+    <script src="../js/scroll-progress.js"></script>
+  </body>
 </html>

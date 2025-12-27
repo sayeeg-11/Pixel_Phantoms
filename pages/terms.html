@@ -1,151 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Platform Terms</title>
-    
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/terms.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/terms.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-terms" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward"></i> Skip to Main Content
+      <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <div class="main-content" id="main-terms" tabindex="-1">
-        <header class="terms-header">
-            <div class="header-content">
-                <h1>Platform Terms of Service</h1>
-                <p>Governing the use of Pixel Phantoms for Events, Hackathons, and Community Interactions.</p>
-                <span class="last-updated">Last Updated: <span id="current-date"></span></span>
+      <header class="terms-header">
+        <div class="header-content">
+          <h1>Platform Terms of Service</h1>
+          <p>
+            Governing the use of Pixel Phantoms for Events, Hackathons, and Community Interactions.
+          </p>
+          <span class="last-updated">Last Updated: <span id="current-date"></span></span>
+        </div>
+      </header>
+
+      <section class="terms-container">
+        <div class="terms-wrapper">
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-server"></i></div>
+            <div class="term-content">
+              <h2>1. Platform Services & Scope</h2>
+              <p>Pixel Phantoms provides a digital platform ("Service") for:</p>
+              <ul>
+                <li>
+                  <strong>Event Hosting:</strong> Organizing workshops, seminars, and technical
+                  meetups.
+                </li>
+                <li>
+                  <strong>Hackathon Management:</strong> Facilitating team registration, project
+                  submission, and evaluation.
+                </li>
+                <li>
+                  <strong>Community Interaction:</strong> Leaderboards, mentorship, and peer
+                  reviews.
+                </li>
+              </ul>
+              <p>
+                We reserve the right to modify, suspend, or discontinue any aspect of the Platform
+                Services at any time without notice.
+              </p>
             </div>
-        </header>
+          </article>
 
-        <section class="terms-container">
-            <div class="terms-wrapper">
-                
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-server"></i></div>
-                    <div class="term-content">
-                        <h2>1. Platform Services & Scope</h2>
-                        <p>Pixel Phantoms provides a digital platform ("Service") for:</p>
-                        <ul>
-                            <li><strong>Event Hosting:</strong> Organizing workshops, seminars, and technical meetups.</li>
-                            <li><strong>Hackathon Management:</strong> Facilitating team registration, project submission, and evaluation.</li>
-                            <li><strong>Community Interaction:</strong> Leaderboards, mentorship, and peer reviews.</li>
-                        </ul>
-                        <p>We reserve the right to modify, suspend, or discontinue any aspect of the Platform Services at any time without notice.</p>
-                    </div>
-                </article>
-
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="term-content">
-                        <h2>2. Hackathon & Event Participation</h2>
-                        <p>By registering for an event or hackathon via our Platform, you agree to:</p>
-                        <ul>
-                            <li><strong>Accuracy:</strong> Provide true and accurate registration information.</li>
-                            <li><strong>Fair Play:</strong> Adhere to specific event rulebooks. Plagiarism, cheating, or sabotage will result in immediate disqualification.</li>
-                            <li><strong>Team Conduct:</strong> Treat teammates and competitors with respect. Toxic behavior during events is grounds for a permanent ban.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-copyright"></i></div>
-                    <div class="term-content">
-                        <h2>3. Intellectual Property Rights (IPR)</h2>
-                        <p>We respect the creativity of our students. Our policy regarding <strong>Hackathon Submissions</strong> is as follows:</p>
-                        <ul>
-                            <li><strong>Student Ownership:</strong> You retain full ownership of any code, design, or project you create and submit to our hackathons.</li>
-                            <li><strong>License to Showcase:</strong> By submitting a project, you grant Pixel Phantoms a non-exclusive, royalty-free license to display, demo, and promote your project on our website and social media for community purposes.</li>
-                            <li><strong>Open Source:</strong> We encourage, but do not mandate, open-sourcing your submissions under licenses like MIT or Apache 2.0.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-gavel"></i></div>
-                    <div class="term-content">
-                        <h2>4. User Conduct & Compliance</h2>
-                        <p>Users must not use the Platform to host, display, or share content that is:</p>
-                        <ul>
-                            <li>Defamatory, obscene, or invasive of another's privacy.</li>
-                            <li>In violation of any Indian laws or regulations (including the IT Act, 2000).</li>
-                            <li>Malicious software, viruses, or code designed to disrupt the Platform.</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-shield-alt"></i></div>
-                    <div class="term-content">
-                        <h2>5. Grievance Redressal</h2>
-                        <p>In accordance with the <em>Information Technology (Intermediary Guidelines) Rules</em>, if you have any grievance regarding content published on our platform, please contact our designated officer.</p>
-                        <div class="contact-mini-card">
-                            <strong>Grievance Officer:</strong> Sayee Gosavi<br>
-                            <strong>Email:</strong> <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a><br>
-                            <strong>Subject:</strong> "Grievance - [Event/Content Name]"
-                        </div>
-                    </div>
-                </article>
-
-                <article class="term-card reveal">
-                    <div class="term-icon"><i class="fas fa-exclamation-circle"></i></div>
-                    <div class="term-content">
-                        <h2>6. Limitation of Liability</h2>
-                        <p>Pixel Phantoms is a student-run community. We are not liable for:</p>
-                        <ul>
-                            <li>Platform downtime during critical submission windows (though we try our best!).</li>
-                            <li>Loss of data or project files. <strong>Always backup your hackathon submissions locally.</strong></li>
-                        </ul>
-                    </div>
-                </article>
-
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-trophy"></i></div>
+            <div class="term-content">
+              <h2>2. Hackathon & Event Participation</h2>
+              <p>By registering for an event or hackathon via our Platform, you agree to:</p>
+              <ul>
+                <li>
+                  <strong>Accuracy:</strong> Provide true and accurate registration information.
+                </li>
+                <li>
+                  <strong>Fair Play:</strong> Adhere to specific event rulebooks. Plagiarism,
+                  cheating, or sabotage will result in immediate disqualification.
+                </li>
+                <li>
+                  <strong>Team Conduct:</strong> Treat teammates and competitors with respect. Toxic
+                  behavior during events is grounds for a permanent ban.
+                </li>
+              </ul>
             </div>
+          </article>
 
-            <aside class="terms-sidebar">
-                <div class="sidebar-box">
-                    <h3>Navigation</h3>
-                    <ul class="sidebar-links">
-                        <li><a href="#navbar-placeholder">Back to Top</a></li>
-                        <li><a href="../events.html">Upcoming Events</a></li>
-                        <li><a href="https://github.com/sayeeg-11/Pixel_Phantoms/blob/main/CODE_OF_CONDUCT.md" target="_blank">Code of Conduct</a></li>
-                    </ul>
-                </div>
-                <div class="sidebar-box contact-highlight">
-                    <h3>Legal Inquiries</h3>
-                    <p>For partnership or sponsorship legalities, reach out to the core committee.</p>
-                    <a href="../contact.html" class="btn-sidebar">Contact Admin</a>
-                </div>
-            </aside>
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-copyright"></i></div>
+            <div class="term-content">
+              <h2>3. Intellectual Property Rights (IPR)</h2>
+              <p>
+                We respect the creativity of our students. Our policy regarding
+                <strong>Hackathon Submissions</strong> is as follows:
+              </p>
+              <ul>
+                <li>
+                  <strong>Student Ownership:</strong> You retain full ownership of any code, design,
+                  or project you create and submit to our hackathons.
+                </li>
+                <li>
+                  <strong>License to Showcase:</strong> By submitting a project, you grant Pixel
+                  Phantoms a non-exclusive, royalty-free license to display, demo, and promote your
+                  project on our website and social media for community purposes.
+                </li>
+                <li>
+                  <strong>Open Source:</strong> We encourage, but do not mandate, open-sourcing your
+                  submissions under licenses like MIT or Apache 2.0.
+                </li>
+              </ul>
+            </div>
+          </article>
 
-        </section>
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-gavel"></i></div>
+            <div class="term-content">
+              <h2>4. User Conduct & Compliance</h2>
+              <p>Users must not use the Platform to host, display, or share content that is:</p>
+              <ul>
+                <li>Defamatory, obscene, or invasive of another's privacy.</li>
+                <li>
+                  In violation of any Indian laws or regulations (including the IT Act, 2000).
+                </li>
+                <li>Malicious software, viruses, or code designed to disrupt the Platform.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="term-content">
+              <h2>5. Grievance Redressal</h2>
+              <p>
+                In accordance with the
+                <em>Information Technology (Intermediary Guidelines) Rules</em>, if you have any
+                grievance regarding content published on our platform, please contact our designated
+                officer.
+              </p>
+              <div class="contact-mini-card">
+                <strong>Grievance Officer:</strong> Sayee Gosavi<br />
+                <strong>Email:</strong>
+                <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a><br />
+                <strong>Subject:</strong> "Grievance - [Event/Content Name]"
+              </div>
+            </div>
+          </article>
+
+          <article class="term-card reveal">
+            <div class="term-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <div class="term-content">
+              <h2>6. Limitation of Liability</h2>
+              <p>Pixel Phantoms is a student-run community. We are not liable for:</p>
+              <ul>
+                <li>
+                  Platform downtime during critical submission windows (though we try our best!).
+                </li>
+                <li>
+                  Loss of data or project files.
+                  <strong>Always backup your hackathon submissions locally.</strong>
+                </li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <aside class="terms-sidebar">
+          <div class="sidebar-box">
+            <h3>Navigation</h3>
+            <ul class="sidebar-links">
+              <li><a href="#navbar-placeholder">Back to Top</a></li>
+              <li><a href="../events.html">Upcoming Events</a></li>
+              <li>
+                <a
+                  href="https://github.com/sayeeg-11/Pixel_Phantoms/blob/main/CODE_OF_CONDUCT.md"
+                  target="_blank"
+                  >Code of Conduct</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-box contact-highlight">
+            <h3>Legal Inquiries</h3>
+            <p>For partnership or sponsorship legalities, reach out to the core committee.</p>
+            <a href="../contact.html" class="btn-sidebar">Contact Admin</a>
+          </div>
+        </aside>
+      </section>
     </div>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/terms.js"></script>
     <script src="../js/scroll-progress.js"></script>
-
-</body>
+  </body>
 </html>

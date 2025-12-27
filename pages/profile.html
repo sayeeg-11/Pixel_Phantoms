@@ -1,30 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Agent Profile</title>
-    <link rel="icon" href="../assets/logo.png">
-    
+    <link rel="icon" href="../assets/logo.png" />
+
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../css/scroll-progress.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/home-gsap.css">
-    <link rel="stylesheet" href="../css/back-to-top.css">
-    <link rel="stylesheet" href="../css/profile.css">
-    
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+
     <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="hacker-theme">
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
     <div id="scroll-progress-container">
-        <div id="scroll-progress-bar"></div>
+      <div id="scroll-progress-bar"></div>
     </div>
 
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-profile" class="skip-to-content" id="skip-link">
-        <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
+      <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
     </a>
 
     <!-- Cyber Rain Canvas Background -->
@@ -33,212 +39,198 @@
     <!-- Navbar -->
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>renderNavbar('../');</script>
+    <script>
+      renderNavbar('../');
+    </script>
 
     <!-- Main Content -->
     <main class="main-content" id="main-profile" tabindex="-1">
-        
-        <!-- Profile Hero Section -->
-        <section class="profile-hero">
-            <div class="grid-overlay" aria-hidden="true"></div>
-            <div class="hero-content">
-                <h1 class="profile-title">
-                    <i class="fas fa-user-secret"></i> AGENT_PROFILE
-                </h1>
-                <p class="profile-subtitle">> Secure access to command center granted</p>
+      <!-- Profile Hero Section -->
+      <section class="profile-hero">
+        <div class="grid-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <h1 class="profile-title"><i class="fas fa-user-secret"></i> AGENT_PROFILE</h1>
+          <p class="profile-subtitle">> Secure access to command center granted</p>
+        </div>
+      </section>
+
+      <!-- Profile Content -->
+      <section class="profile-section">
+        <div class="profile-container">
+          <!-- Profile Header Card -->
+          <div class="profile-header-card" data-aos="fade-up">
+            <div class="profile-avatar-wrapper">
+              <div class="profile-avatar" id="profile-avatar">
+                <i class="fas fa-user-astronaut"></i>
+              </div>
+              <div class="status-badge online" id="status-badge">
+                <span class="status-dot"></span>
+                <span class="status-text">ONLINE</span>
+              </div>
             </div>
-        </section>
 
-        <!-- Profile Content -->
-        <section class="profile-section">
-            <div class="profile-container">
-                
-                <!-- Profile Header Card -->
-                <div class="profile-header-card" data-aos="fade-up">
-                    <div class="profile-avatar-wrapper">
-                        <div class="profile-avatar" id="profile-avatar">
-                            <i class="fas fa-user-astronaut"></i>
-                        </div>
-                        <div class="status-badge online" id="status-badge">
-                            <span class="status-dot"></span>
-                            <span class="status-text">ONLINE</span>
-                        </div>
-                    </div>
-                    
-                    <div class="profile-header-info">
-                        <h2 class="profile-name" id="profile-name">Agent_Unknown</h2>
-                        <p class="profile-role" id="profile-role">
-                            <i class="fas fa-shield-alt"></i> CONTRIBUTOR
-                        </p>
-                        <p class="profile-codename" id="profile-codename">@loading...</p>
-                    </div>
-
-                    <div class="profile-actions">
-                        <button class="btn-cyber btn-edit" id="edit-profile-btn">
-                            <i class="fas fa-edit"></i> EDIT_PROFILE
-                        </button>
-                        <button class="btn-cyber-outline btn-logout" id="logout-btn">
-                            <i class="fas fa-sign-out-alt"></i> LOGOUT
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Profile Details & Activity Grid -->
-                <div class="profile-grid">
-                    
-                    <!-- User Details Card -->
-                    <div class="profile-card details-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="card-header">
-                            <h3><i class="fas fa-info-circle"></i> AGENT_DETAILS</h3>
-                            <div class="card-divider"></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    <i class="fas fa-fingerprint"></i> Codename:
-                                </span>
-                                <span class="detail-value" id="detail-codename">loading...</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    <i class="fas fa-envelope"></i> Email:
-                                </span>
-                                <span class="detail-value" id="detail-email">loading...</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    <i class="fas fa-user-tag"></i> Role:
-                                </span>
-                                <span class="detail-value" id="detail-role">CONTRIBUTOR</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    <i class="fas fa-calendar-alt"></i> Joined:
-                                </span>
-                                <span class="detail-value" id="detail-joined">Loading...</span>
-                            </div>
-                            <div class="detail-row">
-                                <span class="detail-label">
-                                    <i class="fas fa-clock"></i> Last Active:
-                                </span>
-                                <span class="detail-value" id="detail-active">Just now</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Community Activity Card -->
-                    <div class="profile-card activity-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="card-header">
-                            <h3><i class="fas fa-chart-line"></i> COMMUNITY_ACTIVITY</h3>
-                            <div class="card-divider"></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity-stats">
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-calendar-check"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-value" id="events-count">0</span>
-                                        <span class="stat-label">Events Joined</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-code-branch"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-value" id="contributions-count">0</span>
-                                        <span class="stat-label">Contributions</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-project-diagram"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-value" id="projects-count">0</span>
-                                        <span class="stat-label">Projects</span>
-                                    </div>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-icon">
-                                        <i class="fas fa-trophy"></i>
-                                    </div>
-                                    <div class="stat-info">
-                                        <span class="stat-value" id="achievements-count">0</span>
-                                        <span class="stat-label">Achievements</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Achievements Card -->
-                    <div class="profile-card achievements-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-header">
-                            <h3><i class="fas fa-medal"></i> ACHIEVEMENTS</h3>
-                            <div class="card-divider"></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="achievements-grid" id="achievements-grid">
-                                <!-- Achievements will be loaded dynamically -->
-                                <div class="achievement-item locked">
-                                    <i class="fas fa-lock"></i>
-                                    <span>First Login</span>
-                                </div>
-                                <div class="achievement-item locked">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Event Attendee</span>
-                                </div>
-                                <div class="achievement-item locked">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Code Contributor</span>
-                                </div>
-                                <div class="achievement-item locked">
-                                    <i class="fas fa-lock"></i>
-                                    <span>Community Star</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recent Activity Card -->
-                    <div class="profile-card recent-activity-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="card-header">
-                            <h3><i class="fas fa-history"></i> RECENT_ACTIVITY</h3>
-                            <div class="card-divider"></div>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity-timeline" id="activity-timeline">
-                                <!-- Activity items will be loaded dynamically -->
-                                <div class="timeline-item">
-                                    <div class="timeline-dot"></div>
-                                    <div class="timeline-content">
-                                        <p class="timeline-text">Profile created successfully</p>
-                                        <span class="timeline-time">Just now</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="profile-header-info">
+              <h2 class="profile-name" id="profile-name">Agent_Unknown</h2>
+              <p class="profile-role" id="profile-role">
+                <i class="fas fa-shield-alt"></i> CONTRIBUTOR
+              </p>
+              <p class="profile-codename" id="profile-codename">@loading...</p>
             </div>
-        </section>
 
+            <div class="profile-actions">
+              <button class="btn-cyber btn-edit" id="edit-profile-btn">
+                <i class="fas fa-edit"></i> EDIT_PROFILE
+              </button>
+              <button class="btn-cyber-outline btn-logout" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> LOGOUT
+              </button>
+            </div>
+          </div>
+
+          <!-- Profile Details & Activity Grid -->
+          <div class="profile-grid">
+            <!-- User Details Card -->
+            <div class="profile-card details-card" data-aos="fade-up" data-aos-delay="100">
+              <div class="card-header">
+                <h3><i class="fas fa-info-circle"></i> AGENT_DETAILS</h3>
+                <div class="card-divider"></div>
+              </div>
+              <div class="card-body">
+                <div class="detail-row">
+                  <span class="detail-label"> <i class="fas fa-fingerprint"></i> Codename: </span>
+                  <span class="detail-value" id="detail-codename">loading...</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label"> <i class="fas fa-envelope"></i> Email: </span>
+                  <span class="detail-value" id="detail-email">loading...</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label"> <i class="fas fa-user-tag"></i> Role: </span>
+                  <span class="detail-value" id="detail-role">CONTRIBUTOR</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label"> <i class="fas fa-calendar-alt"></i> Joined: </span>
+                  <span class="detail-value" id="detail-joined">Loading...</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-label"> <i class="fas fa-clock"></i> Last Active: </span>
+                  <span class="detail-value" id="detail-active">Just now</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Community Activity Card -->
+            <div class="profile-card activity-card" data-aos="fade-up" data-aos-delay="200">
+              <div class="card-header">
+                <h3><i class="fas fa-chart-line"></i> COMMUNITY_ACTIVITY</h3>
+                <div class="card-divider"></div>
+              </div>
+              <div class="card-body">
+                <div class="activity-stats">
+                  <div class="stat-item">
+                    <div class="stat-icon">
+                      <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-value" id="events-count">0</span>
+                      <span class="stat-label">Events Joined</span>
+                    </div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-icon">
+                      <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-value" id="contributions-count">0</span>
+                      <span class="stat-label">Contributions</span>
+                    </div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-icon">
+                      <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-value" id="projects-count">0</span>
+                      <span class="stat-label">Projects</span>
+                    </div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-icon">
+                      <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-value" id="achievements-count">0</span>
+                      <span class="stat-label">Achievements</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievements Card -->
+            <div class="profile-card achievements-card" data-aos="fade-up" data-aos-delay="300">
+              <div class="card-header">
+                <h3><i class="fas fa-medal"></i> ACHIEVEMENTS</h3>
+                <div class="card-divider"></div>
+              </div>
+              <div class="card-body">
+                <div class="achievements-grid" id="achievements-grid">
+                  <!-- Achievements will be loaded dynamically -->
+                  <div class="achievement-item locked">
+                    <i class="fas fa-lock"></i>
+                    <span>First Login</span>
+                  </div>
+                  <div class="achievement-item locked">
+                    <i class="fas fa-lock"></i>
+                    <span>Event Attendee</span>
+                  </div>
+                  <div class="achievement-item locked">
+                    <i class="fas fa-lock"></i>
+                    <span>Code Contributor</span>
+                  </div>
+                  <div class="achievement-item locked">
+                    <i class="fas fa-lock"></i>
+                    <span>Community Star</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Activity Card -->
+            <div class="profile-card recent-activity-card" data-aos="fade-up" data-aos-delay="400">
+              <div class="card-header">
+                <h3><i class="fas fa-history"></i> RECENT_ACTIVITY</h3>
+                <div class="card-divider"></div>
+              </div>
+              <div class="card-body">
+                <div class="activity-timeline" id="activity-timeline">
+                  <!-- Activity items will be loaded dynamically -->
+                  <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                      <p class="timeline-text">Profile created successfully</p>
+                      <span class="timeline-time">Just now</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- Footer -->
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>renderFooter('../');</script>
+    <script>
+      renderFooter('../');
+    </script>
 
     <!-- Scripts -->
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../js/scroll-progress.js"></script>
-    
-</body>
+  </body>
 </html>
