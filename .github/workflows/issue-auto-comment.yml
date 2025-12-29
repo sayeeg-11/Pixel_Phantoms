@@ -1,0 +1,48 @@
+name: Issue Auto Comment (WoCS / SWoC)
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  auto-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto comment on issue creation
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issueBody = (context.payload.issue.body || "").toLowerCase();
+            
+            let comment = `👋 Thanks for creating this issue!
+
+📌 **Important:** Please read the pinned issue **#23** before proceeding.
+
+🕒 This issue will be **reviewed and assigned to you ASAP** by the maintainers.
+❗ Please **do NOT open a PR before the issue is assigned**.
+
+🏷️ **Level labels (Level 1 / Level 2 / Level 3)** will be added **after PR review and before merging**.`;
+
+            if (issueBody.includes("wocs") || issueBody.includes("swoc")) {
+              comment += `
+
+📣 **Admin Alert:**  
+Contributor wants to contribute under **WoCS / SWoC**.
+
+@sayeeg-11 please review and assign.`;
+            } else {
+              comment += `
+
+❓ **Action Required:**  
+Please confirm whether you are contributing under **WoCS or SWoC** by commenting below.`;
+            }
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
