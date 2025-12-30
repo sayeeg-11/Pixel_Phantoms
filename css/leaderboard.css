@@ -127,17 +127,65 @@ body.hud-mode {
 }
 
 .stat-pill {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--panel-bg);
+    border: var(--panel-border);
     padding: 8px 20px;
     border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.85rem;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.stat-pill .label { color: var(--text-dim); margin-right: 10px; }
-.stat-pill .val.green { color: var(--neon-green); text-shadow: 0 0 5px var(--neon-green); }
-.stat-pill .val.blue { color: var(--neon-cyan); text-shadow: 0 0 5px var(--neon-cyan); }
+.stat-pill:hover {
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.btn-refresh {
+  all: unset;                 /*  removes ALL default button styles */
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: var(--text-dim);
+}
+
+.stat-pill .label {
+    color: var(--text-dim);
+    margin-right: 10px;
+}
+
+.stat-pill .val.ping-good {
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+.stat-pill .val.ping-warn {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px var(--neon-yellow);
+}
+
+.stat-pill .val.ping-bad {
+    color: var(--neon-red);
+    text-shadow: 0 0 5px var(--neon-red);
+}
+
+#ping-counter {
+  transition: color 0.25s ease, text-shadow 0.25s ease;       /* Smooth color transition */
+}
+
+.stat-pill .val.blue {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
 
 /* --- BENTO GRID SYSTEM --- */
 .bento-grid {

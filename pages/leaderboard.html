@@ -61,15 +61,17 @@
           <div class="header-stats">
             <div class="stat-pill">
               <span class="label">PING</span>
-              <span class="val green" id="ping-counter">12ms</span>
+              <span class="val ping-good ping-bad ping-warn" id="ping-counter">12ms</span>
             </div>
             <div class="stat-pill">
               <span class="label">DATA_STREAM</span>
               <span class="val blue">SYNCED</span>
             </div>
-            <button class="btn-refresh" id="refresh-leaderboard" data-loading="true">
+            <div class="stat-pill">
+              <button class="btn-refresh" id="refresh-leaderboard" data-loading="true">
               <i class="fas fa-sync-alt"></i> REFRESH
             </button>
+            </div>
           </div>
         </header>
 

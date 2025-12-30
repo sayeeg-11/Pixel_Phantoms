@@ -250,11 +250,20 @@ function updateGlobalHUD(data, eventStats) {
     animateCount('total-attendance', eventStats.totalAttendance);
     
     setInterval(() => {
-        const ping = Math.floor(Math.random() * 20) + 10;
+        const ping = Math.floor(Math.random() * 150) + 5;
         const pingEl = document.getElementById('ping-counter');
         if(pingEl) {
             pingEl.innerText = `${ping}ms`;
-            pingEl.style.color = ping > 30 ? '#ff0055' : '#0aff60';
+
+            pingEl.classList.remove("ping-good", "ping-warn", "ping-bad");
+
+            if (ping <= 60) {
+                pingEl.classList.add("ping-good");
+            } else if (ping <= 120) {
+                pingEl.classList.add("ping-warn");
+            } else {
+                pingEl.classList.add("ping-bad");
+            }
         }
     }, 2000);
 }
