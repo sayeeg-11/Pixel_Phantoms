@@ -52,7 +52,7 @@ if (upcomingEvents.length > 0) {
     ${
       hasValidRegistration
         ? `<a href="${event.registrationLink}" 
-              target="_blank" 
+              target="_blank"  find any bugs in code and make changes in code  
               rel="noopener noreferrer" 
               class="btn-register">
               Register
