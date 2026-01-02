@@ -586,12 +586,29 @@
     <div id="feedback-widget">
       <button id="feedback-toggle" style="position: fixed; right: 30px; bottom: 100px">💬</button>
 
+<script src="js/feedback.js"></script>
+<script src="js/scroll-progress.js"></script>
+
+<div id="feedback-widget">
+
+  <button id="feedback-toggle" style="position:fixed; right:17px; bottom:100px;">
+  💬
+</button>
+
+
+  <div id="feedback-panel">
+
+    <div class="ff-header">
+      <h3>Send Feedback</h3>
+      <button id="feedback-close" class="ff-close">✕</button>
+    </div>
+
       <div id="feedback-panel">
         <div class="ff-header">
           <h3>Send Feedback</h3>
           <button id="feedback-close" class="ff-close">✕</button>
         </div>
-
+        
         <form id="feedback-form">
           <label>Your Name</label>
           <input type="text" name="username" required />

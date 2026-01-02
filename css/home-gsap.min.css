@@ -61,6 +61,19 @@ main {
     mix-blend-mode: screen;
 }
 
+/* Heading alignment fix */
+.container {
+  text-align: center;
+}
+
+.section-header-glitch span[aria-hidden="true"] {
+  display: inline-block;
+}
+
+.section-header-glitch {
+  transform: translateX(1px);
+}
+
 /* Glitch Header Fix */
 .section-header-glitch {
     font-size: 2.5rem;

@@ -3,17 +3,27 @@
    ========================================= */
 
 .quick-stats-widget {
+    box-sizing: border-box;
+    width: 92%;
     background: var(--panel-bg);
     border: var(--panel-border);
     border-radius: 16px;
     padding: 25px;
-    margin: 30px auto;
+    margin: 20px auto;
     max-width: 1200px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
     animation: slideUpFade 0.8s ease-out 0.2s both;
+}
+
+@media (max-width: 480px) {
+    .quick-stats-widget {
+        padding: 15px;      /* Reduced from 25px */
+        margin: 15px 10px;  /* Adds a small gap on the left/right of the widget */
+        border-radius: 12px; 
+    }
 }
 
 /* Glowing border effect */
@@ -23,6 +33,7 @@
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     height: 3px;
     background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple), var(--neon-green));
     background-size: 200% 100%;

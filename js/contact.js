@@ -1,264 +1,172 @@
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
     const feedbackMsg = document.getElementById('form-feedback');
-    const submitBtn = document.querySelector('.btn-submit');
+    const submitBtn = contactForm.querySelector('.btn-submit');
+
+    if (!submitBtn) return;
+
     const originalBtnText = submitBtn.innerHTML;
 
-    // Form elements
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+    // Inputs
+    const inputs = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        message: document.getElementById('message')
+    };
+
+    const errors = {
+        name: document.getElementById('name-error'),
+        email: document.getElementById('email-error'),
+        message: document.getElementById('message-error')
+    };
+
     const charCount = document.getElementById('char-count');
     const charCounter = document.querySelector('.char-counter');
 
-    // Error message elements
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
-    const messageError = document.getElementById('message-error');
-
-    // Validation patterns and limits
-    const validationRules = {
+    const rules = {
         name: {
-            minLength: 2,
-            maxLength: 50,
+            min: 2,
+            max: 50,
             pattern: /^[a-zA-Z\s'-]+$/,
-            errorMessages: {
+            messages: {
                 required: 'Name is required',
-                minLength: 'Name must be at least 2 characters',
-                maxLength: 'Name must be less than 50 characters',
-                pattern: 'Name can only contain letters, spaces, hyphens, and apostrophes'
+                invalid: 'Only letters, spaces, hyphens, and apostrophes allowed'
             }
         },
         email: {
-            pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-            errorMessages: {
+            pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            messages: {
                 required: 'Email is required',
-                pattern: 'Please enter a valid email address'
+                invalid: 'Enter a valid email address'
             }
         },
         message: {
-            minLength: 10,
-            maxLength: 500,
-            errorMessages: {
+            min: 10,
+            max: 500,
+            messages: {
                 required: 'Message is required',
-                minLength: 'Message must be at least 10 characters',
-                maxLength: 'Message must be less than 500 characters'
+                invalid: 'Message must be at least 10 characters'
             }
         }
     };
 
-    // Input sanitization function
-    function sanitizeInput(input) {
-        return input.trim().replace(/[<>"'&]/g, (char) => {
-            const entityMap = {
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#x27;',
-                '&': '&amp;'
-            };
-            return entityMap[char];
-        });
-    }
+    /* ------------------ Utilities ------------------ */
 
-    // Show error message function
-    function showError(element, message) {
-        element.textContent = message;
-        element.classList.add('show');
-    }
+    const sanitize = value =>
+        value.trim().replace(/[<>"'&]/g, char =>
+            ({ '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#x27;', '&': '&amp;' }[char])
+        );
 
-    // Hide error message function
-    function hideError(element) {
-        element.classList.remove('show');
-        setTimeout(() => {
-            element.textContent = '';
-        }, 300);
-    }
+    const showError = (input, errorEl, msg) => {
+        errorEl.textContent = msg;
+        errorEl.classList.add('show');
+        input.classList.add('invalid');
+        input.classList.remove('valid');
+    };
 
-    // Validate individual field
-    function validateField(input, rules, errorElement) {
-        const value = sanitizeInput(input.value);
-        const fieldName = input.id;
-
-        // Check if field is empty
-        if (!value) {
-            showError(errorElement, rules.errorMessages.required);
-            input.classList.remove('valid');
-            input.classList.add('invalid');
-            return false;
-        }
-
-        // Check minimum length
-        if (rules.minLength && value.length < rules.minLength) {
-            showError(errorElement, rules.errorMessages.minLength);
-            input.classList.remove('valid');
-            input.classList.add('invalid');
-            return false;
-        }
-
-        // Check maximum length
-        if (rules.maxLength && value.length > rules.maxLength) {
-            showError(errorElement, rules.errorMessages.maxLength);
-            input.classList.remove('valid');
-            input.classList.add('invalid');
-            return false;
-        }
-
-        // Check pattern (for name and email)
-        if (rules.pattern && !rules.pattern.test(value)) {
-            showError(errorElement, rules.errorMessages.pattern);
-            input.classList.remove('valid');
-            input.classList.add('invalid');
-            return false;
-        }
-
-        // If all validations pass
-        hideError(errorElement);
+    const clearError = (input, errorEl) => {
+        errorEl.textContent = '';
+        errorEl.classList.remove('show');
         input.classList.remove('invalid');
         input.classList.add('valid');
+    };
+
+    /* ------------------ Validation ------------------ */
+
+    function validate(input, rule, errorEl) {
+        const value = sanitize(input.value);
+
+        if (!value) {
+            showError(input, errorEl, rule.messages.required);
+            return false;
+        }
+
+        if (rule.min && value.length < rule.min) {
+            showError(input, errorEl, rule.messages.invalid);
+            return false;
+        }
+
+        if (rule.max && value.length > rule.max) {
+            input.value = value.slice(0, rule.max);
+        }
+
+        if (rule.pattern && !rule.pattern.test(value)) {
+            showError(input, errorEl, rule.messages.invalid);
+            return false;
+        }
+
+        clearError(input, errorEl);
         return true;
     }
 
-    // Update character counter
+    /* ------------------ Character Counter ------------------ */
+
     function updateCharCounter() {
-        const currentLength = messageInput.value.length;
-        const maxLength = validationRules.message.maxLength;
-        
-        charCount.textContent = currentLength;
-        
-        // Update counter color based on usage
-        charCounter.classList.remove('warning', 'error');
-        if (currentLength > maxLength * 0.8) {
-            charCounter.classList.add('warning');
-        }
-        if (currentLength >= maxLength) {
-            charCounter.classList.add('error');
-        }
+        const length = inputs.message.value.length;
+        const max = rules.message.max;
+
+        charCount.textContent = length;
+        charCounter.classList.toggle('warning', length > max * 0.8);
+        charCounter.classList.toggle('error', length >= max);
     }
 
-    // Debounced validation function
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    // Real-time validation with debouncing
-    const debouncedValidateName = debounce(() => {
-        validateField(nameInput, validationRules.name, nameError);
-    }, 300);
-
-    const debouncedValidateEmail = debounce(() => {
-        validateField(emailInput, validationRules.email, emailError);
-    }, 300);
-
-    const debouncedValidateMessage = debounce(() => {
-        validateField(messageInput, validationRules.message, messageError);
-    }, 300);
-
-    // Event listeners for real-time validation
-    nameInput.addEventListener('input', debouncedValidateName);
-    nameInput.addEventListener('blur', () => validateField(nameInput, validationRules.name, nameError));
-
-    emailInput.addEventListener('input', debouncedValidateEmail);
-    emailInput.addEventListener('blur', () => validateField(emailInput, validationRules.email, emailError));
-
-    messageInput.addEventListener('input', () => {
-        updateCharCounter();
-        debouncedValidateMessage();
-    });
-    messageInput.addEventListener('blur', () => validateField(messageInput, validationRules.message, messageError));
-
-    // Initialize character counter
+    inputs.message.setAttribute('maxlength', rules.message.max);
     updateCharCounter();
 
-    // Form submission handler
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    /* ------------------ Event Listeners ------------------ */
 
-            // Validate all fields before submission
-            const isNameValid = validateField(nameInput, validationRules.name, nameError);
-            const isEmailValid = validateField(emailInput, validationRules.email, emailError);
-            const isMessageValid = validateField(messageInput, validationRules.message, messageError);
+    inputs.name.addEventListener('blur', () =>
+        validate(inputs.name, rules.name, errors.name)
+    );
 
-            // If any field is invalid, stop submission
-            if (!isNameValid || !isEmailValid || !isMessageValid) {
-                feedbackMsg.textContent = '❌ Please fix the errors above before submitting.';
-                feedbackMsg.className = 'feedback-message error';
-                return;
-            }
+    inputs.email.addEventListener('blur', () =>
+        validate(inputs.email, rules.email, errors.email)
+    );
 
-            // Check for whitespace-only submissions
-            const sanitizedName = sanitizeInput(nameInput.value);
-            const sanitizedEmail = sanitizeInput(emailInput.value);
-            const sanitizedMessage = sanitizeInput(messageInput.value);
+    inputs.message.addEventListener('input', updateCharCounter);
+    inputs.message.addEventListener('blur', () =>
+        validate(inputs.message, rules.message, errors.message)
+    );
 
-            if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
-                feedbackMsg.textContent = '❌ Please provide valid content in all fields.';
-                feedbackMsg.className = 'feedback-message error';
-                return;
-            }
+    /* ------------------ Submit ------------------ */
 
-            // Show loading state
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin spinner"></i> Sending...';
-            feedbackMsg.className = 'feedback-message';
+    contactForm.addEventListener('submit', async e => {
+        e.preventDefault();
 
-            // Simulate API call with error handling
-            setTimeout(() => {
-                try {
-                    // Simulate random success/failure for demo (90% success rate)
-                    const isSuccess = Math.random() > 0.1;
-                    
-                    if (isSuccess) {
-                        // Success state
-                        feedbackMsg.textContent = "✅ Message sent successfully! We'll get back to you soon.";
-                        feedbackMsg.className = 'feedback-message success';
-                        
-                        // Reset form and validation states
-                        contactForm.reset();
-                        updateCharCounter();
-                        
-                        // Clear validation classes
-                        [nameInput, emailInput, messageInput].forEach(input => {
-                            input.classList.remove('valid', 'invalid');
-                        });
-                        
-                        // Hide all error messages
-                        [nameError, emailError, messageError].forEach(hideError);
-                        
-                    } else {
-                        // Simulate network error
-                        throw new Error('Network error');
-                    }
-                    
-                } catch (error) {
-                    // Error state
-                    feedbackMsg.textContent = '❌ Failed to send message. Please try again later.';
-                    feedbackMsg.className = 'feedback-message error';
-                }
-                
-                // Reset button
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
+        const isValid =
+            validate(inputs.name, rules.name, errors.name) &&
+            validate(inputs.email, rules.email, errors.email) &&
+            validate(inputs.message, rules.message, errors.message);
 
-                // Hide feedback message after 5 seconds
-                setTimeout(() => {
-                    feedbackMsg.style.opacity = '0';
-                    setTimeout(() => {
-                        feedbackMsg.className = 'feedback-message';
-                        feedbackMsg.style.opacity = '1';
-                    }, 300);
-                }, 5000);
+        if (!isValid) {
+            feedbackMsg.textContent = '❌ Please fix the errors above.';
+            feedbackMsg.className = 'feedback-message error';
+            return;
+        }
 
-            }, 1500);
-        });
-    }
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending…';
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            feedbackMsg.textContent = '✅ Message sent successfully!';
+            feedbackMsg.className = 'feedback-message success';
+
+            contactForm.reset();
+            updateCharCounter();
+
+            Object.values(inputs).forEach(i =>
+                i.classList.remove('valid', 'invalid')
+            );
+        } catch {
+            feedbackMsg.textContent = '❌ Something went wrong. Try again.';
+            feedbackMsg.className = 'feedback-message error';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
+    });
 });
