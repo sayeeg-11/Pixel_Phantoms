@@ -260,8 +260,11 @@
     transform: translateY(-5px);
 }
 
-.focus-areas h3 {
+.focus-areas {
     text-align: center;
+}
+
+.focus-areas h3 {
     font-size: 1.8rem;
     margin: 40px 0 30px;
     color: var(--text-primary);

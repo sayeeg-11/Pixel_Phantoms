@@ -246,6 +246,11 @@
 
 .center-text { text-align: center; margin-bottom: 40px; }
 
+.hero-glitch {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .join-steps-grid { grid-template-columns: 1fr; }

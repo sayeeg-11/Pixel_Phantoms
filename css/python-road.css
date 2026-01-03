@@ -5,6 +5,11 @@
   --glass: rgba(10, 10, 10, 0.9);
 }
 
+.glitch-text, .subtitle {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .roadmap-wrapper {
   position: relative;
   max-width: 1100px;
