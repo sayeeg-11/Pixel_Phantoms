@@ -558,3 +558,59 @@ body {
         font-size: 0.9rem;
     }
 }
+
+/* Updated Login Card Size */
+.login-container {
+    max-width: 450px; /* Reduced from 550px */
+}
+
+.login-card {
+    padding: 30px 25px; /* Reduced padding for density */
+    min-height: 480px; /* Compact height */
+}
+
+/* Role Selector Styles */
+.role-selector {
+    display: flex;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 4px;
+}
+
+.role-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 6px;
+}
+
+.role-btn.active {
+    background: var(--accent-color);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.3);
+}
+
+.form-title {
+    font-size: 1.5rem; /* Smaller title */
+}
+
+.form-desc {
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+}
+
+/* Responsive adjust for mobile */
+@media (max-width: 480px) {
+    .role-selector {
+        flex-direction: column;
+    }
+}

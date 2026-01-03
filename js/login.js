@@ -511,3 +511,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- START DATA LOADING ---
     loadBaseAccounts(); // <--- Loads the hidden CSV file
 });
+
+// Add to DOM Elements section
+const roleBtns = document.querySelectorAll('.role-btn');
+const roleInput = document.getElementById('selected-role');
+const usernameInput = document.getElementById('username');
+
+// Role Switching Logic
+roleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Toggle active class
+        roleBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        // Update hidden role value
+        const role = btn.dataset.role;
+        roleInput.value = role;
+
+        // Change placeholders for UX
+        if (role === 'core_committee') {
+            usernameInput.placeholder = "Codename (Core Handle)";
+        } else {
+            usernameInput.placeholder = "Codename (Member ID)";
+        }
+    });
+});
