@@ -1,0 +1,338 @@
+[
+  {
+    "username": "sayeeg-11",
+    "name": "Sayegh",
+    "role": "Maintainer",
+    "joinDate": "2024-01-15",
+    "lastActive": "2025-12-20",
+    "contributions": 42
+  },
+  {
+    "username": "abhishekkumar177",
+    "name": "Abhishek Kumar",
+    "role": "Contributor",
+    "joinDate": "2024-02-10",
+    "lastActive": "2025-12-18",
+    "contributions": 28
+  },
+  {
+    "username": "dev_wizard",
+    "name": "Dev Wizard",
+    "role": "Contributor",
+    "joinDate": "2024-03-05",
+    "lastActive": "2025-12-15",
+    "contributions": 19
+  },
+  {
+    "username": "code_ninja",
+    "name": "Code Ninja",
+    "role": "Contributor",
+    "joinDate": "2024-02-20",
+    "lastActive": "2025-12-12",
+    "contributions": 22
+  },
+  {
+    "username": "pixel_artist",
+    "name": "Pixel Artist",
+    "role": "Designer",
+    "joinDate": "2024-03-15",
+    "lastActive": "2025-12-10",
+    "contributions": 15
+  },
+  {
+    "username": "frontend_guru",
+    "name": "Frontend Guru",
+    "role": "Developer",
+    "joinDate": "2024-01-25",
+    "lastActive": "2025-12-18",
+    "contributions": 31
+  },
+  {
+    "username": "backend_master",
+    "name": "Backend Master",
+    "role": "Developer",
+    "joinDate": "2024-04-10",
+    "lastActive": "2025-12-16",
+    "contributions": 24
+  },
+  {
+    "username": "fullstack_pro",
+    "name": "Fullstack Pro",
+    "role": "Developer",
+    "joinDate": "2024-02-28",
+    "lastActive": "2025-12-14",
+    "contributions": 18
+  },
+  {
+    "username": "ai_researcher",
+    "name": "AI Researcher",
+    "role": "Researcher",
+    "joinDate": "2024-05-05",
+    "lastActive": "2025-12-17",
+    "contributions": 16
+  },
+  {
+    "username": "security_expert",
+    "name": "Security Expert",
+    "role": "Security",
+    "joinDate": "2024-03-22",
+    "lastActive": "2025-12-11",
+    "contributions": 14
+  },
+  {
+    "username": "ux_designer",
+    "name": "UX Designer",
+    "role": "Designer",
+    "joinDate": "2024-04-15",
+    "lastActive": "2025-12-09",
+    "contributions": 12
+  },
+  {
+    "username": "student_dev_01",
+    "name": "Student Dev 1",
+    "role": "Student",
+    "joinDate": "2024-06-10",
+    "lastActive": "2025-12-08",
+    "contributions": 8
+  },
+  {
+    "username": "student_dev_02",
+    "name": "Student Dev 2",
+    "role": "Student",
+    "joinDate": "2024-06-15",
+    "lastActive": "2025-12-07",
+    "contributions": 6
+  },
+  {
+    "username": "student_dev_03",
+    "name": "Student Dev 3",
+    "role": "Student",
+    "joinDate": "2024-07-01",
+    "lastActive": "2025-12-05",
+    "contributions": 5
+  },
+  {
+    "username": "data_scientist",
+    "name": "Data Scientist",
+    "role": "Data Scientist",
+    "joinDate": "2024-04-30",
+    "lastActive": "2025-12-13",
+    "contributions": 11
+  },
+  {
+    "username": "mentor_alice",
+    "name": "Mentor Alice",
+    "role": "Mentor",
+    "joinDate": "2024-01-10",
+    "lastActive": "2025-12-19",
+    "contributions": 35
+  },
+  {
+    "username": "mentor_bob",
+    "name": "Mentor Bob",
+    "role": "Mentor",
+    "joinDate": "2024-01-12",
+    "lastActive": "2025-12-18",
+    "contributions": 29
+  },
+  {
+    "username": "tech_lead",
+    "name": "Tech Lead",
+    "role": "Lead",
+    "joinDate": "2024-02-05",
+    "lastActive": "2025-12-16",
+    "contributions": 27
+  },
+  {
+    "username": "cloud_architect",
+    "name": "Cloud Architect",
+    "role": "Architect",
+    "joinDate": "2024-05-15",
+    "lastActive": "2025-12-10",
+    "contributions": 13
+  },
+  {
+    "username": "sys_admin_01",
+    "name": "Sys Admin",
+    "role": "Admin",
+    "joinDate": "2024-03-01",
+    "lastActive": "2025-12-12",
+    "contributions": 9
+  },
+  {
+    "username": "randomUser1",
+    "name": "Random User",
+    "role": "Contributor",
+    "joinDate": "2024-02-15",
+    "lastActive": "2025-12-05",
+    "contributions": 7
+  },
+  {
+    "username": "python_fanatic",
+    "name": "Python Fanatic",
+    "role": "Developer",
+    "joinDate": "2024-04-20",
+    "lastActive": "2025-12-03",
+    "contributions": 10
+  },
+  {
+    "username": "web_wizard",
+    "name": "Web Wizard",
+    "role": "Developer",
+    "joinDate": "2024-05-10",
+    "lastActive": "2025-12-01",
+    "contributions": 14
+  },
+  {
+    "username": "react_rockstar",
+    "name": "React Rockstar",
+    "role": "Developer",
+    "joinDate": "2024-06-05",
+    "lastActive": "2025-11-28",
+    "contributions": 11
+  },
+  {
+    "username": "white_hat",
+    "name": "White Hat",
+    "role": "Security",
+    "joinDate": "2024-05-25",
+    "lastActive": "2025-11-25",
+    "contributions": 8
+  },
+  {
+    "username": "net_sec_pro",
+    "name": "NetSec Pro",
+    "role": "Security",
+    "joinDate": "2024-04-18",
+    "lastActive": "2025-11-20",
+    "contributions": 9
+  },
+  {
+    "username": "creative_mind",
+    "name": "Creative Mind",
+    "role": "Designer",
+    "joinDate": "2024-07-10",
+    "lastActive": "2025-11-18",
+    "contributions": 6
+  },
+  {
+    "username": "design_lead",
+    "name": "Design Lead",
+    "role": "Designer",
+    "joinDate": "2024-03-25",
+    "lastActive": "2025-11-15",
+    "contributions": 13
+  },
+  {
+    "username": "robotics_fan",
+    "name": "Robotics Fan",
+    "role": "Researcher",
+    "joinDate": "2024-06-20",
+    "lastActive": "2025-11-12",
+    "contributions": 7
+  },
+  {
+    "username": "tech_ethicist",
+    "name": "Tech Ethicist",
+    "role": "Researcher",
+    "joinDate": "2024-07-05",
+    "lastActive": "2025-11-10",
+    "contributions": 5
+  },
+  {
+    "username": "hackathon_winner",
+    "name": "Hackathon Winner",
+    "role": "Competitor",
+    "joinDate": "2024-08-01",
+    "lastActive": "2025-11-08",
+    "contributions": 16
+  },
+  {
+    "username": "innovator_x",
+    "name": "Innovator X",
+    "role": "Innovator",
+    "joinDate": "2024-08-15",
+    "lastActive": "2025-11-05",
+    "contributions": 12
+  },
+  {
+    "username": "neo_the_one",
+    "name": "Neo The One",
+    "role": "Developer",
+    "joinDate": "2024-09-01",
+    "lastActive": "2025-11-03",
+    "contributions": 15
+  },
+  {
+    "username": "trinity_core",
+    "name": "Trinity Core",
+    "role": "Developer",
+    "joinDate": "2024-09-10",
+    "lastActive": "2025-11-01",
+    "contributions": 13
+  },
+  {
+    "username": "morpheus_dev",
+    "name": "Morpheus Dev",
+    "role": "Developer",
+    "joinDate": "2024-09-15",
+    "lastActive": "2025-10-28",
+    "contributions": 14
+  },
+  {
+    "username": "cipher_ops",
+    "name": "Cipher Ops",
+    "role": "Security",
+    "joinDate": "2024-10-01",
+    "lastActive": "2025-10-25",
+    "contributions": 9
+  },
+  {
+    "username": "open_source_fan",
+    "name": "Open Source Fan",
+    "role": "Contributor",
+    "joinDate": "2024-10-10",
+    "lastActive": "2025-10-20",
+    "contributions": 11
+  },
+  {
+    "username": "git_master",
+    "name": "Git Master",
+    "role": "Maintainer",
+    "joinDate": "2024-05-01",
+    "lastActive": "2025-10-18",
+    "contributions": 22
+  },
+  {
+    "username": "repo_maintainer",
+    "name": "Repo Maintainer",
+    "role": "Maintainer",
+    "joinDate": "2024-04-05",
+    "lastActive": "2025-10-15",
+    "contributions": 19
+  },
+  {
+    "username": "contributor_plus",
+    "name": "Contributor Plus",
+    "role": "Contributor",
+    "joinDate": "2024-11-01",
+    "lastActive": "2025-10-12",
+    "contributions": 8
+  },
+  {
+    "username": "linux_lover",
+    "name": "Linux Lover",
+    "role": "DevOps",
+    "joinDate": "2024-06-15",
+    "lastActive": "2025-10-10",
+    "contributions": 10
+  },
+  {
+    "username": "product_manager",
+    "name": "Product Manager",
+    "role": "Manager",
+    "joinDate": "2024-07-20",
+    "lastActive": "2025-10-08",
+    "contributions": 6
+  }
+]
