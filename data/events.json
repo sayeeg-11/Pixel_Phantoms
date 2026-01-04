@@ -1,62 +1,32 @@
 [
     {
-        "title": "Pixel Phantoms Kickoff Meetup",
-        "description": "A community meetup introducing upcoming projects and collaborations.",
-        "date": "2024-12-15",
-        "countdownDate": "2024-12-15T00:00:00.000Z",
-        "location": "Discord",
+        "title": "Web Development Workshop",
+        "description": "Learn modern web development with React and Node.js",
+        "date": "2026-01-15",
+        "countdownDate": "2026-01-15T00:00:00.000Z",
+        "location": "Virtual",
         "status": "UPCOMING",
         "registrationOpen": true,
-        "registrationLink": "https://example.com/kickoff"
+        "registrationLink": "https://forms.google.com/event1"
     },
     {
-        "title": "AI Art Jam 2025",
-        "description": "A creative challenge where participants generate and submit AI-assisted artwork.",
-        "date": "2025-01-10",
-        "countdownDate": "2025-01-10T00:00:00.000Z",
+        "title": "Open Source Contribution Guide",
+        "description": "Get started with open source contributions",
+        "date": "2026-01-25",
+        "countdownDate": "2026-01-25T00:00:00.000Z",
         "location": "Online",
         "status": "UPCOMING",
         "registrationOpen": true,
-        "registrationLink": "https://example.com/ai-art-jam"
+        "registrationLink": "https://forms.google.com/event3"
     },
     {
-        "title": "Phantom DevTalk: Game Engines",
-        "description": "A tech session exploring Unity, Godot, and Unreal workflows.",
-        "date": "2025-02-05",
-        "countdownDate": "2025-02-05T00:00:00.000Z",
-        "location": "Discord",
+        "title": "AI Hackathon 2026",
+        "description": "48-hour hackathon focused on AI/ML projects",
+        "date": "2026-02-20",
+        "countdownDate": "2026-02-20T00:00:00.000Z",
+        "location": "New Delhi Tech Hub",
         "status": "UPCOMING",
         "registrationOpen": true,
-        "registrationLink": "https://example.com/devtalk-ge"
-    },
-    {
-        "title": "Pixel Horror Night",
-        "description": "A themed gaming session featuring pixel-style horror games played together.",
-        "date": "2025-03-12",
-        "countdownDate": "2025-03-12T00:00:00.000Z",
-        "location": "Online",
-        "status": "UPCOMING",
-        "registrationOpen": true,
-        "registrationLink": "https://example.com/horror-night"
-    },
-    {
-        "title": "Code & Chill Sprint #2",
-        "description": "A relaxed coworking sprint for building and debugging projects.",
-        "date": "2025-05-22",
-        "countdownDate": "2025-05-22T00:00:00.000Z",
-        "location": "Discord",
-        "status": "UPCOMING",
-        "registrationOpen": true,
-        "registrationLink": "https://example.com/code-chill"
-    },
-    {
-        "title": "Phantom AI Tools Masterclass",
-        "description": "A beginner-friendly workshop on AI art, text, and workflow automation tools.",
-        "date": "2025-07-09",
-        "countdownDate": "2025-07-09T00:00:00.000Z",
-        "location": "Online",
-        "status": "UPCOMING",
-        "registrationOpen": true,
-        "registrationLink": "https://example.com/ai-masterclass"
+        "registrationLink": "https://forms.google.com/event2"
     }
 ]
