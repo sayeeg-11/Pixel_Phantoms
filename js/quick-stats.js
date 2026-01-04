@@ -8,7 +8,11 @@ class QuickStatsWidget {
             activeProjects: 0,
             upcomingEvents: 0,
             recentContributions: 0,
-            recentActivity: []
+            recentActivity: [],
+            totalMembers: 0,
+            activeMembers: 0,
+            completedProjects: 0,
+            eventAttendance: 0
         };
         
         this.init();
@@ -31,7 +35,11 @@ class QuickStatsWidget {
             activityList: document.getElementById('recent-activity-list'),
             projectsCard: document.getElementById('active-projects-card'),
             eventsCard: document.getElementById('upcoming-events-card'),
-            contributionsCard: document.getElementById('recent-contributions-card')
+            contributionsCard: document.getElementById('recent-contributions-card'),
+            membersCount: document.getElementById('total-members-count'),
+            activeMembersCount: document.getElementById('active-members-count'),
+            completedProjectsCount: document.getElementById('completed-projects-count'),
+            eventAttendanceCount: document.getElementById('event-attendance-count')
         };
     }
     
@@ -67,14 +75,19 @@ class QuickStatsWidget {
             
             // Load projects data
             const projectsResponse = await fetch('../data/projects.json');
+            if (!projectsResponse.ok) throw new Error(`Projects fetch failed: ${projectsResponse.status}`);
             const projectsData = await projectsResponse.json();
+            if (!Array.isArray(projectsData)) throw new Error('Invalid projects data format');
             
             // Count active projects
-            this.statsData.activeProjects = projectsData.length || 0;
+            this.statsData.activeProjects = projectsData.filter(project => project.status === 'active').length || 0;
+            this.statsData.completedProjects = projectsData.filter(project => project.status === 'completed').length || 0;
             
             // Load events data
             const eventsResponse = await fetch('../data/events.json');
+            if (!eventsResponse.ok) throw new Error(`Events fetch failed: ${eventsResponse.status}`);
             const eventsData = await eventsResponse.json();
+            if (!Array.isArray(eventsData)) throw new Error('Invalid events data format');
             
             // Count upcoming events (filter by date)
             const today = new Date();
@@ -83,11 +96,17 @@ class QuickStatsWidget {
                 return eventDate >= today;
             }).length || 0;
             
+            // Load members data
+            await this.loadMembersData();
+            
             // Load recent contributions from localStorage or mock data
             this.loadRecentContributions();
             
             // Load recent activity
             this.loadRecentActivity();
+            
+            // Load event attendance data
+            await this.loadEventAttendance();
             
             // Update UI
             this.updateStatsDisplay();
@@ -101,11 +120,130 @@ class QuickStatsWidget {
         }
     }
     
+    async loadMembersData() {
+        try {
+            // Attempt to fetch members data from a potential API or JSON file
+            const membersResponse = await fetch('../data/members.json');
+            if (membersResponse.ok) {
+                const membersData = await membersResponse.json();
+                if (Array.isArray(membersData)) {
+                    this.statsData.totalMembers = membersData.length;
+                    // Count active members (those with recent activity)
+                    const thirtyDaysAgo = new Date();
+                    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+                    
+                    this.statsData.activeMembers = membersData.filter(member => {
+                        if (member.lastActive) {
+                            const lastActiveDate = new Date(member.lastActive);
+                            return lastActiveDate >= thirtyDaysAgo;
+                        }
+                        return false;
+                    }).length;
+                } else {
+                    // Fallback to mock data if structure is unexpected
+                    this.statsData.totalMembers = 150;
+                    this.statsData.activeMembers = 65;
+                }
+            } else {
+                // Fallback to mock data if fetch fails
+                this.statsData.totalMembers = 150;
+                this.statsData.activeMembers = 65;
+            }
+        } catch (error) {
+            console.warn('Error loading members data:', error);
+            // Fallback to mock data
+            this.statsData.totalMembers = 150;
+            this.statsData.activeMembers = 65;
+        }
+    }
+    
+    async loadEventAttendance() {
+        try {
+            // Fetch attendance data from CSV
+            const attendanceResponse = await fetch('../data/attendance.csv');
+            if (!attendanceResponse.ok) throw new Error(`Attendance fetch failed: ${attendanceResponse.status}`);
+            const csvText = await attendanceResponse.text();
+            
+            // Parse CSV data
+            const attendanceMap = this.parseAttendanceCSV(csvText);
+            this.statsData.eventAttendance = Object.keys(attendanceMap).length || 0;
+        } catch (error) {
+            console.warn('Error loading event attendance:', error);
+            // Fallback to mock data
+            this.statsData.eventAttendance = 85;
+        }
+    }
+    
+    parseAttendanceCSV(csvText) {
+        const attendanceMap = {};
+        if (!csvText) return attendanceMap;
+
+        try {
+            const lines = csvText.split('\n');
+            // Skip header line
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue; // Skip empty lines
+                
+                // Handle potential CSV parsing issues with quoted fields
+                const parts = this.parseCSVLine(line);
+                if (parts.length >= 3) {
+                    const username = parts[0].trim();
+                    if (username) {
+                        // Track User Attendance - count unique events per user
+                        if (!attendanceMap[username]) {
+                            attendanceMap[username] = [];
+                        }
+                        const eventName = parts[2].trim();
+                        if (!attendanceMap[username].includes(eventName)) {
+                            attendanceMap[username].push(eventName);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            console.error('Error parsing attendance CSV:', error);
+            // Return empty map if parsing fails
+            return {};
+        }
+
+        return attendanceMap;
+    }
+    
+    // Improved CSV line parser that handles quoted fields
+    parseCSVLine(line) {
+        const parts = [];
+        let current = '';
+        let inQuotes = false;
+        let i = 0;
+        
+        while (i < line.length) {
+            const char = line[i];
+            
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                parts.push(current.trim());
+                current = '';
+            } else {
+                current += char;
+            }
+            i++;
+        }
+        parts.push(current.trim());
+        return parts;
+    }
+    
     loadRecentContributions() {
         // Try to get from localStorage first
         const storedContributions = localStorage.getItem('recentContributions');
+        const storedLastUpdated = localStorage.getItem('recentContributionsLastUpdated');
+        const now = new Date();
+        const lastUpdated = storedLastUpdated ? new Date(storedLastUpdated) : null;
+        const hoursSinceUpdate = lastUpdated ? (now - lastUpdated) / (1000 * 60 * 60) : 24;
         
-        if (storedContributions) {
+        if (storedContributions && hoursSinceUpdate < 24) {
+            // Use cached data if updated in the last 24 hours
             this.statsData.recentContributions = parseInt(storedContributions) || 0;
         } else {
             // Generate mock data based on current time
@@ -117,11 +255,19 @@ class QuickStatsWidget {
             
             // Store for consistency
             localStorage.setItem('recentContributions', this.statsData.recentContributions.toString());
+            localStorage.setItem('recentContributionsLastUpdated', now.toISOString());
         }
     }
     
     loadRecentActivity() {
-        // Mock recent activity data
+        // Try to get real activity from localStorage
+        const realActivity = JSON.parse(localStorage.getItem('userActivity') || '[]');
+        if (realActivity.length > 0) {
+            this.statsData.recentActivity = realActivity.slice(0, 4);
+            return;
+        }
+        
+        // Mock recent activity data if no real data exists
         this.statsData.recentActivity = [
             {
                 type: 'contribution',
@@ -131,7 +277,7 @@ class QuickStatsWidget {
             },
             {
                 type: 'event',
-                message: 'Winter Code Jam registration opened',
+                message: 'Winter Code Jam 2025 registrations opened',
                 time: '5 hours ago',
                 icon: 'fas fa-calendar-plus'
             },
@@ -148,12 +294,6 @@ class QuickStatsWidget {
                 icon: 'fas fa-trophy'
             }
         ];
-        
-        // Try to get real activity from localStorage
-        const realActivity = JSON.parse(localStorage.getItem('userActivity') || '[]');
-        if (realActivity.length > 0) {
-            this.statsData.recentActivity = realActivity.slice(0, 4);
-        }
     }
     
     loadMockData() {
@@ -162,6 +302,10 @@ class QuickStatsWidget {
             activeProjects: 8,
             upcomingEvents: 3,
             recentContributions: 24,
+            totalMembers: 150,
+            activeMembers: 65,
+            completedProjects: 5,
+            eventAttendance: 85,
             recentActivity: [
                 {
                     type: 'system',
@@ -187,6 +331,10 @@ class QuickStatsWidget {
         this.animateNumber(this.elements.projectsCount, this.statsData.activeProjects);
         this.animateNumber(this.elements.eventsCount, this.statsData.upcomingEvents);
         this.animateNumber(this.elements.contributionsCount, this.statsData.recentContributions);
+        this.animateNumber(this.elements.membersCount, this.statsData.totalMembers);
+        this.animateNumber(this.elements.activeMembersCount, this.statsData.activeMembers);
+        this.animateNumber(this.elements.completedProjectsCount, this.statsData.completedProjects);
+        this.animateNumber(this.elements.eventAttendanceCount, this.statsData.eventAttendance);
         
         // Update recent activity
         this.updateActivityList();
@@ -198,15 +346,17 @@ class QuickStatsWidget {
         const current = parseInt(element.textContent) || 0;
         const increment = targetValue > current ? 1 : -1;
         let currentValue = current;
+        const stepTime = Math.abs(targetValue - current) > 100 ? 10 : 20; // Faster for larger numbers
         
         const interval = setInterval(() => {
             currentValue += increment;
             element.textContent = currentValue;
             
-            if (currentValue === targetValue) {
+            if ((increment > 0 && currentValue >= targetValue) || (increment < 0 && currentValue <= targetValue)) {
                 clearInterval(interval);
+                element.textContent = targetValue;
             }
-        }, 20);
+        }, stepTime);
     }
     
     updateActivityList() {
@@ -327,10 +477,10 @@ class QuickStatsWidget {
     }
     
     startAutoRefresh() {
-        // Auto-refresh every 5 minutes
+        // Auto-refresh every 10 minutes
         setInterval(() => {
             this.refreshStats();
-        }, 5 * 60 * 1000);
+        }, 10 * 60 * 1000);
     }
     
     // Public method to add new activity
