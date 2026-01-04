@@ -29,11 +29,38 @@
     <link rel="stylesheet" href="css/events.css" />
     <style>
       /* Minimal modal styles that reuse login.css form classes */
-      #register-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 9999; }
-      #register-modal.show { display: flex; }
-      #register-modal .modal-dialog { max-width: 560px; width: 100%; padding: 20px; border-radius: 14px; position: relative; }
-      #register-modal .modal-close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
-      #register-modal .register-form .input-group { margin-bottom: 12px; }
+      #register-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+      }
+      #register-modal.show {
+        display: flex;
+      }
+      #register-modal .modal-dialog {
+        max-width: 560px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 14px;
+        position: relative;
+      }
+      #register-modal .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      #register-modal .register-form .input-group {
+        margin-bottom: 12px;
+      }
     </style>
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
@@ -49,7 +76,7 @@
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
-    
+
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-about" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward"></i> Skip to Main Content
@@ -66,7 +93,10 @@
       <!-- Hero Section - Matching Events page style -->
       <section class="hero events-hero">
         <h1>About Pixel Phantoms</h1>
-        <p>A student-driven tech community empowering learners through code, collaboration, and creativity.</p>
+        <p>
+          A student-driven tech community empowering learners through code, collaboration, and
+          creativity.
+        </p>
         <div class="about-motto">"From Students, For Students."</div>
       </section>
 
@@ -90,9 +120,7 @@
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-laptop-code icon" aria-hidden="true"></i>
               <h3>Web Development</h3>
-              <p class="focus-card-desc">
-                Full-stack development with modern frameworks and tools
-              </p>
+              <p class="focus-card-desc">Full-stack development with modern frameworks and tools</p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-code icon" aria-hidden="true"></i>
@@ -102,9 +130,7 @@
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-paint-brush icon" aria-hidden="true"></i>
               <h3>Design</h3>
-              <p class="focus-card-desc">
-                UI/UX design principles and creative visual solutions
-              </p>
+              <p class="focus-card-desc">UI/UX design principles and creative visual solutions</p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-microchip icon" aria-hidden="true"></i>
@@ -114,9 +140,7 @@
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fab fa-github icon" aria-hidden="true"></i>
               <h3>Open Source</h3>
-              <p class="focus-card-desc">
-                Collaborative development and community contributions
-              </p>
+              <p class="focus-card-desc">Collaborative development and community contributions</p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-users icon" aria-hidden="true"></i>
@@ -201,9 +225,12 @@
         <div class="organize-container">
           <div class="organize-content">
             <h2>Join Our Community</h2>
-            <p>Ready to be part of something amazing? Join Pixel Phantoms today and start your journey in tech!</p>
+            <p>
+              Ready to be part of something amazing? Join Pixel Phantoms today and start your
+              journey in tech!
+            </p>
             <div class="join-buttons">
-              <a href="pages/join-us.html" class="btn-organize" style="margin-right: 15px;">
+              <a href="pages/join-us.html" class="btn-organize" style="margin-right: 15px">
                 <i class="fas fa-user-plus"></i> Become a Member
               </a>
               <a href="events.html" class="btn-secondary">
@@ -226,7 +253,11 @@
             </div>
           </div>
           <div class="organize-image">
-            <img src="https://picsum.photos/seed/community/400/500" alt="Pixel Phantoms Community" loading="lazy" />
+            <img
+              src="https://picsum.photos/seed/community/400/500"
+              alt="Pixel Phantoms Community"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
@@ -235,26 +266,35 @@
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>
     <script>
-      renderFooter('');
+      const basePath = '';
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderFooter === 'function') {
+          renderFooter(basePath);
+        } else {
+          console.error(
+            'renderFooter function not found. Make sure footer.js is loaded correctly.'
+          );
+        }
+      });
     </script>
 
     <script src="js/theme.js"></script>
     <script src="js/cursor-effect.js"></script>
     <script src="js/back-to-top.js"></script>
     <script src="js/scroll-progress.js"></script>
-    
+
     <script>
       // Add hover effects to cards
-      document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('DOMContentLoaded', function () {
         const cards = document.querySelectorAll('.focus-card, .member-card');
         cards.forEach(card => {
-          card.addEventListener('mouseenter', function() {
+          card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-8px)';
             this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.15)';
             this.style.borderColor = 'var(--accent-color)';
           });
-          
-          card.addEventListener('mouseleave', function() {
+
+          card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0)';
             this.style.boxShadow = '';
             this.style.borderColor = '';

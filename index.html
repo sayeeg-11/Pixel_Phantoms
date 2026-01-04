@@ -54,7 +54,8 @@
 
           <div class="hero-description">
             <p class="cyber-text">
-              A student-driven tech community empowering learners through code, design, and collaboration.
+              A student-driven tech community empowering learners through code, design, and
+              collaboration.
               <span class="neon-highlight">Build real projects. Learn by doing.</span>
             </p>
           </div>
@@ -80,7 +81,7 @@
             </h2>
             <div class="line-scanner" aria-hidden="true"></div>
           </div>
-          
+
           <p class="section-sub">> Specialized tracks for skill development and project building</p>
 
           <div class="focus-grid">
@@ -126,7 +127,12 @@
               </div>
               <h3>Open Source</h3>
               <p>Collaborative development and community contributions</p>
-              <a href="https://github.com/sayeeg-11/Pixel_Phantoms" target="_blank" class="focus-link">Contribute →</a>
+              <a
+                href="https://github.com/sayeeg-11/Pixel_Phantoms"
+                target="_blank"
+                class="focus-link"
+                >Contribute →</a
+              >
             </div>
 
             <div class="focus-card">
@@ -140,7 +146,10 @@
           </div>
 
           <div class="focus-footer">
-            <p>> Want to learn more about our complete mission? <a href="pages/about.html" class="cyber-link">Visit About Page</a></p>
+            <p>
+              > Want to learn more about our complete mission?
+              <a href="pages/about.html" class="cyber-link">Visit About Page</a>
+            </p>
           </div>
         </div>
       </section>
@@ -212,7 +221,9 @@
               <div class="sem-info">
                 <h3>System Architecture 101</h3>
                 <p>Speaker: Dr. Alan Grant</p>
-                <a href="https://discord.com/" target="_blank" rel="noopener" class="link-terminal">Join Stream<span aria-hidden="true">_</span></a>
+                <a href="https://discord.com/" target="_blank" rel="noopener" class="link-terminal"
+                  >Join Stream<span aria-hidden="true">_</span></a
+                >
               </div>
             </div>
             <div class="seminar-card reveal-card">
@@ -568,20 +579,30 @@
     <script src="js/navbar.min.js"></script>
     <script src="js/footer.js"></script>
     <script>
-      // Render these immediately so the theme.js can find the toggle switch
-      renderNavbar();
-      renderFooter('');
+      const basePath = '';
 
-      // Focus management for skip link
+      renderNavbar(basePath);
+      renderFooter(basePath);
+
       document.addEventListener('DOMContentLoaded', function () {
         const skipLink = document.getElementById('skip-link');
-        const mainContent = document.getElementById('main-content');
+        const mainContent =
+          document.getElementById('main-content') || document.querySelector('main');
 
-        skipLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          mainContent.setAttribute('tabindex', '-1');
-          mainContent.focus();
-        });
+        if (skipLink && mainContent) {
+          skipLink.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Add tabindex if not already present and focus
+            if (!mainContent.hasAttribute('tabindex')) {
+              mainContent.setAttribute('tabindex', '-1');
+            }
+            mainContent.focus();
+
+            // Optional: smooth scroll to the main content
+            mainContent.scrollIntoView({ behavior: 'smooth' });
+          });
+        }
       });
     </script>
 
