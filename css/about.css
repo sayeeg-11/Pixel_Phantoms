@@ -465,6 +465,7 @@
         transform: none;
     }
 }
+}
 
 /* ===== CONSISTENT TEXT STYLES TO MATCH EVENTS PAGE ===== */
 body {
@@ -505,6 +506,7 @@ a:hover {
     color: var(--text-secondary);
     font-family: var(--font-primary);
     line-height: 1.6;
+}
 }
 
 /* Card text consistency */
