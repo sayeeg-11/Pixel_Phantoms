@@ -258,7 +258,7 @@
 
 .info-table-card {
   flex: 0 1 320px;
-  min-width: 0; 
+  min-width: 0;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 15px;
@@ -269,7 +269,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  align-self: stretch; 
+  align-self: stretch;
 
   transition:
     transform 0.3s ease,
@@ -345,183 +345,183 @@
 }
 
 .toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .community-hero {
-        padding: 80px 20px;
-    }
+  .community-hero {
+    padding: 80px 20px;
+  }
 
-    .community-hero h1 {
-        font-size: 2.5rem;
-    }
+  .community-hero h1 {
+    font-size: 2.5rem;
+  }
 
-    .community-hero p {
-        font-size: 1.1rem;
-    }
+  .community-hero p {
+    font-size: 1.1rem;
+  }
 
-    .stats-section {
-        gap: 20px;
-        margin-top: -20px;
-    }
+  .stats-section {
+    gap: 20px;
+    margin-top: -20px;
+  }
 
-    .stat-box {
-        min-width: 150px;
-        padding: 15px 20px;
-    }
+  .stat-box {
+    min-width: 150px;
+    padding: 15px 20px;
+  }
 
-    .stat-box h2 {
-        font-size: 2rem;
-    }
+  .stat-box h2 {
+    font-size: 2rem;
+  }
 
-    .platforms-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+  .platforms-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-    .platform-card {
-        min-height: 250px;
-    }
+  .platform-card {
+    min-height: 250px;
+  }
 
-    .card-content {
-        padding: 30px 20px;
-    }
+  .card-content {
+    padding: 30px 20px;
+  }
 
-    .icon-box {
-        font-size: 3rem;
-    }
+  .icon-box {
+    font-size: 3rem;
+  }
 
-    .values-section {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 16px;
-        padding-right: 16px;
-        box-sizing: border-box;
-    }
+  .values-section {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
 
-    .three-column-wrapper {
-        flex-direction: column;
-        gap: 20px;
-        align-items: stretch; 
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
+  .three-column-wrapper {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 
-    .info-table-card {
-        flex: 0 0 auto; 
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        padding: 30px 20px;
-        overflow-x: hidden;
-        align-self: stretch;
-    }
+  .info-table-card {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 30px 20px;
+    overflow-x: hidden;
+    align-self: stretch;
+  }
 
-    .table-icon {
-        width: 60px;
-        height: 60px;
-        line-height: 60px;
-        font-size: 2.5rem;
-    }
+  .table-icon {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 2.5rem;
+  }
 
-    .info-table-card h3 {
-        font-size: 1.3rem;
-    }
+  .info-table-card h3 {
+    font-size: 1.3rem;
+  }
 
-    .info-table-card p {
-        font-size: 1rem;
-    }
+  .info-table-card p {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-    .community-hero {
-        padding: 60px 20px;
-    }
+  .community-hero {
+    padding: 60px 20px;
+  }
 
-    .community-hero h1 {
-        font-size: 2rem;
-    }
+  .community-hero h1 {
+    font-size: 2rem;
+  }
 
-    .community-hero p {
-        font-size: 1rem;
-    }
+  .community-hero p {
+    font-size: 1rem;
+  }
 
-    .stats-section {
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 40px;
-    }
+  .stats-section {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
 
-    .stat-box {
-        min-width: auto;
-        padding: 12px 15px;
-    }
+  .stat-box {
+    min-width: auto;
+    padding: 12px 15px;
+  }
 
-    .stat-box h2 {
-        font-size: 1.8rem;
-    }
+  .stat-box h2 {
+    font-size: 1.8rem;
+  }
 
-    .stat-box p {
-        font-size: 0.9rem;
-    }
+  .stat-box p {
+    font-size: 0.9rem;
+  }
 
-    .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 30px;
-    }
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
 
-    .platform-card {
-        min-height: 220px;
-    }
+  .platform-card {
+    min-height: 220px;
+  }
 
-    .card-content {
-        padding: 25px 15px;
-    }
+  .card-content {
+    padding: 25px 15px;
+  }
 
-    .icon-box {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-    }
+  .icon-box {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
 
-    .platform-card h3 {
-        font-size: 1.2rem;
-    }
+  .platform-card h3 {
+    font-size: 1.2rem;
+  }
 
-    .platform-card p {
-        font-size: 0.95rem;
-        margin-bottom: 20px;
-    }
+  .platform-card p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
 
-    .action-btn {
-        padding: 8px 20px;
-        font-size: 0.95rem;
-    }
+  .action-btn {
+    padding: 8px 20px;
+    font-size: 0.95rem;
+  }
 
-    .info-table-card {
-        padding: 25px 15px;
-    }
+  .info-table-card {
+    padding: 25px 15px;
+  }
 
-    .table-icon {
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        font-size: 2rem;
-    }
+  .table-icon {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 2rem;
+  }
 
-    .info-table-card h3 {
-        font-size: 1.2rem;
-    }
+  .info-table-card h3 {
+    font-size: 1.2rem;
+  }
 
-    .info-table-card p {
-        font-size: 0.95rem;
-    }
+  .info-table-card p {
+    font-size: 0.95rem;
+  }
 
-    .toast {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
+  .toast {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }

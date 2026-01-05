@@ -1,114 +1,113 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadRoadmap();
+  loadRoadmap();
 });
 
 async function loadRoadmap() {
-    const container = document.getElementById('roadmap-content');
-    
-    try {
-        const response = await fetch('../data/roadmaps.json');
-        if (!response.ok) throw new Error('Failed to fetch roadmap data');
-        
-        const data = await response.json();
-        // TARGET THE UI-UX KEY HERE
-        const roadmapData = data['ui-ux'];
+  const container = document.getElementById('roadmap-content');
 
-        if (!roadmapData) throw new Error('UI/UX Roadmap data not found');
+  try {
+    const response = await fetch('../data/roadmaps.json');
+    if (!response.ok) throw new Error('Failed to fetch roadmap data');
 
-        const phases = roadmapData.phases;
+    const data = await response.json();
+    // TARGET THE UI-UX KEY HERE
+    const roadmapData = data['ui-ux'];
 
-        container.innerHTML = ''; // Clear loading state
+    if (!roadmapData) throw new Error('UI/UX Roadmap data not found');
 
-        let globalModuleIndex = 0; // To track left/right alternation
+    const phases = roadmapData.phases;
 
-        phases.forEach(phase => {
-            // 1. Create Phase Section
-            const phaseBlock = document.createElement('div');
-            phaseBlock.className = 'phase-block';
+    container.innerHTML = ''; // Clear loading state
 
-            // 2. Create Header
-            const header = document.createElement('div');
-            header.className = 'phase-header';
-            header.innerText = phase.title;
-            phaseBlock.appendChild(header);
+    let globalModuleIndex = 0; // To track left/right alternation
 
-            // 3. Create Container for Modules
-            const modulesContainer = document.createElement('div');
-            modulesContainer.className = 'modules-container';
+    phases.forEach(phase => {
+      // 1. Create Phase Section
+      const phaseBlock = document.createElement('div');
+      phaseBlock.className = 'phase-block';
 
-            // 4. Create Modules
-            phase.modules.forEach(mod => {
-                const link = document.createElement('a');
-                link.className = `module-node ${globalModuleIndex % 2 === 0 ? 'left' : 'right'}`;
-                link.href = mod.link;
-                link.target = "_blank";
-                
-                // Set locked status
-                if (phase.status === 'locked') {
-                    link.setAttribute('data-status', 'locked');
-                } else {
-                    link.setAttribute('data-status', 'unlocked');
-                }
+      // 2. Create Header
+      const header = document.createElement('div');
+      header.className = 'phase-header';
+      header.innerText = phase.title;
+      phaseBlock.appendChild(header);
 
-                link.innerHTML = `
+      // 3. Create Container for Modules
+      const modulesContainer = document.createElement('div');
+      modulesContainer.className = 'modules-container';
+
+      // 4. Create Modules
+      phase.modules.forEach(mod => {
+        const link = document.createElement('a');
+        link.className = `module-node ${globalModuleIndex % 2 === 0 ? 'left' : 'right'}`;
+        link.href = mod.link;
+        link.target = '_blank';
+
+        // Set locked status
+        if (phase.status === 'locked') {
+          link.setAttribute('data-status', 'locked');
+        } else {
+          link.setAttribute('data-status', 'unlocked');
+        }
+
+        link.innerHTML = `
                     <h4>${mod.title}</h4>
                     <p>${mod.desc}</p>
                 `;
 
-                modulesContainer.appendChild(link);
-                globalModuleIndex++;
-            });
+        modulesContainer.appendChild(link);
+        globalModuleIndex++;
+      });
 
-            phaseBlock.appendChild(modulesContainer);
-            container.appendChild(phaseBlock);
-        });
+      phaseBlock.appendChild(modulesContainer);
+      container.appendChild(phaseBlock);
+    });
 
-        // Initialize GSAP Animations
-        animateRoadmap();
-
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = `<div style="text-align:center; color:red;">[ERROR] SYSTEM_FAILURE: ${error.message}</div>`;
-    }
+    // Initialize GSAP Animations
+    animateRoadmap();
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = `<div style="text-align:center; color:red;">[ERROR] SYSTEM_FAILURE: ${error.message}</div>`;
+  }
 }
 
 function animateRoadmap() {
-    if (typeof gsap === 'undefined') return;
-    
-    gsap.registerPlugin(ScrollTrigger);
+  if (typeof gsap === 'undefined') return;
 
-    // Animate Spine
-    gsap.from('.roadmap-spine', {
-        height: 0,
-        duration: 2,
-        ease: 'power1.inOut'
-    });
+  gsap.registerPlugin(ScrollTrigger);
 
-    // Animate Phase Headers
-    gsap.utils.toArray('.phase-header').forEach(header => {
-        gsap.from(header, {
-            scrollTrigger: {
-                trigger: header,
-                start: "top 80%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        });
-    });
+  // Animate Spine
+  gsap.from('.roadmap-spine', {
+    height: 0,
+    duration: 2,
+    ease: 'power1.inOut',
+  });
 
-    // Animate Module Nodes
-    gsap.utils.toArray('.module-node').forEach(node => {
-        gsap.from(node, {
-            scrollTrigger: {
-                trigger: node,
-                start: "top 85%"
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        });
+  // Animate Phase Headers
+  gsap.utils.toArray('.phase-header').forEach(header => {
+    gsap.from(header, {
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 80%',
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'back.out(1.7)',
     });
+  });
+
+  // Animate Module Nodes
+  gsap.utils.toArray('.module-node').forEach(node => {
+    gsap.from(node, {
+      scrollTrigger: {
+        trigger: node,
+        start: 'top 85%',
+      },
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+    });
+  });
 }

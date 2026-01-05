@@ -2,52 +2,52 @@ const fs = require('fs');
 const path = require('path');
 
 // URL from your js/events.js
-const API_URL = "https://script.google.com/macros/s/AKfycbza1-ZyT4B8hU3h87Agc_jkPQ8dAjQBJkXkvxYfQ4SNAUENQtlXmYzdXgkC_Kj_zt-B/exec";
+const API_URL =
+  'https://script.google.com/macros/s/AKfycbza1-ZyT4B8hU3h87Agc_jkPQ8dAjQBJkXkvxYfQ4SNAUENQtlXmYzdXgkC_Kj_zt-B/exec';
 const TARGET_FILE = path.join(__dirname, '../data/events.json');
 
 async function syncEvents() {
-    try {
-        console.log("Fetching data from Google Sheet...");
-        const response = await fetch(API_URL);
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+  try {
+    console.log('Fetching data from Google Sheet...');
+    const response = await fetch(API_URL);
 
-        const cloudData = await response.json();
-
-        if (!Array.isArray(cloudData)) {
-            throw new Error("Invalid API response format");
-        }
-
-        // 1. Filter for 'Approved' events
-        const validEvents = cloudData
-            .filter(e => e.status && e.status.toString().toLowerCase().trim() === "approved")
-            .map(e => ({
-                // Map fields to match data/events.json schema
-                title: e.title || "Untitled Event",
-                description: e.description || "",
-                date: e.date || "TBD",
-                // Calculate a countdown date or default to date
-                countdownDate: e.date ? new Date(e.date).toISOString() : null,
-                location: e.location || "TBD",
-                status: "UPCOMING", // Default status for approved events
-                registrationOpen: true, // Default to true if approved
-                registrationLink: e.link || "" // Map 'link' from Sheet to 'registrationLink'
-            }));
-
-        // 2. Sort by Date
-        validEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-        // 3. Write to events.json
-        fs.writeFileSync(TARGET_FILE, JSON.stringify(validEvents, null, 4));
-        
-        console.log(`✅ Successfully synced ${validEvents.length} events to data/events.json`);
-
-    } catch (error) {
-        console.error("❌ Sync failed:", error.message);
-        process.exit(1);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    const cloudData = await response.json();
+
+    if (!Array.isArray(cloudData)) {
+      throw new Error('Invalid API response format');
+    }
+
+    // 1. Filter for 'Approved' events
+    const validEvents = cloudData
+      .filter(e => e.status && e.status.toString().toLowerCase().trim() === 'approved')
+      .map(e => ({
+        // Map fields to match data/events.json schema
+        title: e.title || 'Untitled Event',
+        description: e.description || '',
+        date: e.date || 'TBD',
+        // Calculate a countdown date or default to date
+        countdownDate: e.date ? new Date(e.date).toISOString() : null,
+        location: e.location || 'TBD',
+        status: 'UPCOMING', // Default status for approved events
+        registrationOpen: true, // Default to true if approved
+        registrationLink: e.link || '', // Map 'link' from Sheet to 'registrationLink'
+      }));
+
+    // 2. Sort by Date
+    validEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+    // 3. Write to events.json
+    fs.writeFileSync(TARGET_FILE, JSON.stringify(validEvents, null, 4));
+
+    console.log(`✅ Successfully synced ${validEvents.length} events to data/events.json`);
+  } catch (error) {
+    console.error('❌ Sync failed:', error.message);
+    process.exit(1);
+  }
 }
 
 syncEvents();

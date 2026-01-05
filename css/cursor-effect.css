@@ -11,17 +11,13 @@
   height: 220px;
 
   background:
-  radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.08) 0%,
-    transparent 55%
-  ),
-  radial-gradient(
-    circle,
-    rgba(0, 170, 255, 0.45) 0%,
-    rgba(0, 170, 255, 0.25) 35%,
-    transparent 75%
-  );
+    radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, transparent 55%),
+    radial-gradient(
+      circle,
+      rgba(0, 170, 255, 0.45) 0%,
+      rgba(0, 170, 255, 0.25) 35%,
+      transparent 75%
+    );
 
   opacity: 1;
   border-radius: 50%;
@@ -59,6 +55,3 @@
   mix-blend-mode: multiply;
   opacity: 0.35;
 }
-
-
-

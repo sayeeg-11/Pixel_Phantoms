@@ -28,11 +28,38 @@
     <link rel="stylesheet" href="css/login.css" />
     <style>
       /* Minimal modal styles that reuse login.css form classes */
-      #register-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 9999; }
-      #register-modal.show { display: flex; }
-      #register-modal .modal-dialog { max-width: 560px; width: 100%; padding: 20px; border-radius: 14px; position: relative; }
-      #register-modal .modal-close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
-      #register-modal .register-form .input-group { margin-bottom: 12px; }
+      #register-modal {
+        position: fixed;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+      }
+      #register-modal.show {
+        display: flex;
+      }
+      #register-modal .modal-dialog {
+        max-width: 560px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 14px;
+        position: relative;
+      }
+      #register-modal .modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1.4rem;
+        cursor: pointer;
+      }
+      #register-modal .register-form .input-group {
+        margin-bottom: 12px;
+      }
     </style>
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
@@ -153,9 +180,16 @@
 
     <!-- Registration Modal -->
     <div id="register-modal" aria-hidden="true">
-      <div class="modal-dialog login-card" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
+      <div
+        class="modal-dialog login-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="register-modal-title"
+      >
         <button class="modal-close" aria-label="Close">&times;</button>
-        <h2 id="register-modal-title" class="form-title">Register for <span id="register-event-title"></span></h2>
+        <h2 id="register-modal-title" class="form-title">
+          Register for <span id="register-event-title"></span>
+        </h2>
         <form id="register-form" class="register-form">
           <div class="input-group">
             <label>First Name</label>
@@ -173,7 +207,7 @@
             <label>Email</label>
             <input name="email" type="email" placeholder="you@example.com" required />
           </div>
-          <div style="display:flex;gap:12px;margin-top:12px;">
+          <div style="display: flex; gap: 12px; margin-top: 12px">
             <button type="button" class="btn-secondary modal-cancel">Cancel</button>
             <button type="submit" class="btn-primary">Register</button>
           </div>

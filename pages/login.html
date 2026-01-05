@@ -44,9 +44,7 @@
         <div id="hacker-stats-overlay"></div>
 
         <div class="terminal-box">
-          <p class="console-text login-text" id="dynamic-login-message">
-            &gt; SYSTEM_ACCESS_POINT
-          </p>
+          <p class="console-text login-text" id="dynamic-login-message">&gt; SYSTEM_ACCESS_POINT</p>
         </div>
         <div class="static-overlay"></div>
       </section>
@@ -56,17 +54,11 @@
           <div class="login-card" id="access-card">
             <div class="system-status-bar">
               <span class="status-indicator"></span>
-              <div class="status-value" id="login-status-value">
-                STATUS_IDLE
-              </div>
+              <div class="status-value" id="login-status-value">STATUS_IDLE</div>
             </div>
 
             <!-- ROLE SELECTOR -->
-            <div
-              class="role-selector"
-              role="tablist"
-              aria-label="Login Role"
-            >
+            <div class="role-selector" role="tablist" aria-label="Login Role">
               <button
                 class="role-btn active"
                 id="member-role-btn"
@@ -90,62 +82,31 @@
             </div>
 
             <div class="auth-tabs">
-              <button
-                class="tab-btn active"
-                id="login-tab-btn"
-                data-target="login"
-                type="button"
-              >
+              <button class="tab-btn active" id="login-tab-btn" data-target="login" type="button">
                 AGENT_LOGIN
               </button>
-              <button
-                class="tab-btn"
-                id="signup-tab-btn"
-                data-target="signup"
-                type="button"
-              >
+              <button class="tab-btn" id="signup-tab-btn" data-target="signup" type="button">
                 NEW_PROTOCOL
               </button>
             </div>
 
             <form id="auth-form">
-              <input
-                type="hidden"
-                id="selected-role"
-                name="role"
-                value="member"
-              />
+              <input type="hidden" id="selected-role" name="role" value="member" />
 
               <!-- LOGIN VIEW -->
               <div id="login-view" class="auth-view active">
                 <h2 class="form-title">AGENT LOGIN</h2>
-                <p class="form-desc">
-                  Enter credentials to initiate verification.
-                </p>
+                <p class="form-desc">Enter credentials to initiate verification.</p>
 
                 <div class="input-group">
-                  <label for="username">
-                    <i class="fas fa-user-circle"></i> CODENAME
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    placeholder="Codename (Member ID)"
-                    required
-                  />
+                  <label for="username"> <i class="fas fa-user-circle"></i> CODENAME </label>
+                  <input type="text" id="username" placeholder="Codename (Member ID)" required />
                   <div class="error-message" id="username-error"></div>
                 </div>
 
                 <div class="input-group">
-                  <label for="password">
-                    <i class="fas fa-key"></i> PASSKEY
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    placeholder="••••••••"
-                    required
-                  />
+                  <label for="password"> <i class="fas fa-key"></i> PASSKEY </label>
+                  <input type="password" id="password" placeholder="••••••••" required />
                   <div class="error-message" id="password-error"></div>
                 </div>
 
@@ -158,12 +119,7 @@
                   <a href="#" class="forgot-link">Forgot Passkey?</a>
                 </div>
 
-                <button
-                  type="submit"
-                  id="login-btn"
-                  class="btn-primary"
-                  data-loading="true"
-                >
+                <button type="submit" id="login-btn" class="btn-primary" data-loading="true">
                   <i class="fas fa-arrow-alt-circle-right"></i>
                   START_VERIFICATION
                 </button>
@@ -172,64 +128,27 @@
               <!-- SIGNUP VIEW -->
               <div id="signup-view" class="auth-view">
                 <h2 class="form-title">NEW AGENT REGISTRATION</h2>
-                <p class="form-desc">
-                  Create your new secure codename and passkey.
-                </p>
+                <p class="form-desc">Create your new secure codename and passkey.</p>
 
                 <div class="input-group">
-                  <label for="new-username">
-                    <i class="fas fa-user-plus"></i> NEW CODENAME
-                  </label>
-                  <input
-                    type="text"
-                    id="new-username"
-                    placeholder="e.g. Phoenix_01"
-                    required
-                  />
-                  <div
-                    class="error-message"
-                    id="new-username-error"
-                  ></div>
+                  <label for="new-username"> <i class="fas fa-user-plus"></i> NEW CODENAME </label>
+                  <input type="text" id="new-username" placeholder="e.g. Phoenix_01" required />
+                  <div class="error-message" id="new-username-error"></div>
                 </div>
 
                 <div class="input-group">
-                  <label for="new-email">
-                    <i class="fas fa-envelope"></i> EMAIL KEY
-                  </label>
-                  <input
-                    type="email"
-                    id="new-email"
-                    placeholder="agent@pp.com"
-                    required
-                  />
-                  <div
-                    class="error-message"
-                    id="new-email-error"
-                  ></div>
+                  <label for="new-email"> <i class="fas fa-envelope"></i> EMAIL KEY </label>
+                  <input type="email" id="new-email" placeholder="agent@pp.com" required />
+                  <div class="error-message" id="new-email-error"></div>
                 </div>
 
                 <div class="input-group">
-                  <label for="new-password">
-                    <i class="fas fa-lock"></i> CHOOSE PASSKEY
-                  </label>
-                  <input
-                    type="password"
-                    id="new-password"
-                    placeholder="••••••••"
-                    required
-                  />
-                  <div
-                    class="error-message"
-                    id="new-password-error"
-                  ></div>
+                  <label for="new-password"> <i class="fas fa-lock"></i> CHOOSE PASSKEY </label>
+                  <input type="password" id="new-password" placeholder="••••••••" required />
+                  <div class="error-message" id="new-password-error"></div>
                 </div>
 
-                <button
-                  type="submit"
-                  id="signup-btn"
-                  class="btn-primary"
-                  data-loading="true"
-                >
+                <button type="submit" id="signup-btn" class="btn-primary" data-loading="true">
                   <i class="fas fa-user-check"></i>
                   REGISTER_AGENT_ID
                 </button>
@@ -241,13 +160,8 @@
                   <div class="verification-icon">
                     <i class="fas fa-fingerprint fa-spin"></i>
                   </div>
-                  <h3 id="verification-title">
-                    INITIATING SCREENING...
-                  </h3>
-                  <p
-                    id="verification-message"
-                    class="text-secondary"
-                  >
+                  <h3 id="verification-title">INITIATING SCREENING...</h3>
+                  <p id="verification-message" class="text-secondary">
                     Please wait while the system processes the request.
                   </p>
                 </div>

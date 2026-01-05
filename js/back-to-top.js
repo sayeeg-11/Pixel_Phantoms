@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const backToTopBtn = document.createElement('button');
-    backToTopBtn.id = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    backToTopBtn.setAttribute('aria-label', 'Back to Top');
-    document.body.appendChild(backToTopBtn);
-    const toggleButtonVisibility = () => {
-        if (window.scrollY > 200) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    };
+  const backToTopBtn = document.createElement('button');
+  backToTopBtn.id = 'back-to-top';
+  backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+  backToTopBtn.setAttribute('aria-label', 'Back to Top');
+  document.body.appendChild(backToTopBtn);
+  const toggleButtonVisibility = () => {
+    if (window.scrollY > 200) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  };
 
-    window.addEventListener('scroll', toggleButtonVisibility);
+  window.addEventListener('scroll', toggleButtonVisibility);
 
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
+  });
 });

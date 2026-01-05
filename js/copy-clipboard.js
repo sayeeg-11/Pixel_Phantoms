@@ -1,149 +1,152 @@
 // File: js/copy-clipboard.js
 // Copy to Clipboard functionality for code snippets
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize copy buttons
-    initCopyButtons();
-    
-    // Add demo code snippets to project cards (for demonstration)
-    addDemoCodeSnippets();
-    
-    console.log('Copy to clipboard module loaded');
+document.addEventListener('DOMContentLoaded', function () {
+  // Initialize copy buttons
+  initCopyButtons();
+
+  // Add demo code snippets to project cards (for demonstration)
+  addDemoCodeSnippets();
+
+  console.log('Copy to clipboard module loaded');
 });
 
 /**
  * Initialize all copy buttons on the page
  */
 function initCopyButtons() {
-    // Add event listeners to all copy buttons
-    document.addEventListener('click', function(e) {
-        if (e.target.closest('.copy-btn')) {
-            const copyBtn = e.target.closest('.copy-btn');
-            const codeContent = copyBtn.closest('.code-snippet-container')?.querySelector('.code-content');
-            
-            if (codeContent) {
-                copyToClipboard(codeContent, copyBtn);
-            }
-        }
-    });
+  // Add event listeners to all copy buttons
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.copy-btn')) {
+      const copyBtn = e.target.closest('.copy-btn');
+      const codeContent = copyBtn
+        .closest('.code-snippet-container')
+        ?.querySelector('.code-content');
+
+      if (codeContent) {
+        copyToClipboard(codeContent, copyBtn);
+      }
+    }
+  });
 }
 
 /**
  * Copy code content to clipboard
  */
 function copyToClipboard(codeElement, buttonElement) {
-    // Get the text to copy (strip HTML tags for clean text)
-    let textToCopy = '';
-    
-    if (codeElement.querySelector('code')) {
-        // If there's a <code> element inside, use its text
-        textToCopy = codeElement.querySelector('code').innerText;
-    } else {
-        // Otherwise use the element's text content
-        textToCopy = codeElement.textContent;
-    }
-    
-    // Clean up the text (remove extra whitespace)
-    textToCopy = textToCopy.trim();
-    
-    // Use Clipboard API
-    navigator.clipboard.writeText(textToCopy)
-        .then(() => {
-            // Show success state
-            showCopySuccess(buttonElement);
-            showNotification('Code copied to clipboard!');
-            
-            // Log for debugging
-            console.log('Copied to clipboard:', textToCopy.substring(0, 50) + '...');
-        })
-        .catch(err => {
-            // Fallback for older browsers
-            console.error('Clipboard API failed:', err);
-            fallbackCopyToClipboard(textToCopy, buttonElement);
-        });
+  // Get the text to copy (strip HTML tags for clean text)
+  let textToCopy = '';
+
+  if (codeElement.querySelector('code')) {
+    // If there's a <code> element inside, use its text
+    textToCopy = codeElement.querySelector('code').innerText;
+  } else {
+    // Otherwise use the element's text content
+    textToCopy = codeElement.textContent;
+  }
+
+  // Clean up the text (remove extra whitespace)
+  textToCopy = textToCopy.trim();
+
+  // Use Clipboard API
+  navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+      // Show success state
+      showCopySuccess(buttonElement);
+      showNotification('Code copied to clipboard!');
+
+      // Log for debugging
+      console.log('Copied to clipboard:', textToCopy.substring(0, 50) + '...');
+    })
+    .catch(err => {
+      // Fallback for older browsers
+      console.error('Clipboard API failed:', err);
+      fallbackCopyToClipboard(textToCopy, buttonElement);
+    });
 }
 
 /**
  * Fallback method for older browsers
  */
 function fallbackCopyToClipboard(text, buttonElement) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    textArea.style.top = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
-    
-    try {
-        const successful = document.execCommand('copy');
-        if (successful) {
-            showCopySuccess(buttonElement);
-            showNotification('Code copied to clipboard!');
-        } else {
-            showCopyError(buttonElement, 'Failed to copy');
-        }
-    } catch (err) {
-        showCopyError(buttonElement, 'Error: ' + err);
-        console.error('Fallback copy failed:', err);
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-999999px';
+  textArea.style.top = '-999999px';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      showCopySuccess(buttonElement);
+      showNotification('Code copied to clipboard!');
+    } else {
+      showCopyError(buttonElement, 'Failed to copy');
     }
-    
-    document.body.removeChild(textArea);
+  } catch (err) {
+    showCopyError(buttonElement, 'Error: ' + err);
+    console.error('Fallback copy failed:', err);
+  }
+
+  document.body.removeChild(textArea);
 }
 
 /**
  * Show success state on copy button
  */
 function showCopySuccess(buttonElement) {
-    const originalHTML = buttonElement.innerHTML;
-    const originalText = buttonElement.querySelector('.btn-text')?.textContent || 'Copy';
-    
-    // Update button state
-    buttonElement.innerHTML = '<i class="fas fa-check"></i> <span class="btn-text">Copied!</span>';
-    buttonElement.classList.add('copied');
-    
-    // Reset button after 2 seconds
-    setTimeout(() => {
-        buttonElement.innerHTML = originalHTML;
-        buttonElement.classList.remove('copied');
-    }, 2000);
+  const originalHTML = buttonElement.innerHTML;
+  const originalText = buttonElement.querySelector('.btn-text')?.textContent || 'Copy';
+
+  // Update button state
+  buttonElement.innerHTML = '<i class="fas fa-check"></i> <span class="btn-text">Copied!</span>';
+  buttonElement.classList.add('copied');
+
+  // Reset button after 2 seconds
+  setTimeout(() => {
+    buttonElement.innerHTML = originalHTML;
+    buttonElement.classList.remove('copied');
+  }, 2000);
 }
 
 /**
  * Show error state on copy button
  */
 function showCopyError(buttonElement, message) {
-    const originalHTML = buttonElement.innerHTML;
-    
-    // Update button state
-    buttonElement.innerHTML = `<i class="fas fa-times"></i> <span class="btn-text">${message}</span>`;
-    buttonElement.classList.add('error');
-    
-    // Reset button after 3 seconds
-    setTimeout(() => {
-        buttonElement.innerHTML = originalHTML;
-        buttonElement.classList.remove('error');
-    }, 3000);
+  const originalHTML = buttonElement.innerHTML;
+
+  // Update button state
+  buttonElement.innerHTML = `<i class="fas fa-times"></i> <span class="btn-text">${message}</span>`;
+  buttonElement.classList.add('error');
+
+  // Reset button after 3 seconds
+  setTimeout(() => {
+    buttonElement.innerHTML = originalHTML;
+    buttonElement.classList.remove('error');
+  }, 3000);
 }
 
 /**
  * Show notification message
  */
 function showNotification(message) {
-    // Remove existing notification
-    const existingNotification = document.querySelector('.copy-notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create new notification
-    const notification = document.createElement('div');
-    notification.className = 'copy-notification';
-    notification.innerHTML = `
+  // Remove existing notification
+  const existingNotification = document.querySelector('.copy-notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  // Create new notification
+  const notification = document.createElement('div');
+  notification.className = 'copy-notification';
+  notification.innerHTML = `
         <i class="fas fa-check-circle"></i> ${message}
     `;
-    notification.style.cssText = `
+  notification.style.cssText = `
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -161,41 +164,44 @@ function showNotification(message) {
         align-items: center;
         gap: 10px;
     `;
-    
-    document.body.appendChild(notification);
-    
-    // Trigger animation
+
+  document.body.appendChild(notification);
+
+  // Trigger animation
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
+
+  // Remove after 3 seconds
+  setTimeout(() => {
+    notification.classList.remove('show');
     setTimeout(() => {
-        notification.classList.add('show');
-    }, 10);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 3000);
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 300);
+  }, 3000);
 }
 
 /**
  * Add demo code snippets to project cards for demonstration
  */
 function addDemoCodeSnippets() {
-    // Only add if on projects page and if demo snippets don't exist
-    if (!document.querySelector('.project-card') || document.querySelector('.code-snippet-container')) {
-        return;
-    }
-    
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    // Sample code snippets for different project types
-    const codeSnippets = {
-        web: {
-            language: 'HTML',
-            code: `<!DOCTYPE html>
+  // Only add if on projects page and if demo snippets don't exist
+  if (
+    !document.querySelector('.project-card') ||
+    document.querySelector('.code-snippet-container')
+  ) {
+    return;
+  }
+
+  const projectCards = document.querySelectorAll('.project-card');
+
+  // Sample code snippets for different project types
+  const codeSnippets = {
+    web: {
+      language: 'HTML',
+      code: `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -226,11 +232,11 @@ function addDemoCodeSnippets() {
     
     <script src="app.js"></script>
 </body>
-</html>`
-        },
-        ai: {
-            language: 'Python',
-            code: `import tensorflow as tf
+</html>`,
+    },
+    ai: {
+      language: 'Python',
+      code: `import tensorflow as tf
 import numpy as np
 
 class NeuralPhantom:
@@ -275,11 +281,11 @@ class NeuralPhantom:
 
 # Initialize the model
 phantom_ai = NeuralPhantom()
-print(f"[{phantom_ai.model_name}] Neural network initialized")`
-        },
-        app: {
-            language: 'Dart',
-            code: `import 'package:flutter/material.dart';
+print(f"[{phantom_ai.model_name}] Neural network initialized")`,
+    },
+    app: {
+      language: 'Dart',
+      code: `import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
@@ -354,11 +360,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
     );
   }
-}`
-        },
-        hardware: {
-            language: 'C++',
-            code: `#include <Arduino.h>
+}`,
+    },
+    hardware: {
+      language: 'C++',
+      code: `#include <Arduino.h>
 #include <DHT.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
@@ -452,20 +458,20 @@ void sendDataToServer(float temp, float hum, int light) {
   Serial.print(hum);
   Serial.print(",");
   Serial.println(light);
-}`
-        }
-    };
-    
-    // Add code snippets to each project card
-    projectCards.forEach((card, index) => {
-        const category = card.getAttribute('data-category');
-        if (codeSnippets[category]) {
-            const snippet = codeSnippets[category];
-            
-            // Create code snippet container
-            const codeContainer = document.createElement('div');
-            codeContainer.className = 'code-snippet-container';
-            codeContainer.innerHTML = `
+}`,
+    },
+  };
+
+  // Add code snippets to each project card
+  projectCards.forEach((card, index) => {
+    const category = card.getAttribute('data-category');
+    if (codeSnippets[category]) {
+      const snippet = codeSnippets[category];
+
+      // Create code snippet container
+      const codeContainer = document.createElement('div');
+      codeContainer.className = 'code-snippet-container';
+      codeContainer.innerHTML = `
                 <div class="code-header">
                     <span class="code-language">${snippet.language}</span>
                     <button class="copy-btn">
@@ -477,35 +483,35 @@ void sendDataToServer(float temp, float hum, int light) {
                     <code>${escapeHtml(snippet.code)}</code>
                 </div>
             `;
-            
-            // Insert after the tech stack tags
-            const techStack = card.querySelector('.tech-stack-terminal');
-            if (techStack) {
-                techStack.parentNode.insertBefore(codeContainer, techStack.nextSibling);
-            }
-        }
-    });
+
+      // Insert after the tech stack tags
+      const techStack = card.querySelector('.tech-stack-terminal');
+      if (techStack) {
+        techStack.parentNode.insertBefore(codeContainer, techStack.nextSibling);
+      }
+    }
+  });
 }
 
 /**
  * Escape HTML to prevent XSS
  */
 function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 }
 
 /**
  * Create a code snippet manually (can be called from other scripts)
  */
 function createCodeSnippet(code, language = 'JavaScript', containerSelector) {
-    const container = document.querySelector(containerSelector);
-    if (!container) return null;
-    
-    const codeContainer = document.createElement('div');
-    codeContainer.className = 'code-snippet-container';
-    codeContainer.innerHTML = `
+  const container = document.querySelector(containerSelector);
+  if (!container) return null;
+
+  const codeContainer = document.createElement('div');
+  codeContainer.className = 'code-snippet-container';
+  codeContainer.innerHTML = `
         <div class="code-header">
             <span class="code-language">${language}</span>
             <button class="copy-btn">
@@ -517,16 +523,16 @@ function createCodeSnippet(code, language = 'JavaScript', containerSelector) {
             <code>${escapeHtml(code)}</code>
         </div>
     `;
-    
-    container.appendChild(codeContainer);
-    return codeContainer;
+
+  container.appendChild(codeContainer);
+  return codeContainer;
 }
 
 // Export functions for use in other scripts
 if (typeof window !== 'undefined') {
-    window.copyClipboard = {
-        init: initCopyButtons,
-        createSnippet: createCodeSnippet,
-        copyToClipboard: copyToClipboard
-    };
+  window.copyClipboard = {
+    init: initCopyButtons,
+    createSnippet: createCodeSnippet,
+    copyToClipboard: copyToClipboard,
+  };
 }

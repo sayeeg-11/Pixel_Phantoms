@@ -17,11 +17,7 @@ const path = require('path');
  * List of images to be compressed
  * Add or remove paths as needed
  */
-const images = [
-  'assets/demo.png',
-  'assets/host-event.jpg',
-  'assets/logo.png'
-];
+const images = ['assets/demo.png', 'assets/host-event.jpg', 'assets/logo.png'];
 
 /**
  * Compress a single image based on its file type
@@ -62,13 +58,13 @@ async function compressImage(inputPath) {
     // PNG: lossless compression + palette quantization
     pipeline = pipeline.png({
       compressionLevel: 9,
-      palette: true
+      palette: true,
     });
   } else if (ext === '.jpg' || ext === '.jpeg') {
     // JPEG: better compression with mozjpeg
     pipeline = pipeline.jpeg({
       quality: 80,
-      mozjpeg: true
+      mozjpeg: true,
     });
   } else {
     throw new Error(`Unsupported file type: ${ext}`);
@@ -88,9 +84,7 @@ async function compressImage(inputPath) {
  */
 async function main() {
   try {
-    await Promise.all(
-      images.map(image => compressImage(image))
-    );
+    await Promise.all(images.map(image => compressImage(image)));
 
     console.log('✅ Image compression completed.');
   } catch (error) {

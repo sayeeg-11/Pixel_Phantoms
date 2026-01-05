@@ -30,14 +30,14 @@
     panel.focus();
     document.addEventListener('keydown', onDocumentKeyDown);
   }
-  
+
   function closeWidget() {
     widget.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
     toggle.focus();
     document.removeEventListener('keydown', onDocumentKeyDown);
   }
-  
+
   function onDocumentKeyDown(e) {
     if (e.key === 'Escape') closeWidget();
   }
@@ -47,7 +47,7 @@
     if (widget.classList.contains('open')) closeWidget();
     else openWidget();
   });
-  
+
   closeBtn.addEventListener('click', closeWidget);
 
   // Dismiss button functionality
@@ -58,13 +58,13 @@
 
   // Star rating functionality
   let selectedRating = 0;
-  stars.forEach((btn) => {
+  stars.forEach(btn => {
     btn.addEventListener('click', () => {
       selectedRating = parseInt(btn.dataset.value, 10);
       updateStars(selectedRating);
     });
-    
-    btn.addEventListener('keydown', (e) => {
+
+    btn.addEventListener('keydown', e => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         selectedRating = parseInt(btn.dataset.value, 10);
@@ -87,7 +87,7 @@
   }
 
   // Form submission
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
 
     // Check if already submitted
@@ -119,7 +119,7 @@
       rating: selectedRating || null,
       url: window.location.href,
       ua: navigator.userAgent,
-      ts: new Date().toISOString()
+      ts: new Date().toISOString(),
     };
 
     // Update UI to show submission in progress
@@ -130,10 +130,10 @@
       // In a real implementation, this would send to your backend
       // For now, we'll simulate a successful submission
       console.log('Feedback submitted:', payload);
-      
+
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Mark as submitted
       localStorage.setItem(SUBMITTED_KEY, 'true');
       submitBtn.textContent = 'Completed ✓';
@@ -143,17 +143,16 @@
       statusEl.hidden = false;
       statusEl.style.color = 'var(--neon-green)';
       statusEl.textContent = 'Thank you for your feedback!';
-      
+
       // Close widget after delay
       setTimeout(() => {
         closeWidget();
-        
+
         // Reset form fields and stars
         form.reset();
         updateStars(0);
         selectedRating = 0;
       }, 2000);
-
     } catch (err) {
       console.error('Feedback send failed', err);
       statusEl.hidden = false;
@@ -170,5 +169,4 @@
       closeWidget();
     }
   });
-
 })();

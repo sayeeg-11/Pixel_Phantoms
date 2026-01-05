@@ -1,52 +1,52 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadRoadmap();
+  loadRoadmap();
 });
 
 async function loadRoadmap() {
-    const container = document.getElementById('roadmap-content');
-    
-    try {
-        const response = await fetch('../data/roadmaps.json');
-        if (!response.ok) throw new Error('Failed to fetch roadmap data');
-        
-        const data = await response.json();
-        const phases = data.hardware.phases;
+  const container = document.getElementById('roadmap-content');
 
-        container.innerHTML = ''; 
+  try {
+    const response = await fetch('../data/roadmaps.json');
+    if (!response.ok) throw new Error('Failed to fetch roadmap data');
 
-        let globalModuleIndex = 0; 
+    const data = await response.json();
+    const phases = data.hardware.phases;
 
-        phases.forEach(phase => {
-            const phaseBlock = document.createElement('div');
-            phaseBlock.className = 'phase-block';
+    container.innerHTML = '';
 
-            const header = document.createElement('div');
-            header.className = 'phase-header';
-            header.innerText = phase.title;
-            phaseBlock.appendChild(header);
+    let globalModuleIndex = 0;
 
-            const modulesContainer = document.createElement('div');
-            modulesContainer.className = 'modules-container';
+    phases.forEach(phase => {
+      const phaseBlock = document.createElement('div');
+      phaseBlock.className = 'phase-block';
 
-            phase.modules.forEach(mod => {
-                const link = document.createElement('a');
-                link.className = `module-node ${globalModuleIndex % 2 === 0 ? 'left' : 'right'}`;
-                link.href = mod.link;
-                // If it's the tutorial link, don't open in new tab (or do, depending on pref).
-                // External links usually _blank.
-                if (mod.link.startsWith('http')) {
-                    link.target = "_blank";
-                }
-                
-                if (phase.status === 'locked') {
-                    link.setAttribute('data-status', 'locked');
-                } else {
-                    link.setAttribute('data-status', 'unlocked');
-                }
+      const header = document.createElement('div');
+      header.className = 'phase-header';
+      header.innerText = phase.title;
+      phaseBlock.appendChild(header);
 
-                const iconClass = mod.icon || 'fa-solid fa-microchip';
+      const modulesContainer = document.createElement('div');
+      modulesContainer.className = 'modules-container';
 
-                link.innerHTML = `
+      phase.modules.forEach(mod => {
+        const link = document.createElement('a');
+        link.className = `module-node ${globalModuleIndex % 2 === 0 ? 'left' : 'right'}`;
+        link.href = mod.link;
+        // If it's the tutorial link, don't open in new tab (or do, depending on pref).
+        // External links usually _blank.
+        if (mod.link.startsWith('http')) {
+          link.target = '_blank';
+        }
+
+        if (phase.status === 'locked') {
+          link.setAttribute('data-status', 'locked');
+        } else {
+          link.setAttribute('data-status', 'unlocked');
+        }
+
+        const iconClass = mod.icon || 'fa-solid fa-microchip';
+
+        link.innerHTML = `
                     <div class="node-icon-wrapper">
                         <i class="${iconClass}"></i>
                     </div>
@@ -56,54 +56,53 @@ async function loadRoadmap() {
                     </div>
                 `;
 
-                modulesContainer.appendChild(link);
-                globalModuleIndex++;
-            });
+        modulesContainer.appendChild(link);
+        globalModuleIndex++;
+      });
 
-            phaseBlock.appendChild(modulesContainer);
-            container.appendChild(phaseBlock);
-        });
+      phaseBlock.appendChild(modulesContainer);
+      container.appendChild(phaseBlock);
+    });
 
-        animateRoadmap();
-
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = `<div style="text-align:center; color:red;">[ERROR] POWER_FAILURE_DETECTED</div>`;
-    }
+    animateRoadmap();
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = `<div style="text-align:center; color:red;">[ERROR] POWER_FAILURE_DETECTED</div>`;
+  }
 }
 
 function animateRoadmap() {
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from('.roadmap-spine', {
-        height: 0,
-        duration: 2,
-        ease: 'power1.inOut'
-    });
+  gsap.from('.roadmap-spine', {
+    height: 0,
+    duration: 2,
+    ease: 'power1.inOut',
+  });
 
-    gsap.utils.toArray('.phase-header').forEach(header => {
-        gsap.from(header, {
-            scrollTrigger: {
-                trigger: header,
-                start: "top 80%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        });
+  gsap.utils.toArray('.phase-header').forEach(header => {
+    gsap.from(header, {
+      scrollTrigger: {
+        trigger: header,
+        start: 'top 80%',
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'back.out(1.7)',
     });
+  });
 
-    gsap.utils.toArray('.module-node').forEach(node => {
-        gsap.from(node, {
-            scrollTrigger: {
-                trigger: node,
-                start: "top 85%"
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        });
+  gsap.utils.toArray('.module-node').forEach(node => {
+    gsap.from(node, {
+      scrollTrigger: {
+        trigger: node,
+        start: 'top 85%',
+      },
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
     });
+  });
 }

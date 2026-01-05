@@ -21,6 +21,13 @@ function renderNavbar(basePath = '') {
             <li><a href="${basePath}pages/contributors.html">Team</a></li>
             <li><a href="${basePath}pages/login.html">Login</a></li>
             <li><a href="${basePath}contact.html">Contact</a></li>
+            <!-- PROFILE ICON -->
+            <li class="profile-nav">
+                   <a href="${basePath}pages/profile.html" aria-label="Profile">
+                     <i class="fas fa-user-circle profile-icon"></i>
+                   </a>
+            </li>
+
             <li>
                 <div class="theme-toggle">
                     <input type="checkbox" id="theme-switch" class="theme-switch" aria-label="Toggle theme">
@@ -49,9 +56,9 @@ function setActiveNavItem() {
   // Get the full current URL
   const currentUrl = window.location.href;
   console.log('Current URL:', currentUrl);
-  
+
   const navLinks = document.querySelectorAll('.nav-links a');
-  
+
   navLinks.forEach(function (link) {
     // Remove active class from all links
     link.classList.remove('active');
@@ -61,18 +68,20 @@ function setActiveNavItem() {
       try {
         // Create absolute URL for comparison
         const absoluteUrl = new URL(href, window.location.origin).href;
-        
+
         // Compare URLs
-        if (currentUrl === absoluteUrl || 
-            currentUrl + '/' === absoluteUrl ||
-            currentUrl === absoluteUrl + '/') {
+        if (
+          currentUrl === absoluteUrl ||
+          currentUrl + '/' === absoluteUrl ||
+          currentUrl === absoluteUrl + '/'
+        ) {
           link.classList.add('active');
         }
       } catch (e) {
         // Fallback: simple filename comparison
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const linkPage = href.split('/').pop();
-        
+
         if (linkPage === currentPage) {
           link.classList.add('active');
         }
