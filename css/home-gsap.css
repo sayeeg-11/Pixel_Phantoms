@@ -995,6 +995,11 @@ footer {
     backdrop-filter: blur(5px);
 }
 
+#modal-name , #modal-id {
+    color: white;
+    
+}
+
 .modal-overlay.active {
     opacity: 1;
     visibility: visible;
@@ -1027,7 +1032,7 @@ footer {
     right: 20px;
     background: none;
     border: none;
-    color: var(--text-dim);
+    color: white;
     font-size: 2rem;
     cursor: pointer;
     z-index: 10;
@@ -1036,7 +1041,7 @@ footer {
     color: #ffffff75;
 }
 .close-modal:hover {
-    color: var(--neon-cyan);
+    color: red;
 }
 .light-mode .modal-header{
     color: #ffffff;
@@ -1070,7 +1075,6 @@ footer {
     border-radius: 20px;
     font-weight: bold;
     font-size: 0.9rem;
-    background: var(--bg-primary);
     color: var(--neon-cyan);
     border: 1px solid var(--neon-cyan);
 }
@@ -1082,6 +1086,7 @@ footer {
     background: rgba(0,0,0,0.2);
     padding: 15px;
     border-radius: 12px;
+    color: white;
 }
 
 /* Light mode – improve stat visibility */
@@ -1221,10 +1226,11 @@ footer {
 
 .primary-btn {
     background: var(--neon-cyan);
-    color: #000;
+    color: #ffffff;
 }
 
 .primary-btn:hover {
+    color:#000;
     background: #00d0ff;
     box-shadow: 0 0 15px var(--neon-cyan);
 }
@@ -1234,13 +1240,13 @@ footer {
 }
 .secondary-btn {
     background: transparent;
-    border: 1px solid var(--text-dim);
-    color: var(--text-main);
+    border: 1px solid #00d0ff;
+    color: white;
 }
 
 .secondary-btn:hover {
     border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
+    color: #00d0ff;
 }
 
 /* Responsive fixes for modal */

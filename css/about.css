@@ -99,18 +99,17 @@
     border-color: var(--accent-color);
 }
 
-/* ===== FOCUS AREAS SECTION ===== */
-.focus-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 70px 30px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 400px;
-    isolation: isolate;
-    align-items: start;
-    grid-auto-rows: auto;
+.focus-areas {
+    text-align: center;
+}
+
+.focus-areas h3 {
+    font-size: 1.8rem;
+    margin: 40px 0 30px;
+    color: var(--text-primary);
+    position: relative;
+    display: inline-block;
+    animation: fadeIn 1s ease-out 0.5s both;
 }
 
 @media (max-width: 992px) {

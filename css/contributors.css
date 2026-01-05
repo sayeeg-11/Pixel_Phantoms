@@ -5,6 +5,21 @@
     padding: 60px 20px;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h1 {
+  display: inline-block;              /* shrink to content */
+  margin: 0 auto;
+}
+
+.section-header p {
+  text-align: center;
+  opacity: 0.85;
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));

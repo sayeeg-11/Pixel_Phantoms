@@ -1,5 +1,14 @@
 /* ================= JOIN US - ENHANCED STYLES ================= */
 
+/* Fix navbar overlap  */
+#main-container {
+    padding-top: 100px;
+}
+.hero-section .hero-content {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 /* --- HERO OVERRIDES --- */
 .typing-box {
     min-height: 120px;
@@ -246,8 +255,20 @@
 
 .center-text { text-align: center; margin-bottom: 40px; }
 
+.hero-glitch {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
+    #main-container {
+        padding-top: 130px;
+    }
     .join-steps-grid { grid-template-columns: 1fr; }
     .hero-glitch { font-size: 2.5rem; }
+    .hero-section .hero-content {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 }
