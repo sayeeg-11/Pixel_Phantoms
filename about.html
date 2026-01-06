@@ -89,130 +89,233 @@
       renderNavbar();
     </script>
 
-    <main id="main-about" tabindex="-1">
-      <!-- Hero Section - Matching Events page style -->
-      <section class="hero events-hero">
-        <h1>About Pixel Phantoms</h1>
-        <p>
-          A student-driven tech community empowering learners through code, collaboration, and
-          creativity.
-        </p>
-        <div class="about-motto">"From Students, For Students."</div>
-      </section>
-
-      <!-- Mission Section -->
-      <section class="content" id="mission-section">
-        <div class="container">
-          <h2 class="section-title">Our Mission</h2>
-          <div class="mission-description">
-            Pixel Phantoms is a student-driven tech club dedicated to empowering learners through
-            structured learning modules, mentorship, project reviews, doubt-clearing sessions,
-            submissions, leaderboards, hackathons, and technical activities.
+    <main id="main-content" tabindex="-1">
+      <!-- Hero Section -->
+      <section class="hero-section" role="banner">
+        <div class="hero-content">
+          <h1 class="hero-title">About Pixel Phantoms</h1>
+          <div class="hero-subtitle">
+            <div class="motto-banner">
+              <p class="motto-main">"From Students, For Students."</p>
+              <p class="motto-subtitle">A fully student-driven tech community focused on peer-to-peer learning and growth.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Focus Areas Section - Using same grid layout as events -->
-      <section class="content" id="focus-section">
+      <section class="who-we-are-section content-section" aria-labelledby="who-we-are-heading">
         <div class="container">
-          <h2 class="section-title">Focus Areas</h2>
-          <div class="focus-container" id="focus-container">
+          <h2 class="section-title" id="who-we-are-heading">Who We Are</h2>
+          <div class="who-we-are-content">
+            <div class="definition-card">
+              <p class="definition-text">
+                Pixel Phantoms is a student-driven tech club focused on hands-on learning, collaboration, and real-world projects in web development, programming, design, embedded systems, and open source. We are a community-driven learning platform, not a company or paid program.
+              </p>
+            </div>
+            
+            <div class="who-is-this-for">
+              <h3 id="who-is-this-for-heading">
+                <i class="fas fa-user-graduate" aria-hidden="true"></i> Who is this for?
+              </h3>
+              <p class="audience-description">
+                Beginners to advanced students interested in building real projects together, collaborating with peers, and growing their technical skills in a supportive community environment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="what-we-do-section content-section" aria-labelledby="what-we-do-heading">
+        <div class="container">
+          <h2 class="section-title" id="what-we-do-heading">What We Do</h2>
+          <div class="activities-grid">
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+              </div>
+              <h3>Structured Learning Modules</h3>
+              <p>Curated technical sessions and learning paths</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-hands-helping" aria-hidden="true"></i>
+              </div>
+              <h3>Mentorship & Guidance</h3>
+              <p>One-on-one support from senior students and mentors</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-code-review" aria-hidden="true"></i>
+              </div>
+              <h3>Project Reviews</h3>
+              <p>Detailed feedback and code review sessions</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-question-circle" aria-hidden="true"></i>
+              </div>
+              <h3>Doubt-Clearing Sessions</h3>
+              <p>Regular sessions to resolve technical challenges</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-tasks" aria-hidden="true"></i>
+              </div>
+              <h3>Submissions & Leaderboards</h3>
+              <p>Track progress and compete on coding challenges</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-laptop-code" aria-hidden="true"></i>
+              </div>
+              <h3>Hackathons & Challenges</h3>
+              <p>Regular competitions to test and improve skills</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </div>
+              <h3>Open Source Projects</h3>
+              <p>Collaborate on community-driven development</p>
+            </div>
+            
+            <div class="activity-card" role="listitem" tabindex="0">
+              <div class="activity-icon">
+                <i class="fas fa-users" aria-hidden="true"></i>
+              </div>
+              <h3>Community Activities</h3>
+              <p>Networking events, workshops, and tech talks</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="focus-areas-section content-section" aria-labelledby="focus-areas-heading">
+        <div class="container">
+          <h2 class="section-title" id="focus-areas-heading">Our Focus Areas</h2>
+          <div class="focus-grid" role="list">
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-laptop-code icon" aria-hidden="true"></i>
-              <h3>Web Development</h3>
-              <p class="focus-card-desc">Full-stack development with modern frameworks and tools</p>
+              <h4>Web Development</h4>
+              <p class="focus-card-desc">
+                Full-stack development with modern frameworks and tools
+              </p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-code icon" aria-hidden="true"></i>
-              <h3>Programming</h3>
+              <h4>Programming</h4>
               <p class="focus-card-desc">Data structures, algorithms, and competitive coding</p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-paint-brush icon" aria-hidden="true"></i>
-              <h3>Design</h3>
-              <p class="focus-card-desc">UI/UX design principles and creative visual solutions</p>
+              <h4>Design</h4>
+              <p class="focus-card-desc">
+                UI/UX design principles and creative visual solutions
+              </p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-microchip icon" aria-hidden="true"></i>
-              <h3>Embedded Systems</h3>
+              <h4>Embedded Systems</h4>
               <p class="focus-card-desc">IoT, microcontrollers, and hardware programming</p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fab fa-github icon" aria-hidden="true"></i>
-              <h3>Open Source</h3>
-              <p class="focus-card-desc">Collaborative development and community contributions</p>
+              <h4>Open Source</h4>
+              <p class="focus-card-desc">
+                Collaborative development and community contributions
+              </p>
             </div>
             <div class="focus-card" role="listitem" tabindex="0">
               <i class="fas fa-users icon" aria-hidden="true"></i>
-              <h3>Community Learning</h3>
+              <h4>Community Learning</h4>
               <p class="focus-card-desc">Peer-to-peer learning and knowledge sharing</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Committee Section - Using same grid layout as events -->
-      <section class="content" id="committee-section">
+      <section class="committee-section content-section" aria-labelledby="committee-heading">
         <div class="container">
-          <h2 class="section-title">Core Committee 2025</h2>
-          <div class="committee-container" id="committee-container">
-            <div class="member-card" role="listitem">
+          <h2 class="section-title" id="committee-heading">Core Committee 2025</h2>
+
+          <div class="committee-grid" role="list">
+            <div class="member-card director" role="listitem">
               <h3>Prathamesh Wamane</h3>
               <p class="member-role">Director</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card president" role="listitem">
               <h3>Krishna Shimpi</h3>
               <p class="member-role">President</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card vp" role="listitem">
               <h3>Pratik Thorat</h3>
               <p class="member-role">Vice President</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Harsh Pawar</h3>
               <p class="member-role">Technical Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Ayush Patil</h3>
               <p class="member-role">Treasurer</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Laxmi Shingne</h3>
               <p class="member-role">Event Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Krushna Gite</h3>
               <p class="member-role">Project Manager</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Pallavi Thote</h3>
               <p class="member-role">Recruitment Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Pushkar Thakare</h3>
               <p class="member-role">Web Development Lead</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Shruti Gaikwad</h3>
               <p class="member-role">Design Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Diksha Rakibe</h3>
               <p class="member-role">Embedded System Lead</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Rushabh Pekhale</h3>
               <p class="member-role">Social Media & Branding Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card head" role="listitem">
               <h3>Sarvesh Aher</h3>
               <p class="member-role">Media and Publicity Head</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card mentor" role="listitem">
               <h3>Sayee Gosavi</h3>
               <p class="member-role">Mentor</p>
             </div>
-            <div class="member-card" role="listitem">
+
+            <div class="member-card mentor" role="listitem">
               <h3>Mohit Jagtap</h3>
               <p class="member-role">Mentor</p>
             </div>
