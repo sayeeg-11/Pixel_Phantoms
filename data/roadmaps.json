@@ -375,7 +375,7 @@
           {
             "title": "Build a Phantom Node",
             "desc": "TUTORIAL: Create a Wi-Fi sensor node for under $5.",
-            "link": "../pages/tutorials/phantom-node.html",
+            "link": "../pages/tutorials.html",
             "icon": "fa-solid fa-ghost"
           },
           {
@@ -607,169 +607,226 @@
         "title": "1. The Arcade Core",
         "description": "Foundations of game logic: Game loop, delta time, finite state machines, basic 2D vector math, simple physics, AABB & circle collisions.",
         "resources": [
-          {"name": "Game Programming Patterns", "url": "#"},
-          {"name": "Vector Math Basics", "url": "#"},
-          {"name": "Collision Detection 101", "url": "#"}
+          {
+            "name": "Game Programming Patterns",
+            "url": "#"
+          },
+          {
+            "name": "Vector Math Basics",
+            "url": "#"
+          },
+          {
+            "name": "Collision Detection 101",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "2. Engine Protocol",
         "description": "Introduction to Unity (C#) or Godot (GDScript): MonoBehaviour lifecycle, Scenes, Nodes, Signals, scripting, and IDE setup.",
         "resources": [
-          {"name": "Unity C# Beginner Guide", "url": "#"},
-          {"name": "Godot 4 Getting Started", "url": "#"}
+          {
+            "name": "Unity C# Beginner Guide",
+            "url": "#"
+          },
+          {
+            "name": "Godot 4 Getting Started",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "3. Pixel & Sound Ops",
         "description": "Creating/importing assets: pixels, sprites, tilemaps, sprite sheets, basics of sound design (SFX/BGM), and asset pipeline workflow.",
         "resources": [
-          {"name": "Piskel Sprite Editor", "url": "#"},
-          {"name": "Free SFX Libraries", "url": "#"}
+          {
+            "name": "Piskel Sprite Editor",
+            "url": "#"
+          },
+          {
+            "name": "Free SFX Libraries",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "4. Gameplay Systems Protocol",
         "description": "Implementation of core systems like player controller, camera system, NPC logic, input handling, UI elements, and inventory mechanics.",
         "resources": [
-          {"name": "Unity Input System Guide", "url": "#"},
-          {"name": "Godot UI with Control Nodes", "url": "#"}
+          {
+            "name": "Unity Input System Guide",
+            "url": "#"
+          },
+          {
+            "name": "Godot UI with Control Nodes",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "5. Physics & Movement Ops",
         "description": "Rigidbodies, colliders, materials, gravity tuning, kinematic movement, character controllers, platformer physics, and raycasting.",
         "resources": [
-          {"name": "Unity Physics Docs", "url": "#"},
-          {"name": "Godot Physics Explained", "url": "#"}
+          {
+            "name": "Unity Physics Docs",
+            "url": "#"
+          },
+          {
+            "name": "Godot Physics Explained",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "6. AI Protocol",
         "description": "Implementing AI using finite state machines, behavior trees, pathfinding (A*), steering behaviors, enemy logic, and difficulty balancing.",
         "resources": [
-          {"name": "A* Pathfinding Tutorial", "url": "#"},
-          {"name": "FSM & Behavior Trees Guide", "url": "#"}
+          {
+            "name": "A* Pathfinding Tutorial",
+            "url": "#"
+          },
+          {
+            "name": "FSM & Behavior Trees Guide",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "7. Level Ops & World Building",
         "description": "Tilemaps, procedural generation, lighting, world structure, scene transitions, checkpoints, atmosphere design, and progression flow.",
         "resources": [
-          {"name": "Unity Tilemap System", "url": "#"},
-          {"name": "Godot Tilemap 4.x Tutorial", "url": "#"}
+          {
+            "name": "Unity Tilemap System",
+            "url": "#"
+          },
+          {
+            "name": "Godot Tilemap 4.x Tutorial",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "8. Deployment Protocol",
         "description": "Build pipelines, optimizing performance, compression, packaging, platform-specific builds (WebGL, Android, Windows).",
         "resources": [
-          {"name": "Unity Build Settings Overview", "url": "#"},
-          {"name": "Godot Export Templates Guide", "url": "#"}
+          {
+            "name": "Unity Build Settings Overview",
+            "url": "#"
+          },
+          {
+            "name": "Godot Export Templates Guide",
+            "url": "#"
+          }
         ]
       },
       {
         "title": "9. Monetization & Live Ops",
         "description": "Publishing games, integrating ads or in-app purchases, analytics, community building, versioning, patching, and post-launch updates.",
         "resources": [
-          {"name": "Itch.io Upload Guide", "url": "#"},
-          {"name": "Steamworks Publishing Docs", "url": "#"}
+          {
+            "name": "Itch.io Upload Guide",
+            "url": "#"
+          },
+          {
+            "name": "Steamworks Publishing Docs",
+            "url": "#"
+          }
         ]
       }
     ]
   },
   "ui-ux": {
-  "title": "UI_UX_Protocol_v1.0",
-  "description": "Initialize sequence: Empathy to Pixel Perfection.",
-  "phases": [
-    {
-      "id": "phase_1",
-      "title": "PHASE_01: Visual_Foundations",
-      "status": "unlocked",
-      "modules": [
-        {
-          "title": "Design Principles",
-          "desc": "Contrast, Repetition, Alignment, Proximity (C.R.A.P).",
-          "link": "https://m2.material.io/design/introduction"
-        },
-        {
-          "title": "Typography & Grids",
-          "desc": "Type scales, vertical rhythm, and 8pt grid systems.",
-          "link": "https://fonts.google.com/knowledge"
-        },
-        {
-          "title": "Color Theory",
-          "desc": "60-30-10 rule, accessibility contrast, and emotional impact.",
-          "link": "https://color.adobe.com/create/color-wheel"
-        }
-      ]
-    },
-    {
-      "id": "phase_2",
-      "title": "PHASE_02: UX_Research_Ops",
-      "status": "locked",
-      "modules": [
-        {
-          "title": "User Personas",
-          "desc": "Defining the target audience and empathy mapping.",
-          "link": "https://www.nngroup.com/articles/persona/"
-        },
-        {
-          "title": "User Journey Maps",
-          "desc": "Visualizing the user's path through the application.",
-          "link": "https://www.nngroup.com/articles/journey-mapping-101/"
-        },
-        {
-          "title": "Information Architecture",
-          "desc": "Sitemaps, card sorting, and organizing content.",
-          "link": "https://www.usability.gov/what-and-why/information-architecture.html"
-        }
-      ]
-    },
-    {
-      "id": "phase_3",
-      "title": "PHASE_03: Interface_Construction",
-      "status": "locked",
-      "modules": [
-        {
-          "title": "Figma Mastery",
-          "desc": "Auto Layout, Components, and Variants.",
-          "link": "https://help.figma.com/hc/en-us"
-        },
-        {
-          "title": "Wireframing",
-          "desc": "Low-fidelity sketches to structure layout logic.",
-          "link": "https://balsamiq.com/learn/articles/what-are-wireframes/"
-        },
-        {
-          "title": "Prototyping",
-          "desc": "Connecting screens and defining interactions.",
-          "link": "https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma"
-        }
-      ]
-    },
-    {
-      "id": "phase_4",
-      "title": "PHASE_04: System_&_Handoff",
-      "status": "locked",
-      "modules": [
-        {
-          "title": "Design Systems",
-          "desc": "Atomic Design principles and component libraries.",
-          "link": "https://atomicdesign.bradfrost.com/chapter-2/"
-        },
-        {
-          "title": "Accessibility (a11y)",
-          "desc": "WCAG 2.1 guidelines and screen reader support.",
-          "link": "https://www.w3.org/WAI/standards-guidelines/wcag/"
-        },
-        {
-          "title": "Developer Handoff",
-          "desc": "Redlining, asset export, and design specs.",
-          "link": "https://zeplin.io/"
-        }
-      ]
-    }
-  ]
-}
+    "title": "UI_UX_Protocol_v1.0",
+    "description": "Initialize sequence: Empathy to Pixel Perfection.",
+    "phases": [
+      {
+        "id": "phase_1",
+        "title": "PHASE_01: Visual_Foundations",
+        "status": "unlocked",
+        "modules": [
+          {
+            "title": "Design Principles",
+            "desc": "Contrast, Repetition, Alignment, Proximity (C.R.A.P).",
+            "link": "https://m2.material.io/design/introduction"
+          },
+          {
+            "title": "Typography & Grids",
+            "desc": "Type scales, vertical rhythm, and 8pt grid systems.",
+            "link": "https://fonts.google.com/knowledge"
+          },
+          {
+            "title": "Color Theory",
+            "desc": "60-30-10 rule, accessibility contrast, and emotional impact.",
+            "link": "https://color.adobe.com/create/color-wheel"
+          }
+        ]
+      },
+      {
+        "id": "phase_2",
+        "title": "PHASE_02: UX_Research_Ops",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "User Personas",
+            "desc": "Defining the target audience and empathy mapping.",
+            "link": "https://www.nngroup.com/articles/persona/"
+          },
+          {
+            "title": "User Journey Maps",
+            "desc": "Visualizing the user's path through the application.",
+            "link": "https://www.nngroup.com/articles/journey-mapping-101/"
+          },
+          {
+            "title": "Information Architecture",
+            "desc": "Sitemaps, card sorting, and organizing content.",
+            "link": "https://www.usability.gov/what-and-why/information-architecture.html"
+          }
+        ]
+      },
+      {
+        "id": "phase_3",
+        "title": "PHASE_03: Interface_Construction",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Figma Mastery",
+            "desc": "Auto Layout, Components, and Variants.",
+            "link": "https://help.figma.com/hc/en-us"
+          },
+          {
+            "title": "Wireframing",
+            "desc": "Low-fidelity sketches to structure layout logic.",
+            "link": "https://balsamiq.com/learn/articles/what-are-wireframes/"
+          },
+          {
+            "title": "Prototyping",
+            "desc": "Connecting screens and defining interactions.",
+            "link": "https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma"
+          }
+        ]
+      },
+      {
+        "id": "phase_4",
+        "title": "PHASE_04: System_&_Handoff",
+        "status": "locked",
+        "modules": [
+          {
+            "title": "Design Systems",
+            "desc": "Atomic Design principles and component libraries.",
+            "link": "https://atomicdesign.bradfrost.com/chapter-2/"
+          },
+          {
+            "title": "Accessibility (a11y)",
+            "desc": "WCAG 2.1 guidelines and screen reader support.",
+            "link": "https://www.w3.org/WAI/standards-guidelines/wcag/"
+          },
+          {
+            "title": "Developer Handoff",
+            "desc": "Redlining, asset export, and design specs.",
+            "link": "https://zeplin.io/"
+          }
+        ]
+      }
+    ]
+  }
 }

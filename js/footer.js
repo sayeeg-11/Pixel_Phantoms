@@ -83,7 +83,7 @@ function renderFooter(basePath = '') {
                     <div class="footer-bottom-links">
                         <a href="${basePath}pages/privacy.html" class="bottom-link">Privacy</a> | 
                         <a href="${basePath}pages/terms.html" class="bottom-link">Terms</a> | 
-                        <a href="${basePath}pages/tutorials/phantom-node.html" class="bottom-link">Tutorials</a>
+                        <a href="${basePath}pages/tutorials.html" class="bottom-link">Tutorials</a>
                     </div>
                 </div>
             </div>
