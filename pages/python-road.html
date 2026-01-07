@@ -1,44 +1,89 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel Phantoms | Python Mastery Protocol</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/python-road.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body class="hacker-theme">
-    <div id="navbar-placeholder"></div>
-    <script src="../js/navbar.js"></script>
-    <script>
-      renderNavbar('../');
-    </script>
 
-    <main class="main-content">
-      <section class="roadmap-header">
-        <h1 class="glitch-text" data-text="PYTHON_MASTERY_v1.0">PYTHON_MASTERY_v1.0</h1>
-        <p class="subtitle">> Initialize sequence: SCRIPT_TO_SYSTEM</p>
-      </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Python Mastery Protocol</title>
+  <link rel="icon" href="../assets/logo.png">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/python-road.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
 
-      <div class="roadmap-wrapper">
-        <div class="roadmap-spine"></div>
-        <div id="roadmap-content" class="roadmap-content">
-          <div class="loading-text">COMPILING_LOGIC...</div>
-        </div>
+<body class="hacker-theme">
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar('../');
+  </script>
+
+  <main class="main-content">
+    <section class="roadmap-header">
+      <h1 class="glitch-text" data-text="PYTHON_MASTERY_v1.0">PYTHON_MASTERY_v1.0</h1>
+      <p class="subtitle">> Initialize sequence: SCRIPT_TO_SYSTEM</p>
+    </section>
+
+    <div class="roadmap-wrapper">
+      <div class="roadmap-spine"></div>
+      <div id="roadmap-content" class="roadmap-content">
+        <div class="loading-text">COMPILING_LOGIC...</div>
       </div>
-    </main>
+    </div>
+  </main>
+  <style>
+    #other-courses {
+      margin-top: 70px;
+      margin-bottom: 20px;
+      padding: 20px 10px;
+      border: 2px solid rgba(0, 170, 255, 0.3);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  <script src="../js/python-road.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/theme-enhanced.js"></script>
-    <script src="../js/python-road.js"></script>
-  </body>
+  <section id="other-courses">
+    <h2 style="text-align: center;text-decoration: underline;
+      text-decoration-thickness: 1px;">
+      Explore-Other-Courses</h2>
+    <div class="skill-path-wrapper">
+      <a href="react-road.html" class="skill-node reveal-node">
+        <div class="node-icon">
+          <i class="fab fa-react" aria-hidden="true"></i>
+        </div>
+        <h4>React_Core</h4>
+        <span class="node-level">Lvl 2</span>
+      </a>
+
+      <a href="ai-roadmap.html" class="skill-node reveal-node">
+        <div class="node-icon">
+          <i class="fas fa-robot" aria-hidden="true"></i>
+        </div>
+        <h4>AI_Neural_Nets</h4>
+        <span class="node-level">Lvl 3</span>
+      </a>
+
+      <a href="system-design-road.html" class="skill-node reveal-node">
+        <div class="node-icon">
+          <i class="fab fa-python" aria-hidden="true"></i>
+        </div>
+        <h4>System_Arch</h4>
+        <span class="node-level">Lvl 4</span>
+      </a>
+    </div>
+    </div>
+  </section>
+  </section>
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    renderFooter('../');
+  </script>
+</body>
+
 </html>

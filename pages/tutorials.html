@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Phantoms | Learning Modules</title>
+
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/tutorials.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body class="hacker-theme">
+    <div id="scroll-progress-container">
+      <div id="scroll-progress-bar"></div>
+    </div>
+
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-tutorials" class="skip-to-content" id="skip-link">
+      <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
+
+    <div id="navbar-placeholder"></div>
+    <script src="../js/navbar.js"></script>
+    <script>
+      renderNavbar('../');
+    </script>
+
+    <div class="main-content" id="main-tutorials" tabindex="-1">
+      <header class="tutorials-header">
+        <div class="header-content">
+          <h1>Learning Modules & Tutorials</h1>
+          <p>
+            Master new technologies with our comprehensive tutorial collection designed for developers at all levels.
+          </p>
+          <span class="last-updated">Last Updated: <span id="current-date"></span></span>
+        </div>
+      </header>
+
+      <section class="tutorials-container">
+        <div class="tutorials-wrapper">
+          <article id="tutorial-1" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-node-js"></i></div>
+            <div class="tutorial-content">
+              <h2>1. Node.js Basics <span class="difficulty-badge beginner">Beginner</span></h2>
+              <p>
+                Learn the fundamentals of Node.js including modules, npm, and building your first server. 
+                Perfect for beginners looking to start backend development with JavaScript.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 2-3 hours of hands-on learning
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> Basic JavaScript knowledge
+                </li>
+                <li>
+                  <strong>What you'll learn:</strong> Node modules, NPM packages, Express.js basics, Building REST APIs
+                </li>
+              </ul>
+              <a href="tutorials/phantom-node.html" class="tutorial-button">
+                <i class="fas fa-play-circle"></i> Start Learning
+              </a>
+            </div>
+          </article>
+
+          <article id="tutorial-2" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-js"></i></div>
+            <div class="tutorial-content">
+              <h2>2. JavaScript Fundamentals <span class="difficulty-badge beginner">Beginner</span></h2>
+              <p>
+                Master the core concepts of JavaScript including variables, functions, arrays, and objects. 
+                Build a strong foundation for modern web development.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 3-4 hours
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> Basic HTML/CSS knowledge
+                </li>
+                <li>
+                  <strong>Topics covered:</strong> ES6+ features, Async/Await, DOM manipulation, Event handling
+                </li>
+              </ul>
+              <button class="tutorial-button coming-soon" disabled aria-disabled="true">
+                <i class="fas fa-hourglass-half"></i> Coming Soon
+              </button>
+            </div>
+          </article>
+
+          <article id="tutorial-3" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-html5"></i></div>
+            <div class="tutorial-content">
+              <h2>3. HTML/CSS Essentials <span class="difficulty-badge beginner">Beginner</span></h2>
+              <p>
+                Learn to create beautiful, responsive websites with HTML5 and CSS3. 
+                Master layouts, animations, and modern web design principles from scratch.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 4-5 hours
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> None - completely beginner friendly
+                </li>
+                <li>
+                  <strong>Skills gained:</strong> Semantic HTML, Flexbox/Grid, Responsive design, CSS animations
+                </li>
+              </ul>
+              <button class="tutorial-button coming-soon" disabled aria-disabled="true">
+                <i class="fas fa-hourglass-half"></i> Coming Soon
+              </button>
+            </div>
+          </article>
+
+          <article id="tutorial-4" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-python"></i></div>
+            <div class="tutorial-content">
+              <h2>4. Python Programming <span class="difficulty-badge intermediate">Intermediate</span></h2>
+              <p>
+                Dive into Python programming with advanced topics including OOP, file handling, and popular libraries. 
+                Great for data science, automation, and backend development.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 5-6 hours
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> Basic programming knowledge
+                </li>
+                <li>
+                  <strong>Covered topics:</strong> OOP concepts, List comprehensions, Lambda functions, Popular libraries
+                </li>
+              </ul>
+              <button class="tutorial-button coming-soon" disabled aria-disabled="true">
+                <i class="fas fa-hourglass-half"></i> Coming Soon
+              </button>
+            </div>
+          </article>
+
+          <article id="tutorial-5" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-react"></i></div>
+            <div class="tutorial-content">
+              <h2>5. React Basics <span class="difficulty-badge intermediate">Intermediate</span></h2>
+              <p>
+                Build modern, interactive user interfaces with React. Learn components, hooks, state management, 
+                and create real-world applications with the most popular frontend library.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 6-8 hours
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> Strong JavaScript knowledge
+                </li>
+                <li>
+                  <strong>You'll master:</strong> React components, Hooks (useState, useEffect), Props & State, Routing
+                </li>
+              </ul>
+              <button class="tutorial-button coming-soon" disabled aria-disabled="true">
+                <i class="fas fa-hourglass-half"></i> Coming Soon
+              </button>
+            </div>
+          </article>
+
+          <article id="tutorial-6" class="tutorial-card reveal">
+            <div class="tutorial-icon"><i class="fab fa-git-alt"></i></div>
+            <div class="tutorial-content">
+              <h2>6. Git & GitHub Essentials <span class="difficulty-badge beginner">Beginner</span></h2>
+              <p>
+                Master version control with Git and collaborate on GitHub. Learn branching, merging, 
+                pull requests, and contribute to open source projects like a pro.
+              </p>
+              <ul>
+                <li>
+                  <strong>Duration:</strong> 2-3 hours
+                </li>
+                <li>
+                  <strong>Prerequisites:</strong> Basic command line knowledge
+                </li>
+                <li>
+                  <strong>Learn:</strong> Git commands, Branching strategies, Pull requests, Open source contribution
+                </li>
+              </ul>
+              <button class="tutorial-button coming-soon" disabled aria-disabled="true">
+                <i class="fas fa-hourglass-half"></i> Coming Soon
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Sidebar Navigation -->
+        <aside class="tutorials-sidebar">
+          <div class="sidebar-box">
+            <h3>Navigation</h3>
+            <ul class="sidebar-links">
+              <li><a href="#main-tutorials">Back to Top</a></li>
+              <li><a href="#tutorial-1">Node.js Basics</a></li>
+              <li><a href="#tutorial-2">JavaScript Fundamentals</a></li>
+              <li><a href="#tutorial-3">HTML/CSS Essentials</a></li>
+              <li><a href="#tutorial-4">Python Programming</a></li>
+              <li><a href="#tutorial-5">React Basics</a></li>
+              <li><a href="#tutorial-6">Git & GitHub</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-box stats-box">
+            <h3>Learning Stats</h3>
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Tutorials</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Available</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Languages</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">25h+</div>
+                <div class="stat-label">Content</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-box contact-highlight">
+            <h3>Need Help?</h3>
+            <p>Join our community for support, discussions, and collaborative learning</p>
+            <a href="../pages/community.html" class="btn-sidebar">
+              <i class="fas fa-users"></i> Join Community
+            </a>
+            <a href="../pages/help.html" class="btn-sidebar">
+              <i class="fas fa-question-circle"></i> Get Support
+            </a>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script src="../js/footer.js"></script>
+    <script>
+      renderFooter('../');
+    </script>
+    <script src="../js/theme.js"></script>
+
+    <button id="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../js/tutorials.js"></script>
+    <script src="../js/back-to-top.js"></script>
+  </body>
+</html>

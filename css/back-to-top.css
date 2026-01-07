@@ -1,3 +1,7 @@
+/* ====================================================
+   BACK TO TOP BUTTON - Updated with Scroll Behavior
+   ==================================================== */
+
 #back-to-top {
   position: fixed;
   bottom: 30px;
@@ -19,6 +23,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    width: 56px !important;
+    height: 56px !important;
+    background: var(--accent-color, #00aaff) !important;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1003 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #back-to-top.visible {
@@ -31,8 +55,21 @@
   background: linear-gradient(135deg, var(--accent-color), #0088cc);
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 170, 255, 0.4);
+    background: linear-gradient(135deg, var(--accent-color), #0088cc) !important;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.4);
 }
 
+#back-to-top:active {
+    transform: translateY(-3px) scale(0.98);
+}
+
+#back-to-top:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   #back-to-top {
     bottom: 20px;
@@ -42,3 +79,31 @@
     font-size: 1rem;
   }
 }
+    #back-to-top {
+        bottom: 15px !important;
+        right: 15px !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #back-to-top {
+        width: 46px !important;
+        height: 46px !important;
+        font-size: 0.9rem;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    #back-to-top {
+        transition: opacity 0.2s ease, visibility 0.2s ease !important;
+    }
+    
+    #back-to-top:hover {
+        transform: none !important;
+    }
+}
+

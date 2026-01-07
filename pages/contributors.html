@@ -4,168 +4,219 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Contributors</title>
-    <link rel="stylesheet" href="../css/scroll-progress.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/contributors.css" />
-    <link rel="stylesheet" href="../css/home-gsap.css" />
-    <link rel="stylesheet" href="../css/back-to-top.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body class="hacker-theme">
+    <link rel="icon" href="../assets/logo.png">
+    <link rel="stylesheet" href="../css/scroll-progress.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/contributors.css">
+    <link rel="stylesheet" href="../css/home-gsap.css">
+    <link rel="stylesheet" href="../css/back-to-top.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="hacker-theme">
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
 
-    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <!-- Skip to Content -->
     <a href="#main-contributors" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward"></i> Skip to Main Content
     </a>
 
+    <!-- Navbar -->
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
     <script>
       renderNavbar('../');
     </script>
 
-    <div class="main-content" id="main-contributors" tabindex="-1">
-      <section class="content contributors-section">
-        <div class="section-header">
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content" id="main-contributors" tabindex="-1">
+      <!-- Page Header -->
+      <section class="contributors-section">
+        <header class="section-header">
           <h1>Our Amazing Contributors</h1>
-          <p>Meet the talented developers who make Pixel Phantoms better every day.</p>
-        </div>
+          <p>
+            Meet the talented developers who help build, improve, and maintain
+            <strong>Pixel Phantoms</strong>.
+          </p>
+        </header>
 
-        <!-- UPDATED STATS SECTION -->
-        <div class="stats-grid">
-          <div class="stats-card">
-            <h3>Total Contributors</h3>
-            <p id="total-contributors">Loading...</p>
-          </div>
-          <div class="stats-card">
-            <h3>Total Commits</h3>
-            <p id="total-commits">Loading...</p>
-          </div>
-          <div class="stats-card">
-            <h3>Total PRs</h3>
-            <p id="total-prs">Loading...</p>
-          </div>
-          <div class="stats-card">
-            <h3>Total Points</h3>
-            <p id="total-points">Loading...</p>
-          </div>
-          <div class="stats-card">
-            <h3>GitHub Stars</h3>
-            <p id="total-stars">Loading...</p>
-          </div>
-          <div class="stats-card">
-            <h3>Forks</h3>
-            <p id="total-forks">Loading...</p>
-          </div>
-        </div>
-        <!-- END OF STATS SECTION -->
-
-        <div class="lead-container">
-          <div class="project-lead-card">
-            <div class="lead-badge">👑 Project Lead</div>
-            <img
-              src="https://avatars.githubusercontent.com/u/1234567?v=4"
-              id="lead-avatar"
-              alt="Lead"
-            />
-            <h3 id="lead-name">Sayee Gosavi</h3>
-            <p class="role">Leading the project vision and development.</p>
-            <div class="lead-socials">
-              <a href="https://github.com/sayeeg-11" target="_blank"
-                ><i class="fab fa-github"></i
-              ></a>
-            </div>
+        <!-- ================= STATS ================= -->
+      <section class="stats-grid" aria-label="Project contribution statistics">
+        <div class="stats-card">
+          <h3>Total Contributors</h3>
+          <div class="stat-value" data-key="contributors">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-contributors" aria-live="polite"></span>
           </div>
         </div>
 
-        <h2>Top Contributors</h2>
-        <div class="contributors-grid" id="contributors-grid"></div>
-
-        <div id="pagination-controls" class="pagination-container"></div>
-
-        <h2 class="mt-large">Recent Contribution Activity</h2>
-        <div class="activity-container" id="activity-list">
-          <div class="loading-text">Fetching latest commits...</div>
+        <div class="stats-card">
+          <h3>Total Commits</h3>
+          <div class="stat-value" data-key="commits">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-commits"></span>
+          </div>
         </div>
 
-        <h2 class="mt-large">Want to Contribute?</h2>
-        <p class="text-center">Join our community and help improve Pixel Phantoms</p>
+        <div class="stats-card">
+          <h3>Total PRs</h3>
+          <div class="stat-value" data-key="prs">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-prs"></span>
+          </div>
+        </div>
 
-        <div class="steps-grid">
-          <div class="step-card">
-            <i class="fas fa-clipboard-list"></i>
-            <h3>Create an Issue</h3>
-            <p>Describe your change and wait for assignment.</p>
+        <div class="stats-card">
+          <h3>Total Points</h3>
+          <div class="stat-value" data-key="points">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-points"></span>
           </div>
-          <div class="step-card">
-            <i class="fab fa-github-alt"></i>
-            <h3>Fork Repo</h3>
-            <p>Fork the main repository to your GitHub account.</p>
+        </div>
+
+        <div class="stats-card">
+          <h3>GitHub Stars</h3>
+          <div class="stat-value" data-key="stars">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-stars"></span>
           </div>
-          <div class="step-card">
-            <i class="fas fa-code-branch"></i>
-            <h3>Create Branch</h3>
-            <p>Create a feature branch for your changes.</p>
-          </div>
-          <div class="step-card">
-            <i class="fas fa-code"></i>
-            <h3>Make Changes</h3>
-            <p>Implement your features or bug fixes.</p>
-          </div>
-          <div class="step-card">
-            <i class="fas fa-upload"></i>
-            <h3>Submit PR</h3>
-            <p>Create a pull request for review.</p>
+        </div>
+
+        <div class="stats-card">
+          <h3>Forks</h3>
+          <div class="stat-value" data-key="forks">
+            <span class="spinner" aria-hidden="true"></span>
+            <span class="value" id="total-forks"></span>
           </div>
         </div>
       </section>
-    </div>
 
-    <div id="contributor-modal" class="modal-overlay">
-      <div class="modal-container">
-        <button class="close-modal" onclick="closeModal()" aria-label="Close modal">&times;</button>
+
+        <!-- ================= PROJECT LEAD ================= -->
+        <section class="lead-container" aria-labelledby="project-lead">
+          <h2 id="project-lead">Project Leadership</h2>
+
+          <div class="project-lead-card">
+            <span class="lead-badge">👑 Founder & Project Lead</span>
+
+            <img
+              src="https://avatars.githubusercontent.com/u/1234567?v=4"
+              id="lead-avatar"
+              alt="Sayee Gosavi – Founder and Project Lead"
+              loading="lazy"
+            />
+
+            <h3 id="lead-name">Sayee Gosavi</h3>
+
+            <p class="role">
+              Founder & core maintainer of Pixel Phantoms, responsible for project direction,
+              architecture, and community leadership.
+            </p>
+
+            <div class="lead-socials">
+              <a
+                href="https://github.com/sayeeg-11"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile of Sayee Gosavi"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CONTRIBUTORS ================= -->
+        <section aria-labelledby="top-contributors">
+          <h2 id="top-contributors">Top Contributors</h2>
+          <div class="contributors-grid" id="contributors-grid" aria-live="polite"></div>
+          <div id="pagination-controls" class="pagination-container"></div>
+        </section>
+
+        <!-- ================= ACTIVITY ================= -->
+        <section aria-labelledby="recent-activity">
+          <h2 id="recent-activity" class="mt-large">Recent Contribution Activity</h2>
+          <div class="activity-container" id="activity-list">
+            <div class="loading-text">
+              <i class="fas fa-spinner fa-spin"></i> Fetching latest commits…
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CTA ================= -->
+        <section class="contribute-cta" aria-labelledby="contribute">
+          <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
+          <p class="text-center">Join our open-source community and help shape Pixel Phantoms.</p>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <i class="fas fa-clipboard-list"></i>
+              <h3>Create an Issue</h3>
+              <p>Describe your idea or bug clearly.</p>
+            </div>
+            <div class="step-card">
+              <i class="fab fa-github-alt"></i>
+              <h3>Fork the Repo</h3>
+              <p>Get your own copy of the project.</p>
+            </div>
+            <div class="step-card">
+              <i class="fas fa-code-branch"></i>
+              <h3>Create a Branch</h3>
+              <p>Work safely on a feature branch.</p>
+            </div>
+            <div class="step-card">
+              <i class="fas fa-code"></i>
+              <h3>Make Changes</h3>
+              <p>Implement improvements or fixes.</p>
+            </div>
+            <div class="step-card">
+              <i class="fas fa-upload"></i>
+              <h3>Submit a PR</h3>
+              <p>Open a pull request for review.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- ================= MODAL ================= -->
+    <div id="contributor-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-container" role="dialog" aria-modal="true">
+        <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
 
         <div class="modal-header">
-          <img id="modal-avatar" src="" alt="Contributor" />
+          <img id="modal-avatar" src="" alt="Contributor avatar" />
           <h2 id="modal-name">Username</h2>
-          <p id="modal-id" class="modal-subtitle">ID: --</p>
+          <p id="modal-id" class="modal-subtitle">ID: —</p>
           <div id="modal-league-badge" class="modal-league-tag"></div>
         </div>
 
         <div class="modal-stats-row">
           <div class="modal-stat">
             <span class="stat-label">Rank</span>
-            <span class="stat-number" id="modal-rank">#0</span>
+            <span class="stat-number" id="modal-rank">#—</span>
           </div>
           <div class="modal-stat">
             <span class="stat-label">Points</span>
-            <span class="stat-number" id="modal-score">0</span>
+            <span class="stat-number" id="modal-score">—</span>
           </div>
           <div class="modal-stat">
             <span class="stat-label">PRs</span>
-            <span class="stat-number" id="modal-prs">0</span>
+            <span class="stat-number" id="modal-prs">—</span>
           </div>
           <div class="modal-stat">
             <span class="stat-label">Commits</span>
-            <span class="stat-number" id="modal-commits">0</span>
+            <span class="stat-number" id="modal-commits">—</span>
           </div>
         </div>
 
         <div class="modal-actions">
-          <a href="#" id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
+          <a id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
             <i class="fas fa-code-branch"></i> View Pull Requests
           </a>
-          <a href="#" id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
+          <a id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
             <i class="fab fa-github"></i> GitHub Profile
           </a>
         </div>
@@ -173,11 +224,21 @@
     </div>
 
     <div id="footer-placeholder"></div>
-    <script src="../js/footer.js"></script>
+    <script src="js/footer.js"></script>
     <script>
-      renderFooter('../');
+      const basePath = '';
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderFooter === 'function') {
+          renderFooter(basePath);
+        } else {
+          console.error(
+            'renderFooter function not found. Make sure footer.js is loaded correctly.'
+          );
+        }
+      });
     </script>
 
+    <!-- Scripts -->
     <script src="../js/theme.js"></script>
     <script src="../js/back-to-top.js"></script>
     <script src="../js/contributors.js"></script>

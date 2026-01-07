@@ -5,6 +5,21 @@
   padding: 60px 20px;
 }
 
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.section-header h1 {
+  display: inline-block;              /* shrink to content */
+  margin: 0 auto;
+}
+
+.section-header p {
+  text-align: center;
+  opacity: 0.85;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -38,6 +53,34 @@
   font-weight: bold;
   color: var(--accent-color);
   margin: 0;
+.stat-value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.5rem; 
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #2563eb; 
+  animation: spin 0.6s linear infinite;
+}
+
+.value {
+  display: none; 
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* --- PROJECT LEAD SECTION --- */
@@ -45,6 +88,11 @@
   display: flex;
   justify-content: center;
   margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
 }
 
 .project-lead-card {

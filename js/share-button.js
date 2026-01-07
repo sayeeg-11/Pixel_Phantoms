@@ -1,3 +1,7 @@
+// ====================================================
+// SHARE BUTTON - Updated with Scroll Behavior
+// ====================================================
+
 // Create and initialize share button
 document.addEventListener('DOMContentLoaded', function () {
   // Don't initialize on login page (optional)
@@ -38,7 +42,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Add keyboard shortcut
   initializeKeyboardShortcut();
+document.addEventListener('DOMContentLoaded', function() {
+    // Don't initialize on login page (optional)
+    if (window.location.pathname.includes('login.html')) {
+        return;
+    }
+    
+    // Create share button container
+    const shareContainer = document.createElement('div');
+    shareContainer.className = 'share-button-container';
+    shareContainer.id = 'share-button-container';
+    
+    // Create main share button
+    const shareButton = document.createElement('button');
+    shareButton.className = 'share-button-main';
+    shareButton.id = 'share-button-main';
+    shareButton.setAttribute('aria-label', 'Share this page');
+    shareButton.setAttribute('title', 'Share this page');
+    
+    // Add share icon
+    const shareIcon = document.createElement('i');
+    shareIcon.className = 'fas fa-share-alt share-icon';
+    shareButton.appendChild(shareIcon);
+    
+    // Create share options panel
+    const shareOptions = createShareOptionsPanel();
+    
+    // Append elements
+    shareContainer.appendChild(shareButton);
+    shareContainer.appendChild(shareOptions);
+    document.body.appendChild(shareContainer);
+    
+    // Initialize functionality
+    initializeShareButton();
+    
+    // Add scroll behavior - UPDATED
+    initializeScrollBehavior();
+    
+    // Add keyboard shortcut
+    initializeKeyboardShortcut();
 });
+
 
 function createShareOptionsPanel() {
   const shareOptions = document.createElement('div');
@@ -102,6 +146,7 @@ function createShareOptionsPanel() {
 
   return shareOptions;
 }
+
 
 /**
  * Initialize share button functionality
@@ -210,6 +255,10 @@ function initializeShareButton() {
   }
 }
 
+
+/**
+ * UPDATED: Initialize scroll behavior with coordination
+ */
 function initializeScrollBehavior() {
   const shareContainer = document.getElementById('share-button-container');
   if (!shareContainer) return;
@@ -241,7 +290,54 @@ function initializeScrollBehavior() {
 
     lastScrollTop = scrollTop;
   });
+    const shareContainer = document.getElementById('share-button-container');
+    const backToTop = document.getElementById('back-to-top');
+    const feedbackWidget = document.getElementById('feedback-widget');
+    
+    if (!shareContainer) return;
+    
+    const scrollThreshold = 300; // Show back-to-top after 300px scroll
+    let lastScrollTop = 0;
+    let ticking = false;
+
+    function updateScrollState() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > scrollThreshold) {
+            // User has scrolled down - Rearrange buttons
+            shareContainer.classList.add('scrolled');
+            if (backToTop) backToTop.classList.add('visible');
+            if (feedbackWidget) feedbackWidget.classList.add('scrolled');
+            
+            // Remove hide on scroll down behavior
+            shareContainer.style.transform = '';
+            shareContainer.style.opacity = '';
+        } else {
+            // User is at top - Reset to original positions
+            shareContainer.classList.remove('scrolled');
+            if (backToTop) backToTop.classList.remove('visible');
+            if (feedbackWidget) feedbackWidget.classList.remove('scrolled');
+            
+            shareContainer.style.transform = '';
+            shareContainer.style.opacity = '';
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+    }
+
+    // Throttle scroll events for better performance
+    window.addEventListener('scroll', function() {
+        if (!ticking) {
+            window.requestAnimationFrame(updateScrollState);
+            ticking = true;
+        }
+    });
+    
+    // Initial check
+    updateScrollState();
 }
+
 
 function initializeKeyboardShortcut() {
   document.addEventListener('keydown', function (e) {
@@ -267,6 +363,7 @@ function initializeKeyboardShortcut() {
     }
   });
 }
+
 
 function showShareNotification(message, type = 'success') {
   // Remove existing notification
@@ -324,6 +421,7 @@ function showShareNotification(message, type = 'success') {
   }, 4000);
 }
 
+
 function trackShareEvent(platform) {
   try {
     const shareData = JSON.parse(localStorage.getItem('pixelPhantoms_shares') || '[]');
@@ -343,6 +441,7 @@ function trackShareEvent(platform) {
     console.error('Failed to track share:', err);
   }
 }
+
 
 function getShareStats() {
   try {
@@ -365,9 +464,13 @@ function getShareStats() {
   }
 }
 
+
 // Export functions for global access
 window.shareButton = {
   showNotification: showShareNotification,
   getStats: getShareStats,
   trackEvent: trackShareEvent,
+    showNotification: showShareNotification,
+    getStats: getShareStats,
+    trackEvent: trackShareEvent
 };

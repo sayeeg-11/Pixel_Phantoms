@@ -4,22 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Help Center</title>
-
-    <link rel="stylesheet" href="../css/scroll-progress.css" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/back-to-top.css" />
-    <link rel="stylesheet" href="../css/help.css" />
-    <link rel="stylesheet" href="../css/home-gsap.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
-  <body class="hacker-theme">
+    <link rel="icon" href="../assets/logo.png">
+    
+    <link rel="stylesheet" href="../css/scroll-progress.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/back-to-top.css">
+    <link rel="stylesheet" href="../css/help.css">
+    <link rel="stylesheet" href="../css/home-gsap.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="hacker-theme">
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
@@ -48,6 +43,7 @@
               type="text"
               class="help-search"
               placeholder="Describe your issue (e.g., 'discord invite', 'event registration')..."
+              aria-label="Search help articles"
             />
           </div>
         </div>
@@ -56,7 +52,7 @@
       <section class="help-grid-section">
         <h2 class="section-title">Browse Topics</h2>
         <div class="help-grid">
-          <div class="help-card">
+          <div class="help-card" role="article" tabindex="0">
             <div class="icon-box"><i class="fas fa-flag-checkered"></i></div>
             <h3>Getting Started</h3>
             <p>
@@ -66,7 +62,7 @@
             <a href="../index.html" class="read-more">Read Guide &rarr;</a>
           </div>
 
-          <div class="help-card">
+          <div class="help-card" role="article" tabindex="0">
             <div class="icon-box"><i class="fas fa-calendar-check"></i></div>
             <h3>Events & Registration</h3>
             <p>
@@ -76,7 +72,7 @@
             <a href="../events.html" class="read-more">Read Guide &rarr;</a>
           </div>
 
-          <div class="help-card">
+          <div class="help-card" role="article" tabindex="0">
             <div class="icon-box"><i class="fas fa-terminal"></i></div>
             <h3>Technical Support</h3>
             <p>
@@ -88,58 +84,88 @@
         </div>
       </section>
 
-      <section class="team-scroll-wrapper" style="overflow: hidden">
-        <div class="team-intro">
-          <h2>Meet Your Support Team</h2>
-          <p>Scroll down to browse our dedicated mentors.</p>
-        </div>
-
-        <div class="horizontal-container">
-          <div class="team-panel panel-1">
-            <div class="team-desc-card">
-              <span class="role-badge">Community Lead</span>
-              <h3>Sayee Gosavi</h3>
-              <p>
-                Specializes in community onboarding and Discord management. Reach out to Sayee if
-                you are having trouble verifying your student status or accessing private channels.
-              </p>
-              <p class="extra-info">"Community is the heart of code."</p>
-            </div>
+      <section class="team-section" aria-labelledby="team-heading">
+        <div class="container">
+          <div class="team-intro">
+            <h2 id="team-heading">Meet Your Support Team</h2>
+            <p>Get help from our dedicated mentors and leads</p>
           </div>
 
-          <div class="team-panel panel-2">
-            <div class="team-desc-card">
-              <span class="role-badge">Tech Lead</span>
-              <h3>Harsh Pawar</h3>
-              <p>
-                The go-to person for installation issues (VS Code, Git, Node.js). If your
-                environment isn't working during a workshop, Harsh is the one to ping.
-              </p>
-              <p class="extra-info">"It works on my machine... and I'll make it work on yours."</p>
+          <div class="team-grid" role="list">
+            <div class="team-card" role="listitem" tabindex="0">
+              <div class="team-card-inner">
+                <span class="role-badge">Community Lead</span>
+                <div class="team-avatar">
+                  <i class="fas fa-users" aria-hidden="true"></i>
+                </div>
+                <h3>Sayee Gosavi</h3>
+                <p class="team-desc">
+                  Specializes in community onboarding and Discord management. Reach out to Sayee if
+                  you are having trouble verifying your student status or accessing private channels.
+                </p>
+                <p class="team-quote">"Community is the heart of code."</p>
+                <div class="team-contact">
+                  <span class="contact-label">Preferred contact:</span>
+                  <span class="contact-value">Discord @sayee</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="team-panel panel-3">
-            <div class="team-desc-card">
-              <span class="role-badge">Event Coordinator</span>
-              <h3>Laxmi Shingne</h3>
-              <p>
-                Handles all event-related logistics. Contact Laxmi for certificate corrections, team
-                formation issues during hackathons, or event schedule conflicts.
-              </p>
-              <p class="extra-info">"Organization beats chaos every time."</p>
+            <div class="team-card" role="listitem" tabindex="0">
+              <div class="team-card-inner">
+                <span class="role-badge">Tech Lead</span>
+                <div class="team-avatar">
+                  <i class="fas fa-code" aria-hidden="true"></i>
+                </div>
+                <h3>Harsh Pawar</h3>
+                <p class="team-desc">
+                  The go-to person for installation issues (VS Code, Git, Node.js). If your
+                  environment isn't working during a workshop, Harsh is the one to ping.
+                </p>
+                <p class="team-quote">"It works on my machine... and I'll make it work on yours."</p>
+                <div class="team-contact">
+                  <span class="contact-label">Preferred contact:</span>
+                  <span class="contact-value">Discord @harsh</span>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="team-panel panel-4">
-            <div class="team-desc-card">
-              <span class="role-badge">Mentor</span>
-              <h3>Mohit Jagtap</h3>
-              <p>
-                Provides general project guidance and code reviews. Mohit helps students structure
-                their hackathon projects and choose the right tech stack.
-              </p>
-              <p class="extra-info">"Clean code is happy code."</p>
+            <div class="team-card" role="listitem" tabindex="0">
+              <div class="team-card-inner">
+                <span class="role-badge">Event Coordinator</span>
+                <div class="team-avatar">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                </div>
+                <h3>Laxmi Shingne</h3>
+                <p class="team-desc">
+                  Handles all event-related logistics. Contact Laxmi for certificate corrections, team
+                  formation issues during hackathons, or event schedule conflicts.
+                </p>
+                <p class="team-quote">"Organization beats chaos every time."</p>
+                <div class="team-contact">
+                  <span class="contact-label">Preferred contact:</span>
+                  <span class="contact-value">Email: events@pixelphantoms</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="team-card" role="listitem" tabindex="0">
+              <div class="team-card-inner">
+                <span class="role-badge">Mentor</span>
+                <div class="team-avatar">
+                  <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
+                </div>
+                <h3>Mohit Jagtap</h3>
+                <p class="team-desc">
+                  Provides general project guidance and code reviews. Mohit helps students structure
+                  their hackathon projects and choose the right tech stack.
+                </p>
+                <p class="team-quote">"Clean code is happy code."</p>
+                <div class="team-contact">
+                  <span class="contact-label">Preferred contact:</span>
+                  <span class="contact-value">Discord @mohit</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

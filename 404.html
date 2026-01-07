@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Phantoms | 404 Access Denied</title>
+    <link rel="icon" href="assets/logo.png" />
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="css/style.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/home-gsap.min.css" />
+    <link rel="stylesheet" href="css/cursor-effect.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        /* 404 Specific Styles */
+        .error-wrapper {
+            /* Use flex to center, but account for navbar height */
+            min-height: calc(100vh - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            margin-top: 80px;
+            /* Offset for fixed navbar */
+        }
+
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .error-code {
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 800;
+            margin: 0;
+            line-height: 1;
+            color: var(--neon-cyan, #00f3ff);
+            text-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+        }
+
+        .error-title {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            color: var(--neon-pink, #ff00ff);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Console box matching hero terminal */
+        .terminal-status {
+            background: rgba(13, 15, 20, 0.95);
+            border: 1px solid var(--neon-green, #0f0);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            margin-bottom: 3rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: left;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .terminal-status::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--neon-green, #0f0);
+            opacity: 0.5;
+        }
+
+        .console-text {
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+            box-shadow: 0 0 5px #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+            box-shadow: 0 0 5px #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+            box-shadow: 0 0 5px #27c93f;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Glitch Effect */
+        .glitch-404 {
+            position: relative;
+        }
+
+        .glitch-404::before,
+        .glitch-404::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-404::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-1 5s infinite linear alternate-reverse;
+        }
+
+        .glitch-404::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip: rect(15px, 9999px, 31px, 0);
+            }
+
+            20% {
+                clip: rect(85px, 9999px, 93px, 0);
+            }
+
+            40% {
+                clip: rect(43px, 9999px, 12px, 0);
+            }
+
+            60% {
+                clip: rect(21px, 9999px, 65px, 0);
+            }
+
+            80% {
+                clip: rect(56px, 9999px, 98px, 0);
+            }
+
+            100% {
+                clip: rect(12px, 9999px, 76px, 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip: rect(65px, 9999px, 11px, 0);
+            }
+
+            20% {
+                clip: rect(23px, 9999px, 54px, 0);
+            }
+
+            40% {
+                clip: rect(9px, 9999px, 86px, 0);
+            }
+
+            60% {
+                clip: rect(74px, 9999px, 32px, 0);
+            }
+
+            80% {
+                clip: rect(41px, 9999px, 66px, 0);
+            }
+
+            100% {
+                clip: rect(89px, 9999px, 14px, 0);
+            }
+        }
+    </style>
+</head>
+
+<body class="hacker-theme">
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Background Grid -->
+    <div class="grid-overlay" aria-hidden="true" style="position: fixed; inset: 0; z-index: -1;"></div>
+
+    <main class="error-wrapper">
+        <div class="error-container">
+            <h1 class="error-code glitch-404" data-text="404">404</h1>
+            <h2 class="error-title">ACCESS_DENIED</h2>
+
+            <div class="terminal-status">
+                <p class="console-text"><span class="status-dot dot-red"></span> > System.Error: Target_URL_Not_Found
+                </p>
+                <p class="console-text"><span class="status-dot dot-yellow"></span> > Scanning database_sectors...
+                    [FAILED]</p>
+                <p class="console-text"><span class="status-dot dot-green"></span> > Initiating recovery_protocol...</p>
+            </div>
+
+            <div class="nav-actions">
+                <a href="index.html" class="btn-cyber">
+                    <span class="btn-content">RETURN_TO_BASE</span>
+                    <span class="btn-glitch" aria-hidden="true"></span>
+                </a>
+                <a href="pages/projects.html" class="btn-hollow"
+                    style="border-color: var(--neon-cyan, #00f3ff); color: var(--neon-cyan, #00f3ff);">
+                    VIEW_PROJECTS
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
+    <script>
+        // Render Navbar and Footer
+        renderNavbar('');
+        renderFooter('');
+    </script>
+
+    <!-- Theme and Effects -->
+    <script src="js/theme.min.js"></script>
+    <script src="js/theme-enhanced.js"></script>
+    <script src="js/cursor-effect.js"></script>
+
+</body>
+
+</html>

@@ -1,4 +1,12 @@
-/* css/help.css */
+/* css/help.css*/
+
+/* CSS Variables */
+:root {
+  --team-card-spacing: 30px;
+  --team-card-radius: 20px;
+  --avatar-size: 80px;
+  --transition-speed: 0.4s;
+}
 
 /* HERO SECTION */
 .help-hero {
@@ -30,6 +38,8 @@
   to {
     transform: rotate(360deg);
   }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .hero-content {
@@ -45,6 +55,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0; /* For GSAP entry */
+  opacity: 0; 
   transform: translateY(20px);
 }
 
@@ -53,6 +64,7 @@
   font-size: 1.2rem;
   margin-bottom: 40px;
   opacity: 0; /* For GSAP entry */
+  opacity: 0; 
   transform: translateY(20px);
 }
 
@@ -61,6 +73,7 @@
   margin: 0 auto;
   position: relative;
   opacity: 0; /* For GSAP entry */
+  opacity: 0; 
   transform: scale(0.9);
 }
 
@@ -84,6 +97,7 @@
   font-size: 1.1rem;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   box-sizing: border-box;
 }
 
@@ -119,6 +133,7 @@
   background: var(--card-bg);
   padding: 40px 30px;
   border-radius: 20px;
+  border-radius: var(--team-card-radius);
   border: 1px solid var(--border-color);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
@@ -146,6 +161,7 @@
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
   pointer-events: none;
   z-index: -1;
 }
@@ -212,6 +228,7 @@
 .help-card:hover .icon-box {
   transform: scale(1.15) rotate(5deg);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .help-card h3 {
@@ -250,6 +267,23 @@
   overflow: hidden;
 }
 
+.team-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Team section container (used on other pages if needed) */
+.team-section .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* === HELP PAGE HORIZONTAL TEAM INTRO === */
+
 .team-intro {
   position: absolute;
   top: 40px;
@@ -272,7 +306,52 @@
   margin: 0;
   font-size: 1.8rem;
   color: var(--text-primary);
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  text-align: center;
+
+  /* Match the help-card / project theme */
+  background: var(--card-bg);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 18px 40px;
+  border-radius: 40px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 600px;
+
+  /* Subtle glow like accent buttons */
+  transition: all 0.3s ease;
 }
+
+.team-intro:hover {
+  border-color: rgba(0, 170, 255, 0.4);
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(0, 170, 255, 0.15);
+}
+
+[data-theme="dark"] .team-intro {
+  background: var(--card-bg);
+}
+
+.team-intro h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.team-intro p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* === HELP PAGE HORIZONTAL SCROLL CONTAINER === */
 
 .horizontal-container {
   display: flex;
@@ -364,7 +443,176 @@
   color: var(--accent-color) !important;
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
+  padding: 160px 20px 20px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  position: relative;
 }
+
+/* Card + badge styling reused inside horizontal panels */
+
+.team-card {
+  background: var(--card-bg);
+  border-radius: var(--team-card-radius, 30px);
+  border: 1px solid var(--border-color);
+  padding: 25px;
+  transition: all var(--transition-speed, 0.3s) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 170, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-speed, 0.3s) ease;
+  z-index: 1;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 30px rgba(0, 170, 255, 0.1);
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
+
+.role-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-color), #0088cc);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+  align-self: flex-start;
+  box-shadow: 0 4px 15px rgba(0, 170, 255, 0.2);
+  transition: all var(--transition-speed, 0.3s) ease;
+}
+
+.team-card:hover .role-badge {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 170, 255, 0.3);
+}
+
+.team-avatar {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background: linear-gradient(135deg, rgba(0, 170, 255, 0.1), rgba(0, 170, 255, 0.2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  border: 3px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.team-avatar i {
+  font-size: 2.2rem;
+  color: var(--accent-color);
+  transition: all var(--transition-speed) ease;
+}
+
+.team-card:hover .team-avatar {
+  border-color: var(--accent-color);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.team-card:hover .team-avatar i {
+  color: white;
+  transform: scale(1.1);
+}
+
+.team-card h3 {
+  margin: 0 0 20px 0;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  text-align: center;
+  transition: color var(--transition-speed) ease;
+}
+
+.team-card:hover h3 {
+  color: var(--accent-color);
+}
+
+.team-desc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 25px;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.team-quote {
+  font-style: italic;
+  color: var(--accent-color);
+  font-weight: 500;
+  margin-bottom: 20px;
+  padding: 15px 0;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.team-contact {
+  background: rgba(0, 170, 255, 0.05);
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-top: auto;
+}
+
+.contact-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.contact-value {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  font-weight: 500;
+}
+
+.team-card:nth-child(1) .role-badge { background: linear-gradient(135deg, #00b894, #00d8a7); }
+.team-card:nth-child(1):hover { border-color: #00b894; }
+.team-card:nth-child(1):hover .team-avatar { border-color: #00b894; }
+
+.team-card:nth-child(2) .role-badge { background: linear-gradient(135deg, #0984e3, #74b9ff); }
+.team-card:nth-child(2):hover { border-color: #0984e3; }
+.team-card:nth-child(2):hover .team-avatar { border-color: #0984e3; }
+
+.team-card:nth-child(3) .role-badge { background: linear-gradient(135deg, #fd79a8, #ffafcc); }
+.team-card:nth-child(3):hover { border-color: #fd79a8; }
+.team-card:nth-child(3):hover .team-avatar { border-color: #fd79a8; }
+
+.team-card:nth-child(4) .role-badge { background: linear-gradient(135deg, #fdcb6e, #ffeaa7); }
+.team-card:nth-child(4):hover { border-color: #fdcb6e; }
+.team-card:nth-child(4):hover .team-avatar { border-color: #fdcb6e; }
 
 /* CTA SECTION */
 .help-cta {
@@ -378,6 +626,7 @@
   max-width: 600px;
   margin: 0 auto;
   opacity: 0;
+  opacity: 0; 
   transform: translateY(30px);
 }
 
@@ -393,6 +642,8 @@
   margin-top: 30px;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(0, 170, 255, 0.3);
+  border: none;
+  cursor: pointer;
 }
 
 .btn-primary:hover {
@@ -401,6 +652,12 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .help-hero {
     padding: 100px 20px 60px;
@@ -508,5 +765,194 @@
   .btn-primary {
     padding: 12px 30px;
     font-size: 0.9rem;
+  }
+  .team-section {
+    padding: 80px 20px;
+  }
+
+  .team-intro h2 {
+    font-size: 2rem;
+  }
+
+  .team-intro p {
+    font-size: 1.1rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .team-card {
+    min-height: 400px;
+    padding: 20px;
+  }
+
+  .team-avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .team-avatar i {
+    font-size: 1.8rem;
+  }
+
+  .team-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .team-desc {
+    font-size: 0.95rem;
+  }
+
+  .btn-primary {
+    padding: 15px 40px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-hero h1 {
+    font-size: 2rem;
+  }
+
+  .help-hero p {
+    font-size: 0.9rem;
+  }
+
+  .help-search {
+    padding: 12px 15px 12px 45px;
+    font-size: 0.9rem;
+  }
+
+  .help-card {
+    padding: 25px 15px;
+  }
+
+  .icon-box {
+    width: 50px;
+    height: 50px;
+    font-size: 1.3rem;
+  }
+
+  .help-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .team-section {
+    padding: 60px 15px;
+  }
+
+  .team-intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .team-intro p {
+    font-size: 1rem;
+  }
+
+  .team-card {
+    padding: 15px;
+    min-height: 380px;
+  }
+
+  .team-avatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  .team-avatar i {
+    font-size: 1.6rem;
+  }
+
+  .role-badge {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+
+  .team-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .team-desc {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .team-quote {
+    font-size: 0.85rem;
+    padding: 12px 0;
+  }
+
+  .contact-label {
+    font-size: 0.8rem;
+  }
+
+  .contact-value {
+    font-size: 0.85rem;
+  }
+
+  .btn-primary {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+}
+
+.team-card:focus-visible,
+.help-card:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 5px;
+  transform: translateY(-5px);
+}
+
+.btn-primary:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 3px;
+}
+
+@media (prefers-contrast: high) {
+  .team-card,
+  .help-card {
+    border: 2px solid black;
+    background: white;
+  }
+
+  .team-card h3,
+  .help-card h3 {
+    color: black;
+  }
+
+  .team-desc,
+  .help-card p {
+    color: black;
+  }
+
+  .role-badge {
+    background: black;
+    color: white;
+    border: 2px solid black;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .help-hero::before,
+  .team-card,
+  .help-card {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .team-card:hover,
+  .help-card:hover {
+    transform: none;
   }
 }

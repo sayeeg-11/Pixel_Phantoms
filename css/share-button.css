@@ -1,3 +1,7 @@
+/* ====================================================
+   SHARE BUTTON - Updated with Scroll Behavior
+   ==================================================== */
+
 /* Floating Share Button Container */
 .share-button-container {
   position: fixed;
@@ -8,6 +12,20 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 1002 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Share button moves up when scrolled */
+.share-button-container.scrolled {
+    bottom: 85px !important;
 }
 
 /* Main Share Button */
@@ -80,6 +98,26 @@
   bottom: 70px;
   right: 0;
   min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    min-width: 200px;
+    z-index: 1005 !important;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
 }
 
 .share-options.active {
@@ -199,6 +237,23 @@
   transform: translateX(100%);
   opacity: 0;
   animation: slideInNotification 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 1006;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+    transform: translateX(100%);
+    opacity: 0;
+    animation: slideInNotification 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .share-notification.hidden {
@@ -409,6 +464,63 @@
     padding: 10px 12px;
     font-size: 13px;
   }
+    .share-button-container {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+
+    .share-button-container.scrolled {
+        bottom: 80px !important;
+    }
+    
+    .share-options {
+        min-width: 280px;
+        right: -10px;
+    }
+    
+    .share-notification {
+        min-width: 280px;
+        right: 20px;
+        bottom: 90px;
+    }
+    
+    .share-button-main {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .share-button-container {
+        bottom: 15px !important;
+        right: 15px !important;
+    }
+
+    .share-button-container.scrolled {
+        bottom: 75px !important;
+    }
+    
+    .share-options {
+        min-width: 250px;
+        padding: 12px;
+    }
+    
+    .share-notification {
+        min-width: 250px;
+        padding: 12px 15px;
+    }
+    
+    .share-button-main {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+    
+    .share-option {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
 }
 
 /* Accessibility */
@@ -432,4 +544,16 @@
   .share-button-main:hover {
     transform: none;
   }
+    .share-button-main,
+    .share-options,
+    .share-option,
+    .share-notification,
+    .share-button-container {
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    .share-button-main:hover {
+        transform: none;
+    }
 }

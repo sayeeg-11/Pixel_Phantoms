@@ -1,0 +1,484 @@
+/* ================= TUTORIALS PAGE STYLES ================= */
+
+/* --- HEADER SECTION --- */
+.tutorials-header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, var(--card-bg) 100%);
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.tutorials-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.tutorials-header p {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 15px;
+}
+
+.last-updated {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    opacity: 0.8;
+    background: rgba(0, 170, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+/* --- MAIN LAYOUT --- */
+.tutorials-container {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Content vs Sidebar */
+    gap: 40px;
+}
+
+/* --- TUTORIAL CARDS --- */
+.tutorials-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.tutorial-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+    opacity: 0; /* For animation */
+    transform: translateY(20px);
+}
+
+.tutorial-card.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tutorial-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 170, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.tutorial-content {
+    flex: 1;
+}
+
+.tutorial-content h2 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+/* Difficulty Badge */
+.difficulty-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.difficulty-badge.beginner {
+    background: #d4edda;
+    color: #155724;
+}
+
+.difficulty-badge.intermediate {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.difficulty-badge.advanced {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.tutorial-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+.tutorial-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.tutorial-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.tutorial-content ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.tutorial-content a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tutorial-content a:hover {
+    text-decoration: underline;
+}
+
+/* Tutorial Button */
+.tutorial-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--accent-color) 0%, #0088cc 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.tutorial-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+}
+
+.tutorial-button.coming-soon {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.tutorial-button.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+.tutorial-button i {
+    font-size: 0.9rem;
+}
+
+/* --- SIDEBAR --- */
+.sidebar-navigation {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebar-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+.sidebar-card h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-card h3 i {
+    color: var(--accent-color);
+}
+
+.sidebar-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Tutorials sidebar specific (matches terms style) */
+.tutorials-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.sidebar-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.sidebar-box h3 {
+    margin-top: 0;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 10px;
+}
+
+.sidebar-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease, padding 0.15s ease;
+    display: block;
+    padding: 6px 0;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-links a:hover {
+    color: var(--accent-color);
+    padding-left: 6px;
+}
+
+.sidebar-links a.active {
+    background: rgba(0, 170, 255, 0.06);
+    color: var(--accent-color);
+    border-left-color: var(--accent-color);
+    font-weight: 600;
+    padding-left: 8px;
+}
+
+/* Sidebar Stats Grid (Terms-style) */
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.stat-box {
+    background: rgba(0, 170, 255, 0.03);
+    border: 1px solid rgba(0, 170, 255, 0.06);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--accent-color);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contact highlight box */
+.contact-highlight {
+    background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0,170,255,0.03) 100%);
+    border-color: rgba(0,170,255,0.06);
+    text-align: left;
+}
+
+.contact-highlight p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+/* Sidebar buttons */
+.btn-sidebar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--accent-color);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: none;
+}
+
+.btn-sidebar:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* spacing between stacked sidebar buttons */
+.btn-sidebar + .btn-sidebar {
+    margin-top: 10px;
+}
+
+
+/* Progress Stats */
+.progress-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 170, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 170, 255, 0.2);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Sidebar Links */
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.sidebar-link:hover {
+    background: rgba(0, 170, 255, 0.1);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.sidebar-link i {
+    color: var(--accent-color);
+}
+
+/* --- ANIMATIONS --- */
+.reveal {
+    animation: revealCard 0.6s ease forwards;
+}
+
+.tutorial-card:nth-child(1) { animation-delay: 0.1s; }
+.tutorial-card:nth-child(2) { animation-delay: 0.2s; }
+.tutorial-card:nth-child(3) { animation-delay: 0.3s; }
+.tutorial-card:nth-child(4) { animation-delay: 0.4s; }
+.tutorial-card:nth-child(5) { animation-delay: 0.5s; }
+.tutorial-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes revealCard {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 900px) {
+    .tutorials-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .tutorials-sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .tutorials-sidebar {
+        grid-template-columns: 1fr;
+    }
+    
+    .tutorial-card {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .tutorial-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .tutorials-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .tutorials-header p {
+        font-size: 1rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
