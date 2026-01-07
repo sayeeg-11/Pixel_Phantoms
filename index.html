@@ -643,10 +643,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-  <script src="js/navbar.min.js"></script>
-  <script src="js/footer.js"></script>
-  <script>
-    const basePath = '';
+    <script src="js/navbar.js"></script>
+
+    <script src="js/footer.js"></script>
+    <script>
+      // Render these immediately so the theme.js can find the toggle switch
+      renderNavbar();
+      renderFooter('');
 
     renderNavbar(basePath);
     renderFooter(basePath);
@@ -817,6 +820,18 @@
         <p id="feedback-status" class="ff-status"></p>
       </form>
     </div>
+
+    <script src="js/feedback-widget.js"></script>
+    <script>
+  const currentPage = location.pathname.split("/").pop();
+
+  document.querySelectorAll("nav a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+</script>
+
   </body>
   </div>
 </body>

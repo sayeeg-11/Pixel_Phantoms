@@ -1,64 +1,64 @@
 /* CSS VARIABLES FOR THEMES */
 :root {
-  /* Light theme variables */
-  --bg-primary: #f5f7fa;
-  --bg-secondary: #ffffff;
-  --bg-navbar: rgba(255, 255, 255, 0.95);
-  --bg-navbar-scrolled: rgba(255, 255, 255, 0.98);
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --accent-color: #00aaff;
-  --border-color: rgba(0, 0, 0, 0.1);
-  --card-bg: #ffffff;
-  --input-bg: #ffffff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --nav-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    /* Light theme variables */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-navbar: rgba(255, 255, 255, 0.95);
+    --bg-navbar-scrolled: rgba(255, 255, 255, 0.98);
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #00aaff;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --nav-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 
-  /* Footer Light Theme Variables */
-  --footer-bg: #1a1a2e;
-  --footer-bg-secondary: #16213e;
-  --footer-text: #e6e6e6;
-  --footer-text-secondary: #a0aec0;
-  --footer-heading: #ffffff;
-  --footer-link: #cbd5e0;
-  --footer-link-hover: #ffffff;
-  --footer-border: #2d3748;
-  --social-bg: #2d3748;
-  --social-bg-hover: #4a5568;
-  --social-icon: #cbd5e0;
-  --social-icon-hover: #ffffff;
-  --social-border: #4a5568;
-  --footer-input-bg: #2d3748;
-  --input-border: #4a5568;
-  --input-text: #e2e8f0;
-  --input-placeholder: #718096;
-  --accent-primary: #667eea;
-  --accent-secondary: #764ba2;
+    /* Footer Light Theme Variables */
+    --footer-bg: #1a1a2e;
+    --footer-bg-secondary: #16213e;
+    --footer-text: #e6e6e6;
+    --footer-text-secondary: #a0aec0;
+    --footer-heading: #ffffff;
+    --footer-link: #cbd5e0;
+    --footer-link-hover: #ffffff;
+    --footer-border: #2d3748;
+    --social-bg: #2d3748;
+    --social-bg-hover: #4a5568;
+    --social-icon: #cbd5e0;
+    --social-icon-hover: #ffffff;
+    --social-border: #4a5568;
+    --footer-input-bg: #2d3748;
+    --input-border: #4a5568;
+    --input-text: #e2e8f0;
+    --input-placeholder: #cbd5e1; /* IMPROVED CONTRAST FOR ACCESSIBILITY */
+    --accent-primary: #667eea;
+    --accent-secondary: #764ba2;
 
-  /* Font Variables for Consistency */
-  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  --font-mono: 'Courier New', monospace;
-  --font-hud: 'JetBrains Mono', monospace;
+    /* Font Variables for Consistency */
+    --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-mono: 'Courier New', monospace;
+    --font-hud: 'JetBrains Mono', monospace;
 
-  /* Shared UI Tokens for Consistency */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 20px;
-  --spacing-xl: 30px;
-  --spacing-xxl: 40px;
+    /* Shared UI Tokens for Consistency */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 20px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 40px;
 
-  --shadow-hover: 0 8px 25px rgba(0, 170, 255, 0.2);
-  --shadow-hover-strong: 0 12px 30px rgba(0, 170, 255, 0.3);
+    --shadow-hover: 0 8px 25px rgba(0, 170, 255, 0.2);
+    --shadow-hover-strong: 0 12px 30px rgba(0, 170, 255, 0.3);
 
-  --hover-transform: translateY(-5px);
-  --hover-transform-strong: translateY(-8px) scale(1.02);
+    --hover-transform: translateY(-5px);
+    --hover-transform-strong: translateY(-8px) scale(1.02);
 
-  --border-radius-sm: 8px;
-  --border-radius-md: 12px;
-  --border-radius-lg: 16px;
-  --border-radius-xl: 20px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 20px;
 }
 :root .hack-main-card h3 {
   --text-primary: rgb(255, 250, 250);
@@ -189,7 +189,7 @@
     --footer-input-bg: #2d3748;
     --input-border: #4a5568;
     --input-text: #e2e8f0;
-    --input-placeholder: #718096;
+    --input-placeholder: #cbd5e1; /* IMPROVED CONTRAST */
     --accent-primary: #00aaff;
     --accent-secondary: #0088cc;
 
@@ -450,19 +450,20 @@ body.mobile-menu-open {
 }
 
 .nav-links a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 12px 20px;
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-primary);
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    /* BOUNCY TRANSITION ADDED */
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    padding: 12px 20px;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-primary);
 }
 
 .nav-links a::before {
@@ -480,6 +481,25 @@ body.mobile-menu-open {
   left: 100%;
 }
 
+/* BOUNCY HOVER ANIMATION */
+@keyframes hoverBounce {
+    0%, 100% { transform: translateY(-2px) scale(1); }
+    50% { transform: translateY(-6px) scale(1.08); }
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+    background: rgba(0, 170, 255, 0.08);
+    animation: hoverBounce 0.6s ease-in-out infinite;
+    box-shadow: 0 6px 15px rgba(0, 170, 255, 0.2);
+}
+
+.nav-links .active {
+    color: var(--accent-color);
+    background: linear-gradient(135deg, rgba(0, 170, 255, 0.15), rgba(0, 136, 204, 0.1));
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 170, 255, 0.2);
 .nav-links a:hover,
 .nav-links .active {
   color: var(--accent-color);
@@ -5470,6 +5490,11 @@ main:focus {
   font-family: var(--font-primary);
 }
 
+/* BACK TO TOP POSITION FIX - PREVENT OVERLAP */
+.scroll-to-top, #back-to-top {
+    bottom: 90px !important;
+}
+
 /* Mobile adjustments */
 @media (max-width: 420px) {
   #feedback-widget {
@@ -5478,6 +5503,17 @@ main:focus {
     right: auto !important;
   }
 
+    #feedback-panel {
+        bottom: 84px !important;
+        left: 12px !important;
+        right: 12px !important;
+        width: auto !important;
+    }
+
+    /* CLEAR FOOTER LINKS ON MOBILE */
+    .scroll-to-top, #back-to-top {
+        bottom: 120px !important;
+    }
   #feedback-panel {
     bottom: 84px !important;
     left: 12px !important;

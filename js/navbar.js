@@ -57,10 +57,14 @@ function setActiveNavItem() {
   const currentUrl = window.location.href;
   console.log('Current URL:', currentUrl);
 
+  const currentPath = window.location.pathname;
+  // Get the current file name (e.g., contributors.html)
+  const currentPage = currentPath.split('/').pop() || 'index.html';
+  
   const navLinks = document.querySelectorAll('.nav-links a');
 
   navLinks.forEach(function (link) {
-    // Remove active class from all links
+    // Remove active class from all links first
     link.classList.remove('active');
 
     const href = link.getAttribute('href');
@@ -85,10 +89,21 @@ function setActiveNavItem() {
         if (linkPage === currentPage) {
           link.classList.add('active');
         }
+      // Get the file name from the href (e.g., from ../index.html it gets index.html)
+      const linkPage = href.split('/').pop();
+
+      // Check for exact match or index.html fallback for root
+      if (linkPage === currentPage) {
+        link.classList.add('active');
+      } 
+      // Ensure "Home" is active if path is just "/"
+      else if ((currentPage === '' || currentPage === '/') && linkPage === 'index.html') {
+        link.classList.add('active');
       }
     }
   });
 }
+
 function initMobileMenu() {
   const container = document.getElementById('navbar-placeholder');
   const hamburger = container.querySelector('.hamburger');
@@ -242,6 +257,7 @@ function initMobileMenu() {
           (isAtTop && e.touches[0].clientY > touchStartY) ||
           (isAtBottom && e.touches[0].clientY < touchStartY)
         ) {
+          // No action needed
         }
       }
     },

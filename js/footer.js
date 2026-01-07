@@ -48,6 +48,7 @@ function renderFooter(basePath = '') {
                 <li><a href="${basePath}events.html">Events</a></li>
               </ul>
             </div>
+
             <div class="link-group">
               <h3 class="link-group-title">Community</h3>
               <ul class="link-list">
@@ -57,6 +58,7 @@ function renderFooter(basePath = '') {
                 <li><a href="${basePath}pages/join-us.html">Join Us</a></li>
               </ul>
             </div>
+
             <div class="link-group">
               <h3 class="link-group-title">Support</h3>
               <ul class="link-list">
@@ -71,16 +73,10 @@ function renderFooter(basePath = '') {
           <div class="footer-newsletter">
             <h3 class="newsletter-title">Stay Updated</h3>
             <p class="newsletter-description">Subscribe to our newsletter for the latest updates.</p>
-
-            <form class="newsletter-form no-loading">
+            <form class="newsletter-form">
               <div class="input-group">
                 <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-                <button type="submit" class="newsletter-btn">
-                  <i class="fas fa-paper-plane"></i>
-                </button>
-              </div>
-              <div class="newsletter-feedback">
-                <p class="feedback-message"></p>
+                <button type="submit" class="newsletter-btn"><i class="fas fa-paper-plane"></i></button>
               </div>
             </form>
           </div>
@@ -88,7 +84,9 @@ function renderFooter(basePath = '') {
 
         <div class="footer-bottom">
           <div class="footer-bottom-content">
-            <p class="copyright">&copy; 2025 Pixel Phantoms. All rights reserved.</p>
+            <p class="copyright">
+              &copy; <span id="currentYear"></span> Pixel Phantoms. All rights reserved.
+            </p>
             <div class="footer-bottom-links">
               <a href="${basePath}pages/privacy.html" class="bottom-link">Privacy</a> | 
               <a href="${basePath}pages/terms.html" class="bottom-link">Terms</a> | 
@@ -102,61 +100,9 @@ function renderFooter(basePath = '') {
 
   placeholder.innerHTML = footerHTML;
 
-  // wire newsletter behavior
-  initNewsletterForm();
-}
-
-// newsletter feedback logic
-function initNewsletterForm() {
-  const forms = document.querySelectorAll('.newsletter-form');
-
-  forms.forEach(form => {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const emailInput = form.querySelector('.newsletter-input');
-      const feedbackMessage = form.querySelector('.feedback-message');
-      const submitBtn = form.querySelector('.newsletter-btn');
-      const email = emailInput.value.trim();
-
-      if (!email) {
-        showFeedback(feedbackMessage, 'error', 'Please enter your email.');
-        return;
-      }
-
-      // simple email check
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        showFeedback(feedbackMessage, 'error', 'Please enter a valid email address.');
-        return;
-      }
-
-      submitBtn.disabled = true;
-      const oldIcon = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-      // fake API; replace with real call later
-      setTimeout(() => {
-        showFeedback(
-          feedbackMessage,
-          'success',
-          'Thanks for subscribing! Check your inbox for updates.'
-        );
-
-        emailInput.value = '';
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = oldIcon;
-
-        setTimeout(() => {
-          feedbackMessage.classList.remove('show');
-        }, 4000);
-      }, 1200);
-    });
-  });
-}
-
-function showFeedback(element, type, message) {
-  if (!element) return;
-  element.textContent = message;
-  element.className = 'feedback-message show ' + type;
+  // ✅ Dynamic year set HERE (correct place)
+  const yearSpan = document.getElementById('currentYear');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
 }
