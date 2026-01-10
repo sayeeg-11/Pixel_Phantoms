@@ -7,144 +7,265 @@
     <link rel="icon" href="assets/logo.png" />
 
     <link rel="stylesheet" href="css/scroll-progress.css" />
-    <!-- add css for back-to-top button to be visible -->
     <link rel="stylesheet" href="css/back-to-top.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/home-gsap.css" />
     <link rel="stylesheet" href="css/cursor-effect.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+      :root {
+        --bg-color: #020617;
+        --card-bg: rgba(15, 23, 42, 0.9);
+        --text-color: #f8fafc;
+        --text-dim: #94a3b8;
+        --primary: #00d4ff; 
+        --border: rgba(0, 212, 255, 0.2);
+      }
+
+      [data-theme="light"], .light-theme {
+        --bg-color: #ffffff;
+        --card-bg: #f8fafc;
+        --text-color: #0f172a;
+        --text-dim: #475569;
+        --primary: #0284c7; 
+        --border: #e2e8f0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'JetBrains Mono', monospace;
+        margin: 0;
+        transition: all 0.3s ease;
+      }
+
+      #main-content { padding-top: 110px; }
+      .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+      .section-header { text-align: center; margin-bottom: 50px; }
+      .section-header h2 { font-size: 3rem; color: var(--primary); text-transform: uppercase; }
+
+      /* Form Box */
+      .contact-box-wrapper {
+        max-width: 800px;
+        margin: 0 auto 60px;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        padding: 40px;
+        border-radius: 20px;
+      }
+
+      input, textarea {
+        width: 100%;
+        background: rgba(0,0,0,0.1) !important;
+        border: 1px solid var(--border) !important;
+        color: var(--text-color) !important;
+        padding: 14px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-family: inherit;
+        box-sizing: border-box;
+      }
+
+      .btn-submit {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 16px;
+        font-weight: 800;
+        border-radius: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+
+      /* Horizontal Info Cards */
+      .info-grid-horizontal {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 80px;
+      }
+
+      .info-card-modern {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      /* Fixed Email Styling: No bluish highlight */
+      .info-card-modern a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .icon-circle {
+        width: 50px; height: 50px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      /* FAQ FIXES: Added Strict Padding for Text Alignment */
+      .faq-section {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .faq-container { max-width: 850px; margin: 0 auto; }
+
+      .faq-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        margin-bottom: 15px;
+        border-radius: 12px;
+        transition: 0.3s ease;
+
+        padding: 0 35px 30px 35px; 
+        color: var(--text-dim); 
+       
+        text-align: left; 
+      }
+
+      /* Added padding-left and padding-right to fix text touching edges */
+      summary {
+        padding: 25px 35px; 
+        cursor: pointer;
+        font-weight: 800;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        outline: none;
+        list-style: none;
+        text-align: left; /* Ensures text aligns left */
+      }
+
+      summary::-webkit-details-marker { display: none; }
+
+      summary::after { 
+        content: '\f078'; 
+        font-family: 'Font Awesome 6 Free'; 
+        font-weight: 900; 
+        color: var(--primary); 
+        transition: 0.3s;
+      }
+
+      details[open] summary::after { transform: rotate(180deg); }
+
+      /* Fixed Answer Text Left Padding */
+      .faq-item p { 
+        padding: 0 35px 30px 35px; 
+        color: var(--text-dim); 
+        line-height: 1.8; 
+        margin: 0;
+        text-align: left; /* Ensures text aligns left */
+      }
+
+      .faq-item:hover {
+        border-color: var(--primary);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .info-grid-horizontal { grid-template-columns: 1fr; }
+        summary { padding: 20px 25px; }
+        .faq-item p { padding: 0 25px 20px 25px; }
+      }
+    </style>
   </head>
   <body class="hacker-theme">
+    
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
 
-    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
-    <a href="#main-content" class="skip-to-content" id="skip-link">
-      <i class="fas fa-forward"></i> Skip to Main Content
-    </a>
-
     <div id="navbar-placeholder"></div>
     <script src="js/navbar.js"></script>
-    <script>
-      renderNavbar('');
-    </script>
+    <script>renderNavbar('');</script>
 
     <main id="main-content" tabindex="-1">
-      <section class="contact-section">
-        <div class="section-header">
+      <div class="container">
+        
+        <section class="section-header">
           <h2>Get in Touch</h2>
-          <p class="contact-desc">Have a question? We'd love to hear from you.</p>
+          <p style="color: var(--text-dim);">Have a question? We'd love to hear from you.</p>
+        </section>
+
+        <div class="contact-box-wrapper">
+          <form id="contact-form">
+            <h3>Send a Message</h3>
+            
+            <div class="input-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="John Doe" required />
+            </div>
+
+            <div class="input-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="john@example.com" required />
+            </div>
+
+            <div class="input-group">
+              <label for="message">Message</label>
+              <textarea id="message" placeholder="Type your message here..." rows="5" required></textarea>
+              <div style="text-align: right; font-size: 0.7rem; color: var(--text-dim);">
+                <span id="char-count">0</span>/500
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              Send Message <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+            </button>
+            <div id="form-feedback"></div>
+          </form>
         </div>
 
-        <div class="contact-container">
-          <div class="contact-box-wrapper">
-            <div class="contact-box">
-              <form id="contact-form">
-                <h3>Send a Message</h3>
-
-                <div class="input-group">
-                  <label for="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    placeholder="John Doe"
-                    required
-                    minlength="2"
-                    maxlength="50"
-                  />
-                  <div class="error-message" id="name-error"></div>
-                </div>
-
-                <div class="input-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="john@example.com" required />
-                  <div class="error-message" id="email-error"></div>
-                </div>
-
-                <div class="input-group">
-                  <label for="message">Message</label>
-                  <textarea
-                    id="message"
-                    placeholder="Type your message here..."
-                    required
-                    minlength="10"
-                    maxlength="500"
-                  ></textarea>
-                  <div class="char-counter"><span id="char-count">0</span><span>/500</span></div>
-                  <div class="error-message" id="message-error"></div>
-                </div>
-
-                <button type="submit" class="btn-submit">
-                  Send Message <i class="fas fa-paper-plane"></i>
-                </button>
-
-                <div id="form-feedback" class="feedback-message"></div>
-              </form>
-            </div>
+        <div class="info-grid-horizontal">
+          <div class="info-card-modern">
+            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
+            <h4>Email</h4>
+            <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a>
           </div>
 
-          <div class="contact-info-wrapper">
-            <div class="info-grid">
-              <div class="info-card">
-                <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-                <div>
-                  <h4>Email</h4>
-                  <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a>
-                </div>
-              </div>
+          <div class="info-card-modern">
+            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
+            <h4>Location</h4>
+            <p>Nashik, Maharashtra</p>
+          </div>
 
-              <div class="info-card">
-                <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-                <div>
-                  <h4>Location</h4>
-                  <p>Nashik, Maharashtra</p>
-                </div>
-              </div>
+          <div class="info-card-modern">
+            <div class="icon-circle"><i class="fab fa-discord"></i></div>
+            <h4>Community</h4>
+            <a href="#" class="discord-link" style="color: var(--text-color); text-decoration: none;">Join Discord</a>
+          </div>
+        </div>
+      </div>
 
-              <div class="info-card">
-                <div class="icon-circle"><i class="fab fa-discord"></i></div>
-                <div>
-                  <h4>Community</h4>
-                  <a class="disabled" tabindex="-1">Join Discord</a>
-                </div>
-              </div>
-            </div>
-
-            <div class="faq-section">
-              <h3>Frequently Asked Questions</h3>
-
-              <details class="faq-item">
-                <summary>How can I join Pixel Phantoms?</summary>
-                <p>
-                  You can join by hopping into our Discord server or watching out for our
-                  recruitment drives announced on the Events page.
-                </p>
-              </details>
-
-              <details class="faq-item">
-                <summary>Is this community beginner friendly?</summary>
-                <p>
-                  Absolutely! Our motto is "From Students, For Students." We have mentorship
-                  programs specifically for beginners.
-                </p>
-              </details>
-
-              <details class="faq-item">
-                <summary>Can I contribute to Open Source projects?</summary>
-                <p>
-                  Yes! Check out our GitHub organization or the Projects page to find repositories
-                  looking for contributors.
-                </p>
-              </details>
-            </div>
+      <section class="faq-section">
+        <div class="container">
+          <h3 style="text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 40px;">Frequently Asked Questions</h3>
+          <div class="faq-container">
+            <details class="faq-item">
+              <summary>How can I join Pixel Phantoms?</summary>
+              <p>You can join by hopping into our Discord server or watching out for our recruitment drives announced on the Events page.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Is this community beginner friendly?</summary>
+              <p>Absolutely! Our motto is "From Students, For Students." We have mentorship programs specifically for beginners.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I contribute to Open Source projects?</summary>
+              <p>Yes! Check out our GitHub organization or the Projects page to find repositories looking for contributors.</p>
+            </details>
           </div>
         </div>
       </section>
@@ -152,10 +273,8 @@
 
     <div id="footer-placeholder"></div>
     <script src="js/footer.js"></script>
-    <script>
-      renderFooter('');
-    </script>
-    <!-- add script for back-to-top button -->
+    <script>renderFooter('');</script>
+
     <script src="js/back-to-top.min.js"></script>
     <script src="js/theme.min.js"></script>
     <script src="js/cursor-effect.js"></script>
