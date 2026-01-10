@@ -1,6 +1,27 @@
 <!doctype html>
 <html lang="en">
 
+    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
+    <a href="#main-content" class="skip-to-content" id="skip-link">
+      <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
+    </a>
+
+    <div id="cursor-highlight"></div>
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero-section" id="hero">
+        <div class="grid-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+         <h1 class="hero-glitch" data-text="PIXEL_PHANTOMS">
+           <span id="typewriter-text" aria-hidden="true"></span>
+           <span class="sr-only">PIXEL_PHANTOMS</span>
+         </h1>
+          <div class="terminal-box" role="status" aria-live="polite">
+            <p class="console-text">> Initializing student_community.exe...</p>
+            <p class="console-text">> Loading modules: [Code, Design, Chaos]...</p>
+            <p class="console-text success">> Status: ONLINE</p>
+          </div>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -516,36 +537,6 @@
         </div>
       </div>
     </section>
-
-    <nav class="functional-grid" aria-label="Quick Links">
-      <a href="pages/help.html" class="func-card">
-        <div class="func-icon">
-          <i class="fas fa-life-ring" aria-hidden="true"></i>
-        </div>
-        <div class="func-text">
-          <h3>GET_HELP()</h3>
-          <p>Execute support protocols.</p>
-        </div>
-      </a>
-      <a href="pages/terms.html" class="func-card">
-        <div class="func-icon">
-          <i class="fas fa-shield-alt" aria-hidden="true"></i>
-        </div>
-        <div class="func-text">
-          <h3>PRIVACY_POLICY</h3>
-          <p>Read encryption standards.</p>
-        </div>
-      </a>
-      <a href="pages/contributors.html" class="func-card">
-        <div class="func-icon">
-          <i class="fas fa-code-branch" aria-hidden="true"></i>
-        </div>
-        <div class="func-text">
-          <h3>CONTRIBUTORS</h3>
-          <p>View source code.</p>
-        </div>
-      </a>
-    </nav>
   </main>
 
   <div id="footer-placeholder"></div>
@@ -685,6 +676,9 @@
           button.classList.add('reminder-active');
         });
       });
+    </script>
+    <script src="js/feedback.js"></script>
+    <script src="js/scroll-progress.js"></script>
     });
   </script>
 
@@ -733,6 +727,42 @@
 
     <script src="js/feedback-widget.js"></script>
     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+    const text = "PIXEL_PHANTOMS";
+    const target = document.getElementById("typewriter-text");
+    let index = 0;
+    let isDeleting = false;
+
+    function type() {
+        const currentText = isDeleting 
+            ? text.substring(0, index - 1) 
+            : text.substring(0, index + 1);
+
+        target.textContent = currentText;
+        target.setAttribute('data-text', currentText); 
+        
+        index = isDeleting ? index - 1 : index + 1;
+
+        let typeSpeed = 200;          
+        if (isDeleting) {
+            typeSpeed = 100;         
+        }
+
+       
+        if (!isDeleting && index === text.length) {
+            typeSpeed = 1000;        
+            isDeleting = true;
+        } else if (isDeleting && index === 0) {
+            isDeleting = false;
+            typeSpeed = 100;        
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    type();
+});
+    </script>
   const currentPage = location.pathname.split("/").pop();
 
   document.querySelectorAll("nav a").forEach(link => {

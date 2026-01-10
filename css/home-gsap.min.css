@@ -125,7 +125,16 @@ main {
     max-width: 100vw;
     margin-top: 0;
 }
+#typewriter-text {
+  border-right: 3px solid #00D1FF; /* Cursor color */
+  padding-right: 5px;
+  animation: blink-cursor 0.8s step-end infinite;
+}
 
+@keyframes blink-cursor {
+  from, to { border-color: transparent }
+  50% { border-color: #00D1FF; }
+}
 .grid-overlay {
     position: absolute;
     top: 0; 
@@ -715,7 +724,7 @@ main {
    8. LEADERBOARD PREVIEW (ENHANCED)
    ========================================= */
 .leaderboard-preview {
-    padding: 100px 0;
+    padding: 75px 0;
     background: var(--bg-primary);
     border-top: 1px solid var(--border-color);
     position: relative;
