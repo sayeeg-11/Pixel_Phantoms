@@ -149,6 +149,8 @@
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 25px;
     margin-bottom: 40px;
+    padding-left: 145px;
+    padding-right: 145px;
 }
 
 /* Base Card Style */
