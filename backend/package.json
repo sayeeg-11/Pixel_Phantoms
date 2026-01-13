@@ -1,28 +1,30 @@
 {
-  "name": "backend",
+  "name": "pixel-phantoms-backend",
   "version": "1.0.0",
-  "description": "Backend API for Pixel Phantoms",
+  "description": "Backend API for Pixel Phantoms with global error handling middleware",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-  "main": "index.js",
-  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "express",
+    "api",
+    "error-handling",
+    "middleware"
+  ],
+  "author": "Pixel Phantoms Team",
   "license": "ISC",
-  "type": "commonjs",
-  "description": "",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "helmet": "^8.1.0",
-    "morgan": "^1.10.1"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   }
 }
