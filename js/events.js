@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         container.appendChild(card);
-      });
+              <span class="view-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></span>
     });
 
   /* ---------- Registration Modal Logic ---------- */
