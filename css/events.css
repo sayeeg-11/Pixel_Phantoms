@@ -169,6 +169,79 @@
 }
 
 /* ================================
+   Event Footer (Register + Views)
+================================ */
+.event-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ================================
+   View Counter
+================================ */
+.event-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.875rem;
+  color: #666;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.event-views:hover {
+  transform: scale(1.05);
+  color: #3b82f6;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.view-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.view-count {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Pulse animation when count updates */
+@keyframes viewPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.event-views.view-pulse {
+  animation: viewPulse 0.5s ease;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .event-views {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+  
+  .view-icon {
+    font-size: 0.875rem;
+  }
+}
+
+/* ================================
    Empty / Error State
 ================================ */
 .no-events {

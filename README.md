@@ -55,7 +55,33 @@ The project aims to,
 
 ---
 
-## 📦 How to Install & Run Locally
+## �️ Event View Tracking
+
+Our events page features a **client-side view counter** that tracks event popularity:
+
+**How It Works:**
+- Uses browser **localStorage** for persistent tracking
+- Increments when an event card is clicked
+- **3-second debounce** prevents spam clicks
+- Data persists across browser sessions
+
+**Features:**
+- 📊 Per-event tracking with unique IDs
+- 🔢 Human-readable formatting (1.2K, 1.5M views)
+- 🛡️ Prevents abuse with timestamp checks
+- 💾 Works completely offline (no backend required)
+
+**Data Storage Format:**
+```json
+{
+  "event-1": {"count": 123, "lastView": 1234567890},
+  "event-2": {"count": 456, "lastView": 1234567891}
+}
+```
+
+---
+
+## �📦 How to Install & Run Locally
 
 ### Prerequisites
 - A modern web browser (Chrome, Firefox, Safari, Edge)
