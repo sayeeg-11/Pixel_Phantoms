@@ -147,40 +147,51 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === modal) closeModal();
     });
 
-    /* 🔐 VALIDATION ADDED HERE */
+    // Add input validation feedback
+    const inputs = registerForm?.querySelectorAll('input');
+    inputs?.forEach(input => {
+      const validate = () => {
+        if (input.value.trim() !== '') {
+          if (input.checkValidity()) {
+            input.classList.remove('invalid');
+            input.classList.add('valid');
+          } else {
+            input.classList.remove('valid');
+            input.classList.add('invalid');
+          }
+        } else {
+          input.classList.remove('valid', 'invalid');
+        }
+      };
+
+      input.addEventListener('input', validate);
+      input.addEventListener('blur', validate);
+      
+      input.addEventListener('invalid', (e) => {
+        e.preventDefault();
+        input.classList.add('invalid');
+      });
+    });
+
     registerForm?.addEventListener('submit', e => {
       e.preventDefault();
 
-      const firstName = registerForm.firstName.value.trim();
-      const lastName = registerForm.lastName.value.trim();
-      const age = parseInt(registerForm.age.value, 10);
-      const email = registerForm.email.value.trim();
+      const inputs = registerForm?.querySelectorAll('input');
+      let isValid = true;
+      inputs?.forEach(input => {
+        if (!input.checkValidity()) {
+          input.classList.add('invalid');
+          isValid = false;
+        } else {
+          input.classList.add('valid');
+        }
+      });
 
-      const nameRegex = /^[A-Z][a-z]{1,29}$/;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!nameRegex.test(firstName)) {
-        alert('First name must start with a capital letter and contain only alphabets.');
-        return;
-      }
-
-      if (!nameRegex.test(lastName)) {
-        alert('Last name must start with a capital letter and contain only alphabets.');
-        return;
-      }
-
-      if (isNaN(age) || age < 18) {
-        alert('You must be at least 18 years old to register.');
-        return;
-      }
-
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
-      }
+      if (!isValid) return;
 
       alert('Successfully registered!');
       registerForm.reset();
+      inputs?.forEach(input => input.classList.remove('valid', 'invalid'));
       closeModal();
     });
   })();

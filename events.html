@@ -26,14 +26,6 @@
     <link rel="stylesheet" href="css/cursor-effect.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
     <link rel="stylesheet" href="css/login.css" />
-    <style>
-      /* Minimal modal styles that reuse login.css form classes */
-      #register-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.6); z-index: 9999; }
-      #register-modal.show { display: flex; }
-      #register-modal .modal-dialog { max-width: 560px; width: 100%; padding: 20px; border-radius: 14px; position: relative; }
-      #register-modal .modal-close { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--text-primary); font-size: 1.4rem; cursor: pointer; }
-      #register-modal .register-form .input-group { margin-bottom: 12px; }
-    </style>
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
       rel="stylesheet"
@@ -158,22 +150,34 @@
         <h2 id="register-modal-title" class="form-title">Register for <span id="register-event-title"></span></h2>
         <form id="register-form" class="register-form">
           <div class="input-group">
-            <label>First Name</label>
-            <input name="firstName" type="text" placeholder="First name" required />
+            <label class="required">First Name</label>
+            <input name="firstName" type="text" placeholder="Enter your first name" required />
+            <i class="fas fa-check-circle validation-icon valid-icon"></i>
+            <i class="fas fa-times-circle validation-icon error-icon"></i>
+            <span class="error-message">First name is required</span>
           </div>
           <div class="input-group">
             <label>Last Name</label>
-            <input name="lastName" type="text" placeholder="Last name" required />
+            <input name="lastName" type="text" placeholder="Enter your last name" required />
+            <i class="fas fa-check-circle validation-icon valid-icon"></i>
+            <i class="fas fa-times-circle validation-icon error-icon"></i>
+            <span class="error-message">Last name is required</span>
           </div>
           <div class="input-group">
             <label>Age</label>
-            <input name="age" type="number" min="1" placeholder="Age" required />
+            <input name="age" type="number" min="1" placeholder="Enter your age" required />
+            <i class="fas fa-check-circle validation-icon valid-icon"></i>
+            <i class="fas fa-times-circle validation-icon error-icon"></i>
+            <span class="error-message">Please enter a valid age</span>
           </div>
           <div class="input-group">
-            <label>Email</label>
+            <label class="required">Email</label>
             <input name="email" type="email" placeholder="you@example.com" required />
+            <i class="fas fa-check-circle validation-icon valid-icon"></i>
+            <i class="fas fa-times-circle validation-icon error-icon"></i>
+            <span class="error-message">Please enter a valid email</span>
           </div>
-          <div style="display:flex;gap:12px;margin-top:12px;">
+          <div class="button-group">
             <button type="button" class="btn-secondary modal-cancel">Cancel</button>
             <button type="submit" class="btn-primary">Register</button>
           </div>

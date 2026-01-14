@@ -690,3 +690,177 @@ body.dark-mode .no-events.error {
   opacity: 0.6;
   filter: grayscale(100%);
 }
+
+/* ================================
+   Registration Modal Enhancements
+================================ */
+#register-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#register-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#register-modal .modal-dialog {
+  max-width: 500px;
+  width: 90%;
+  padding: 40px;
+  background: var(--card-bg);
+  border: 2px solid var(--accent-color);
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+  transform: scale(0.95);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+#register-modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+
+#register-modal .modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s;
+  z-index: 10;
+}
+
+#register-modal .modal-close:hover {
+  color: var(--accent-color);
+}
+
+#register-modal .form-title {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+#register-modal .register-form .input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+#register-modal .register-form label {
+  justify-content: flex-start;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  margin-left: 0;
+  padding-left: 0;
+  margin-bottom: 6px;
+}
+
+#register-modal .register-form .required::after {
+  content: " *";
+  color: #ff4444;
+}
+
+#register-modal .register-form .error-message {
+  color: #ff4444;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: -4px;
+  display: none;
+}
+
+#register-modal .register-form input.invalid ~ .error-message {
+  display: block;
+}
+
+#register-modal .register-form .validation-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  pointer-events: none;
+  display: none;
+}
+
+#register-modal .register-form input.valid ~ .valid-icon {
+  display: block;
+  color: #10b981;
+}
+
+#register-modal .register-form input.invalid ~ .error-icon {
+  display: block;
+  color: #ff4444;
+}
+
+#register-modal .register-form input {
+  margin: 0;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+#register-modal .register-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.15);
+  background: rgba(0, 170, 255, 0.05);
+}
+
+#register-modal .register-form input.invalid {
+  border-color: #ff0055;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+#register-modal .register-form input.valid {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+#register-modal .button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+#register-modal .button-group button {
+  flex: 1;
+  margin-top: 0;
+  padding: 14px;
+}
+
+@media (max-width: 480px) {
+  #register-modal .modal-dialog {
+    padding: 30px 20px;
+    width: 95%;
+  }
+
+  #register-modal .button-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
