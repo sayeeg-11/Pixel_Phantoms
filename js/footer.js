@@ -106,7 +106,7 @@ function renderFooter(basePath = '') {
   // Load site-wide scripts dynamically (ensures scripts run after footer injection)
   try {
     const mainScript = document.createElement('script');
-    mainScript.src = basePath + 'js/main.js';
+    mainScript.src = basePath;
     mainScript.defer = true;
     document.body.appendChild(mainScript);
   } catch (e) {
