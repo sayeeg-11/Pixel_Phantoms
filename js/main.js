@@ -26,4 +26,30 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('[main.js] Failed to initialize PageTransitions:', e);
         }
     }
+    const loader = document.getElementById("global-loader");
+
+  const showLoader = () => {
+    if (loader) loader.classList.remove("hidden");
+  };
+
+  const hideLoader = () => {
+    if (loader) loader.classList.add("hidden");
+  };
+
+  // hide loader after full load
+  window.addEventListener("load", hideLoader);
+
+  // show loader when clicking internal links
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href");
+
+      if (!href || href.startsWith("#")) return; // ignore anchors
+      if (href.startsWith("http") || href.startsWith("mailto:")) return; // ignore external
+      if (href.startsWith("tel:")) return;
+
+      showLoader();
+    });
+  });
+
 });
