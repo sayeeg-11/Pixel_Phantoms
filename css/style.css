@@ -2788,21 +2788,14 @@ main:focus {
 
   #feedback-panel {
     bottom: 84px !important;
-    left: 12px !important;
-    right: 12px !important;
     width: auto !important;
+    max-width: calc(100vw - 24px) !important;
   }
 
   /* CLEAR FOOTER LINKS ON MOBILE */
   .scroll-to-top,
   #back-to-top {
     bottom: 120px !important;
-  }
-  #feedback-panel {
-    bottom: 84px !important;
-    left: 12px !important;
-    right: 12px !important;
-    width: auto !important;
   }
 }
 
