@@ -830,29 +830,63 @@ body.dark-mode .no-events.error {
   text-align: center;
 }
 
+#register-modal .register-form input {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.8px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
 #register-modal .register-form .input-group {
   margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   position: relative;
+
+  align-self: flex-start;
 }
 
 #register-modal .register-form label {
-  justify-content: flex-start;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  align-self: flex-start;
+  text-align: left;
+
+  padding: 0;
+  margin-left: 2px;
+  margin-bottom: 6px;
+
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   color: var(--text-secondary);
-  margin-left: 0;
-  padding-left: 0;
-  margin-bottom: 6px;
+}
+
+#register-modal .register-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.15);
+  background: rgba(0, 170, 255, 0.06);
 }
 
 #register-modal .register-form .required::after {
   content: " *";
+  margin-left: 4px;
   color: #ff4444;
+  font-weight: bold;
 }
 
 #register-modal .register-form .error-message {
