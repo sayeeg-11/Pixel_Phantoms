@@ -586,7 +586,8 @@ body.mobile-menu-open {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.sun-icon, .moon-icon {
+.sun-icon,
+.moon-icon {
   position: relative;
   font-size: 14px;
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -605,7 +606,9 @@ body.mobile-menu-open {
 .theme-switch:checked + .theme-label .toggle-thumb {
   transform: translateX(36px);
   background: #f0f0f0;
-  box-shadow: inset -4px -2px 0 0 #ccc, 0 0 15px var(--neon-purple);
+  box-shadow:
+    inset -4px -2px 0 0 #ccc,
+    0 0 15px var(--neon-purple);
 }
 
 .theme-switch:checked + .theme-label .sun-icon {

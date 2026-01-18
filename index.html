@@ -744,42 +744,6 @@
 
     <div id="feedback-widget">
       <button id="feedback-toggle">💬</button>
-
-      <div id="feedback-panel">
-        <div class="ff-header">
-          <h3>Send Feedback</h3>
-          <button type="button" id="feedback-close" class="ff-close">✕</button>
-        </div>
-
-        <form id="feedback-form">
-          <label>Your Name</label>
-          <input type="text" name="username" required />
-
-          <label>Your Email</label>
-          <input type="email" name="email" required />
-
-          <label>Your Suggestion</label>
-          <textarea name="message" required></textarea>
-
-          <div class="ff-rating">
-            <span class="rating-label">Rating</span>
-
-            <div id="star-rating">
-              <button type="button" class="star">★</button>
-              <button type="button" class="star">★</button>
-              <button type="button" class="star">★</button>
-              <button type="button" class="star">★</button>
-              <button type="button" class="star">★</button>
-            </div>
-          </div>
-
-          <div class="ff-actions">
-            <button type="submit" class="btn-cyber small">Submit</button>
-          </div>
-
-          <p id="feedback-status" class="ff-status"></p>
-        </form>
-      </div>
     </div>
     <script src="js/feedback-widget.js"></script>
 
@@ -821,6 +785,7 @@
     </script>
 
     <script src="js/page-transitions.js" defer></script>
+    <script src="js/feedback-modal.js" defer></script>
     <script>
       const currentPage = location.pathname.split('/').pop();
 
