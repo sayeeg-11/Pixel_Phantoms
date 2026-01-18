@@ -353,7 +353,7 @@ function populateRoster(data) {
         item.innerHTML = `
             <img src="${agent.avatar}" onerror="this.src='assets/logo.png'">
             <div>
-                <strong style="color:#e0f7ff; display:block; font-size:0.9rem;">${agent.login}</strong>
+                <strong style="color:#a80a0a; display:block; font-size:0.9rem;">${agent.login}</strong>
                 <span style="font-size:0.7rem; color:#5c7080;">${agent.xp} XP</span>
             </div>
         `;

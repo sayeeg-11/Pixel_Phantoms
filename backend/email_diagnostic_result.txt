@@ -1,0 +1,10 @@
+🔍 Testing Email Configuration...
+Host: smtp.gmail.com
+User: himakshich2@gmail.com
+⚠️ WARNING: Password contains spaces. This is usually okay for App Passwords, but ensure it is correct.
+Pass length: 19
+🔌 Verifying SMTP connection...
+✅ SMTP Connection Successful!
+📧 Sending test email to him058980@gmail.com...
+✅ Email sent successfully!
+Message ID: <75d85d2d-34eb-59b0-61c1-8a4d9a2fcb7f@pixelphantoms.com>
