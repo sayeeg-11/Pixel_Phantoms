@@ -264,26 +264,31 @@
 
         <div class="input-group">
           <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" placeholder="John Doe" required minlength="2" maxlength="50">
+         
+          <input type="text" id="contact-name" name="name" placeholder="John Doe" required minlength="2" maxlength="50">
+
           <div class="error-message" id="name-error"></div>
         </div>
 
         <div class="input-group">
           <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" placeholder="john@example.com" required>
+         <input type="email" id="contact-email" name="email" placeholder="john@example.com" required>
+
           <div class="error-message" id="email-error"></div>
         </div>
 
         <div class="input-group">
           <label for="contact-message">Message</label>
+        
           <textarea
             id="contact-message"
+            name="message"
             placeholder="Type your message here..."
             required
             minlength="10"
             maxlength="500"
           ></textarea>
-
+                
           <div class="char-counter">
             <span id="char-count">0</span>/500
           </div>
@@ -377,6 +382,8 @@
     <script src="js/theme.min.js"></script>
     <script src="js/cursor-effect.js"></script>
     <script src="js/contact.min.js"></script>
+    <script src="js/contact-validation.js"></script>
+
     <script src="js/scroll-progress.js"></script>
   </body>
 </html>
