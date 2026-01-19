@@ -1,3 +1,5 @@
+import { withUIFeedback } from "./ui/uiManager.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
@@ -199,25 +201,24 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin spinner"></i> Sending...';
         submitBtn.classList.add('loading');
 
-        try {
-            // Simulated send (replace with real request if backend available)
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            showFeedback("✅ Message sent successfully! We'll get back to you soon.", 'success', 'animate-success');
-
-            contactForm.reset();
-            updateCharCounter();
-
-            Object.values(inputs).forEach(i => i.classList.remove('valid', 'invalid'));
-
-            // store last submit timestamp
-            localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
-        } catch (err) {
-            showFeedback('❌ Failed to send message. Please try again later.', 'error', 'animate-error');
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.classList.remove('loading');
+       try {
+    await withUIFeedback(
+        () => new Promise(resolve => setTimeout(resolve, 1500)),
+        {
+            success: "Message sent successfully! We'll get back to you soon.",
+            error: "Failed to send message. Please try again later."
         }
+    );
+
+    contactForm.reset();
+    updateCharCounter();
+    Object.values(inputs).forEach(i => i.classList.remove('valid', 'invalid'));
+    localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
+} finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtnText;
+    submitBtn.classList.remove('loading');
+}
+
     });
 });
