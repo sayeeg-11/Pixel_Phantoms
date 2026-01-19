@@ -1815,8 +1815,9 @@ main:focus {
 
 #feedback-widget {
     position: fixed !important;
-    bottom: 30px !important;
-    right: 30px !important;
+    left: 12px !important;
+    bottom: 12px !important;
+    right: auto !important;
     z-index: 999999 !important
 }
 
