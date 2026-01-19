@@ -831,29 +831,59 @@ body.dark-mode .no-events.error {
 }
 
 #register-modal .register-form .input-group {
-  margin-bottom: 20px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   position: relative;
 }
 
 #register-modal .register-form label {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  padding: 0;
+  margin: 0 0 6px 2px;
+
   justify-content: flex-start;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
-  margin-left: 0;
-  padding-left: 0;
-  margin-bottom: 6px;
 }
 
 #register-modal .register-form .required::after {
   content: " *";
+  margin-left: 2px;
+  font-weight: bold;
   color: #ff4444;
 }
+
+#register-modal .register-form input {
+  width: 100%;
+  padding: 14px 16px;
+
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.8px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+}
+
+#register-modal .register-form input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.15);
+  background: rgba(0, 170, 255, 0.06);
+}
+
 
 #register-modal .register-form .error-message {
   color: #ff4444;
