@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/cursor-effect.css" />
     <link rel="stylesheet" href="css/scroll-buttons.css" />
     <link rel="stylesheet" href="css/stats-widget.css" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
       rel="stylesheet"
@@ -247,7 +248,7 @@
                   <a
                     href="https://discord.com/"
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     class="link-terminal"
                   >
                     Join Stream<span aria-hidden="true">_</span>
@@ -500,7 +501,7 @@
 
           <div class="stats-grid">
             <div
-              class="stat-card"
+              button="stat-card"
               id="active-projects-card"
               onclick="window.location.href = 'pages/projects.html'"
             >
@@ -535,7 +536,7 @@
               onclick="window.open('https://github.com/sayeeg-11/Pixel_Phantoms', '_blank')"
             >
               <div class="stat-icon">
-                <i class="fas fa-code-branch"></i>
+                <i class="fas fa-code-branch" aria-hidden="true"></i>
               </div>
               <h3 class="stat-value" id="home-recent-contributions">50+</h3>
               <p class="stat-label">Contributions</p>
@@ -751,36 +752,30 @@
       document.addEventListener('DOMContentLoaded', function () {
         const text = 'PIXEL_PHANTOMS';
         const target = document.getElementById('typewriter-text');
-        let index = 0;
-        let isDeleting = false;
+        if (target) {
+          let index = 0, isDeleting = false;
 
-        function type() {
-          const currentText = isDeleting
-            ? text.substring(0, index - 1)
-            : text.substring(0, index + 1);
+          function type() {
+            const text = 'PIXEL_PHANTOMS';
+            const currentText = isDeleting
+              ? text.substring(0, index - 1)
+              : text.substring(0, index + 1);
 
-          target.textContent = currentText;
-          target.setAttribute('data-text', currentText);
+            target.textContent = currentText;
+            target.setAttribute('data-text', currentText);
 
-          index = isDeleting ? index - 1 : index + 1;
+            index = isDeleting ? index - 1 : index + 1;
+            let typeSpeed = isDeleting ? 100 : 200;
 
-          let typeSpeed = 200;
-          if (isDeleting) {
-            typeSpeed = 100;
+            if (!isDeleting && index === text.length) typeSpeed = 1000, isDeleting = true;
+            else if (isDeleting && index === 0) typeSpeed = 100, isDeleting = false;
+
+            setTimeout(type, typeSpeed);
           }
 
-          if (!isDeleting && index === text.length) {
-            typeSpeed = 1000;
-            isDeleting = true;
-          } else if (isDeleting && index === 0) {
-            isDeleting = false;
-            typeSpeed = 100;
-          }
-
-          setTimeout(type, typeSpeed);
+          type();
         }
 
-        type();
       });
     </script>
 
