@@ -1301,7 +1301,7 @@ input:checked + .slider:before {
 .print-button {
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 80px;
     background: var(--accent-color);
     color: white;
     border: none;

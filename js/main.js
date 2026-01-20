@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof renderNavbar === 'function') renderNavbar(window.basePath || '');
     if (typeof renderFooter === 'function') renderFooter(window.basePath || '');

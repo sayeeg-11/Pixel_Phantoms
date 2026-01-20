@@ -1016,10 +1016,11 @@ body.hud-mode {
   /* Neon Border and Shadow (Initial State) */
   border: 1px solid rgba(0, 243, 255, 0.15);
   box-shadow: 0 0 10px rgba(0, 243, 255, 0.05);
-
-  /* Dynamic Animation: Transform and border/shadow changes */
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* Initial subtle fade-in animation on load */
+  transition: 
+    background 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
   animation: cardSlideUp 0.6s ease-out backwards;
 }
 
@@ -1044,13 +1045,14 @@ body.hud-mode {
 }
 
 .track-card:hover {
-  /* Enhanced Hover Effect: Pronounced lift and glow */
-  background: rgba(16, 20, 24, 0.95);
+  background: rgba(0, 240, 255, 0.15); /* Soft cyan-ish glow background */
   border-color: var(--neon-cyan);
-  transform: translateY(-8px);
+  transform: translateY(-6px) scale(1.03); /* Slight lift and gentle scale */
   box-shadow:
-    0 15px 30px rgba(0, 243, 255, 0.2),
-    0 0 25px var(--neon-cyan);
+    0 20px 40px rgba(0, 240, 255, 0.25), /* Bigger subtle shadow */
+    0 0 15px 5px rgba(0, 255, 255, 0.35); /* Neon cyan glow */
+  backdrop-filter: blur(8px); /* Adds a frosted glass effect behind */
+  cursor: pointer;
 }
 
 .track-card h4 {
@@ -1424,7 +1426,7 @@ body.hud-mode {
 
 .profile-cover {
   height: 150px;
-  background: linear-gradient(90deg, rgba(0, 243, 255, 0.2), rgba(188, 19, 254, 0.2));
+  background: linear-gradient(90deg, rgba(0, 242, 255, 0.425), rgba(180, 102, 211, 0.2));
   border-bottom: 1px solid rgba(0, 243, 255, 0.3);
 }
 
@@ -1583,13 +1585,13 @@ body.hud-mode {
 .form-group label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-main);
   letter-spacing: 0.5px;
 }
 
 .hud-input,
 .hud-select.full-width {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(207, 205, 205, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-main);
   padding: 12px 15px;
@@ -1610,7 +1612,7 @@ body.hud-mode {
 .hud-input[readonly] {
   background: rgba(255, 255, 255, 0.02);
   border-color: transparent;
-  color: var(--text-dim);
+  color: var(--text-main);
   cursor: not-allowed;
 }
 
@@ -1626,7 +1628,7 @@ textarea.hud-input {
 .social-inputs-section label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-main);
   display: block;
   margin-bottom: 10px;
 }
@@ -1641,7 +1643,7 @@ textarea.hud-input {
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-dim);
+  color: var(--text-main);
   font-size: 1.1rem;
 }
 
@@ -1652,6 +1654,12 @@ textarea.hud-input {
 .input-with-icon input:focus + i {
   color: var(--neon-cyan);
 }
+.hud-input::placeholder,
+.hud-select::placeholder,
+textarea.hud-input::placeholder {
+  color: var(--text-main);
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
