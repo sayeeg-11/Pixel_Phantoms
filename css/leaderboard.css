@@ -1426,7 +1426,7 @@ body.hud-mode {
 
 .profile-cover {
   height: 150px;
-  background: linear-gradient(90deg, rgba(0, 243, 255, 0.2), rgba(188, 19, 254, 0.2));
+  background: linear-gradient(90deg, rgba(0, 242, 255, 0.425), rgba(180, 102, 211, 0.2));
   border-bottom: 1px solid rgba(0, 243, 255, 0.3);
 }
 
@@ -1585,13 +1585,13 @@ body.hud-mode {
 .form-group label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-main);
   letter-spacing: 0.5px;
 }
 
 .hud-input,
 .hud-select.full-width {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(207, 205, 205, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-main);
   padding: 12px 15px;
@@ -1612,7 +1612,7 @@ body.hud-mode {
 .hud-input[readonly] {
   background: rgba(255, 255, 255, 0.02);
   border-color: transparent;
-  color: var(--text-dim);
+  color: var(--text-main);
   cursor: not-allowed;
 }
 
@@ -1628,7 +1628,7 @@ textarea.hud-input {
 .social-inputs-section label {
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-main);
   display: block;
   margin-bottom: 10px;
 }
@@ -1643,7 +1643,7 @@ textarea.hud-input {
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-dim);
+  color: var(--text-main);
   font-size: 1.1rem;
 }
 
@@ -1654,6 +1654,12 @@ textarea.hud-input {
 .input-with-icon input:focus + i {
   color: var(--neon-cyan);
 }
+.hud-input::placeholder,
+.hud-select::placeholder,
+textarea.hud-input::placeholder {
+  color: var(--text-main);
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
