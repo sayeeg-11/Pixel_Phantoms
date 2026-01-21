@@ -1,0 +1,234 @@
+/* ===============================
+   CONTRIBUTING GUIDE STYLES
+   =============================== */
+
+.contribute-page {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* HEADER */
+.contribute-header {
+  text-align: center;
+  padding: 100px 20px 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-weight: bolder;
+  color: var(--accent-color);
+}
+
+.contribute-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 12px;
+}
+
+.contribute-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* MAIN CONTENT */
+.contribute-content {
+  padding: 40px 20px 100px;
+}
+
+.contribute-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* SECTIONS */
+.contribute-section {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 28px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.contribute-section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent-color);
+  background: rgba(0, 170, 255, 0.06);
+}
+
+.section-title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.step-number {
+  font-weight: 700;
+  color: var(--accent-color);
+  background: rgba(0, 170, 255, 0.08);
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+}
+
+.contribute-section h2 {
+  font-size: 1.5rem;
+}
+
+.contribute-section p {
+  margin-top: 10px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* SIMPLE LISTS */
+.contribute-section ul {
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+.contribute-section li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* TWO / THREE COLUMN AREAS */
+.setup-grid,
+.domains-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.setup-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.domains-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* INFO CARDS */
+.setup-card,
+.domain-box {
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 18px;
+  background: var(--card-bg);
+}
+
+.setup-card h4,
+.domain-box h4 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.setup-card p,
+.domain-box li {
+  font-size: 0.95rem;
+}
+
+/* WARNING / NOTE */
+.warning-box,
+.pr-note {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 165, 0, 0.06);
+  font-size: 0.95rem;
+}
+
+/* CODE BLOCKS */
+.code-wrapper {
+  margin-top: 12px;
+}
+
+.code-block {
+  position: relative;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.code-block pre {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.copy-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* FOOTER BLOCK */
+.contribution-footer {
+  margin-top: 20px;
+  text-align: center;
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+}
+
+.contribution-footer h3 {
+  margin-bottom: 8px;
+}
+
+.contribution-footer p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* BUTTON */
+.footer-actions {
+  margin-top: 16px;
+}
+
+.footer-actions .btn-primary {
+  padding: 12px 26px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.footer-actions .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  font-size: 1.05rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .contribute-header h1 {
+    font-size: 2.1rem;
+  }
+
+  .contribute-section {
+    padding: 22px;
+  }
+}

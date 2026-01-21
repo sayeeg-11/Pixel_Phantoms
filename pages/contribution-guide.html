@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Phantoms | Contributing</title>
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+
+    <!-- PAGE STYLES -->
+    <link rel="stylesheet" href="../css/contribution-guide.css" />
+
+    <!-- FONTS & ICONS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="contribute-page">
+    <div id="scroll-progress-container">
+      <div id="scroll-progress-bar"></div>
+    </div>
+
+    <a href="#main-container" class="skip-to-content">Skip to main content</a>
+    <div id="cursor-highlight"></div>
+    <div id="navbar-placeholder"></div>
+
+    <main id="main-container" tabindex="-1">
+      <header class="contribute-header">
+        <h1>Contributing Guide</h1>
+        <p>
+          Pixel Phantoms is a <strong>fully open-source, student-friendly project</strong>. Whether
+          you're fixing a bug or designing a banner, your help makes our community stronger.
+        </p>
+      </header>
+
+      <section class="contribute-content">
+        <div class="contribute-container">
+          <!-- SECTION 1 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">01</span>
+              <h2>Getting Started</h2>
+            </div>
+            <p>Follow these steps to set up the project locally on your machine.</p>
+
+            <p>
+              <strong>1. Fork the Repository</strong>: Click the <strong>Fork</strong> button at the
+              top-right of the GitHub repo.
+            </p>
+
+            <p><strong>2. Clone Your Fork</strong></p>
+            <div class="code-wrapper">
+              <div class="code-block">
+                <button class="copy-btn" data-copy="clone-code">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+                <pre><code id="clone-code">git clone https://github.com/sayeeg-11/Pixel_Phantoms.git
+cd pixel-phantoms</code></pre>
+              </div>
+            </div>
+
+            <p><strong>3. Create a Feature Branch</strong></p>
+            <div class="code-wrapper">
+              <div class="code-block">
+                <button class="copy-btn" data-copy="branch-code">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+                <pre><code id="branch-code">git checkout -b feature-your-feature-name</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">02</span>
+              <h2>Project Setup</h2>
+            </div>
+            <p>Since this is a <strong>static website</strong>, no backend setup is required.</p>
+
+            <div class="setup-grid">
+              <div class="setup-card">
+                <i class="fas fa-tools"></i>
+                <h4>Requirements</h4>
+                <p>Any code editor (VS Code recommended) and basic HTML/CSS/JS knowledge.</p>
+              </div>
+              <div class="setup-card">
+                <i class="fas fa-laptop-code"></i>
+                <h4>Run Locally</h4>
+                <p>
+                  Open <code>index.html</code> directly or use the
+                  <strong>Live Server</strong> extension in VS Code.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 3 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">03</span>
+              <h2>What You Can Contribute</h2>
+            </div>
+            <div class="domains-grid">
+              <div class="domain-box">
+                <h4><i class="fas fa-code"></i> Code</h4>
+                <ul>
+                  <li>Improve UI/UX & Animations</li>
+                  <li>Fix responsiveness issues</li>
+                  <li>Add new feature pages</li>
+                </ul>
+              </div>
+              <div class="domain-box">
+                <h4><i class="fas fa-pen-nib"></i> Content</h4>
+                <ul>
+                  <li>Update page text</li>
+                  <li>Update club details</li>
+                  <li>Improve documentation</li>
+                </ul>
+              </div>
+              <div class="domain-box">
+                <h4><i class="fas fa-paint-brush"></i> Design</h4>
+                <ul>
+                  <li>Add banners & logos</li>
+                  <li>Create event posters</li>
+                  <li>Update icons & images</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 4 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">04</span>
+              <h2>Contribution Rules</h2>
+            </div>
+            <div class="warning-box">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>
+                <strong>Crucial:</strong> Do not commit <code>node_modules</code> or
+                <code>.vscode</code>. Keep media files small.
+              </span>
+            </div>
+            <br />
+            <h3>Commit Message Guidelines</h3>
+            <div class="code-wrapper">
+              <div class="code-block">
+                <button class="copy-btn" data-copy="commit-code">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+                <pre><code id="commit-code">Add: New gallery section
+Fix: Navbar alignment issue
+Update: Committee details
+Refactor: CSS for responsiveness</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 5 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">05</span>
+              <h2>Submitting Your Work</h2>
+            </div>
+            <div class="code-wrapper">
+              <div class="code-block">
+                <button class="copy-btn" data-copy="pr-code">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+                <pre><code id="pr-code">git add .
+git commit -m "Describe your change clearly"
+git push origin feature-your-feature-name</code></pre>
+              </div>
+            </div>
+            <div class="pr-note">
+              <i class="fas fa-info-circle"></i>
+              <strong>Note:</strong> Always include <strong>before/after screenshots</strong> for
+              any UI changes in your PR.
+            </div>
+          </div>
+
+          <!-- SECTION 6 -->
+          <div class="contribute-section">
+            <div class="section-title-group">
+              <span class="step-number">06</span>
+              <h2>Code of Conduct</h2>
+            </div>
+            <ul>
+              <li>Be respectful and supportive</li>
+              <li>Help beginners</li>
+              <li>Keep discussions constructive</li>
+              <li>Follow open-source etiquette</li>
+              <li>Avoid spamming issues or PRs</li>
+            </ul>
+          </div>
+
+          <div class="contribution-footer">
+            <h3>Welcome to the Community!</h3>
+            <p>
+              Confused? Open an issue, tag a mentor, or reach out to our team. Together, let's build
+              something amazing!
+            </p>
+            <div class="footer-actions">
+              <a href="https://github.com/sayeeg-11/Pixel_Phantoms/issues" class="btn-primary">
+                Create an Issue
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/footer.js"></script>
+    <script>
+      renderNavbar('../');
+      renderFooter('../');
+    </script>
+
+    <script src="../js/theme.js"></script>
+    <script src="../js/cursor-effect.js"></script>
+    <script src="../js/back-to-top.js"></script>
+    <script src="../js/scroll-progress.js"></script>
+
+    <!-- COPY CODE SCRIPT -->
+    <script>
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-copy');
+          const text = document.getElementById(id).innerText;
+          navigator.clipboard.writeText(text);
+          btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html>
