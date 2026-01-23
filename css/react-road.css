@@ -1,8 +1,197 @@
-/* react-road.css - Advanced Flex-Stability Version */
+/* --- Roadmap Header Polish --- */
+
+.roadmap-header.centered-header {
+  position: relative;
+  padding: 60px 20px;
+  margin: 80px auto;
+  max-width: 900px;
+  border: 1px solid rgba(97, 218, 251, 0.1);
+  background: radial-gradient(circle at center, rgba(97, 218, 251, 0.05) 0%, transparent 70%);
+  /* Creating HUD corners using pseudo-elements */
+}
+
+/* Technical Corner Brackets */
+.roadmap-header::before,
+.roadmap-header::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--react-cyan);
+}
+
+.roadmap-header::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.roadmap-header::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* --- The Glitch Text Effect --- */
+.glitch-text {
+  position: relative;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Creating the RGB split glitch layers */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-text::before {
+  color: #ff00c1; /* Magenta shift */
+  z-index: -1;
+  animation: glitch-offset 3s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  color: #00fff9; /* Cyan shift */
+  z-index: -2;
+  animation: glitch-offset 2s infinite linear alternate;
+}
+
+@keyframes glitch-offset {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* --- The Subtitle Typing Effect --- */
+.subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--react-cyan);
+  font-size: 1.1rem;
+  margin-top: 15px;
+  display: inline-block;
+  overflow: hidden; 
+  white-space: nowrap; 
+  border-right: 3px solid var(--react-cyan); /* The Cursor */
+  width: 0;
+  animation: 
+    typing-header 3s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing-header {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--react-cyan) }
+}
+
+/* --- Light Mode Adjustments --- */
+body.light-mode .roadmap-header {
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+body.light-mode .glitch-text {
+  color: var(--text-primary);
+  text-shadow: 2px 2px rgba(59, 130, 246, 0.1);
+}
+
+body.light-mode .subtitle {
+  color: var(--react-blue);
+  border-right-color: var(--react-blue);
+}
+/* react-road.css - Advanced Flex-Stability & Theme-Aware Version */
+@keyframes spineScanner {
+  0% { top: -10%; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 110%; opacity: 0; }
+}
+
+@keyframes magneticPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--react-cyan); }
+  50% { transform: scale(1.3); box-shadow: 0 0 25px var(--react-cyan); }
+}
+@keyframes spineFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 0% 200%; }
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
 :root {
+  /* Core Brand Colors */
   --react-cyan: #61dafb;
   --react-blue: #4a90e2;
+
+  /* Dark Mode Variables (Default) */
+  --bg-main: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #999999;
   --glass: rgba(10, 10, 10, 0.9);
+  --node-border: #333333;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --spine-color: linear-gradient(
+    to bottom,
+    transparent,
+    var(--react-cyan),
+    var(--react-blue),
+    transparent
+  );
+  --accent-glow: 0 0 12px var(--react-cyan);
+}
+body.light-mode {
+  /* Soft Azure Shade Background */
+  --bg-main: #f0f7ff; 
+  
+  /* Frosted Glass Cards (Replaces the dark gray) */
+  --glass: rgba(255, 255, 255, 0.85); 
+  
+  /* Text & Border High Contrast */
+  --text-primary: #0f172a; /* Deep Slate Navy */
+  --text-secondary: #475569;
+  --node-border: #bfdbfe; /* Soft Sky Blue */
+  
+  /* Modern Clean Shadows */
+  --card-shadow: 0 10px 30px rgba(148, 163, 184, 0.12);
+  
+  /* Vibrant Spine Gradient */
+  --spine-color: linear-gradient(
+    to bottom, 
+    transparent, 
+    #3b82f6, 
+    #60a5fa, 
+    transparent
+  );
+  --accent-glow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+
+/* Global Styles */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .centered-header {
@@ -11,6 +200,7 @@
   margin-bottom: 50px;
 }
 
+/* Roadmap Structure */
 .roadmap-wrapper {
   position: relative;
   max-width: 1100px;
@@ -25,17 +215,21 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--react-cyan),
-    var(--react-blue),
-    transparent
-  );
+  background: var(--spine-color);
   transform: translateX(-50%);
+  animation: spineFlow 5s linear infinite;
   z-index: 0;
 }
-
+/* --- Spine 'Scanner' Light Effect --- */
+.roadmap-spine::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #fff, transparent);
+  animation: spineScanner 4s linear infinite;
+  z-index: 1;
+}
 .roadmap-content {
   display: flex;
   flex-direction: column;
@@ -44,35 +238,57 @@
   width: 100%;
 }
 
+/* Roadmap Nodes */
 .chapter-node {
   position: relative;
   width: 44%;
   background: var(--glass);
-  border: 1px solid #333;
+  border: 1px solid var(--node-border);
   border-radius: 20px;
   padding: 30px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--card-shadow);
   z-index: 1;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+  animation: floatCard 6s ease-in-out infinite;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  color: var(--text-primary);
 }
 
 .chapter-node.left {
   align-self: flex-start;
   text-align: right;
 }
+
 .chapter-node.right {
   align-self: flex-end;
   text-align: left;
 }
 
 .chapter-node:hover {
-  border-color: var(--react-cyan);
-  transform: translateY(-5px);
+  /* 1. Enhanced Lift and Scale */
+  transform: translateY(-12px) scale(1.03); 
+  
+  /* 2. Stronger Border visibility for Light Mode */
+  border-color: var(--react-blue); 
+  
+  /* 3. Deep Ambient Shadow for Elevation */
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 20px rgba(59, 130, 246, 0.1); /* Subtle blue tint to the shadow */
+    
+  /* 4. Increase focus */
+  background: rgba(88, 171, 240, 0.1); 
+  color: #0f172a;
+  z-index: 10;
+  
+  /* 5. Smooth Transition (Ensures this matches your base class) */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+
+
+/* Connectivity Indicators */
 .chapter-node::after {
   content: '';
   position: absolute;
@@ -81,28 +297,37 @@
   height: 16px;
   background: var(--react-cyan);
   border-radius: 50%;
-  box-shadow: 0 0 12px var(--react-cyan);
+  box-shadow: var(--accent-glow);
+  animation: magneticPulse 3s infinite ease-in-out;
+}
+/* Ensure the connecting dot also reacts to the hover */
+.chapter-node:hover::after {
+  background: var(--react-blue);
+  transform: scale(1.3);
+  box-shadow: 0 0 15px var(--react-blue);
 }
 .chapter-node.left::after {
   right: -13.5%;
 }
+
 .chapter-node.right::after {
   left: -13.5%;
 }
 
+/* Node Elements */
 .node-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
+
 .chapter-node.left .node-header {
   flex-direction: row-reverse;
 }
 
 .node-header h3 {
   color: var(--react-cyan);
-  font-family: 'JetBrains Mono', monospace;
   font-size: 1.2rem;
   margin: 0;
 }
@@ -128,12 +353,12 @@
   transform: rotate(45deg);
 }
 
+
+/* Details and Links */
 .chapter-details {
   max-height: 0;
   overflow: hidden;
-  transition:
-    max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.3s;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
   opacity: 0;
 }
 
@@ -142,12 +367,12 @@
   opacity: 1;
   margin-top: 20px;
   padding-top: 20px;
-  border-top: 1px solid #222;
+  border-top: 1px solid var(--node-border);
 }
 
 .module-link {
   display: block;
-  color: #999;
+  color: var(--text-secondary);
   text-decoration: none;
   padding: 12px;
   margin: 8px 0;
@@ -155,13 +380,126 @@
   border-radius: 8px;
   transition: 0.3s;
 }
+/* --- Enhanced h4 Design for Skill Nodes --- */
+.skill-node h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 15px 0 5px 0;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block; /* Required for the underline effect */
+  transition: color 0.3s ease;
+}
+
+/* The Animated Underline */
+.skill-node h4::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0; /* Start hidden */
+  height: 2px;
+  background: var(--react-cyan);
+  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 0 8px var(--react-cyan);
+}
+
+/* --- Hover Effects --- */
+.skill-node:hover h4 {
+  color: var(--react-cyan);
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+}
+
+.skill-node:hover h4::after {
+  width: 100%; /* Slide underline out */
+}
+
+/* Light Mode Specific Adjustment */
+body.light-mode .skill-node h4::after {
+  background: var(--react-blue);
+  box-shadow: 0 2px 4px rgba(97, 218, 251, 0.5);
+}
+
+body.light-mode .skill-node:hover h4 {
+  color: var(--react-blue);
+}
+body.light-mode .module-link {
+  background: rgba(97, 218, 251, 0.5);
+}
 
 .module-link:hover {
-  color: #fff;
+  color: var(--text-primary);
   background: rgba(97, 218, 251, 0.2);
   padding-left: 20px;
 }
+/* --- Final Visibility Fix for h2 --- */
+h2 {
+  /* DARK MODE (Default) */
+  /* We use var(--react-cyan) or #ffffff to ensure it is bright */
+  color: #61dafb !important; 
+  
+  /* FIX: Changed from 0.04 opacity to solid cyan */
+  text-decoration-color: #61dafb !important;
+  text-underline-offset: 12px;
+  
+  /* Increased shadow spread for a stronger glow effect */
+  text-shadow: 0 0 15px rgba(97, 218, 251, 0.6);
+  
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: 80px 0 40px 0;
+  transition: all 0.3s ease;
+}
 
+/* LIGHT MODE ADJUSTMENT */
+body.light-mode h2 {
+  /* High contrast Navy for light backgrounds */
+  color: #0f172a !important; 
+  
+  /* Strong blue underline for visibility */
+  text-decoration-color: #3b82f6 !important;
+  
+  /* Remove glow in light mode to keep text crisp */
+  text-shadow: none;
+}
+
+/* Explore-Other-Courses Fixes */
+#other-courses {
+  margin-top: 70px;
+  margin-bottom: 20px;
+  padding: 40px 10px;
+  background: var(--glass);
+  border: 2px solid var(--react-blue);
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+}
+
+#other-courses h2 {
+  text-align: center;
+  color: var(--text-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.skill-node h4 {
+  color: var(--text-primary);
+}
+
+/* Navbar Theme Correction */
+#navbar-placeholder a {
+  color: var(--text-primary) !important;
+  transition: color 0.2s ease;
+}
+
+#navbar-placeholder a:hover {
+  color: var(--react-cyan) !important;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .roadmap-spine {
     left: 20px;

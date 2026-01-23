@@ -1,10 +1,11 @@
 /* ABOUT PAGE STYLES - Matching Events Page Design */
 @import url('style.css');
-/* Hero-Section */
+
+/* =============== HERO SECTION =============== */
 
 .hero-section {
   background: linear-gradient(135deg, var(--accent-color, #0a84ff), #0088cc);
-  padding: 120px 20px;
+  padding: 110px 20px 130px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -15,19 +16,23 @@
 .hero-section::before {
   content: '';
   position: absolute;
-  inset: -50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent 70%);
-  animation: pulse 4s infinite alternate;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(255, 255, 255, 0.18), transparent 70%),
+    radial-gradient(circle at 80% 100%, rgba(0, 0, 0, 0.15), transparent 70%);
+  opacity: 0.8;
+  animation: pulse 5s ease-in-out infinite alternate;
+  pointer-events: none;
 }
 
 @keyframes pulse {
   from {
     transform: scale(1);
-    opacity: 0.3;
+    opacity: 0.55;
   }
   to {
-    transform: scale(1.2);
-    opacity: 0.6;
+    transform: scale(1.12);
+    opacity: 0.9;
   }
 }
 
@@ -36,13 +41,13 @@
   z-index: 2;
   max-width: 900px;
   margin: 0 auto;
-  animation: fadeInUp 1s ease-out;
+  animation: fadeInUp 0.9s ease-out;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(26px);
   }
   to {
     opacity: 1;
@@ -52,11 +57,12 @@
 
 /* Title */
 .hero-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
   font-weight: 800;
   color: #ffffff;
-  margin-bottom: 30px;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  margin-bottom: 32px;
+  letter-spacing: 0.03em;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
   position: relative;
 }
 
@@ -65,72 +71,112 @@
   content: '';
   position: absolute;
   left: 50%;
-  bottom: -15px;
+  bottom: -18px;
   transform: translateX(-50%);
-  width: 90px;
+  width: 110px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(180, 220, 255, 0.9));
+  border-radius: 999px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
 }
 
 /* Subtitle wrapper */
 .hero-subtitle {
-  margin-top: 50px;
+  margin-top: 56px;
 }
 
 /* Motto box */
 .motto-banner {
-  display: inline-block;
-  padding: 25px 40px;
-  border-radius: 40px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  animation: fadeIn 1.5s ease-out;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 40px;
+  border-radius: 999px;
+  background: rgba(10, 10, 25, 0.28);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  animation: fadeIn 1.2s ease-out;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 /* Main motto text */
 .motto-main {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
   font-weight: 600;
   font-style: italic;
   color: #ffffff;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 /* Description text */
 .motto-subtitle {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
-  max-width: 600px;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: rgba(235, 243, 255, 0.96);
+  max-width: 620px;
   margin: 0 auto;
 }
 
-/* Light Mode Fix  */
+/* ---------- Light Mode tuning for hero only ---------- */
+
 body.light-mode .hero-section {
-  background: linear-gradient(135deg, #e9f2ff, #dbefff);
+  background: radial-gradient(circle at top, #ffffff 0%, #e9f2ff 45%, #d4e7ff 100%);
 }
 
-body.light-mode .hero-title,
-body.light-mode .motto-main,
+body.light-mode .hero-section::before {
+  background:
+    radial-gradient(circle at 15% -10%, rgba(15, 23, 42, 0.08), transparent 70%),
+    radial-gradient(circle at 85% 110%, rgba(37, 99, 235, 0.16), transparent 70%);
+  opacity: 1;
+}
+
+body.light-mode .hero-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+body.light-mode .motto-main {
+  color: #111111;
+  text-shadow: none;
+}
+
 body.light-mode .motto-subtitle {
-  color: #111;
+  color: #333333;
 }
 
 body.light-mode .motto-banner {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+  backdrop-filter: none;
+}
+
+/* small-screen spacing for hero */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 90px 16px 110px;
+  }
+
+  .hero-subtitle {
+    margin-top: 42px;
+  }
+
+  .motto-banner {
+    padding: 22px 22px;
+    border-radius: 24px;
+  }
 }
 
 /* ===== CONTENT SECTIONS ===== */
@@ -159,14 +205,13 @@ body.light-mode .motto-banner {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scaleX(0);
   width: 80px;
   height: 4px;
   background: var(--accent-color);
   border-radius: 2px;
   animation: expandWidth 0.8s ease-out 0.3s forwards;
   transform-origin: center;
-  transform: translateX(-50%) scaleX(0);
 }
 
 /* Who We Are Section */
@@ -246,6 +291,7 @@ body.light-mode .motto-banner {
   margin: 0;
 }
 
+/* What We Do Section */
 .what-we-do-section {
   background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
   padding: 48px 0;
@@ -269,30 +315,14 @@ body.light-mode .motto-banner {
   animation: fadeInUp 0.6s ease-out backwards;
 }
 
-.activity-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.activity-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.activity-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.activity-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.activity-card:nth-child(5) {
-  animation-delay: 0.5s;
-}
-.activity-card:nth-child(6) {
-  animation-delay: 0.6s;
-}
-.activity-card:nth-child(7) {
-  animation-delay: 0.7s;
-}
-.activity-card:nth-child(8) {
-  animation-delay: 0.8s;
-}
+.activity-card:nth-child(1) { animation-delay: 0.1s; }
+.activity-card:nth-child(2) { animation-delay: 0.2s; }
+.activity-card:nth-child(3) { animation-delay: 0.3s; }
+.activity-card:nth-child(4) { animation-delay: 0.4s; }
+.activity-card:nth-child(5) { animation-delay: 0.5s; }
+.activity-card:nth-child(6) { animation-delay: 0.6s; }
+.activity-card:nth-child(7) { animation-delay: 0.7s; }
+.activity-card:nth-child(8) { animation-delay: 0.8s; }
 
 .activity-card:hover {
   transform: translateY(-8px);
@@ -312,15 +342,12 @@ body.light-mode .motto-banner {
   color: var(--activity-icon-color);
   font-size: 1.5rem;
   transition: transform 0.3s ease;
-
 }
 
 .activity-card:hover .activity-icon {
   transform: scale(1.1) rotate(5deg);
   color: white;
 }
-
-
 
 .activity-card h3 {
   color: var(--text-primary);
@@ -381,24 +408,12 @@ body.light-mode .motto-banner {
   }
 }
 
-.focus-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.focus-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-.focus-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-.focus-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-.focus-card:nth-child(5) {
-  animation-delay: 0.5s;
-}
-.focus-card:nth-child(6) {
-  animation-delay: 0.6s;
-}
+.focus-card:nth-child(1) { animation-delay: 0.1s; }
+.focus-card:nth-child(2) { animation-delay: 0.2s; }
+.focus-card:nth-child(3) { animation-delay: 0.3s; }
+.focus-card:nth-child(4) { animation-delay: 0.4s; }
+.focus-card:nth-child(5) { animation-delay: 0.5s; }
+.focus-card:nth-child(6) { animation-delay: 0.6s; }
 
 /* Shimmer effect */
 .focus-card::before {
@@ -504,6 +519,7 @@ body.light-mode .motto-banner {
   filter: drop-shadow(0 0 12px var(--neon-cyan));
 }
 
+/* Committee Section */
 .committee-section {
   background: var(--bg-primary);
   padding: 80px 20px;
@@ -776,6 +792,8 @@ body.light-mode .motto-banner {
   object-fit: cover;
 }
 
+/* ========== MEDIA QUERIES ========== */
+
 @media (max-width: 1200px) {
   .committee-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1031,6 +1049,7 @@ body.light-mode .motto-banner {
   }
 }
 
+/* Dark mode preference for committee + tooltips */
 @media (prefers-color-scheme: dark) {
   .member-card {
     background: rgba(25, 25, 35, 0.8);
@@ -1111,34 +1130,8 @@ body.light-mode .motto-banner {
   outline-offset: 3px;
 }
 
+/* footer reset */
 footer {
-    all: unset;
-    display: block;
-}
-
-/*FINAL FIX: About Hero Text in Light Mode */
-
-/* Hero title */
-.light-mode .hero-title {
-  color: #0f172a;
-  text-shadow: none;
-}
-
-/* Motto banner text */
-.light-mode .motto-main {
-  color: #111111;
-  text-shadow: none;
-}
-
-.light-mode .motto-subtitle {
-  color: #333333;
-}
-
-/* Improve motto card contrast */
-.light-mode .motto-banner {
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  backdrop-filter: none;
-
-  
+  all: unset;
+  display: block;
 }

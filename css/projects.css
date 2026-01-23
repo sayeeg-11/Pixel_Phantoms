@@ -453,11 +453,6 @@ input:checked + .slider:before {
     .panel-line { display: none; }
 }
 
-/* =========================================
-   COPY TO CLIPBOARD STYLES FOR CODE SNIPPETS
-   ========================================= */
-
-/* Code snippet container with copy button */
 .code-snippet-container {
     position: relative;
     margin: 20px 0;
@@ -1071,9 +1066,83 @@ input:checked + .slider:before {
     }
 }
 
-/* =========================================
-   PROJECTS PAGE PRINT ENHANCEMENTS
-   ========================================= */
+.print-button {
+    position: fixed;
+    bottom: 20px;
+    right: 80px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+    
+.print-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,170,255,0.3);
+}
+    
+@media print {
+    .print-button {
+        display: none;
+    }
+}
+
+.cyber-card {
+    position: relative;
+}
+
+/* Ensure card image wrapper has relative positioning for absolute bookmark button */
+.card-image-wrapper {
+    position: relative;
+}
+
+/* Update quick filters container */
+.quick-filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.filter-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(0, 170, 255, 0.1);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.filter-tag:hover {
+    background: rgba(0, 170, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.filter-tag.active {
+    background: rgba(0, 170, 255, 0.3);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+}
+
+.filter-tag .count {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
 
 @media print {
     /* Projects page specific adjustments */
@@ -1295,84 +1364,4 @@ input:checked + .slider:before {
         font-size: 9pt !important;
         color: #666 !important;
     }
-}
-
-
-.print-button {
-    position: fixed;
-    bottom: 20px;
-    right: 80px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: bold;
-    z-index: 1000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
-}
-    
-.print-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,170,255,0.3);
-}
-    
-@media print {
-    .print-button {
-        display: none;
-    }
-}
-
-/* Update project card for bookmark button positioning */
-.cyber-card {
-    position: relative;
-}
-
-/* Ensure card image wrapper has relative positioning for absolute bookmark button */
-.card-image-wrapper {
-    position: relative;
-}
-
-/* Update quick filters container */
-.quick-filter-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 15px 0;
-}
-
-.filter-tag {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: rgba(0, 170, 255, 0.1);
-    border: 1px solid rgba(0, 170, 255, 0.3);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    user-select: none;
-}
-
-.filter-tag:hover {
-    background: rgba(0, 170, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.filter-tag.active {
-    background: rgba(0, 170, 255, 0.3);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
-}
-
-.filter-tag .count {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.75rem;
-    font-weight: bold;
 }
