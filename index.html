@@ -10,7 +10,7 @@
     <!-- <link rel="stylesheet" href="css/scroll-buttons.css" /> -->
     <link rel="stylesheet" href="css/style.min.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
-    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/animations.css" /> 
     <link rel="stylesheet" href="css/share-button.css" />
     <link rel="stylesheet" href="css/home-gsap.min.css" />
     <link rel="stylesheet" href="css/cursor-effect.css" />
@@ -48,6 +48,16 @@
   </head>
 
   <body class="hacker-theme">
+    <body class="hacker-theme">
+
+  <!-- Global Page Loader -->
+  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div class="loader-spinner"></div>
+     <p class="loader-text">Loading...</p>
+    </div>
+    <div id="scroll-progress-container">
+     <div id="scroll-progress-bar"></div>
+    </div>
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
@@ -793,5 +803,7 @@
         }
       });
     </script>
+    <script src="js/main.js"></script>
+
   </body>
 </html>

@@ -11,8 +11,13 @@ document.addEventListener('DOMContentLoaded', function () {
     modal = document.createElement('div');
     modal.id = 'feedback-modal';
     modal.style.position = 'fixed';
-    modal.style.top = '65%';
-    modal.style.left = '10%';
+    modal.style.top = '50%';
+    modal.style.left = '50%';
+    modal.style.transform = 'translate(-50%, -50%)';
+
+    modal.style.width = '90%';
+    modal.style.maxWidth = '350px';
+
     modal.style.transform = 'translate(-50%, -50%)';
     modal.style.background = 'var(--card-bg, #222)';
     modal.style.color = 'var(--text-primary, #fff)';

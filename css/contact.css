@@ -2,7 +2,219 @@
 @import url("style.css");
 
 /* ================= CONTACT PAGE SPECIFIC STYLES ================= */
+ :root {
+        --bg-color: #020617;
+        --card-bg: rgba(15, 23, 42, 0.9);
+        --text-color: #f8fafc;
+        --text-dim: #94a3b8;
+        --primary: #00d4ff;
+        --border: rgba(0, 212, 255, 0.2);
+      }
 
+      [data-theme='light'],
+      .light-theme {
+        --bg-color: #ffffff;
+        --card-bg: #f8fafc;
+        --text-color: #0f172a;
+        --text-dim: #475569;
+        --primary: #0284c7;
+        --border: #e2e8f0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: 'JetBrains Mono', monospace;
+        margin: 0;
+        transition: all 0.3s ease;
+      }
+
+      #main-content {
+        padding-top: 110px;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .section-header h2 {
+        font-size: 3rem;
+        color: var(--primary);
+        text-transform: uppercase;
+      }
+
+     .contact-box-wrapper {
+  max-width: 1000px;   /* wider, matches page rhythm */
+  width: 100%;
+  margin: 0 auto 80px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  padding: 50px 60px;
+  border-radius: 20px;
+}
+
+
+      input,
+      textarea {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid var(--border) !important;
+        color: var(--text-color) !important;
+        padding: 14px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-family: inherit;
+        box-sizing: border-box;
+      }
+
+      .btn-submit {
+        width: 100%;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 16px;
+        font-weight: 800;
+        border-radius: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+      .contact-box h3 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.input-group {
+  margin-bottom: 25px;
+}
+
+
+      /* Horizontal Info Cards */
+      .info-grid-horizontal {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-bottom: 80px;
+      }
+
+      .info-card-modern {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      /* Fixed Email Styling: No bluish highlight */
+      .info-card-modern a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .icon-circle {
+        width: 50px;
+        height: 50px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+      }
+
+      /* FAQ FIXES: Added Strict Padding for Text Alignment */
+      .faq-section {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 80px 0;
+        border-top: 1px solid var(--border);
+      }
+
+      .faq-container {
+        max-width: 850px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        margin-bottom: 15px;
+        border-radius: 12px;
+        transition: 0.3s ease;
+
+        padding: 0 35px 30px 35px;
+        color: var(--text-dim);
+
+        text-align: left;
+      }
+
+      /* Added padding-left and padding-right to fix text touching edges */
+      summary {
+        padding: 25px 35px;
+        cursor: pointer;
+        font-weight: 800;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        outline: none;
+        list-style: none;
+        text-align: left; /* Ensures text aligns left */
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: '\f078';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: var(--primary);
+        transition: 0.3s;
+      }
+
+      details[open] summary::after {
+        transform: rotate(180deg);
+      }
+
+      /* Fixed Answer Text Left Padding */
+      .faq-item p {
+        padding: 0 35px 30px 35px;
+        color: var(--text-dim);
+        line-height: 1.8;
+        margin: 0;
+        text-align: left; /* Ensures text aligns left */
+      }
+
+      .faq-item:hover {
+        border-color: var(--primary);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .info-grid-horizontal {
+          grid-template-columns: 1fr;
+        }
+        summary {
+          padding: 20px 25px;
+        }
+        .faq-item p {
+          padding: 0 25px 20px 25px;
+        }
+      }
 .contact-section {
     padding: 80px 20px;
     max-width: 1200px;
@@ -1000,3 +1212,13 @@ input.invalid, textarea.invalid {
 
 /* Screen-reader only helper */
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; white-space: nowrap; }
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

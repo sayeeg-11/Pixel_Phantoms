@@ -20,12 +20,13 @@
           experiences together.
         </p>
 
-        <div class="social-links dynamic-signals">
+        <div class="social-links dynamic-signals" aria-label="Social media links">
           <a
             href="https://github.com/sayeeg-11/Pixel_Phantoms"
             class="social-link"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <i class="fab fa-github"></i>
           </a>
@@ -33,57 +34,28 @@
             href="https://www.instagram.com/pixelphantoms_"
             class="social-link"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
           >
             <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://discord.com/" class="social-link" target="_blank" rel="noopener">
+          <a
+            href="https://discord.com/"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Discord"
+          >
             <i class="fab fa-discord"></i>
           </a>
           <a
             href="https://www.linkedin.com/company/pixel-phantoms/"
             class="social-link"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
-            <div class="social-links dynamic-signals" aria-label="Social media links">
-              <a
-                href="https://github.com/sayeeg-11/Pixel_Phantoms"
-                class="social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <i class="fab fa-github"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/pixelphantoms_"
-                class="social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-              >
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a
-                href="https://discord.com/"
-                class="social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Discord"
-              >
-                <i class="fab fa-discord"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/company/pixel-phantoms/"
-                class="social-link"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </div>
+            <i class="fab fa-linkedin"></i>
           </a>
         </div>
       </div>
@@ -125,21 +97,10 @@
       <div class="footer-newsletter">
         <h3 class="newsletter-title">Stay Updated</h3>
         <p class="newsletter-description">Subscribe to our newsletter for the latest updates.</p>
-        <form class="newsletter-form">
-          <h3 class="newsletter-title">Stay in the Loop</h3>
-          <p class="newsletter-description">
-            Get updates about events, projects, and community news.
-          </p>
-        </form>
-
         <!-- Keep no-loading so scripts.js doesn't hijack this submit handler -->
         <form class="newsletter-form no-loading" aria-label="Newsletter subscription">
           <div class="input-group">
-            <input type="email" class="newsletter-input" placeholder="Enter your email" required />
-            <button type="submit" class="newsletter-btn">
-              <i class="fas fa-paper-plane"></i>
-            </button>
-            placeholder="you@example.com" aria-label="Email address" required />
+            <input type="email" class="newsletter-input" placeholder="you@example.com" aria-label="Email address" required />
             <button type="submit" class="newsletter-btn" aria-label="Subscribe">
               <i class="fas fa-paper-plane"></i>
             </button>
@@ -156,22 +117,14 @@
     <!-- Bottom -->
     <div class="footer-bottom">
       <div class="footer-bottom-content">
-        © <span id="currentYear"></span> Pixel Phantoms. All rights reserved.
-
-        <div class="footer-bottom-links">
-          <a href="pages/privacy.html" class="bottom-link">Privacy</a> |
-          <a href="pages/terms.html" class="bottom-link">Terms</a> |
-           <p class="copyright">
-            © <span id="current-year">2025</span> Pixel Phantoms. All rights reserved.
-          </p> 
-          <nav class="footer-bottom-links" aria-label="Footer legal links">
-            <a href="pages/privacy.html" class="bottom-link">Privacy</a>
-            <span aria-hidden="true">|</span>
-            <a href="pages/terms.html" class="bottom-link">Terms</a>
-            <span aria-hidden="true">|</span>
-            <a href="#" class="bottom-link">Sitemap</a>
-          </nav>
-        </div>
+        <p class="copyright">© 2026 Pixel Phantoms. All rights reserved.</p>
+        <nav class="footer-bottom-links" aria-label="Footer legal links">
+          <a href="pages/privacy.html" class="bottom-link">Privacy</a>
+          <span aria-hidden="true">|</span>
+          <a href="pages/terms.html" class="bottom-link">Terms</a>
+          <span aria-hidden="true">|</span>
+          <a href="#" class="bottom-link">Sitemap</a>
+        </nav>
       </div>
     </div>
   </div>
