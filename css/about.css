@@ -1135,3 +1135,67 @@ footer {
   all: unset;
   display: block;
 }
+
+
+/* ===== DARK MODE STYLES ===== */
+
+/* Dark mode hero section */
+body.dark-mode .hero-section {
+  background: linear-gradient(135deg, #0a1929, #001e3c);
+}
+
+body.dark-mode .hero-title {
+  color: #ffffff;
+  text-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+}
+
+body.dark-mode .hero-title::after {
+  background: var(--accent-color);
+}
+
+body.dark-mode .motto-main,
+body.dark-mode .motto-subtitle {
+  color: #ffffff;
+}
+
+body.dark-mode .motto-banner {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Dark mode content sections */
+body.dark-mode .content-section {
+  background: var(--bg-primary);
+}
+
+body.dark-mode .definition-card {
+  background: linear-gradient(135deg, rgba(25, 25, 35, 0.9), rgba(0, 170, 255, 0.08));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .activity-card,
+body.dark-mode .focus-card,
+body.dark-mode .member-card {
+  background: rgba(25, 25, 35, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .activity-icon {
+  color: #ffffff;
+}
+
+body.dark-mode .who-is-this-for {
+  background: rgba(25, 25, 35, 0.8);
+  border-left-color: var(--accent-color);
+}
+
+/* Dark mode organize/join section */
+body.dark-mode #join-section {
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(15, 15, 25, 1) 100%);
+}
+
+body.dark-mode .organize-container {
+  background: rgba(25, 25, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
