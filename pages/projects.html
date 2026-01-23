@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/projects.css" />
     <link rel="stylesheet" href="../css/back-to-top.css" />
     <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/keyboard-shortcuts.css" />
    
     <link
       rel="stylesheet"
@@ -24,6 +25,12 @@
     />
   </head>
   <body class="hacker-theme">
+    <!-- Global Page Loader -->
+<div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+  <div class="loader-spinner"></div>
+  <p class="loader-text">Loading...</p>
+</div>
+
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
@@ -479,8 +486,14 @@
     <script src="../js/favorites.js"></script>
     <script src="../js/scroll-progress.js"></script>
 
+    <script src="../js/main.js"></script>
+
+    <script src="../js/keyboard-shortcuts.js"></script>
+
+
     <button class="print-button" onclick="window.print()">
       <i class="fas fa-print"></i> Print This Page
     </button>
+    
   </body>
 </html>

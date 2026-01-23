@@ -1,0 +1,231 @@
+/* ===========================
+   KEYBOARD SHORTCUTS STYLES
+   =========================== */
+
+/* Help Modal */
+.shortcuts-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+.shortcuts-modal-content {
+  background: var(--card-bg, #1a1a1a);
+  color: var(--text-primary, #ffffff);
+  border-radius: 12px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #333);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.shortcuts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color, #333);
+  background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.shortcuts-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.shortcuts-header i {
+  margin-right: 8px;
+}
+
+.shortcuts-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.shortcuts-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.shortcuts-body {
+  padding: 24px;
+  overflow-y: auto;
+  max-height: calc(80vh - 80px);
+}
+
+.shortcuts-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary, #aaa);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.shortcuts-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.shortcut-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.shortcut-key {
+  background: var(--accent-color, #007bff);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shortcut-desc {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-primary, #ffffff);
+}
+
+/* Feedback Toast */
+.shortcut-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--accent-color, #007bff);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10000;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shortcut-toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .shortcuts-modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .shortcuts-header {
+    padding: 16px 20px;
+  }
+  
+  .shortcuts-header h3 {
+    font-size: 16px;
+  }
+  
+  .shortcuts-body {
+    padding: 20px;
+  }
+  
+  .shortcut-item {
+    gap: 12px;
+  }
+  
+  .shortcut-key {
+    min-width: 35px;
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  
+  .shortcut-desc {
+    font-size: 13px;
+  }
+  
+  .shortcut-toast {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    transform: translateY(-100%);
+  }
+  
+  .shortcut-toast.show {
+    transform: translateY(0);
+  }
+}
+
+/* Dark/Light Theme Support */
+.light-theme .shortcuts-modal-content {
+  background: #ffffff;
+  color: #333333;
+  border-color: #e0e0e0;
+}
+
+.light-theme .shortcuts-header {
+  border-bottom-color: #e0e0e0;
+}
+
+.light-theme .shortcuts-note {
+  color: #666666;
+}
+
+.light-theme .shortcut-desc {
+  color: #333333;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .shortcuts-modal,
+  .shortcut-toast {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .shortcut-key {
+    border: 2px solid currentColor;
+  }
+  
+  .shortcuts-modal-content {
+    border: 2px solid currentColor;
+  }
+}
