@@ -525,3 +525,8 @@
         font-size: 0.9rem;
     }
 }
+
+#cyber-rain-canvas {
+  z-index: 0;
+  pointer-events: none;
+}

@@ -26,7 +26,7 @@
   opacity: 1;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 999;
+  z-index: 2147483647; 
 
   transform: translate(-50%, -50%);
   will-change: transform;
@@ -36,6 +36,7 @@
 /* Hide on touch devices */
 @media (pointer: coarse) {
   #cursor-highlight {
+    position: fixed !important;
     display: none;
   }
 }

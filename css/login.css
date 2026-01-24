@@ -659,3 +659,8 @@ body {
     flex-direction: column;
   }
 }
+
+#cyber-rain-canvas {
+  z-index: 0;
+  pointer-events: none;
+}
