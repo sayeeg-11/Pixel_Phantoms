@@ -100,6 +100,11 @@
   animation: fadeIn 1.2s ease-out;
 }
 
+.motto-banner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -269,6 +274,11 @@ body.light-mode .motto-banner {
   padding: 30px;
   border-left: 5px solid var(--accent-color);
   animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.who-is-this-for:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
 }
 
 .who-is-this-for h3 {
