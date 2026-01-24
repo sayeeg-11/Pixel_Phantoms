@@ -122,3 +122,24 @@ Requirements implemented:
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+
+/* ================================
+   Card Hover Animations
+   ================================ */
+
+.card,
+.feature-card,
+.event-card,
+.team-card,
+.project-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover,
+.feature-card:hover,
+.event-card:hover,
+.team-card:hover,
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0, 255, 255, 0.2);
+}
