@@ -61,5 +61,9 @@
   opacity: 0.35;
 }
 
+html,
+body {
+  transform: none !important;
+}
 
 
