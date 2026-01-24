@@ -117,6 +117,11 @@
         text-align: center;
       }
 
+      .info-card-modern:hover {
+           transform: translateY(-6px);
+           box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
+    }
+
       /* Fixed Email Styling: No bluish highlight */
       .info-card-modern a {
         color: var(--text-color);
@@ -635,6 +640,11 @@
 
 .info-card:hover h4 {
     color: var(--accent-color);
+}
+
+.info-card :hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
 }
 
 /* FAQ Section */
@@ -1222,3 +1232,4 @@ input.invalid, textarea.invalid {
   opacity: 0.6;
   cursor: not-allowed;
 }
+

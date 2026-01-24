@@ -614,6 +614,11 @@ body {
   min-height: 480px; /* Compact height */
 }
 
+.login-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
+}
+
 /* Role Selector Styles */
 .role-selector {
   display: flex;

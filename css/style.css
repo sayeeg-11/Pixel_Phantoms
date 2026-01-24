@@ -329,6 +329,14 @@ body.mobile-menu-open {
   padding: 0;
   position: relative;
 }
+.nav-link {
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-link:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.7);
+}
 
 .nav-links li {
   position: relative;
@@ -4364,3 +4372,41 @@ code,
   }
 }
 
+/* ================================
+   Global Hover & Interaction Styles
+   ================================ */
+
+/* Base interactive transition */
+a,
+button,
+.btn,
+input[type="submit"] {
+  transition: color 0.2s ease, background-color 0.2s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Buttons */
+button:hover,
+.btn:hover,
+input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 255, 255, 0.25);
+}
+
+/* Links */
+a:hover {
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+}
+
+.social-icon,
+footer a img,
+.icon {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.social-icon:hover,
+footer a:hover img,
+.icon:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.7));
+}

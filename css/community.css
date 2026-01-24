@@ -159,6 +159,11 @@
   opacity: 0.1;
 }
 
+.platform-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 34px rgba(0, 255, 255, 0.25);
+}
+
 .icon-box {
   font-size: 3.5rem;
   margin-bottom: 20px;
