@@ -65,8 +65,8 @@ function renderFooter(basePath = '') {
               <ul class="link-list">
                 <li><a href="${basePath}contact.html">Contact</a></li>
                 <li><a href="${basePath}pages/help.html">Help Center</a></li>
-                <li><a href="${basePath}pages/contribution-guide.html">Contributor Guide</a></li>
-                <li><a href="${basePath}pages/code-of-conduct.html">Code of Conduct</a></li>
+                <li><a href="${basePath}pages/contribution-guide.html" target="_blank">Contributor Guide</a></li>
+                <li><a href="${basePath}pages/code-of-conduct.html" target="_blank">Code of Conduct</a></li>
               </ul>
             </div>
           </div>
