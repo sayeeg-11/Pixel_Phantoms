@@ -85,7 +85,6 @@
       <div id="scroll-progress-bar"></div>
     </div>
 
-    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-about" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward"></i> Skip to Main Content
     </a>
@@ -99,8 +98,8 @@
 
     <main id="main-content" tabindex="-1">
       <div class="page-transition-wrapper" data-page="about">
-      <!-- Hero Section -->
       <section class="hero-section" role="banner">
+        <div class="hero-bg-overlay"></div>
         <div class="hero-content">
           <h1 class="hero-title">About Pixel Phantoms</h1>
           <div class="hero-subtitle">
@@ -255,7 +254,6 @@
           <h2 class="section-title" id="committee-heading">Core Committee 2025</h2>
 
           <div class="committee-grid" role="list">
-            <!-- Director Card -->
             <div class="member-card" role="listitem" tabindex="0">
               <div class="member-avatar">
                 <div class="avatar-placeholder">PW</div>
@@ -287,7 +285,6 @@
               </div>
             </div>
 
-            <!-- President Card -->
             <div class="member-card" role="listitem" tabindex="0">
               <div class="member-avatar">
                 <div class="avatar-placeholder">KS</div>
@@ -319,7 +316,6 @@
               </div>
             </div>
 
-            <!-- Vice President Card -->
             <div class="member-card" role="listitem" tabindex="0">
               <div class="member-avatar">
                 <div class="avatar-placeholder">PT</div>
@@ -351,7 +347,6 @@
               </div>
             </div>
 
-            <!-- Technical Head Card -->
             <div class="member-card" role="listitem" tabindex="0">
               <div class="member-avatar">
                 <div class="avatar-placeholder">HP</div>
@@ -395,7 +390,6 @@
         </div>
       </section>
 
-      <!-- Join Us CTA Section - Similar to Organize section in events -->
       <section class="organize-section" id="join-section">
         <div class="organize-container">
           <div class="organize-content">
@@ -459,54 +453,7 @@
     <script src="js/cursor-effect.js"></script>
     <script src="js/back-to-top.js"></script>
     <script src="js/scroll-progress.js"></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const memberCards = document.querySelectorAll('.member-card');
-
-        memberCards.forEach(card => {
-          card.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              this.click();
-            }
-          });
-
-          card.addEventListener('mouseenter', function () {
-            this.style.transform = 'translateY(-12px) scale(1.02)';
-            this.style.boxShadow = '0 25px 50px rgba(0, 170, 255, 0.2)';
-            this.style.borderColor = 'var(--accent-color)';
-
-            this.style.setProperty('--glow-color', 'rgba(0, 170, 255, 0.3)');
-            this.style.boxShadow = '0 0 30px var(--glow-color), 0 15px 35px rgba(0, 0, 0, 0.2)';
-          });
-
-          card.addEventListener('mouseleave', function () {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.08)';
-            this.style.borderColor = '';
-          });
-
-          card.addEventListener('focus', function () {
-            this.style.outline = '3px solid var(--accent-color)';
-            this.style.outlineOffset = '5px';
-          });
-
-          card.addEventListener('blur', function () {
-            this.style.outline = '';
-          });
-        });
-
-        const socialLinks = document.querySelectorAll('.social-link');
-        socialLinks.forEach(link => {
-          link.addEventListener('click', function () {
-            console.log(`Clicked social link: ${this.getAttribute('aria-label')}`);
-          });
-        });
-      });
-    </script>
-
-    <script src="../js/main.js"></script>
+    <script src="js/about.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
   </body>
 </html>
