@@ -21,12 +21,15 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-   
   </head>
   <body class="hacker-theme">
     <!-- Global Page Loader -->
-    <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div
+      id="global-loader"
+      class="global-loader hidden"
+      aria-live="polite"
+      aria-label="Loading page"
+    >
       <div class="loader-spinner"></div>
       <p class="loader-text">Loading...</p>
     </div>
@@ -43,125 +46,278 @@
 
     <main id="main-content" tabindex="-1">
       <div class="page-transition-wrapper" data-page="contact">
-      <div class="container">
-        <section class="section-header">
-          <h2>Get in Touch</h2>
-          <p style="color: var(--text-dim)">Have a question? We'd love to hear from you.</p>
+        <!-- Hero Section -->
+        <section class="contact-hero">
+          <div class="hero-background">
+            <div class="grid-overlay"></div>
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+          </div>
+          <div class="container">
+            <div class="hero-content">
+              <span class="hero-badge"> <i class="fas fa-paper-plane"></i> Get in Touch </span>
+              <h1 class="hero-title">
+                Let's Build Something <span class="gradient-text">Amazing</span> Together
+              </h1>
+              <p class="hero-description">
+                Have a question, suggestion, or just want to say hi? We're here to help and would
+                love to hear from you.
+              </p>
+            </div>
+          </div>
         </section>
 
-       <div class="contact-container">
-  <div class="contact-box-wrapper">
-    <div class="contact-box">
-      <form id="contact-form">
-        <h3>Send a Message</h3>
+        <!-- Main Contact Section -->
+        <section class="contact-main">
+          <div class="container">
+            <div class="contact-grid">
+              <!-- Contact Form -->
+              <div class="form-section">
+                <div class="form-card">
+                  <div class="form-header">
+                    <h2>Send us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you as soon as possible</p>
+                  </div>
 
-        <div class="input-group">
-          <label for="contact-name">Name</label>
-         
-          <input type="text" id="contact-name" name="name" placeholder="John Doe" required minlength="2" maxlength="50">
+                  <form id="contact-form" class="modern-form">
+                    <div class="form-row">
+                      <div class="input-wrapper">
+                        <label for="contact-name" class="floating-label">
+                          <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input
+                          type="text"
+                          id="contact-name"
+                          name="name"
+                          class="modern-input"
+                          placeholder="John Doe"
+                          required
+                          minlength="2"
+                          maxlength="50"
+                        />
+                        <div class="input-border"></div>
+                        <div class="error-message" id="name-error"></div>
+                      </div>
 
-          <div class="error-message" id="name-error"></div>
-        </div>
+                      <div class="input-wrapper">
+                        <label for="contact-email" class="floating-label">
+                          <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input
+                          type="email"
+                          id="contact-email"
+                          name="email"
+                          class="modern-input"
+                          placeholder="john@example.com"
+                          required
+                        />
+                        <div class="input-border"></div>
+                        <div class="error-message" id="email-error"></div>
+                      </div>
+                    </div>
 
-        <div class="input-group">
-          <label for="contact-email">Email</label>
-         <input type="email" id="contact-email" name="email" placeholder="john@example.com" required>
+                    <div class="input-wrapper">
+                      <label for="contact-message" class="floating-label">
+                        <i class="fas fa-comment-dots"></i> Your Message
+                      </label>
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        class="modern-input modern-textarea"
+                        placeholder="Tell us what's on your mind..."
+                        required
+                        minlength="10"
+                        maxlength="500"
+                        rows="6"
+                      ></textarea>
+                      <div class="input-border"></div>
+                      <div class="char-counter"><span id="char-count">0</span>/500 characters</div>
+                      <div class="error-message" id="message-error"></div>
+                    </div>
 
-          <div class="error-message" id="email-error"></div>
-        </div>
+                    <!-- Honeypot -->
+                    <div class="input-wrapper honeypot-group" style="display: none">
+                      <label for="website" class="sr-only">Website</label>
+                      <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        data-honeypot="true"
+                        autocomplete="off"
+                        tabindex="-1"
+                      />
+                    </div>
 
-        <div class="input-group">
-          <label for="contact-message">Message</label>
-        
-          <textarea
-            id="contact-message"
-            name="message"
-            placeholder="Type your message here..."
-            required
-            minlength="10"
-            maxlength="500"
-          ></textarea>
-                
-          <div class="char-counter">
-            <span id="char-count">0</span>/500
+                    <button type="submit" class="btn-submit-modern">
+                      <span class="btn-text">Send Message</span>
+                      <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                      <div class="btn-glow"></div>
+                    </button>
+
+                    <div
+                      id="form-feedback"
+                      class="feedback-message"
+                      role="status"
+                      aria-live="polite"
+                    ></div>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Contact Info Sidebar -->
+              <div class="info-sidebar">
+                <div class="info-card-new">
+                  <div class="info-icon">
+                    <i class="fas fa-envelope"></i>
+                  </div>
+                  <h3>Email Us</h3>
+                  <p>Drop us an email anytime</p>
+                  <a href="mailto:sayeeygosavi@gmail.com" class="info-link">
+                    sayeeygosavi@gmail.com
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+
+                <div class="info-card-new">
+                  <div class="info-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h3>Location</h3>
+                  <p>Find us at</p>
+                  <span class="info-text">Nashik, Maharashtra</span>
+                </div>
+
+                <div class="info-card-new">
+                  <div class="info-icon">
+                    <i class="fab fa-discord"></i>
+                  </div>
+                  <h3>Join Community</h3>
+                  <p>Connect with us on Discord</p>
+                  <a
+                    href="https://discord.com/invite/your-invite-link"
+                    class="info-link"
+                    target="_blank"
+                  >
+                    Join Discord Server
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+
+                <div class="social-connect">
+                  <h4>Follow Us</h4>
+                  <div class="social-icons">
+                    <a
+                      href="https://github.com/sayeeg-11/Pixel_Phantoms"
+                      target="_blank"
+                      class="social-icon"
+                    >
+                      <i class="fab fa-github"></i>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/pixelphantoms_"
+                      target="_blank"
+                      class="social-icon"
+                    >
+                      <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://discord.com/" target="_blank" class="social-icon">
+                      <i class="fab fa-discord"></i>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/pixel-phantoms/"
+                      target="_blank"
+                      class="social-icon"
+                    >
+                      <i class="fab fa-linkedin"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div class="error-message" id="message-error"></div>
-        </div>
+        <!-- FAQ Section -->
+        <section class="faq-section-new">
+          <div class="container">
+            <div class="faq-header">
+              <span class="section-badge"> <i class="fas fa-question-circle"></i> FAQ </span>
+              <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+              <p>Everything you need to know about Pixel Phantoms</p>
+            </div>
 
-        <!-- Honeypot -->
-        <div class="input-group honeypot-group" style="display:none;">
-          <label for="website" class="sr-only">Website</label>
-          <input type="text" id="website" name="website" autocomplete="off">
-        </div>
+            <div class="faq-grid">
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h3>How can I join Pixel Phantoms?</h3>
+                <p>
+                  You can join by hopping into our Discord server or watching out for our
+                  recruitment drives announced on the Events page. We welcome developers of all
+                  skill levels!
+                </p>
+              </div>
 
-        <button type="submit" class="btn-submit">
-          Send Message <i class="fas fa-paper-plane"></i>
-        </button>
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Is this community beginner friendly?</h3>
+                <p>
+                  Absolutely! Our motto is "From Students, For Students." We have mentorship
+                  programs, workshops, and resources specifically designed for beginners to help you
+                  grow.
+                </p>
+              </div>
 
-        <div id="form-feedback" class="feedback-message" role="status" aria-live="polite"></div>
-      </form>
-    </div>
-  </div>
-</div>
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-code-branch"></i>
+                </div>
+                <h3>Can I contribute to Open Source projects?</h3>
+                <p>
+                  Yes! Check out our GitHub organization or the Projects page to find repositories
+                  looking for contributors. We encourage and support open source contributions.
+                </p>
+              </div>
 
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h3>What kind of events do you organize?</h3>
+                <p>
+                  We organize hackathons, workshops, coding challenges, tech talks, and networking
+                  events. Check our Events page for upcoming activities and past event highlights.
+                </p>
+              </div>
 
-        <div class="info-grid-horizontal">
-          <div class="info-card-modern">
-            <div class="icon-circle"><i class="fas fa-envelope"></i></div>
-            <h4>Email</h4>
-            <a href="mailto:sayeeygosavi@gmail.com">sayeeygosavi@gmail.com</a>
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Are there any competitions or challenges?</h3>
+                <p>
+                  Yes! We regularly host coding competitions, design challenges, and hackathons with
+                  exciting prizes and recognition opportunities for participants.
+                </p>
+              </div>
+
+              <div class="faq-card">
+                <div class="faq-icon">
+                  <i class="fas fa-hands-helping"></i>
+                </div>
+                <h3>How can I get help or mentorship?</h3>
+                <p>
+                  Join our Discord community where experienced members and mentors are always ready
+                  to help. We also have dedicated mentorship programs for focused learning.
+                </p>
+              </div>
+            </div>
           </div>
-
-          <div class="info-card-modern">
-            <div class="icon-circle"><i class="fas fa-map-marker-alt"></i></div>
-            <h4>Location</h4>
-            <p>Nashik, Maharashtra</p>
-          </div>
-
-          <div class="info-card-modern">
-            <div class="icon-circle"><i class="fab fa-discord"></i></div>
-            <h4>Community</h4>
-            <a href="https://discord.com/invite/your-invite-link" class="discord-link" target="_blank" style="color: var(--text-color); text-decoration: none"
-              >Join Discord</a
-            >
-          </div>
-        </div>
+        </section>
       </div>
-
-      <section class="faq-section">
-        <div class="container">
-          <h3
-            style="text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 40px"
-          >
-            Frequently Asked Questions
-          </h3>
-          <div class="faq-container">
-            <details class="faq-item">
-              <summary>How can I join Pixel Phantoms?</summary>
-              <p>
-                You can join by hopping into our Discord server or watching out for our recruitment
-                drives announced on the Events page.
-              </p>
-            </details>
-            <details class="faq-item">
-              <summary>Is this community beginner friendly?</summary>
-              <p>
-                Absolutely! Our motto is "From Students, For Students." We have mentorship programs
-                specifically for beginners.
-              </p>
-            </details>
-            <details class="faq-item">
-              <summary>Can I contribute to Open Source projects?</summary>
-              <p>
-                Yes! Check out our GitHub organization or the Projects page to find repositories
-                looking for contributors.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-    </div>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -169,7 +325,6 @@
     <script>
       renderFooter('');
     </script>
-
 
     <script src="../js/page-transitions.js" defer></script>
     <script src="../js/back-to-top.min.js"></script>
@@ -188,6 +343,5 @@
 
     <script src="js/scroll-progress.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
-
   </body>
 </html>
