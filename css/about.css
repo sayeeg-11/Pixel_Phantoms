@@ -722,6 +722,10 @@ body.light-mode .motto-banner {
   bottom: calc(100% + 10px);
 }
 
+[data-theme="light"] .member-card{
+  background: #ffffff;
+}
+
 /* ===== JOIN SECTION ===== */
 #join-section {
   padding: 80px 20px;
