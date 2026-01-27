@@ -39,8 +39,13 @@
   </head>
 
   <body class="hacker-theme">
-    <!-- Global Page Loader (from main branch) -->
-    <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <!-- Global Page Loader -->
+    <div
+      id="global-loader"
+      class="global-loader hidden"
+      aria-live="polite"
+      aria-label="Loading page"
+    >
       <div class="loader-spinner"></div>
       <p class="loader-text">Loading...</p>
     </div>
@@ -107,7 +112,10 @@
             <div class="organize-content">
               <div class="form-header">
                 <h2>Host an Event</h2>
-                <p>Have an idea for a workshop or hackathon? Share your vision with the community and we'll help bring it to life.</p>
+                <p>
+                  Have an idea for a workshop or hackathon? Share your vision with the community and
+                  we'll help bring it to life.
+                </p>
               </div>
 
               <form id="organize-form" novalidate>
@@ -119,17 +127,19 @@
                       <label for="event-title">
                         Event Title <span class="required-indicator" aria-label="required">*</span>
                       </label>
-                      <input 
-                        type="text" 
-                        id="event-title" 
-                        name="event-title" 
-                        placeholder="e.g. Intro to DevOps" 
-                        required 
-                        aria-required="true" 
-                        aria-describedby="event-title-hint" 
-                        maxlength="100" 
+                      <input
+                        type="text"
+                        id="event-title"
+                        name="event-title"
+                        placeholder="e.g. Intro to DevOps"
+                        required
+                        aria-required="true"
+                        aria-describedby="event-title-hint"
+                        maxlength="100"
                       />
-                      <small id="event-title-hint" class="field-hint">Keep it concise and descriptive</small>
+                      <small id="event-title-hint" class="field-hint"
+                        >Keep it concise and descriptive</small
+                      >
                       <small class="field-error" role="alert"></small>
                     </div>
 
@@ -152,16 +162,18 @@
                     <label for="event-date">
                       Proposed Date <span class="required-indicator" aria-label="required">*</span>
                     </label>
-                    <input 
-                      type="date" 
-                      id="event-date" 
-                      name="event-date" 
-                      required 
-                      aria-required="true" 
-                      aria-describedby="event-date-hint" 
-                      min="" 
+                    <input
+                      type="date"
+                      id="event-date"
+                      name="event-date"
+                      required
+                      aria-required="true"
+                      aria-describedby="event-date-hint"
+                      min=""
                     />
-                    <small id="event-date-hint" class="field-hint">Choose a date at least 2 weeks from today</small>
+                    <small id="event-date-hint" class="field-hint"
+                      >Choose a date at least 2 weeks from today</small
+                    >
                     <small id="event-date-error" class="field-error" role="alert"></small>
                   </div>
 
@@ -169,19 +181,21 @@
                     <label for="event-desc">
                       Description <span class="required-indicator" aria-label="required">*</span>
                     </label>
-                    <textarea 
-                      id="event-desc" 
-                      name="event-desc" 
-                      rows="5" 
-                      placeholder="Describe your event's goals, target audience, and expected outcomes..." 
-                      required 
-                      aria-required="true" 
-                      aria-describedby="event-desc-hint event-desc-counter" 
+                    <textarea
+                      id="event-desc"
+                      name="event-desc"
+                      rows="5"
+                      placeholder="Describe your event's goals, target audience, and expected outcomes..."
+                      required
+                      aria-required="true"
+                      aria-describedby="event-desc-hint event-desc-counter"
                       maxlength="500"
                     ></textarea>
                     <div class="field-meta">
                       <small id="event-desc-hint" class="field-hint">Min. 50 characters</small>
-                      <small id="event-desc-counter" class="char-counter" aria-live="polite">0 / 500</small>
+                      <small id="event-desc-counter" class="char-counter" aria-live="polite"
+                        >0 / 500</small
+                      >
                     </div>
                     <small class="field-error" role="alert"></small>
                   </div>
@@ -192,7 +206,12 @@
                   <i class="fas fa-arrow-right btn-icon"></i>
                 </button>
 
-                <div id="organize-feedback" class="feedback-message" role="status" aria-live="polite"></div>
+                <div
+                  id="organize-feedback"
+                  class="feedback-message"
+                  role="status"
+                  aria-live="polite"
+                ></div>
               </form>
             </div>
 
@@ -213,40 +232,85 @@
       renderFooter('');
     </script>
 
-    <!-- Registration Modal -->
-    <div id="register-modal" aria-hidden="true">
-      <div class="modal-dialog login-card" role="dialog" aria-modal="true" aria-labelledby="register-modal-title">
-        <button class="modal-close" aria-label="Close">&times;</button>
-        <h2 id="register-modal-title" class="form-title">Register for <span id="register-event-title"></span></h2>
-        <form id="register-form" class="register-form">
+    <!-- Registration Modal - FIXED STRUCTURE -->
+    <div id="register-modal" aria-hidden="true" role="dialog">
+      <div
+        class="modal-dialog"
+        role="document"
+        aria-labelledby="register-modal-title"
+        aria-modal="true"
+      >
+        <button class="modal-close" aria-label="Close registration modal" type="button">
+          &times;
+        </button>
+
+        <h2 id="register-modal-title" class="form-title">
+          Register for <span id="register-event-title"></span>
+        </h2>
+
+        <form id="register-form" class="register-form" novalidate>
           <div class="input-group">
-            <label class="required">First Name</label>
-            <input name="firstName" type="text" placeholder="Enter your first name" required />
-            <i class="fas fa-check-circle validation-icon valid-icon"></i>
-            <i class="fas fa-times-circle validation-icon error-icon"></i>
-            <span class="error-message">First name is required</span>
+            <label for="register-firstName" class="required">First Name</label>
+            <input
+              id="register-firstName"
+              name="firstName"
+              type="text"
+              placeholder="Enter your first name"
+              required
+              aria-required="true"
+            />
+            <i class="fas fa-check-circle validation-icon valid-icon" aria-hidden="true"></i>
+            <i class="fas fa-times-circle validation-icon error-icon" aria-hidden="true"></i>
+            <span class="error-message" role="alert">First name is required</span>
           </div>
+
           <div class="input-group">
-            <label>Last Name</label>
-            <input name="lastName" type="text" placeholder="Enter your last name" required />
-            <i class="fas fa-check-circle validation-icon valid-icon"></i>
-            <i class="fas fa-times-circle validation-icon error-icon"></i>
-            <span class="error-message">Last name is required</span>
+            <label for="register-lastName">Last Name</label>
+            <input
+              id="register-lastName"
+              name="lastName"
+              type="text"
+              placeholder="Enter your last name"
+              required
+              aria-required="true"
+            />
+            <i class="fas fa-check-circle validation-icon valid-icon" aria-hidden="true"></i>
+            <i class="fas fa-times-circle validation-icon error-icon" aria-hidden="true"></i>
+            <span class="error-message" role="alert">Last name is required</span>
           </div>
+
           <div class="input-group">
-            <label>Age</label>
-            <input name="age" type="number" min="1" placeholder="Enter your age" required />
-            <i class="fas fa-check-circle validation-icon valid-icon"></i>
-            <i class="fas fa-times-circle validation-icon error-icon"></i>
-            <span class="error-message">Please enter a valid age</span>
+            <label for="register-age">Age</label>
+            <input
+              id="register-age"
+              name="age"
+              type="number"
+              min="1"
+              max="120"
+              placeholder="Enter your age"
+              required
+              aria-required="true"
+            />
+            <i class="fas fa-check-circle validation-icon valid-icon" aria-hidden="true"></i>
+            <i class="fas fa-times-circle validation-icon error-icon" aria-hidden="true"></i>
+            <span class="error-message" role="alert">Please enter a valid age</span>
           </div>
+
           <div class="input-group">
-            <label class="required">Email</label>
-            <input name="email" type="email" placeholder="you@example.com" required />
-            <i class="fas fa-check-circle validation-icon valid-icon"></i>
-            <i class="fas fa-times-circle validation-icon error-icon"></i>
-            <span class="error-message">Please enter a valid email</span>
+            <label for="register-email" class="required">Email</label>
+            <input
+              id="register-email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              aria-required="true"
+            />
+            <i class="fas fa-check-circle validation-icon valid-icon" aria-hidden="true"></i>
+            <i class="fas fa-times-circle validation-icon error-icon" aria-hidden="true"></i>
+            <span class="error-message" role="alert">Please enter a valid email</span>
           </div>
+
           <div class="button-group">
             <button type="button" class="btn-secondary modal-cancel">Cancel</button>
             <button type="submit" class="btn-primary">Register</button>
@@ -254,6 +318,9 @@
         </form>
       </div>
     </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification" role="status" aria-live="polite"></div>
 
     <!-- Scripts -->
     <script src="js/page-transitions.js" defer></script>
