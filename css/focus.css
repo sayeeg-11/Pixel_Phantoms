@@ -1,0 +1,116 @@
+/* =========================================
+   FOCUS AREAS - MODULAR REFACTOR
+   ========================================= */
+
+.focus-areas {
+  padding: 100px 0;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 3-Column Layout for Desktop */
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin: 50px 0;
+}
+
+/* Base Card Styling with Glassmorphism ported from about.css */
+.focus-card {
+  background: var(--card-bg);
+  padding: 35px 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+/* Interactive Top Border Consistency */
+.focus-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), #0088cc);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.focus-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 170, 255, 0.2);
+  border-color: var(--accent-color);
+}
+
+.focus-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Cyberpunk Icon Polish & Glow */
+.focus-icon {
+  font-size: 2.8rem;
+  margin: 0 auto 25px;
+  color: var(--accent-color);
+  transition: all 0.3s ease;
+}
+
+.focus-card:hover .focus-icon {
+  filter: drop-shadow(0 0 15px var(--accent-color));
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Terminal-Style Interaction */
+.focus-link {
+  display: inline-block;
+  margin-top: auto;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-family: var(--font-hud);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.focus-link::after {
+  content: ' _';
+  animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.focus-link:hover {
+  color: #0aff9d; /* Terminal Green */
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   RESPONSIVE OVERRIDES
+   ========================================= */
+
+@media (max-width: 768px) {
+  .focus-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .focus-areas {
+    padding: 60px 0;
+  }
+
+  .focus-card {
+    padding: 25px 20px;
+  }
+}
