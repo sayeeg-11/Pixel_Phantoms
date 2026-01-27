@@ -39,15 +39,16 @@
   </head>
 
   <body class="hacker-theme">
-    <!-- Global Page Loader -->
-     <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-        <div class="loader-spinner"></div>
-        <p class="loader-text">Loading...</p>
+    <!-- Global Page Loader (from main branch) -->
+    <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+      <div class="loader-spinner"></div>
+      <p class="loader-text">Loading...</p>
     </div>
 
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
     </div>
+
     <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-events" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward"></i> Skip to Main Content
@@ -61,90 +62,149 @@
 
     <main id="main-events" tabindex="-1">
       <div class="page-transition-wrapper" data-page="events">
-      <section class="hero events-hero">
-        <h1>Campus Events</h1>
-        <p>Workshops, hackathons, meetups, and more — all in one place.</p>
+        <section class="hero events-hero">
+          <h1>Campus Events</h1>
+          <p>Workshops, hackathons, meetups, and more — all in one place.</p>
 
-        <div id="countdown-section">
-          <h3>Next Big Event Starts In:</h3>
-          <div id="countdown-timer">
-            <div class="time-unit">
-              <span id="days">00</span>
-              <label>Days</label>
+          <div id="countdown-section">
+            <h3>Next Big Event Starts In:</h3>
+            <div id="countdown-timer">
+              <div class="time-unit">
+                <span id="days">00</span>
+                <label>Days</label>
+              </div>
+              <div class="time-unit">
+                <span id="hours">00</span>
+                <label>Hours</label>
+              </div>
+              <div class="time-unit">
+                <span id="minutes">00</span>
+                <label>Mins</label>
+              </div>
+              <div class="time-unit">
+                <span id="seconds">00</span>
+                <label>Secs</label>
+              </div>
             </div>
-            <div class="time-unit">
-              <span id="hours">00</span>
-              <label>Hours</label>
+            <p id="next-event-name" class="highlight-event"></p>
+            <p class="countdown-note">
+              No events scheduled immediately at the moment. Please check back later.
+            </p>
+          </div>
+        </section>
+
+        <section class="content">
+          <div class="events-container" id="events-container">
+            <p class="loading-msg">Loading events...</p>
+          </div>
+
+          <div id="pagination-controls" class="pagination-container"></div>
+        </section>
+
+        <!-- REDESIGNED HOST EVENT FORM SECTION -->
+        <section class="organize-section">
+          <div class="organize-container">
+            <div class="organize-content">
+              <div class="form-header">
+                <h2>Host an Event</h2>
+                <p>Have an idea for a workshop or hackathon? Share your vision with the community and we'll help bring it to life.</p>
+              </div>
+
+              <form id="organize-form" novalidate>
+                <fieldset class="form-fieldset">
+                  <legend class="visually-hidden">Event Details</legend>
+
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="event-title">
+                        Event Title <span class="required-indicator" aria-label="required">*</span>
+                      </label>
+                      <input 
+                        type="text" 
+                        id="event-title" 
+                        name="event-title" 
+                        placeholder="e.g. Intro to DevOps" 
+                        required 
+                        aria-required="true" 
+                        aria-describedby="event-title-hint" 
+                        maxlength="100" 
+                      />
+                      <small id="event-title-hint" class="field-hint">Keep it concise and descriptive</small>
+                      <small class="field-error" role="alert"></small>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="event-type">
+                        Event Type <span class="required-indicator" aria-label="required">*</span>
+                      </label>
+                      <select id="event-type" name="event-type" required aria-required="true">
+                        <option value="">Select type...</option>
+                        <option value="workshop">Workshop</option>
+                        <option value="hackathon">Hackathon</option>
+                        <option value="meetup">Meetup</option>
+                        <option value="webinar">Webinar</option>
+                      </select>
+                      <small class="field-error" role="alert"></small>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="event-date">
+                      Proposed Date <span class="required-indicator" aria-label="required">*</span>
+                    </label>
+                    <input 
+                      type="date" 
+                      id="event-date" 
+                      name="event-date" 
+                      required 
+                      aria-required="true" 
+                      aria-describedby="event-date-hint" 
+                      min="" 
+                    />
+                    <small id="event-date-hint" class="field-hint">Choose a date at least 2 weeks from today</small>
+                    <small id="event-date-error" class="field-error" role="alert"></small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="event-desc">
+                      Description <span class="required-indicator" aria-label="required">*</span>
+                    </label>
+                    <textarea 
+                      id="event-desc" 
+                      name="event-desc" 
+                      rows="5" 
+                      placeholder="Describe your event's goals, target audience, and expected outcomes..." 
+                      required 
+                      aria-required="true" 
+                      aria-describedby="event-desc-hint event-desc-counter" 
+                      maxlength="500"
+                    ></textarea>
+                    <div class="field-meta">
+                      <small id="event-desc-hint" class="field-hint">Min. 50 characters</small>
+                      <small id="event-desc-counter" class="char-counter" aria-live="polite">0 / 500</small>
+                    </div>
+                    <small class="field-error" role="alert"></small>
+                  </div>
+                </fieldset>
+
+                <button type="submit" class="btn-organize" aria-label="Submit event proposal">
+                  <span class="btn-text">Submit Proposal</span>
+                  <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+
+                <div id="organize-feedback" class="feedback-message" role="status" aria-live="polite"></div>
+              </form>
             </div>
-            <div class="time-unit">
-              <span id="minutes">00</span>
-              <label>Mins</label>
-            </div>
-            <div class="time-unit">
-              <span id="seconds">00</span>
-              <label>Secs</label>
+
+            <div class="organize-visual">
+              <img src="assets/host-event.jpg" alt="" role="presentation" loading="lazy" />
+              <div class="visual-overlay">
+                <i class="fas fa-calendar-plus"></i>
+              </div>
             </div>
           </div>
-          <p id="next-event-name" class="highlight-event"></p>
-          <p class="countdown-note">
-            No events scheduled immediately at the moment. Please check back later.
-          </p>
-        </div>
-      </section>
-
-      <section class="content">
-        <div class="events-container" id="events-container">
-          <p class="loading-msg">Loading events...</p>
-        </div>
-
-        <div id="pagination-controls" class="pagination-container"></div>
-      </section>
-
-      <section class="organize-section">
-        <div class="organize-container">
-          <div class="organize-content">
-            <h2>Host an Event</h2>
-            <p>Have an idea for a workshop or hackathon? Submit your proposal!</p>
-            <form id="organize-form">
-              <div class="form-row">
-                <div class="form-group">
-                  <label>Event Title</label>
-                  <input type="text" id="event-title" placeholder="e.g. Intro to DevOps" required />
-                </div>
-                <div class="form-group">
-                  <label>Event Type</label>
-                  <select id="event-type">
-                    <option value="workshop">Workshop</option>
-                    <option value="hackathon">Hackathon</option>
-                    <option value="meetup">Meetup</option>
-                    <option value="webinar">Webinar</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="event-date">Proposed Date</label>
-                <input type="date" id="event-date" name="event-date" required />
-                <small id="event-date-error" class="field-error"></small>
-              </div>
-              <div class="form-group">
-                <label>Description</label>
-                <textarea
-                  id="event-desc"
-                  rows="4"
-                  placeholder="Briefly describe the event goal..."
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn-organize">Submit Proposal</button>
-              <div id="organize-feedback" class="feedback-message"></div>
-            </form>
-          </div>
-          <div class="organize-image">
-            <img src="assets/host-event.jpg" alt="Host an Event Illustration" loading="lazy" />
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </main>
 
     <div id="footer-placeholder"></div>
@@ -195,17 +255,7 @@
       </div>
     </div>
 
-
-    <script src="../js/page-transitions.js" defer></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/cursor-effect.js"></script>
-    <script src="../js/events.js"></script>
-    <script src="../js/back-to-top.js"></script>
-    <script src="../js/scroll-progress.js"></script>
-    
-<script src="../js/main.js"></script>
-
-
+    <!-- Scripts -->
     <script src="js/page-transitions.js" defer></script>
     <script src="js/theme.js"></script>
     <script src="js/cursor-effect.js"></script>
@@ -213,6 +263,6 @@
     <script src="js/back-to-top.js"></script>
     <script src="js/scroll-progress.js"></script>
     <script src="js/keyboard-shortcuts.js"></script>
-
+    <script src="js/main.js"></script>
   </body>
 </html>
