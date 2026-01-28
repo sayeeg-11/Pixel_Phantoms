@@ -5,89 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | AI/ML Protocol</title>
     <link rel="icon" href="../assets/logo.png" />
-
-    <link rel="stylesheet" href="../css/scroll-progress.css" />
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/back-to-top.css" />
     <link rel="stylesheet" href="../css/ai-roadmap.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="../css/home-gsap.min.css" />
+    <link rel="stylesheet" href="../css/style.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
   </head>
+
   <body class="hacker-theme">
-    <!-- Global Page Loader -->
-<div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-  <div class="loader-spinner"></div>
-  <p class="loader-text">Loading...</p>
-</div>
-
-    <div id="scroll-progress-container">
-      <div id="scroll-progress-bar"></div>
-    </div>
-
-    <div id="cursor-highlight"></div>
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js"></script>
-    <script>
-      renderNavbar('../');
-    </script>
+    <script>renderNavbar('../');</script>
 
-    <div class="main-content">
-      <section class="roadmap-header">
-        <div class="header-content">
-          <h1 class="glitch-text" data-text="AI_ML_PROTOCOL">AI_ML_PROTOCOL</h1>
-          <p class="subtitle">v1.0 // DATA_TO_INTELLIGENCE</p>
+    <main class="main-content">
+      <section class="roadmap-header centered-header">
+        <h1 class="glitch-text" data-text="AI_ML_PROTOCOL_v1.0">AI_ML_PROTOCOL_v1.0</h1>
+        <div class="subtitle-container">
+            <p class="subtitle">> Initialize sequence: NEURAL_GENESIS</p>
         </div>
       </section>
 
       <div class="roadmap-wrapper">
         <div class="roadmap-spine"></div>
-
         <div id="roadmap-content" class="roadmap-content">
-          <div class="loading-text">TRAINING_MODEL...</div>
+          <div class="loading-text">SYNCING_NEURAL_LAYERS...</div>
         </div>
       </div>
-    </div>
+    </main>
+
     <style>
       #other-courses {
         margin-top: 70px;
         margin-bottom: 20px;
         padding: 20px 10px;
-        border: 2px solid rgba(0, 170, 255, 0.3);
+        border: 2px solid rgba(163, 0, 255, 0.3); /* Purple tint for AI */
       }
     </style>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/theme-enhanced.js"></script>
+    <script src="../js/ai-roadmap.js"></script>
+
     <section id="other-courses">
       <h2 style="text-align: center; text-decoration: underline; text-decoration-thickness: 1px">
-        Explore-Other-Courses
+        Explore-Other-Protocols
       </h2>
       <div class="skill-path-wrapper">
         <a href="python-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-python" aria-hidden="true"></i>
-          </div>
+          <div class="node-icon"><i class="fab fa-python"></i></div>
           <h4>Python_Mastery</h4>
           <span class="node-level">Lvl 1</span>
         </a>
-
         <a href="react-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-react" aria-hidden="true"></i>
-          </div>
+          <div class="node-icon"><i class="fab fa-react"></i></div>
           <h4>React_Core</h4>
           <span class="node-level">Lvl 2</span>
         </a>
-
         <a href="system-design-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-python" aria-hidden="true"></i>
-          </div>
+          <div class="node-icon"><i class="fas fa-network-wired"></i></div>
           <h4>System_Arch</h4>
           <span class="node-level">Lvl 4</span>
         </a>
@@ -96,17 +73,6 @@
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
-    <script>
-      renderFooter('../');
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/back-to-top.js"></script>
-
-    <script src="../js/ai-roadmap.js"></script>
-    <script src="../js/scroll-progress.js"></script>
-    <script src="../js/main.js"></script>
+    <script>renderFooter('../');</script>
   </body>
 </html>

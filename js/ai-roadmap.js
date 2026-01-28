@@ -1,179 +1,94 @@
 document.addEventListener('DOMContentLoaded', () => {
-    loadRoadmap();
-});
-
-// =======================================================
-// FEATURE 1: Local Storage Completion Tracking Utilities
-// =======================================================
-
-// Retrieves the set of completed module IDs from localStorage
-function getCompletedModules(roadmapKey) {
-    try {
-        const completed = localStorage.getItem(`completedModules_${roadmapKey}`);
-        return completed ? new Set(JSON.parse(completed)) : new Set();
-    } catch (e) {
-        console.error("Could not load completion data from localStorage:", e);
-        return new Set();
-    }
-}
-
-// Saves the set of completed module IDs to localStorage
-function saveCompletedModules(completedSet, roadmapKey) {
-    try {
-        localStorage.setItem(`completedModules_${roadmapKey}`, JSON.stringify(Array.from(completedSet)));
-    } catch (e) {
-        console.error("Could not save completion data to localStorage:", e);
-    }
-}
-
-// =======================================================
-// MAIN ROADMAP LOADING FUNCTION
-// =======================================================
-
-async function loadRoadmap() {
+    initAIRoadmap();
+  });
+  
+  function initAIRoadmap() {
     const container = document.getElementById('roadmap-content');
-    
-    const ROADMAP_KEY = 'ai'; // Define the roadmap key once
-    const completedModules = getCompletedModules(ROADMAP_KEY); // Load progress
-    
-    try {
-        const response = await fetch('../data/roadmaps.json');
-        if (!response.ok) throw new Error('Failed to fetch roadmap data');
-        
-        const data = await response.json();
-        // Use the defined roadmap key
-        const roadmapData = data[ROADMAP_KEY];
-        if (!roadmapData) throw new Error(`Roadmap data for key '${ROADMAP_KEY}' not found.`);
-
-        const phases = roadmapData.phases;
-
-        container.innerHTML = ''; // Clear loading state
-
-        let globalModuleIndex = 0; // To track left/right alternation across phases
-
-        phases.forEach(phase => {
-            // 1. Create Phase Section
-            const phaseBlock = document.createElement('div');
-            phaseBlock.className = 'phase-block';
-
-            // 2. Create Header (e.g., PHASE 01)
-            const header = document.createElement('div');
-            header.className = 'phase-header';
-            header.innerText = phase.title;
-            phaseBlock.appendChild(header);
-
-            // 3. Create Container for Modules
-            const modulesContainer = document.createElement('div');
-            modulesContainer.className = 'modules-container';
-
-            // 4. Create Modules (MODIFIED FOR FEATURE 1)
-            phase.modules.forEach(mod => {
-                const link = document.createElement('a');
-                
-                // Feature 1: Unique ID for Local Storage
-                const moduleId = `${ROADMAP_KEY}-${phase.title.replace(/\s/g, '-')}-${mod.title.replace(/\s/g, '-')}`; 
-                
-                link.className = `module-node ${globalModuleIndex % 2 === 0 ? 'left' : 'right'}`;
-                link.href = mod.link;
-                link.target = "_blank";
-                
-                // Inherit locked status from phase
-                if (phase.status === 'locked') {
-                    link.setAttribute('data-status', 'locked');
-                } else {
-                    link.setAttribute('data-status', 'unlocked');
-                }
-                
-                // Feature 1: Set initial completion class
-                if (completedModules.has(moduleId)) {
-                    link.classList.add('completed');
-                }
-
-                link.innerHTML = `
-                    <h4>${mod.title}</h4>
-                    <p>${mod.desc}</p>
-                `;
-                
-                // Feature 1: Add click listener to toggle completion
-                link.addEventListener('click', (e) => {
-                    if (e.ctrlKey || e.metaKey || e.button === 1) {
-                        return;
-                    }
-                    
-                    e.preventDefault(); 
-                    const isCompleted = link.classList.toggle('completed');
-                    const currentCompleted = getCompletedModules(ROADMAP_KEY);
-
-                    if (isCompleted) {
-                        currentCompleted.add(moduleId);
-                    } else {
-                        currentCompleted.delete(moduleId);
-                    }
-                    saveCompletedModules(currentCompleted, ROADMAP_KEY);
-                    
-                    // Navigate after showing visual feedback
-                    setTimeout(() => {
-                        window.open(mod.link, '_blank');
-                    }, 50); 
-                });
-
-                modulesContainer.appendChild(link);
-                globalModuleIndex++;
-            });
-
-            phaseBlock.appendChild(modulesContainer);
-            container.appendChild(phaseBlock);
-        });
-
-        // Initialize GSAP Animations
-        animateRoadmap();
-
-    } catch (error) {
-        console.error(error);
-        container.innerHTML = `<div style="text-align:center; color:red;">[ERROR] DATA_STREAM_INTERRUPTED: ${error.message}</div>`;
-    }
-}
-
-// =======================================================
-// GSAP ANIMATION FUNCTION (Unchanged)
-// =======================================================
-function animateRoadmap() {
-    if (typeof gsap === 'undefined') return; // Safety check
-    
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate Spine
-    gsap.from('.roadmap-spine', {
-        height: 0,
-        duration: 2,
-        ease: 'power1.inOut'
+    if (!container) return;
+  
+    // Internal data structure to match Python's approach
+    const aiCurriculum = [
+      {
+        title: "PHASE_01: Neural_Foundations",
+        desc: "The language of AI. Python syntax, Linear Algebra, and Statistics.",
+        modules: [
+          { n: "Python Syntax", u: "https://docs.python.org/3/tutorial/" },
+          { n: "Math for ML", u: "https://www.khanacademy.org/math/linear-algebra" },
+          { n: "Statistics & Probability", u: "https://www.khanacademy.org/math/statistics-probability" }
+        ]
+      },
+      {
+        title: "PHASE_02: Data_Engineering",
+        desc: "High-performance computing and data manipulation with NumPy and Pandas.",
+        modules: [
+          { n: "NumPy Matrices", u: "https://numpy.org/doc/stable/user/absolute_beginners.html" },
+          { n: "Pandas Manipulation", u: "https://pandas.pydata.org/docs/user_guide/10min.html" },
+          { n: "Data Visualization", u: "https://matplotlib.org/stable/tutorials/introductory/quick_start.html" }
+        ]
+      },
+      {
+        title: "PHASE_03: Model_Training",
+        desc: "Implementing Regression, Classification, and basic Neural Networks.",
+        modules: [
+          { n: "Scikit-Learn Basics", u: "https://scikit-learn.org/stable/getting_started.html" },
+          { n: "Model Evaluation", u: "https://scikit-learn.org/stable/modules/model_evaluation.html" },
+          { n: "Deep Learning Intro", u: "https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html" }
+        ]
+      },
+      {
+        title: "PHASE_04: Project_Challenges",
+        desc: "Real-world application: Predict prices, classify images, and analyze sentiment.",
+        modules: [
+          { n: "Housing Price Predictor", u: "https://www.kaggle.com/c/house-prices-advanced-regression-techniques" },
+          { n: "Image Classifier", u: "https://www.kaggle.com/c/cifar-10" },
+          { n: "Sentiment Analysis", u: "https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews" }
+        ]
+      }
+    ];
+  
+    container.innerHTML = '';
+  
+    aiCurriculum.forEach((phase, index) => {
+      const side = index % 2 === 0 ? 'left' : 'right';
+      const node = document.createElement('div');
+      node.className = `chapter-node ${side}`;
+  
+      node.innerHTML = `
+              <div class="node-header">
+                  <h3>${phase.title}</h3>
+                  <button class="toggle-btn" onclick="toggleAIModule(this)">+</button>
+              </div>
+              <div class="chapter-details">
+                  <p style="color:#666; font-size:0.9rem; margin-bottom:15px;">${phase.desc}</p>
+                  <div class="module-list">
+                      ${phase.modules.map(m => `
+                          <a href="${m.u}" target="_blank" class="module-link">
+                              <i class="fas fa-brain" style="margin-right:10px; color:var(--ai-purple);"></i> ${m.n}
+                          </a>
+                      `).join('')}
+                  </div>
+              </div>
+          `;
+      container.appendChild(node);
     });
-
-    // Animate Phase Headers
-    gsap.utils.toArray('.phase-header').forEach(header => {
-        gsap.from(header, {
-            scrollTrigger: {
-                trigger: header,
-                start: "top 80%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.6,
-            ease: "back.out(1.7)"
-        });
+  
+    // Aligning GSAP with the Python version's ScrollTrigger
+    gsap.from('.chapter-node', {
+      scrollTrigger: { 
+          trigger: '.roadmap-wrapper', 
+          start: 'top 80%' 
+      },
+      opacity: 0,
+      y: 50,
+      stagger: 0.15,
+      duration: 0.8,
+      ease: 'power2.out',
     });
-
-    // Animate Module Nodes
-    gsap.utils.toArray('.module-node').forEach(node => {
-        gsap.from(node, {
-            scrollTrigger: {
-                trigger: node,
-                start: "top 85%"
-            },
-            scale: 0.8,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out"
-        });
-    });
-}
+  }
+  
+  function toggleAIModule(btn) {
+    const details = btn.parentElement.nextElementSibling;
+    btn.classList.toggle('active');
+    details.classList.toggle('open');
+    btn.innerText = btn.classList.contains('active') ? '×' : '+';
+  }
