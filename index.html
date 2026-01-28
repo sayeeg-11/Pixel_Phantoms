@@ -6,8 +6,6 @@
     <title>Pixel Phantoms | The Future of Tech</title>
     <link rel="icon" href="assets/logo.png" />
 
-    <!-- scroll-buttons.css logic moved to back-to-top.css and share-button.css -->
-    <!-- <link rel="stylesheet" href="css/scroll-buttons.css" /> -->
     <link rel="stylesheet" href="css/style.min.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
     <link rel="stylesheet" href="css/animations.css" /> 
@@ -50,7 +48,6 @@
   <body class="hacker-theme">
     <body class="hacker-theme">
 
-  <!-- Global Page Loader -->
   <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
     <div class="loader-spinner"></div>
      <p class="loader-text">Loading...</p>
@@ -62,7 +59,6 @@
       <div id="scroll-progress-bar"></div>
     </div>
 
-    <!-- SKIP TO CONTENT LINK (ACCESSIBILITY) -->
     <a href="#main-content" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
     </a>
@@ -144,7 +140,7 @@
                 </div>
                 <h3>Programming</h3>
                 <p>Data structures, algorithms, and competitive coding</p>
-                <a href="pages/events.html" class="focus-link">Join Sessions →</a>
+                <a href="events.html" class="focus-link">Join Sessions →</a>
               </div>
 
               <div class="focus-card">
@@ -501,7 +497,6 @@
           </div>
         </section>
 
-        <!-- QUICK STATS WIDGET FOR HOME PAGE -->
         <section class="quick-stats-widget" id="home-quick-stats">
           <div class="widget-header">
             <h2 class="widget-title"><i class="fas fa-chart-line"></i> COMMUNITY SNAPSHOT</h2>
@@ -529,7 +524,7 @@
             <div
               class="stat-card"
               id="upcoming-events-card"
-              onclick="window.location.href = 'pages/events.html'"
+              onclick="window.location.href = 'events.html'"
             >
               <div class="stat-icon">
                 <i class="fas fa-calendar-alt"></i>
@@ -728,7 +723,6 @@
       });
     </script>
 
-    <!-- Your Remind_Me behavior -->
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const remindButtons = document.querySelectorAll('.seminar-card .btn-sm');
@@ -748,8 +742,6 @@
         });
       });
     </script>
-
-    <!--script src="js/feedback.js"></script>-->
 
     <script src="js/scroll-progress.js"></script>
 
@@ -792,6 +784,25 @@
     <script src="js/page-transitions.js" defer></script>
     <script src="js/feedback-modal.js" defer></script>
     <script src="js/keyboard-shortcuts.js" defer></script>
+
+    <script>
+      window.addEventListener('load', function() {
+        const fixEvents = () => {
+          // Fix links if JS overwrote them with 'events.html'
+          const hackBtn = document.querySelector('.hackathon-spotlight .btn-hollow');
+          if (hackBtn && hackBtn.getAttribute('href') === 'pages/events.html') {
+            hackBtn.href = "events.html";
+          }
+          // Also check other event links
+          document.querySelectorAll('a[href="pages/events.html"]').forEach(a => {
+            a.href = "events.html";
+          });
+        };
+        // Run immediately and after delay to catch async updates
+        fixEvents();
+        setTimeout(fixEvents, 1500);
+      });
+    </script>
 
     <script>
       const currentPage = location.pathname.split('/').pop();

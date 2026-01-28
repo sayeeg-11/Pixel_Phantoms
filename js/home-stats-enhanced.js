@@ -48,7 +48,8 @@ class HomeStatsEnhanced {
         }
         
         if (eventsCard) {
-            eventsCard.addEventListener('click', () => window.location.href = 'pages/events.html');
+            // FIXED: Point to 'events.html' in the root directory, not 'pages/events.html'
+            eventsCard.addEventListener('click', () => window.location.href = 'events.html');
         }
         
         if (contributionsCard) {
