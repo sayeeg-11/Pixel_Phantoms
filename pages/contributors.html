@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="../css/animations.css" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- GitHub Contribution Calendar -->
   <link rel="stylesheet" href="https://unpkg.com/github-calendar@2.3.2/dist/github-calendar-responsive.css" />
 </head>
 
@@ -30,22 +28,18 @@
     <div id="scroll-progress-bar"></div>
   </div>
 
-  <!-- Skip to Content -->
   <a href="#main-contributors" class="skip-to-content" id="skip-link">
     <i class="fas fa-forward"></i> Skip to Main Content
   </a>
 
-  <!-- Navbar -->
   <div id="navbar-placeholder"></div>
   <script src="../js/navbar.js"></script>
   <script>
     renderNavbar('../');
   </script>
 
-  <!-- ================= MAIN CONTENT ================= -->
   <main class="main-content" id="main-contributors" tabindex="-1">
     <div class="page-transition-wrapper" data-page="contributors">
-      <!-- Page Header -->
       <section class="contributors-section">
         <header class="section-header">
           <h1>Our Amazing Contributors</h1>
@@ -55,7 +49,6 @@
           </p>
         </header>
 
-        <!-- ================= STATS ================= -->
         <section class="stats-grid" aria-label="Project contribution statistics">
           <div class="stats-card">
             <h3>Total Contributors</h3>
@@ -106,7 +99,6 @@
           </div>
         </section>
 
-        <!-- ================= PROJECT LEAD ================= -->
         <section class="lead-container" aria-labelledby="project-lead">
           <h2 id="project-lead">Project Leadership</h2>
 
@@ -130,7 +122,6 @@
               </a>
             </div>
 
-            <!-- GitHub Stats Section -->
             <div class="github-stats">
               <div class="stat-item">
                 <span class="stat-icon">📦</span>
@@ -149,7 +140,6 @@
               </div>
             </div>
 
-            <!-- GitHub Contribution Calendar -->
             <div class="contribution-section">
               <h4>Contribution Activity</h4>
               <div class="github-calendar" data-username="sayeeg-11">
@@ -157,7 +147,6 @@
               </div>
             </div>
 
-            <!-- Recent Repos -->
             <div class="recent-repos">
               <h4>Recent Projects</h4>
               <div class="repo-list"></div>
@@ -165,14 +154,13 @@
           </div>
         </section>
 
-        <!-- ================= CONTRIBUTORS ================= -->
         <section aria-labelledby="top-contributors">
           <h2 id="top-contributors">Top Contributors</h2>
-          <div class="contributors-grid" id="contributors-grid" role="list" aria-label="Top contributors" aria-live="polite"></div>
+          <div class="contributors-grid" id="contributors-grid" role="list" aria-label="Top contributors"
+            aria-live="polite"></div>
           <div id="pagination-controls" class="pagination-container"></div>
         </section>
 
-        <!-- ================= ACTIVITY ================= -->
         <section aria-labelledby="recent-activity">
           <h2 id="recent-activity" class="mt-large">Recent Contribution Activity</h2>
           <div class="activity-container" id="activity-list">
@@ -182,44 +170,100 @@
           </div>
         </section>
 
-        <!-- ================= CTA ================= -->
+        <!-- ================= CONTRIBUTION ROADMAP CTA ================= -->
         <section class="contribute-cta" aria-labelledby="contribute">
           <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
-          <p class="text-center">Join our open-source community and help shape Pixel Phantoms.</p>
+          <p class="roadmap-intro">
+            Follow this <strong>roadmap</strong> to make your first contribution to Pixel Phantoms.
+          </p>
 
-          <div class="steps-grid">
-            <div class="step-card">
-              <i class="fas fa-clipboard-list"></i>
-              <h3>Create an Issue</h3>
-              <p>Describe your idea or bug clearly.</p>
-            </div>
-            <div class="step-card">
-              <i class="fab fa-github-alt"></i>
-              <h3>Fork the Repo</h3>
-              <p>Get your own copy of the project.</p>
-            </div>
-            <div class="step-card">
-              <i class="fas fa-code-branch"></i>
-              <h3>Create a Branch</h3>
-              <p>Work safely on a feature branch.</p>
-            </div>
-            <div class="step-card">
-              <i class="fas fa-code"></i>
-              <h3>Make Changes</h3>
-              <p>Implement improvements or fixes.</p>
-            </div>
-            <div class="step-card">
-              <i class="fas fa-upload"></i>
-              <h3>Submit a PR</h3>
-              <p>Open a pull request for review.</p>
+          <div class="contribution-roadmap">
+            <div class="roadmap-container">
+              <!-- SVG Horizontal Wavy Path -->
+              <div class="roadmap-path" aria-hidden="true">
+                <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#0099cc;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#00d9ff;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+
+                  <!-- Main horizontal wavy path - smooth sine wave -->
+                  <path class="road-path" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
+
+                  <!-- Animated dashed center line -->
+                  <path class="road-dashes" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
+                </svg>
+              </div>
+
+              <!-- Step 1: Create an Issue -->
+              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 1: Create an Issue">
+                <div class="step-node">
+                  <span class="step-number">1</span>
+                  <i class="fas fa-clipboard-list step-icon"></i>
+                </div>
+                <div class="step-content">
+                  <h3 class="step-title">Create an Issue</h3>
+                  <p class="step-description">Describe your idea or bug clearly.</p>
+                </div>
+              </div>
+
+              <!-- Step 2: Fork the Repo -->
+              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 2: Fork the Repository">
+                <div class="step-node">
+                  <span class="step-number">2</span>
+                  <i class="fab fa-github-alt step-icon"></i>
+                </div>
+                <div class="step-content">
+                  <h3 class="step-title">Fork the Repo</h3>
+                  <p class="step-description">Get your own copy of the project.</p>
+                </div>
+              </div>
+
+              <!-- Step 3: Create a Branch -->
+              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 3: Create a Branch">
+                <div class="step-node">
+                  <span class="step-number">3</span>
+                  <i class="fas fa-code-branch step-icon"></i>
+                </div>
+                <div class="step-content">
+                  <h3 class="step-title">Create a Branch</h3>
+                  <p class="step-description">Work safely on a feature branch.</p>
+                </div>
+              </div>
+
+              <!-- Step 4: Make Changes -->
+              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 4: Make Changes">
+                <div class="step-node">
+                  <span class="step-number">4</span>
+                  <i class="fas fa-code step-icon"></i>
+                </div>
+                <div class="step-content">
+                  <h3 class="step-title">Make Changes</h3>
+                  <p class="step-description">Implement improvements or fixes.</p>
+                </div>
+              </div>
+
+              <!-- Step 5: Submit a PR -->
+              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 5: Submit a Pull Request">
+                <div class="step-node">
+                  <span class="step-number">5</span>
+                  <i class="fas fa-upload step-icon"></i>
+                </div>
+                <div class="step-content">
+                  <h3 class="step-title">Submit a PR</h3>
+                  <p class="step-description">Open a pull request for review.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-      </div>
+    </div>
     </section>
   </main>
 
-  <!-- ================= MODAL ================= -->
   <div id="contributor-modal" class="modal-overlay" aria-hidden="true">
     <div class="modal-container" role="dialog" aria-modal="true">
       <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
@@ -276,7 +320,6 @@
     });
   </script>
 
-  <!-- Scripts -->
   <script src="../js/page-transitions.js" defer></script>
   <script src="../js/back-to-top.js"></script>
   <script src="../js/contributors.js"></script>
