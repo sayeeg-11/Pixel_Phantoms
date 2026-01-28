@@ -1,8 +1,10 @@
+/* ai-roadmap.css */
+
 /* --- Roadmap Layout Variables --- */
 :root {
     --roadmap-line-color: #333;
     --roadmap-node-bg: #0a0a0a;
-    --roadmap-node-border: #00ff41; /* You can change this to #00ffff for a "Cyber Blue" AI feel */
+    --roadmap-node-border: #00ff41; /* "Cyber Blue" AI feel can be swapped here */
     --roadmap-text-color: #eee;
     --spine-width: 6px;
 }
@@ -227,4 +229,66 @@
         margin-left: 50px; /* Align phase header too */
         margin-right: 0;
     }
+}
+
+/* =========================================
+   FIX: Explore Other Courses Layout
+   ========================================= */
+
+.skill-path-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  padding: 20px;
+  background: var(--roadmap-node-bg); /* Use existing BG var */
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.skill-node:hover {
+  transform: translateY(-5px);
+  border-color: var(--roadmap-node-border); /* Use green theme color */
+  box-shadow: 0 8px 20px rgba(0, 255, 65, 0.15);
+}
+
+.node-icon {
+  font-size: 2.5rem;
+  color: #888;
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.skill-node:hover .node-icon {
+  color: var(--roadmap-node-border); /* Use green theme color */
+}
+
+.skill-node h4 {
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.node-level {
+  font-size: 0.75rem;
+  color: #888;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

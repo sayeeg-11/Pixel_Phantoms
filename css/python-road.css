@@ -1,4 +1,4 @@
-/* python-road.css - Advanced Flex-Stability Version */
+/* python-road.css - FIXED YELLOW GLOW VERSION */
 :root {
   --py-blue: #3776ab;
   --py-yellow: #ffd43b;
@@ -15,7 +15,7 @@
   max-width: 1100px;
   margin: 60px auto;
   padding: 40px 20px;
-  min-height: 100vh; /* Ensures container doesn't collapse */
+  min-height: 100vh;
 }
 
 /* Stable Centered Spine */
@@ -36,7 +36,7 @@
   z-index: 0;
 }
 
-/* FLEX ENGINE - This replaces Floats to prevent disappearing phases */
+/* FLEX ENGINE */
 .roadmap-content {
   display: flex;
   flex-direction: column;
@@ -57,7 +57,8 @@
   z-index: 1;
   transition:
     transform 0.3s ease,
-    border-color 0.3s ease;
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 /* Alternating Alignment */
@@ -70,12 +71,14 @@
   text-align: left;
 }
 
+/* --- FORCE YELLOW HOVER FOR CHAPTER NODES --- */
 .chapter-node:hover {
-  border-color: var(--py-blue);
+  border-color: #ffd43b !important;
   transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 212, 59, 0.4) !important; /* Strong Yellow Glow */
 }
 
-/* Connecting Dots on the Spine */
+/* Connecting Dots */
 .chapter-node::after {
   content: '';
   position: absolute;
@@ -93,7 +96,7 @@
   left: -13.5%;
 }
 
-/* Professional Header & Toggle */
+/* Headers & Toggle */
 .node-header {
   display: flex;
   justify-content: space-between;
@@ -161,9 +164,10 @@
   transition: 0.3s;
 }
 
+/* --- FORCE YELLOW HOVER FOR LINKS --- */
 .module-link:hover {
   color: #fff;
-  background: rgba(55, 118, 171, 0.2);
+  background: rgba(255, 212, 59, 0.15) !important;
   padding-left: 20px;
 }
 
@@ -184,4 +188,69 @@
   .chapter-node.right::after {
     left: -34px;
   }
+}
+
+/* =========================================
+   FIX: Explore Other Courses Layout (Python Theme)
+   ========================================= */
+
+.skill-path-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  padding: 20px;
+  background: var(--glass);
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  position: relative;
+}
+
+/* --- FORCE YELLOW HOVER FOR COURSE CARDS --- */
+.skill-node:hover {
+  transform: translateY(-5px);
+  border-color: #ffd43b !important;
+  box-shadow: 0 8px 25px rgba(255, 212, 59, 0.4) !important; /* Strong Yellow Glow */
+}
+
+.node-icon {
+  font-size: 2.5rem;
+  color: var(--py-blue);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+/* --- FORCE YELLOW ICON HOVER --- */
+.skill-node:hover .node-icon {
+  color: #ffd43b !important;
+}
+
+.skill-node h4 {
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.node-level {
+  font-size: 0.75rem;
+  color: #888;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }

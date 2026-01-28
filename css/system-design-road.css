@@ -179,3 +179,65 @@
     left: -34px;
   }
 }
+
+/* =========================================
+   FIX: Explore Other Courses Layout
+   ========================================= */
+
+.skill-path-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  padding: 20px;
+  background: var(--glass-bg);
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.skill-node:hover {
+  transform: translateY(-5px);
+  border-color: var(--sys-purple);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.15);
+}
+
+.node-icon {
+  font-size: 2.5rem;
+  color: var(--sys-indigo);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.skill-node:hover .node-icon {
+  color: var(--sys-purple);
+}
+
+.skill-node h4 {
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.node-level {
+  font-size: 0.75rem;
+  color: #888;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
