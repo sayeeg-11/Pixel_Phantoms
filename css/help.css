@@ -266,15 +266,18 @@
 /* === HELP PAGE HORIZONTAL TEAM INTRO === */
 
 .team-intro {
-  position: absolute;
-  top: 20px;
+  position: relative;
+  top: px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   text-align: center;
+  margin-top: 0;       /* Reduce extra top space */
+  padding-top: 0;      /* Ensure no padding pushing it down */
 
   /* Match the help-card / project theme */
   background: var(--card-bg);
+  background-color: #d7e9fd;
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   padding: 18px 40px;
@@ -296,13 +299,15 @@
 
 [data-theme='dark'] .team-intro {
   background: var(--card-bg);
+ 
 }
 
 .team-intro h2 {
-  margin: 0 0 6px 0;
+  margin: 0 0 3px 0;
   font-size: 1.6rem;
   color: var(--text-primary);
   font-weight: 700;
+  
 }
 
 .team-intro p {
@@ -418,14 +423,40 @@
   transition: all var(--transition-speed) ease;
 }
 
-.team-card:hover .team-avatar {
+.team-card:hover{
   border-color: var(--accent-color);
   transform: scale(1.1) rotate(5deg);
 }
 
-.team-card:hover .team-avatar i {
-  color: white;
+
+
+/* Default icon colors */
+[data-theme='light'] .team-avatar i {
+  color: rgba(0, 170, 255, 0.3); /* light faded blue */
+}
+
+[data-theme='dark'] .team-avatar i {
+  color: var(--accent-color); /* keep your dark mode accent */
+}
+
+/* Hover effect for light mode */
+[data-theme='light'] .team-card:hover .team-avatar i,
+[data-theme='light'] .team-avatar:hover i {
+  color: var(--accent-color); /* full accent on hover */
   transform: scale(1.1);
+}
+
+/* Hover effect for dark mode */
+[data-theme='dark'] .team-card:hover .team-avatar i,
+[data-theme='dark'] .team-avatar:hover i {
+  color: white; /* keep your previous dark hover */
+  transform: scale(1.1);
+}
+
+/* Avatar container hover (all themes) */
+.team-card:hover .team-avatar {
+  border-color: var(--accent-color);
+  transform: scale(1.1) rotate(5deg);
 }
 
 .team-card h3 {
