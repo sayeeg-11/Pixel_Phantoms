@@ -1132,9 +1132,10 @@ body.light-mode .motto-banner {
 
 /* footer reset */
 footer {
-  all: unset;
   display: block;
+  width: 100%;
 }
+
 
 
 /* ===== DARK MODE STYLES ===== */

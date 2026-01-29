@@ -182,6 +182,10 @@ html {
   width: 100%;
 }
 
+main {
+  padding-bottom: 140px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -1895,6 +1899,8 @@ body.mobile-menu-open {
   position: relative;
   overflow: hidden;
   font-family: var(--font-primary);
+  align-items: center;
+  justify-content: center;
 }
 
 .site-footer::before {
@@ -2220,11 +2226,15 @@ body.mobile-menu-open {
   background: rgba(0, 0, 0, 0.2);
   animation: fadeIn 0.8s ease-out 0.8s both;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-bottom-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
@@ -2233,9 +2243,12 @@ body.mobile-menu-open {
   margin-right: 0;
   padding: 0 2rem;
   box-sizing: border-box;
+
 }
 
 .copyright {
+  align-items: center;
+  display: flex;
   font-size: 0.9rem;
   color: var(--footer-text-secondary);
   margin: 0;
@@ -2244,8 +2257,9 @@ body.mobile-menu-open {
 
 .footer-bottom-links {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 .bottom-link {
@@ -2532,6 +2546,7 @@ body.mobile-menu-open {
 @media (max-width: 1024px) {
   .site-footer {
     padding: 2rem 0 0;
+    align-items: center;
   }
 
   .footer-content {

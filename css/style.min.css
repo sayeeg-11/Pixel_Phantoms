@@ -1573,7 +1573,9 @@ html {
     .footer-content {
         grid-template-columns: 1fr;
         gap: 2.5rem;
-        padding: 0 1.5rem
+        padding: 0 1.5rem;
+    
+        
     }
 
     .footer-links {
@@ -1582,9 +1584,11 @@ html {
     }
 
     .footer-bottom-content {
-        flex-direction: column;
+        flex-direction: row;
         text-align: center;
-        padding: 0 1.5rem
+        padding: 0 1.5rem;
+        justify-content: center ;
+        text-align: center;
     }
 
     .footer-brand {
@@ -1816,7 +1820,7 @@ main:focus {
 #feedback-widget {
     position: fixed !important;
     left: 12px !important;
-    bottom: 12px !important;
+    bottom: 20px !important;
     right: auto !important;
     z-index: 999999 !important
 }
@@ -2072,7 +2076,8 @@ main:focus {
     width: 100%;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden
+    overflow: hidden;
+    
 }
 
 .site-footer::before {
@@ -2089,7 +2094,8 @@ main:focus {
 .footer-container,
 .footer-content {
     max-width: 100%;
-    box-sizing: border-box
+    box-sizing: border-box;
+    
 }
 
 .footer-container {
@@ -2106,7 +2112,8 @@ main:focus {
     margin-left: 0;
     margin-right: 0;
     padding: 0 2rem;
-    animation: slideUpFade .8s ease-out
+    animation: slideUpFade .8s ease-out;
+    
 }
 
 .footer-brand {
@@ -3431,3 +3438,28 @@ main:focus {
     visibility: visible !important;
     transform: none !important
 }
+
+/* ===== HOME FOOTER FIX ===== */
+
+.footer-bottom-content {
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 0.4rem !important;
+}
+
+.footer-bottom .copyright {
+  font-size: 0.85rem !important;
+}
+
+.footer-bottom .bottom-link {
+  font-size: 0.85rem !important;
+}
+
+.footer-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
