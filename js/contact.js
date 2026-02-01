@@ -1,3 +1,15 @@
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const applyTheme = (theme) => {
+  root.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+};
+applyTheme(localStorage.getItem('theme') || 'dark');
+themeToggle?.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
