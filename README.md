@@ -4,7 +4,6 @@
 
 <div align="center">
 
-
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen)](https://github.com/sayeeg-11/Pixel_Phantoms/blob/main/CONTRIBUTING.md)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/sayeeg-11/Pixel_Phantoms/blob/main/LICENSE)
 [![Open Source](https://img.shields.io/badge/Open%20Source-✓-green.svg)](https://opensource.org/)
@@ -14,19 +13,19 @@
 
 ## 📋 Table of Contents
 
-- 🎯[ Project Overview](#-project-overview)
-- 🌟[ Why This Project Matters](#-why-this-project-matters)
-- 🛠[ Tech Stack](#-tech-stack)
+- 🎯 [ Project Overview](#-project-overview)
+- 🌟 [ Why This Project Matters](#-why-this-project-matters)
+- 🛠  [ Tech Stack](#-tech-stack)
 - 📦 [Installation & Local Setup](#-installation--local-setup)
-- 🔧[ Code Formatting & Linting](#-code-formatting--linting)
+- 🔧 [ Code Formatting & Linting](#-code-formatting--linting)
 - 🤝 [How to Contribute](#-how-to-contribute)
-- 📁[ Project Structure](#-project-structure)
+- 📁 [ Project Structure](#-project-structure)
 - 🎨 [Screenshots & Demo](#-screenshots--demo)
 - 🗺️ [Project Roadmap](#-project-roadmap)
-- 📝[ Issues](#-issues)
+- 📝 [ Issues](#-issues)
 - 📌 [License](#-license)
-- 👥[ Core Committee (2024–25)](#-core-committee-202425)
-- 🔥[ Contributors](#-contributors)
+- 👥 [ Core Committee (2024–25)](#-core-committee-202425)
+- 🔥 [ Contributors](#-contributors)
 - 📫 [Contact](#-contact)
 
 ---
@@ -59,18 +58,28 @@ The **Pixel Phantoms Official Website** serves as the central digital hub for th
 ## 🛠 Tech Stack
 
 ### Core Technologies:
-<p >
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" width="40" title="HTML5" />
-  <strong>HTML5</strong>
 
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="40" title="CSS3" />
-  <strong>CSS3</strong>
-<p>
+| Category | Tools |
+| :--- | :--- |
+| **Core** | HTML5, CSS3, Vanilla JavaScript (ES6+) |
+| **UI & Animation** | Bootstrap, GSAP, AOS, jQuery |
+| **Dev Tooling** | Husky, Lint-staged, Prettier, ESLint |
+| **External APIs** | GitHub REST API, GitHub Calendar |
 
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="40" title="JavaScript" />
-  <strong>JavaScript</strong>
-</p>
+### 🔧 Page Transitions (Issue #519)
+We've added an optional, performant page transition system using CSS + Vanilla JS to improve navigation UX across the site.
+**Highlights:**
+- Fade + subtle slide transitions (300ms default)
+- Respects users' prefers-reduced-motion setting
+- Works without JS (graceful degradation)
+- Optional loading indicator for slow fetches
+**Files added/updated:**
+- `css/animations.css` (new)
+- `js/page-transitions.js` (new)
+- Updated page wrappers: `index.html`, `about.html`, `contact.html`, `events.html`, `pages/*.html`
+- Init added to `js/main.js`
 
+To customize: change `--page-transition-duration` in CSS or pass options to `PageTransitions.init({ duration, type, scrollToTop, showLoadingIndicator })`.
 
 ### Optional Add-ons:
 - **Bootstrap** – Responsive framework
@@ -80,8 +89,37 @@ The **Pixel Phantoms Official Website** serves as the central digital hub for th
 
 ---
 
-## �️ Event View Tracking
+## System Architecture
 
+```mermaid
+graph TD
+    subgraph Browser_Storage [Persistence Layer]
+        A[(Local Storage)]
+    end
+
+    subgraph Logic [JavaScript Modules]
+        B[events.js - View Counter] --> A
+        C[contributors.js - GitHub API] -- Cache --> A
+        D[theme.js - Dark Mode] --> A
+        E[contact.js - Spam Protection] --> A
+    end
+
+    subgraph UI [HTML/CSS View]
+        F[Landing Page]
+        G[Events Gallery]
+        H[Contributor Wall]
+    end
+
+    F --> D
+    G --> B
+    H --> C
+```
+
+---
+
+## ⚙️ Core Logic & Integration
+
+### �️ Event View Tracking
 Our events page features a **client-side view counter** that tracks event popularity:
 
 **How It Works:**
@@ -104,6 +142,49 @@ Our events page features a **client-side view counter** that tracks event popula
 }
 ```
 
+### � GitHub Integration
+The contributors page now features **live GitHub integration** to showcase team member activity and contributions!
+
+#### 📊 Contributor Stats
+- **Public Repos:** Displays total public repositories
+- **Followers & Following:** Shows GitHub network stats
+- **Cached Data:** Results cached for 24 hours in localStorage
+- **Rate Limiting:** 60 API requests/hour (unauthenticated)
+- **Graceful Fallbacks:** Shows cached data if API limits are exceeded
+
+#### 📈 Contribution Graph
+- **Yearly Heatmap:** Powered by [github-calendar](https://github.com/IonicaBizau/github-calendar) library
+- **Responsive Design:** Mobile-friendly contribution visualization
+- **Activity Insights:** See daily contribution patterns at a glance
+
+#### 🔧 Adding New Contributors
+To display GitHub stats for a contributor:
+1. Add `data-github="username"` attribute to contributor card
+2. Replace `username` with their actual GitHub username
+3. Stats will automatically populate on page load
+
+```html
+<div class="contributor-card" data-github="SujalTripathi">
+  <!-- Stats auto-populate here -->
+</div>
+```
+
+#### ⚡ Technical Details
+- Uses **GitHub REST API** (no authentication required for public data)
+- Fetches: repos, followers, following, recent projects
+- **Error Handling:** Network failures, rate limits, missing profiles
+- **Performance:** Parallel API requests with caching strategy
+
+---
+
+## 🛡️ Security & Performance
+
+- The contact form includes a hidden honeypot field named `website` (bots often fill this).
+- Client-side rate limiting is enabled (5 seconds between submissions) using `localStorage`.
+- No server configuration or API keys are required.
+
+**Testing:** Fill the hidden `website` field or submit repeatedly to see the "Spam detected" and rate limit messages.
+
 ---
 
 ## �📦 How to Install & Run Locally
@@ -116,55 +197,45 @@ Our events page features a **client-side view counter** that tracks event popula
 - 💡 **VS Code** with Live Server extension (Recommended)
 
 ### Step-by-Step Setup
-
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/sayeeg-11/Pixel_Phantoms.git
    cd Pixel_Phantoms
+   ```
 2. **Install Dependencies (Recommended for contributors)**
     ```bash
     npm install
+    ```
 **Run the Website Locally**
 
-✅ Option 1: Live Server (Recommended)
+**✅ Option 1: Live Server (Recommended)**
+1. Open project in VS Code
+2. Right-click index.html
+3. Select "Open with Live Server"
+4. Access at  **`http://127.0.0.1:5500/`**
 
-Open project in VS Code
+**⚠️ Option 2: Direct Browser Access**
+1. Open `index.html` directly in browser
+> Note: Some JavaScript features may not work due to CORS
 
-Right-click index.html
-
-Select "Open with Live Server"
-
-Access at  **http://127.0.0.1:5500/**
-
-⚠️ Option 2: Direct Browser Access
-
-Open index.html directly in browser
-
-Note: Some JavaScript features may not work due to CORS
-
-<hr>
-
-## 🔧 Code Formatting & Linting
+### 🔧 Code Formatting & Linting
 This project uses automated tools to maintain code quality:
 **Available Commands:**
-```bash
-# Formatting
-
+#### Formatting
+```
 npm run format          # Format all files
 npm run format:check    # Check formatting without changes
-
-# Linting
+```
+#### Linting
+```
 npm run lint           # Check for linting issues
 npm run lint:fix       # Fix linting issues automatically
 ```
 
 **Pre-commit Hooks:**
-
-🛡️ Husky and lint-staged automatically run checks before commits
-
-🔒 Commits are blocked if formatting/linting checks fail
-
-✅ Ensures consistent code quality across all contributions
+* 🛡️ Husky and lint-staged automatically run checks before commits
+* 🔒 Commits are blocked if formatting/linting checks fail
+* ✅ Ensures consistent code quality across all contributions
 
 <hr>
 
@@ -172,38 +243,34 @@ npm run lint:fix       # Fix linting issues automatically
 We welcome all contributions – design updates, animations, UI fixes, new pages, and more!
 
 **Contribution Workflow:**
-
 Before Starting:
-
-Create an Issue describing your proposed change
-
-Wait for admin to assign the issue to you
-
-Discuss implementation details if needed
+1. Create an Issue describing your proposed change
+2. Wait for admin to assign the issue to you
+3. Discuss implementation details if needed
 
 **Development Steps:**
-
-```bash
-# 1. Fork the repository
-# 2. Clone your fork
+### 1. Fork the repository
+### 2. Clone your fork
+```
 git clone https://github.com/your-username/pixel-phantoms-website.git
-
-# 3. Create feature branch
+```
+### 3. Create feature branch
+```
 git checkout -b feature-name
-
-# 4. Make changes and commit
+```
+### 4. Make changes and commit
+```
 git commit -m "Add: short feature description"
-
-# 5. Push to your fork
+```
+### 5. Push to your fork
+```
 git push origin feature-name
 ```
+
 **Submit Pull Request:**
-
-Open a Pull Request from your branch
-
-Reference the related issue
-
-Wait for review and feedback
+1. Open a Pull Request from your branch
+2. Reference the related issue
+3. Wait for review and feedback
 
 **👉 Detailed guidelines: CONTRIBUTING.md**
 <hr>
@@ -215,72 +282,37 @@ Wait for review and feedback
   <p>Click to view the project structure</p>
 </summary>
 
-
-```
+```text
 pixel-phantoms-website/
 │
-├── index.html
-├── about.html
-├── contact.html
-├── team.html
-├── events.html
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
-├── LICENSE
-├── README.md
+├── index.html              <-- Main Landing Page
+├── about.html              <-- About Us Page
+├── contact.html            <-- Contact Form (Logic: js/contact.js)
+├── events.html             <-- Events Gallery (Logic: js/events.js)
 │
-├── assets/
-│   ├── demo.png
-│   ├── host-event.jpg
-│   └── logo.png
+├── pages/                  <-- Secondary Pages
+│   ├── community.html      <-- Logic: js/community.js
+│   ├── contributors.html   <-- Logic: js/contributors.js
+│   ├── gallery.html        <-- Logic: js/gallery.js
+│   ├── join-us.html        <-- Logic: js/join-us.js
+│   └── projects.html       <-- Logic: js/projects.js
 │
-├── css/
-│   ├── style.css
-│   ├── home-gsap.css
-│   ├── back-to-top.css
-│   ├── community.css
-│   ├── contact.css
-│   ├── contributors.css
-│   ├── events.css
-│   ├── gallery.css
-│   ├── help.css
-│   ├── join-us.css
-│   ├── privacy.css
-│   ├── projects.css
-│   └── terms.css
+├── js/                     <-- Core Logic & Modules
+│   ├── main.js             <-- Global Init (Transitions & Orchestration)
+│   ├── theme.js            <-- Dark/Light Mode Management
+│   ├── navbar.js           <-- Navigation & Mobile Menu logic
+│   ├── page-transitions.js <-- Smooth Page Swapping (Issue #519)
+│   └── ...
+│
+├── css/                    <-- Component-specific Styling
+│   ├── style.css           <-- Global Styles
+│   ├── animations.css      <-- Transitions & Keyframes
+│   └── ...
 │
 ├── data/
-│   └── events.json
+│   └── events.json         <-- Backend-simulated Event Data
 │
-├── js/
-│   ├── back-to-top.js
-│   ├── community.js
-│   ├── contact.js
-│   ├── contributors.js
-│   ├── events.js
-│   ├── footer.js
-│   ├── gallery.js
-│   ├── help.js
-│   ├── home-gsap.js
-│   ├── home-leaderboard.js
-│   ├── join-us.js
-│   ├── main.js
-│   ├── navbar.js
-│   ├── privacy.js
-│   ├── projects.js
-│   ├── scripts.js
-│   ├── terms.js
-│   └── theme.js
-│
-└── pages/
-    ├── community.html
-    ├── contributors.html
-    ├── gallery.html
-    ├── help.html
-    ├── join-us.html
-    ├── privacy.html
-    ├── projects.html
-    └── terms.html
+└── assets/                 <-- Images, SVGs, and Branding
 ```
 </details>
 
@@ -350,91 +382,31 @@ Have an idea?
 
 ---
 
-## 🔧 Page Transitions (Issue #519)
-
-We've added an optional, performant page transition system using CSS + Vanilla JS to improve navigation UX across the site.
-
-Highlights:
-- Fade + subtle slide transitions (300ms default)
-- Respects users' prefers-reduced-motion setting
-- Works without JS (graceful degradation)
-- Optional loading indicator for slow fetches
-
-Files added/updated:
-- `css/animations.css` (new)
-- `js/page-transitions.js` (new)
-- Updated page wrappers: `index.html`, `about.html`, `contact.html`, `events.html`, `pages/*.html`
-- Init added to `js/main.js`
-
-To customize: change `--page-transition-duration` in CSS or pass options to `PageTransitions.init({ duration, type, scrollToTop, showLoadingIndicator })`.
-
----
-
 ## 📌 License
 
 This project is licensed under the **MIT License**.
 See the full license in the [`LICENSE`](LICENSE) file.
 
 ---
-<details>
 
-<summary>
-  <h2>🧑‍💻 Core Committee</h2>
-  <p>Click to view the committee for the batch 2024-25</p>
-</summary>
+## 👥 Core Committee (2024–25)
 
-* **Director:** Prathamesh Wamane
-* **President:** Krishna Shimpi
-* **Vice President:** Pratik Thorat
-* **Technical Head:** Harsh Pawar
-* **Treasurer:** Ayush Patil
-* **Event Head:** Laxmi Shingne
-* **Project Manager:** Krushna Gite
-* **Recruitment Head:** Pallavi Thote
-* **Web Development Lead:** Pushkar Thakare
-* **Design Head:** Shruti Gaikwad
-* **Embedded System Lead:** Diksha Rakibe
-* **Social Media & Branding Head:** Rushabh Pekhale
-* **Media & Publicity Head:** Sarvesh Aher
-* **Mentors:** Sayee Gosavi, Mohit Jagtap
-
-</details>
-
----
-
-## � GitHub Integration
-
-The contributors page now features **live GitHub integration** to showcase team member activity and contributions!
-
-### 📊 Contributor Stats
-- **Public Repos:** Displays total public repositories
-- **Followers & Following:** Shows GitHub network stats
-- **Cached Data:** Results cached for 24 hours in localStorage
-- **Rate Limiting:** 60 API requests/hour (unauthenticated)
-- **Graceful Fallbacks:** Shows cached data if API limits are exceeded
-
-### 📈 Contribution Graph
-- **Yearly Heatmap:** Powered by [github-calendar](https://github.com/IonicaBizau/github-calendar) library
-- **Responsive Design:** Mobile-friendly contribution visualization
-- **Activity Insights:** See daily contribution patterns at a glance
-
-### 🔧 Adding New Contributors
-To display GitHub stats for a contributor:
-1. Add `data-github="username"` attribute to contributor card
-2. Replace `username` with their actual GitHub username
-3. Stats will automatically populate on page load
-
-```html
-<div class="contributor-card" data-github="SujalTripathi">
-  <!-- Stats auto-populate here -->
-</div>
-```
-
-### ⚡ Technical Details
-- Uses **GitHub REST API** (no authentication required for public data)
-- Fetches: repos, followers, following, recent projects
-- **Error Handling:** Network failures, rate limits, missing profiles
-- **Performance:** Parallel API requests with caching strategy
+| Role | Name |
+| :--- | :--- |
+| **Director** | Prathamesh Wamane |
+| **President** | Krishna Shimpi |
+| **Vice President** | Pratik Thorat |
+| **Technical Head** | Harsh Pawar |
+| **Treasurer** | Ayush Patil |
+| **Event Head** | Laxmi Shingne |
+| **Project Manager** | Krushna Gite |
+| **Recruitment Head** | Pallavi Thote |
+| **Web Development Lead** | Pushkar Thakare |
+| **Design Head** | Shruti Gaikwad |
+| **Embedded System Lead** | Diksha Rakibe |
+| **Social Media & Branding Head** | Rushabh Pekhale |
+| **Media & Publicity Head** | Sarvesh Aher |
+| **Mentors** | Sayee Gosavi, Mohit Jagtap |
 
 ---
 
@@ -464,12 +436,4 @@ Thanks to all the amazing contributors who make this project better every day! �
 
 > Let’s build something amazing together! 🚀👻
 
-
-### Security: Contact form spam protection
-
-- The contact form includes a hidden honeypot field named `website` (bots often fill this).
-- Client-side rate limiting is enabled (5 seconds between submissions) using `localStorage`.
-- No server configuration or API keys are required.
-
-**Testing:** Fill the hidden `website` field or submit repeatedly to see the "Spam detected" and rate limit messages.
 
