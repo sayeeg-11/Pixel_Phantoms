@@ -1,90 +1,420 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel Phantoms | Python Mastery Protocol</title>
-    <link rel="icon" href="../assets/logo.png" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/python-road.css" />
-    <link rel="stylesheet" href="../css/home-gsap.min.css" />
-    <link rel="stylesheet" href="../css/style.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body class="hacker-theme">
-    <div id="navbar-placeholder"></div>
-    <script src="../js/navbar.js"></script>
-    <script>
-      renderNavbar('../');
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Python Mastery Protocol</title>
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/python-road.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
 
-    <main class="main-content">
-      <section class="roadmap-header centered-header">
-        <h1 class="glitch-text" data-text="PYTHON_MASTERY_v1.0">PYTHON_MASTERY_v1.0</h1>
-        <p class="subtitle">> Initialize sequence: SCRIPT_TO_SYSTEM</p>
-      </section>
-      <div class="roadmap-wrapper">
-        <div class="roadmap-spine"></div>
-        <div id="roadmap-content" class="roadmap-content">
-          <div class="loading-text">COMPILING_LOGIC...</div>
+<body class="hacker-theme">
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar('../');
+  </script>
+  <section id="python-intro" class="intro-section">
+    <div class="container">
+      <!-- Left Content -->
+      <div class="intro-left">
+        <h2 class="section-title">Python: Introduction & Setup</h2>
+        <p class="section-desc">
+          Discover why Python is the go-to language for web development, data science, automation, AI/ML, and more.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon">💻</span>
+            Installing Python
+          </li>
+          <li class="step-item">
+            <span class="step-icon">🖥️</span>
+            IDEs & Editors: VS Code, PyCharm, Jupyter
+          </li>
+          <li class="step-item">
+            <span class="step-icon">🚀</span>
+            Running Your First Python Program
+          </li>
+        </ul>
+        <a href="#next-section" class="btn-primary">Start Learning</a>
+      </div>
+
+      <!-- Right Animation -->
+      <div class="intro-right">
+        <div class="animation-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python"
+            class="floating-img python-img">
+          <div class="floating-circle circle1"></div>
+          <div class="floating-circle circle2"></div>
+          <div class="floating-circle circle3"></div>
         </div>
       </div>
-    </main>
-    <style>
-      #other-courses {
-        margin-top: 70px;
-        margin-bottom: 20px;
-        padding: 20px 10px;
-        border: 2px solid rgba(0, 170, 255, 0.3);
-      }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/theme-enhanced.js"></script>
-    <script src="../js/python-road.js"></script>
+    </div>
+  </section>
+  <section id="getting-started" class="getting-started-section">
+    <div class="container">
+      <!-- Left Content -->
+      <div class="gs-left">
+        <h2 class="section-title">Getting Started with Python</h2>
+        <p class="section-desc">
+          Follow these simple steps to set up Python and start coding efficiently.
+        </p>
 
-    <section id="other-courses">
-      <h2 style="text-align: center; text-decoration: underline; text-decoration-thickness: 1px">
-        Explore-Other-Courses
-      </h2>
-      <div class="skill-path-wrapper">
-        <a href="react-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-react" aria-hidden="true"></i>
-          </div>
-          <h4>React_Core</h4>
-          <span class="node-level">Lvl 2</span>
-        </a>
+        <ul class="gs-list">
+          <li class="gs-item">
+            <span class="item-icon">💻</span>
+            Installing Python (Windows, Mac, Linux)
+          </li>
+          <li class="gs-item">
+            <span class="item-icon">🛠️</span>
+            IDEs & Editors (VS Code, PyCharm, Jupyter Notebook)
+          </li>
+          <li class="gs-item">
+            <span class="item-icon">▶️</span>
+            Running your first Python program
+          </li>
+          <li class="gs-item">
+            <span class="item-icon">📐</span>
+            Python syntax and conventions
+          </li>
+        </ul>
 
-        <a href="ai-roadmap.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fas fa-robot" aria-hidden="true"></i>
-          </div>
-          <h4>AI_Neural_Nets</h4>
-          <span class="node-level">Lvl 3</span>
-        </a>
-
-        <a href="system-design-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-python" aria-hidden="true"></i>
-          </div>
-          <h4>System_Arch</h4>
-          <span class="node-level">Lvl 4</span>
-        </a>
+        <a href="#python-basics" class="btn-primary">Next: Python Basics</a>
       </div>
-    </section>
-    <div id="footer-placeholder"></div>
-    <script src="../js/footer.js"></script>
-    <script>
-      renderFooter('../');
-    </script>
-  </body>
+    </div>
+  </section>
+
+  <section id="python-basics" class="basics-section">
+    <div class="container">
+      <!-- Left Content -->
+      <div class="basics-left">
+        <h2 class="section-title">Python Basics</h2>
+        <p class="section-desc">
+          Master the fundamental building blocks of Python: variables, data types, operators, and more.
+        </p>
+        <ul class="basics-list">
+          <li class="basics-item">
+            <span class="item-icon">📝</span>
+            Variables and Data Types
+          </li>
+          <li class="basics-item">
+            <span class="item-icon">⚡</span>
+            Operators
+          </li>
+          <li class="basics-item">
+            <span class="item-icon">🔤</span>
+            Strings & String Manipulation
+          </li>
+          <li class="basics-item">
+            <span class="item-icon">📥</span>
+            Input / Output
+          </li>
+          <li class="basics-item">
+            <span class="item-icon">💬</span>
+            Comments & Documentation
+          </li>
+        </ul>
+        <a href="#next-section" class="btn-primary">Next: Control Flow</a>
+      </div>
+
+    </div>
+  </section>
+  <section id="functions-modules" class="functions-modules-section">
+    <div class="container">
+      <!-- Left Content -->
+      <div class="fm-left">
+        <h2 class="section-title">Functions & Modules</h2>
+        <p class="section-desc">
+          Learn how to create reusable code, pass arguments, return values, and use Python’s rich standard libraries.
+        </p>
+
+        <ul class="fm-list">
+          <li class="fm-item">
+            <span class="item-icon">📝</span>
+            Defining and calling functions
+          </li>
+          <li class="fm-item">
+            <span class="item-icon">⚡</span>
+            Arguments and return values
+          </li>
+          <li class="fm-item">
+            <span class="item-icon">λ</span>
+            Lambda functions
+          </li>
+          <li class="fm-item">
+            <span class="item-icon">📦</span>
+            Modules and standard libraries
+          </li>
+        </ul>
+
+        <a href="#control-flow" class="btn-primary">Next: Control Flow</a>
+      </div>
+
+      <!-- Right Animation -->
+      <div class="fm-right">
+        <div class="animation-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1822/1822899.png" alt="Functions & Modules"
+            class="floating-img function-img">
+          <div class="floating-circle circle1"></div>
+          <div class="floating-circle circle2"></div>
+          <div class="floating-circle circle3"></div>
+          <div class="floating-circle circle4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="data-structures" class="data-structures-section">
+    <div class="ds-header">
+      <h2 class="section-title">Data Structures</h2>
+      <p class="section-desc">
+        Master Python collections: lists, tuples, sets, dictionaries, and how to iterate and manipulate them.
+      </p>
+    </div>
+
+    <div class="ds-cards-container">
+      <!-- Card 1: Lists -->
+      <div class="ds-card">
+        <div class="ds-card-icon">📋</div>
+        <h3>Lists</h3>
+        <p>Ordered, mutable collections. Add, remove, and iterate through elements efficiently.</p>
+      </div>
+
+      <!-- Card 2: Tuples -->
+      <div class="ds-card">
+        <div class="ds-card-icon">📌</div>
+        <h3>Tuples</h3>
+        <p>Immutable collections that are lightweight and useful for fixed datasets.</p>
+      </div>
+
+      <!-- Card 3: Sets -->
+      <div class="ds-card">
+        <div class="ds-card-icon">🔗</div>
+        <h3>Sets</h3>
+        <p>Unordered collections with unique elements. Perfect for membership checks and operations.</p>
+      </div>
+
+      <!-- Card 4: Dictionaries -->
+      <div class="ds-card">
+        <div class="ds-card-icon">📚</div>
+        <h3>Dictionaries</h3>
+        <p>Key-value mappings for fast lookups, nested structures, and flexible data storage.</p>
+      </div>
+    </div>
+
+    <a href="#next-section" class="btn-primary">Next: Iteration & Loops</a>
+  </section>
+  <section id="file-handling" class="file-section">
+    <div class="file-header">
+      <h2 class="section-title">File Handling & Exceptions</h2>
+      <p class="section-desc">
+        Learn how to read/write files, work with CSV and JSON, handle exceptions, and create custom errors.
+      </p>
+    </div>
+
+    <div class="file-timeline">
+      <!-- Step 1: Reading Files -->
+      <div class="file-step">
+        <div class="step-icon">📂</div>
+        <div class="step-content">
+          <h3>Reading Files</h3>
+          <p>Open and read files using Python’s <code>open()</code> and context managers.</p>
+        </div>
+      </div>
+
+      <!-- Step 2: Writing Files -->
+      <div class="file-step">
+        <div class="step-icon">✏️</div>
+        <div class="step-content">
+          <h3>Writing Files</h3>
+          <p>Write and append data to files safely using <code>write()</code> or <code>writelines()</code>.</p>
+        </div>
+      </div>
+
+      <!-- Step 3: CSV & JSON -->
+      <div class="file-step">
+        <div class="step-icon">📊</div>
+        <div class="step-content">
+          <h3>CSV & JSON</h3>
+          <p>Use Python’s <code>csv</code> and <code>json</code> modules for structured data handling.</p>
+        </div>
+      </div>
+
+      <!-- Step 4: Exceptions -->
+      <div class="file-step">
+        <div class="step-icon">⚠️</div>
+        <div class="step-content">
+          <h3>Exception Handling</h3>
+          <p>Handle errors with <code>try/except</code> and define custom exceptions for robust code.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="oop" class="oop-section">
+    <div class="oop-header">
+      <h2 class="section-title">Object-Oriented Programming (OOP)</h2>
+      <p class="section-desc">
+        Master classes, objects, attributes, methods, inheritance, polymorphism, encapsulation, and special methods.
+      </p>
+    </div>
+
+    <div class="oop-cards">
+      <!-- Card 1: Classes & Objects -->
+      <div class="oop-card">
+        <div class="card-front">
+          <div class="card-icon">🏛️</div>
+          <h3>Classes & Objects</h3>
+        </div>
+        <div class="card-back">
+          <p>Define classes as blueprints and create objects as instances to encapsulate data and behavior.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Attributes & Methods -->
+      <div class="oop-card">
+        <div class="card-front">
+          <div class="card-icon">🔧</div>
+          <h3>Attributes & Methods</h3>
+        </div>
+        <div class="card-back">
+          <p>Use attributes to store data and methods to define behaviors inside classes.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Inheritance & Polymorphism -->
+      <div class="oop-card">
+        <div class="card-front">
+          <div class="card-icon">🌳</div>
+          <h3>Inheritance & Polymorphism</h3>
+        </div>
+        <div class="card-back">
+          <p>Reuse and extend classes through inheritance; override methods for polymorphic behavior.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Special Methods -->
+      <div class="oop-card">
+        <div class="card-front">
+          <div class="card-icon">⚡</div>
+          <h3>Special Methods</h3>
+        </div>
+        <div class="card-back">
+          <p>Use methods like <code>__init__</code> and <code>__str__</code> to customize class behavior.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="advanced" class="advanced-section">
+    <div class="advanced-header">
+      <h2 class="section-title">Advanced Concepts & Libraries</h2>
+      <p class="section-desc">
+        Explore decorators, generators, iterators, context managers, regex, and popular Python libraries for data
+        science, web development, automation, and machine learning.
+      </p>
+    </div>
+
+    <div class="advanced-bubbles">
+      <!-- Concepts -->
+      <div class="bubble" data-title="Decorators, Generators, Iterators, Context Managers">
+        <span>Core Concepts</span>
+      </div>
+      <div class="bubble" data-title="Regular Expressions">
+        <span>Regex</span>
+      </div>
+
+      <!-- Libraries -->
+      <div class="bubble" data-title="NumPy, Pandas, Matplotlib, Seaborn">
+        <span>Data Science</span>
+      </div>
+      <div class="bubble" data-title="Flask, Django">
+        <span>Web</span>
+      </div>
+      <div class="bubble" data-title="Selenium, PyAutoGUI, Requests">
+        <span>Automation</span>
+      </div>
+      <div class="bubble" data-title="Scikit-learn, TensorFlow, PyTorch">
+        <span>Machine Learning</span>
+      </div>
+    </div>
+  </section>
+  <section id="projects" class="projects-section">
+  <div class="projects-header">
+    <h2 class="section-title">Projects & Best Practices</h2>
+    <p class="section-desc">
+      Bring your Python skills to life with hands-on projects and industry best practices.
+    </p>
+  </div>
+
+  <!-- PROJECT CARDS TIMELINE -->
+  <div class="projects-cards">
+    <div class="project-card">
+      <h3>Beginner</h3>
+      <ul>
+        <li>Calculator</li>
+        <li>To-do App</li>
+        <li>Simple Games</li>
+      </ul>
+    </div>
+    <div class="project-card">
+      <h3>Intermediate</h3>
+      <ul>
+        <li>Web Scraper</li>
+        <li>Blog Website</li>
+        <li>Chatbot</li>
+      </ul>
+    </div>
+    <div class="project-card">
+      <h3>Advanced</h3>
+      <ul>
+        <li>ML Models</li>
+        <li>Web API</li>
+        <li>Automation Scripts</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BEST PRACTICES -->
+  <div class="best-practices">
+    <div class="practice-card">PEP8</div>
+    <div class="practice-card">Virtual Environments</div>
+    <div class="practice-card">Git / GitHub</div>
+    <div class="practice-card">Testing</div>
+  </div>
+
+  <!-- DECORATIVE GRADIENT SHAPE -->
+  <div class="gradient-shape"></div>
+</section>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  <script src="../js/python-road.js"></script>
+
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    renderFooter('../');
+  </script>
+  <script>
+    // Simple Theme Toggle
+    const toggleBtn = document.querySelector('#theme-toggle');
+    toggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    });
+  </script>
+</body>
+
 </html>
