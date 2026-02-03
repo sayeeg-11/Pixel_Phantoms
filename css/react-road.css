@@ -1,519 +1,939 @@
-/* --- Roadmap Header Polish --- */
-
-.roadmap-header.centered-header {
-  position: relative;
-  padding: 60px 20px;
-  margin: 80px auto;
-  max-width: 900px;
-  border: 1px solid rgba(97, 218, 251, 0.1);
-  background: radial-gradient(circle at center, rgba(97, 218, 251, 0.05) 0%, transparent 70%);
-  /* Creating HUD corners using pseudo-elements */
+.roadmap-section {
+  background: var(--bg-primary);
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  font-family: var(--font-primary);
+  padding-top: calc(var(--spacing-xxl) + 60px);
 }
 
-/* Technical Corner Brackets */
-.roadmap-header::before,
-.roadmap-header::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border: 2px solid var(--react-cyan);
+.roadmap-header {
+  max-width: 700px;
+  margin-bottom: var(--spacing-xxl);
 }
 
-.roadmap-header::before {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.roadmap-header::after {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
-}
-
-/* --- The Glitch Text Effect --- */
-.glitch-text {
-  position: relative;
-  font-size: 3.5rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  margin: 0;
-}
-
-/* Creating the RGB split glitch layers */
-.glitch-text::before,
-.glitch-text::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.8;
-}
-
-.glitch-text::before {
-  color: #ff00c1; /* Magenta shift */
-  z-index: -1;
-  animation: glitch-offset 3s infinite linear alternate-reverse;
-}
-
-.glitch-text::after {
-  color: #00fff9; /* Cyan shift */
-  z-index: -2;
-  animation: glitch-offset 2s infinite linear alternate;
-}
-
-@keyframes glitch-offset {
-  0% { transform: translate(0); }
-  20% { transform: translate(-2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); }
-}
-
-/* --- The Subtitle Typing Effect --- */
-.subtitle {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--react-cyan);
-  font-size: 1.1rem;
-  margin-top: 15px;
+.roadmap-badge {
   display: inline-block;
-  overflow: hidden; 
-  white-space: nowrap; 
-  border-right: 3px solid var(--react-cyan); /* The Cursor */
-  width: 0;
-  animation: 
-    typing-header 3s steps(40, end) forwards,
-    blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing-header {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: var(--react-cyan) }
-}
-
-/* --- Light Mode Adjustments --- */
-body.light-mode .roadmap-header {
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-  border-color: rgba(59, 130, 246, 0.2);
-}
-
-body.light-mode .glitch-text {
-  color: var(--text-primary);
-  text-shadow: 2px 2px rgba(59, 130, 246, 0.1);
-}
-
-body.light-mode .subtitle {
-  color: var(--react-blue);
-  border-right-color: var(--react-blue);
-}
-/* react-road.css - Advanced Flex-Stability & Theme-Aware Version */
-@keyframes spineScanner {
-  0% { top: -10%; opacity: 0; }
-  50% { opacity: 1; }
-  100% { top: 110%; opacity: 0; }
-}
-
-@keyframes magneticPulse {
-  0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--react-cyan); }
-  50% { transform: scale(1.3); box-shadow: 0 0 25px var(--react-cyan); }
-}
-@keyframes spineFlow {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 200%; }
-}
-@keyframes floatCard {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-:root {
-  /* Core Brand Colors */
-  --react-cyan: #61dafb;
-  --react-blue: #4a90e2;
-
-  /* Dark Mode Variables (Default) */
-  --bg-main: #0a0a0a;
-  --text-primary: #ffffff;
-  --text-secondary: #999999;
-  --glass: rgba(10, 10, 10, 0.9);
-  --node-border: #333333;
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --spine-color: linear-gradient(
-    to bottom,
-    transparent,
-    var(--react-cyan),
-    var(--react-blue),
-    transparent
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
   );
-  --accent-glow: 0 0 12px var(--react-cyan);
-}
-body.light-mode {
-  /* Soft Azure Shade Background */
-  --bg-main: #f0f7ff; 
-  
-  /* Frosted Glass Cards (Replaces the dark gray) */
-  --glass: rgba(255, 255, 255, 0.85); 
-  
-  /* Text & Border High Contrast */
-  --text-primary: #0f172a; /* Deep Slate Navy */
-  --text-secondary: #475569;
-  --node-border: #bfdbfe; /* Soft Sky Blue */
-  
-  /* Modern Clean Shadows */
-  --card-shadow: 0 10px 30px rgba(148, 163, 184, 0.12);
-  
-  /* Vibrant Spine Gradient */
-  --spine-color: linear-gradient(
-    to bottom, 
-    transparent, 
-    #3b82f6, 
-    #60a5fa, 
-    transparent
-  );
-  --accent-glow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-
-/* Global Styles */
-body {
-  background-color: var(--bg-main);
+.roadmap-header h2 {
   color: var(--text-primary);
-  transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.4rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-.centered-header {
-  text-align: center;
-  margin-top: 100px;
-  margin-bottom: 50px;
+.roadmap-header p {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
-/* Roadmap Structure */
-.roadmap-wrapper {
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.roadmap-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
   position: relative;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 40px 20px;
-  min-height: 100vh;
+  overflow: hidden;
+  transition: all 0.35s ease;
 }
 
-.roadmap-spine {
+.roadmap-card::before {
+  content: "";
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--spine-color);
-  transform: translateX(-50%);
-  animation: spineFlow 5s linear infinite;
-  z-index: 0;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.08),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
-/* --- Spine 'Scanner' Light Effect --- */
-.roadmap-spine::before {
-  content: '';
+
+/* Grid */
+.js-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.js-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  position: relative;
+  transition: all 0.35s ease;
+  overflow: hidden;
+}
+
+/* Glow sweep */
+.js-card::after {
+  content: "";
   position: absolute;
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(to bottom, transparent, #fff, transparent);
-  animation: spineScanner 4s linear infinite;
-  z-index: 1;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.12),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
-.roadmap-content {
+
+.js-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+.js-card:hover::after {
+  opacity: 1;
+}
+
+/* Tag */
+.js-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 170, 255, 0.12);
+  color: var(--accent-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Headings */
+.js-card h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.25rem;
+}
+
+.js-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Inline code */
+.js-card code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+  color: var(--accent-color);
+}
+
+/* Highlight card */
+.js-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+  .roadmap-header h2 {
+    font-size: 2rem;
+  }
+}
+.react-fundamentals {
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 170, 255, 0.06),
+    transparent 60%
+  );
+}
+
+/* Grid */
+.react-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.react-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft glass shimmer */
+.react-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.react-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+.react-card:hover::before {
+  opacity: 1;
+}
+
+/* Intro card */
+.react-card.intro {
+  grid-column: span 2;
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.05)
+  );
+}
+
+/* Text */
+.react-card h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.react-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Highlight */
+.react-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Responsive refinement */
+@media (max-width: 768px) {
+  .react-card.intro {
+    grid-column: span 1;
+  }
+
+  .roadmap-header h2 {
+    font-size: 2rem;
+  }
+}
+.react-hooks {
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 170, 255, 0.08),
+    transparent 65%
+  );
+}
+
+/* Grid */
+.hooks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.hook-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* Glow sweep */
+.hook-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.18),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.hook-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+.hook-card:hover::before {
+  opacity: 1;
+}
+
+/* Labels */
+.hook-level {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: var(--spacing-sm);
+  background: rgba(0, 170, 255, 0.12);
+  color: var(--accent-color);
+  letter-spacing: 0.4px;
+}
+
+/* Text */
+.hook-card h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hook-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Emphasis styles */
+.hook-card.essential {
+  border-left: 4px solid var(--accent-color);
+}
+
+.hook-card.optimization {
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.04)
+  );
+}
+
+.hook-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+  .roadmap-header h2 {
+    font-size: 2rem;
+  }
+}
+.react-styling {
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary),
+    var(--bg-secondary)
+  );
+}
+
+/* Groups */
+.styling-groups {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 60px;
-  width: 100%;
+  gap: var(--spacing-xl);
 }
 
-/* Roadmap Nodes */
-.chapter-node {
-  position: relative;
-  width: 44%;
-  background: var(--glass);
-  border: 1px solid var(--node-border);
-  border-radius: 20px;
-  padding: 30px;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--card-shadow);
-  z-index: 1;
-  animation: floatCard 6s ease-in-out infinite;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+/* Group Header */
+.style-group h3 {
   color: var(--text-primary);
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-md);
 }
 
-.chapter-node.left {
-  align-self: flex-start;
-  text-align: right;
+/* Grid */
+.style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--spacing-lg);
 }
 
-.chapter-node.right {
-  align-self: flex-end;
-  text-align: left;
+/* Card */
+.style-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: all 0.35s ease;
+  overflow: hidden;
 }
 
-.chapter-node:hover {
-  /* 1. Enhanced Lift and Scale */
-  transform: translateY(-12px) scale(1.03); 
-  
-  /* 2. Stronger Border visibility for Light Mode */
-  border-color: var(--react-blue); 
-  
-  /* 3. Deep Ambient Shadow for Elevation */
-  box-shadow: 
-    0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-    0 10px 10px -5px rgba(0, 0, 0, 0.04),
-    0 0 20px rgba(59, 130, 246, 0.1); /* Subtle blue tint to the shadow */
-    
-  /* 4. Increase focus */
-  background: rgba(88, 171, 240, 0.1); 
-  color: #0f172a;
-  z-index: 10;
-  
-  /* 5. Smooth Transition (Ensures this matches your base class) */
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-
-
-/* Connectivity Indicators */
-.chapter-node::after {
-  content: '';
+/* Glow sweep */
+.style-card::after {
+  content: "";
   position: absolute;
-  top: 35px;
-  width: 16px;
-  height: 16px;
-  background: var(--react-cyan);
-  border-radius: 50%;
-  box-shadow: var(--accent-glow);
-  animation: magneticPulse 3s infinite ease-in-out;
-}
-/* Ensure the connecting dot also reacts to the hover */
-.chapter-node:hover::after {
-  background: var(--react-blue);
-  transform: scale(1.3);
-  box-shadow: 0 0 15px var(--react-blue);
-}
-.chapter-node.left::after {
-  right: -13.5%;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.chapter-node.right::after {
-  left: -13.5%;
+.style-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
 }
 
-/* Node Elements */
-.node-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+.style-card:hover::after {
+  opacity: 1;
 }
 
-.chapter-node.left .node-header {
-  flex-direction: row-reverse;
+/* Text */
+.style-card h4 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
-.node-header h3 {
-  color: var(--react-cyan);
+.style-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Accents */
+.style-card.accent {
+  border-left: 4px solid var(--accent-color);
+}
+
+.style-card.library {
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.04)
+  );
+}
+
+/* Group highlight */
+.style-group.highlight {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-xl);
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 170, 255, 0.08),
+    transparent 65%
+  );
+}
+
+/* Highlight card */
+.style-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .style-group h3 {
+    font-size: 1.25rem;
+  }
+}
+.react-routing {
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary),
+    var(--bg-secondary)
+  );
+}
+
+/* Grid */
+.routing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.route-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* Directional glow */
+.route-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 170, 255, 0.18),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.route-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+.route-card:hover::after {
+  opacity: 1;
+}
+
+/* Intro emphasis */
+.route-card.intro {
+  grid-column: span 2;
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.06)
+  );
+}
+
+/* Text */
+.route-card h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.route-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Highlight */
+.route-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .route-card.intro {
+    grid-column: span 1;
+  }
+
+  .roadmap-header h2 {
+    font-size: 2rem;
+  }
+}
+.react-api {
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 170, 255, 0.08),
+    transparent 70%
+  );
+}
+
+
+/* Level Badge */
+.project-card .level {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 0.75rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* Difficulty Styles */
+.project-card.basic {
+  border-left: 4px solid var(--accent-secondary);
+}
+
+.project-card.basic .level {
+  background: rgba(118, 75, 162, 0.15);
+  color: var(--accent-secondary);
+}
+
+.project-card.intermediate {
+  border-left: 4px solid var(--accent-color);
+}
+
+.project-card.intermediate .level {
+  background: rgba(0, 170, 255, 0.15);
+  color: var(--accent-color);
+}
+
+.project-card.advanced {
+  border-left: 4px solid var(--neon-green, #0aff9d);
+}
+
+.project-card.advanced .level {
+  background: rgba(10, 255, 157, 0.15);
+  color: var(--neon-green, #0aff9d);
+}
+
+/* Highlight Final Project */
+.project-card.glow {
+  animation: pulseGlow 4s infinite;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(0, 170, 255, 0); }
+  50% { box-shadow: 0 0 35px rgba(0, 170, 255, 0.35); }
+  100% { box-shadow: 0 0 0 rgba(0, 170, 255, 0); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .project-card h3 {
+    font-size: 1.15rem;
+  }
+}
+
+
+/* Grid */
+.api-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.api-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* Data pulse effect */
+.api-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.api-card:hover::before {
+  transform: translateX(100%);
+}
+
+.api-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Text */
+.api-card h3 {
+  color: var(--text-primary);
   font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.api-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Card types */
+.api-card.core {
+  border-left: 4px solid var(--accent-primary);
+}
+
+.api-card.warning {
+  border-left: 4px solid var(--neon-red, var(--accent-color));
+}
+
+.api-card.loading {
+  border-left: 4px solid var(--neon-cyan, var(--accent-color));
+}
+
+/* Highlight advanced tools */
+.api-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.06)
+  );
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .api-card h3 {
+    font-size: 1.1rem;
+  }
+}
+.advanced-react {
+  background: radial-gradient(
+    circle at top right,
+    rgba(118, 75, 162, 0.12),
+    transparent 70%
+  );
+}
+
+/* Grid */
+.advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card base */
+.advanced-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* Glow frame */
+.advanced-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px transparent;
+  transition: box-shadow 0.4s ease;
+}
+
+.advanced-card:hover::after {
+  box-shadow: inset 0 0 0 1px var(--accent-color);
+}
+
+.advanced-card:hover {
+  transform: var(--hover-transform-strong);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Typography */
+.advanced-card h3 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.advanced-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Categories */
+.advanced-card.pattern {
+  border-left: 4px solid var(--accent-primary);
+}
+
+.advanced-card.portal {
+  border-left: 4px solid var(--neon-purple, var(--accent-secondary));
+}
+
+.advanced-card.safety {
+  border-left: 4px solid var(--neon-red, var(--accent-color));
+}
+
+.advanced-card.legacy {
+  border-left: 4px solid var(--text-secondary);
+  opacity: 0.95;
+}
+
+.advanced-card.future {
+  background: linear-gradient(
+    135deg,
+    var(--card-bg),
+    rgba(0, 170, 255, 0.08)
+  );
+  border: 1px solid var(--accent-color);
+}
+
+/* Subtle floating animation */
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.advanced-card.future {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .advanced-card h3 {
+    font-size: 1.15rem;
+  }
+}
+/* Section Background */
+.projects-section {
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(0, 170, 255, 0.05),
+    transparent
+  );
+}
+
+/* Badge */
+.roadmap-badge.critical {
+  background: linear-gradient(135deg, #ff003c, #ff6a00);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(255, 0, 60, 0.35);
+}
+
+/* Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Card */
+.project-card {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(0, 170, 255, 0.12),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+.project-card:hover {
+  transform: var(--hover-transform-strong);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+/* Typography */
+.project-card h3 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-card ul {
+  padding-left: 18px;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-card li {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+
+.roadmap-card:hover {
+  transform: var(--hover-transform);
+  box-shadow: var(--shadow-hover);
+}
+
+.roadmap-card:hover::before {
+  opacity: 1;
+}
+
+.roadmap-card h3 {
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.2rem;
+}
+
+.roadmap-card ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
 }
 
-.toggle-btn {
-  background: rgba(97, 218, 251, 0.1);
-  border: 1px solid var(--react-cyan);
-  color: var(--react-cyan);
-  width: 35px;
-  height: 35px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.toggle-btn.active {
-  background: var(--react-cyan);
-  color: #000;
-  transform: rotate(45deg);
-}
-
-
-/* Details and Links */
-.chapter-details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-  opacity: 0;
-}
-
-.chapter-details.open {
-  max-height: 1000px;
-  opacity: 1;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid var(--node-border);
-}
-
-.module-link {
-  display: block;
+.roadmap-card li {
   color: var(--text-secondary);
-  text-decoration: none;
-  padding: 12px;
-  margin: 8px 0;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  transition: 0.3s;
-}
-/* --- Enhanced h4 Design for Skill Nodes --- */
-.skill-node h4 {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin: 15px 0 5px 0;
-  color: var(--text-primary);
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding-left: 18px;
   position: relative;
-  display: inline-block; /* Required for the underline effect */
-  transition: color 0.3s ease;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
 }
 
-/* The Animated Underline */
-.skill-node h4::after {
-  content: '';
+.roadmap-card li::before {
+  content: "▹";
   position: absolute;
-  bottom: -4px;
   left: 0;
-  width: 0; /* Start hidden */
-  height: 2px;
-  background: var(--react-cyan);
-  transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 0 8px var(--react-cyan);
+  color: var(--accent-color);
 }
 
-/* --- Hover Effects --- */
-.skill-node:hover h4 {
-  color: var(--react-cyan);
-  text-shadow: 0 0 10px rgba(97, 218, 251, 0.5);
+.roadmap-card.highlight {
+  border: 1px solid var(--accent-color);
+  box-shadow: var(--shadow-hover-strong);
 }
 
-.skill-node:hover h4::after {
-  width: 100%; /* Slide underline out */
-}
-
-/* Light Mode Specific Adjustment */
-body.light-mode .skill-node h4::after {
-  background: var(--react-blue);
-  box-shadow: 0 2px 4px rgba(97, 218, 251, 0.5);
-}
-
-body.light-mode .skill-node:hover h4 {
-  color: var(--react-blue);
-}
-body.light-mode .module-link {
-  background: rgba(97, 218, 251, 0.5);
-}
-
-.module-link:hover {
-  color: var(--text-primary);
-  background: rgba(97, 218, 251, 0.2);
-  padding-left: 20px;
-}
-/* --- Final Visibility Fix for h2 --- */
-h2 {
-  /* DARK MODE (Default) */
-  /* We use var(--react-cyan) or #ffffff to ensure it is bright */
-  color: #61dafb !important; 
-  
-  /* FIX: Changed from 0.04 opacity to solid cyan */
-  text-decoration-color: #61dafb !important;
-  text-underline-offset: 12px;
-  
-  /* Increased shadow spread for a stronger glow effect */
-  text-shadow: 0 0 15px rgba(97, 218, 251, 0.6);
-  
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  margin: 80px 0 40px 0;
-  transition: all 0.3s ease;
-}
-
-/* LIGHT MODE ADJUSTMENT */
-body.light-mode h2 {
-  /* High contrast Navy for light backgrounds */
-  color: #0f172a !important; 
-  
-  /* Strong blue underline for visibility */
-  text-decoration-color: #3b82f6 !important;
-  
-  /* Remove glow in light mode to keep text crisp */
-  text-shadow: none;
-}
-
-/* Explore-Other-Courses Fixes */
-#other-courses {
-  margin-top: 70px;
-  margin-bottom: 20px;
-  padding: 40px 10px;
-  background: var(--glass);
-  border: 2px solid var(--react-blue);
-  border-radius: 15px;
-  box-shadow: var(--card-shadow);
-}
-
-#other-courses h2 {
-  text-align: center;
-  color: var(--text-primary);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-}
-
-.skill-node h4 {
-  color: var(--text-primary);
-}
-
-/* Navbar Theme Correction */
-#navbar-placeholder a {
-  color: var(--text-primary) !important;
-  transition: color 0.2s ease;
-}
-
-#navbar-placeholder a:hover {
-  color: var(--react-cyan) !important;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .roadmap-spine {
-    left: 20px;
+  .roadmap-header h2 {
+    font-size: 2rem;
   }
-  .chapter-node {
-    width: 85%;
-    align-self: flex-end;
-    text-align: left;
-  }
-  .chapter-node.left .node-header {
-    flex-direction: row;
-  }
-  .chapter-node.left::after,
-  .chapter-node.right::after {
-    left: -34px;
-  }
+}
+.js-deep-dive {
+  background: linear-gradient(
+    180deg,
+    var(--bg-primary),
+    var(--bg-secondary)
+  );
 }

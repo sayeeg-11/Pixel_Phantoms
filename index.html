@@ -44,6 +44,131 @@
       name="twitter:image"
       content="https://sayeeg-11.github.io/Pixel_Phantoms/public/preview-image.png"
     />
+
+    <!-- Project Matrix Styles - Single Row Layout -->
+    <style>
+      .project-matrix {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .proj-card {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        height: 300px;
+        border: 1px solid var(--border-color);
+      }
+
+      .proj-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .proj-card:hover::before {
+        background: linear-gradient(to bottom, transparent 0%, rgba(0, 170, 255, 0.6) 100%);
+      }
+
+      .proj-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 170, 255, 0.25);
+        border-color: var(--accent-color);
+      }
+
+      .proj-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 25px 20px;
+        z-index: 2;
+        color: white;
+        transform: translateY(0);
+        transition: transform 0.3s ease;
+      }
+
+      .proj-card:hover .proj-content {
+        transform: translateY(-5px);
+      }
+
+      .proj-content h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.4rem;
+        color: white;
+        font-weight: 700;
+        font-family: var(--font-mono);
+        letter-spacing: 1px;
+      }
+
+      .proj-content p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.5;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .project-matrix {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .project-matrix {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          max-width: 500px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .proj-card {
+          height: 250px;
+        }
+
+        .proj-content h3 {
+          font-size: 1.2rem;
+        }
+
+        .proj-content p {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .proj-card {
+          height: 220px;
+        }
+
+        .proj-content {
+          padding: 20px 15px;
+        }
+
+        .proj-content h3 {
+          font-size: 1.1rem;
+        }
+
+        .proj-content p {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+    
   </head>
 
   <body class="hacker-theme">
@@ -334,52 +459,66 @@
           </div>
         </section>
 
-        <section class="project-mainframe" aria-labelledby="projects-heading">
-          <div class="container">
-            <h2 class="section-header-glitch" data-text="PROJECT_ARCHIVE" id="projects-heading">
-              <span aria-hidden="true">PROJECT_ARCHIVE</span>
-              <span class="sr-only">Project Archive</span>
-            </h2>
-            <div class="project-matrix">
-              <article
-                class="proj-card"
-                style="background-image: url('https://picsum.photos/seed/p1/400/300')"
-              >
-                <div class="proj-content">
-                  <h3>CyberDeck_OS</h3>
-                  <p>A custom Linux distro for hackers.</p>
-                </div>
-              </article>
-              <article
-                class="proj-card"
-                style="background-image: url('https://picsum.photos/seed/p2/400/300')"
-              >
-                <div class="proj-content">
-                  <h3>Neon_City</h3>
-                  <p>WebGL interactive experience.</p>
-                </div>
-              </article>
-              <article
-                class="proj-card"
-                style="background-image: url('https://picsum.photos/seed/p3/400/300')"
-              >
-                <div class="proj-content">
-                  <h3>Bot_Net_V2</h3>
-                  <p>Discord automation bot.</p>
-                </div>
-              </article>
-              <article
-                class="proj-card"
-                style="background-image: url('https://picsum.photos/seed/p4/400/300')"
-              >
-                <div class="proj-content">
-                  <h3>Crypto_Vault</h3>
-                  <p>Secure decentralized storage.</p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
+        <!-- PROJECT ARCHIVE SECTION - SINGLE ROW -->
+<section class="project-mainframe" aria-labelledby="projects-heading">
+  <div class="container">
+    <h2 class="section-header-glitch" data-text="PROJECT_ARCHIVE" id="projects-heading">
+      <span aria-hidden="true">PROJECT_ARCHIVE</span>
+      <span class="sr-only">Project Archive</span>
+    </h2>
+    
+    <div class="project-matrix">
+      <article
+        class="proj-card"
+        data-href="pages/projects/cyberdeck.html"
+        data-category="web"
+        style="background-image: url('https://picsum.photos/seed/p1/400/300')"
+      >
+        <div class="proj-content">
+          <h3>CyberDeck_OS</h3>
+          <p>A custom Linux distro for hackers.</p>
+        </div>
+      </article>
+      
+      <article
+        class="proj-card"
+        data-href="pages/projects/neon-city.html"
+        data-category="design"
+        style="background-image: url('https://picsum.photos/seed/p2/400/300')"
+      >
+        <div class="proj-content">
+          <h3>Neon_City</h3>
+          <p>WebGL interactive experience.</p>
+        </div>
+      </article>
+      
+      <article
+        class="proj-card"
+        data-href="pages/projects/botnet.html"
+        data-category="web"
+        style="background-image: url('https://picsum.photos/seed/p3/400/300')"
+      >
+        <div class="proj-content">
+          <h3>Bot_Net_V2</h3>
+          <p>Discord automation bot.</p>
+        </div>
+      </article>
+      
+      <article
+        class="proj-card"
+        data-href="pages/projects/crypto-vault.html"
+        data-category="blockchain"
+        style="background-image: url('https://picsum.photos/seed/p4/400/300')"
+      >
+        <div class="proj-content">
+          <h3>Crypto_Vault</h3>
+          <p>Secure decentralized storage.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 
         <section class="terminal-updates" aria-label="Community Updates">
           <div class="terminal-window">

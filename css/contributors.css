@@ -34,14 +34,13 @@ body.light-mode {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Centers every section horizontally */
   text-align: center;
-  padding: 80px 5%;
+  padding: 80px 20px;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   transition: background 0.3s ease;
   width: 100%;
-
+  overflow-x: hidden;
 }
 
 .section-header {
@@ -143,28 +142,27 @@ body.light-mode {
 
 }
 
-.contributor-card {
-  flex: 0 1 450px;
-  width: min-content;
-  max-width: none;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 32px;
-  padding: 60px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: var(--shadow-main);
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
 
-}
 
 #top-contributors {
   text-align: center;
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+/* --- TOP CONTRIBUTORS GRID --- */
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 1600px;
+  margin: 60px auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
 
 
 .contributor-card:hover {
@@ -545,22 +543,23 @@ body.light-mode .repo-item {
 
 /* Base Card Style */
 .contributor-card {
+  width: 100%;
+  max-width: 500px;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
-    border-color 0.3s ease-in-out;
+  border-radius: 32px;
+  padding: 60px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: var(--shadow-main);
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+  margin: 0 auto;
+  cursor: pointer;
   gap: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   position: relative;
   overflow: hidden;
-  will-change: transform, box-shadow;
 }
 
 

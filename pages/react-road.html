@@ -1,90 +1,631 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pixel Phantoms | React Mastery Protocol</title>
-    <link rel="icon" href="../assets/logo.png" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/react-road.css" />
-    <link rel="stylesheet" href="../css/home-gsap.min.css" />
-    <link rel="stylesheet" href="../css/style.min.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body class="hacker-theme">
-    <div id="navbar-placeholder"></div>
-    <script src="../js/navbar.js"></script>
-    <script>
-      renderNavbar('../');
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | React Mastery Protocol</title>
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/react-road.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
 
-    <main class="main-content">
-      <section class="roadmap-header centered-header">
-        <h1 class="glitch-text" data-text="REACT_MASTERY_v1.0">REACT_MASTERY_v1.0</h1>
-        <p class="subtitle">> Initialize sequence: VIRTUAL_DOM_SYNC</p>
-      </section>
+<body class="hacker-theme">
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar('../');
+  </script>
+  <section class="roadmap-section">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 0</span>
+      <h2>Prerequisites</h2>
+      <p>
+        Before diving into React, make sure you are comfortable with the
+        foundational web technologies below.
+      </p>
+    </div>
 
-      <div class="roadmap-wrapper">
-        <div class="roadmap-spine"></div>
-        <div id="roadmap-content" class="roadmap-content"></div>
+    <div class="roadmap-grid">
+      <div class="roadmap-card">
+        <h3>HTML</h3>
+        <ul>
+          <li>Semantic Elements</li>
+          <li>Forms & Validation</li>
+          <li>Accessibility Basics</li>
+        </ul>
       </div>
-    </main>
-    <style>
-      #other-courses {
-        margin-top: 70px;
-        margin-bottom: 20px;
-        padding: 20px 10px;
-        border: 2px solid rgba(0, 170, 255, 0.3);
-      }
-    </style>
 
-    <section id="other-courses">
-      <h2 style="text-align: center; text-decoration: underline; text-decoration-thickness: 1px">
-        Explore-Other-Courses
-      </h2>
-      <div class="skill-path-wrapper">
-        <a href="python-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-python" aria-hidden="true"></i>
-          </div>
-          <h4>Python_Mastery</h4>
-          <span class="node-level">Lvl 1</span>
-        </a>
-
-        <a href="ai-roadmap.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fas fa-robot" aria-hidden="true"></i>
-          </div>
-          <h4>AI_Neural_Nets</h4>
-          <span class="node-level">Lvl 3</span>
-        </a>
-
-        <a href="system-design-road.html" class="skill-node reveal-node">
-          <div class="node-icon">
-            <i class="fab fa-python" aria-hidden="true"></i>
-          </div>
-          <h4>System_Arch</h4>
-          <span class="node-level">Lvl 4</span>
-        </a>
+      <div class="roadmap-card">
+        <h3>CSS</h3>
+        <ul>
+          <li>Flexbox & Grid</li>
+          <li>Responsive Design</li>
+          <li>Modern Layouts</li>
+        </ul>
       </div>
-    </section>
-    <div id="footer-placeholder"></div>
-    <script src="../js/footer.js"></script>
-    <script>
-      renderFooter('../');
-    </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/theme-enhanced.js"></script>
-    <script src="../js/react-road.js"></script>
-  </body>
+      <div class="roadmap-card">
+        <h3>JavaScript Basics</h3>
+        <ul>
+          <li>Variables & Functions</li>
+          <li>Arrays & Objects</li>
+          <li>DOM Manipulation</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-card">
+        <h3>ES6+</h3>
+        <ul>
+          <li>Arrow Functions</li>
+          <li>Destructuring</li>
+          <li>Spread Operator</li>
+          <li>Modules</li>
+        </ul>
+      </div>
+
+      <div class="roadmap-card highlight">
+        <h3>Git & GitHub</h3>
+        <ul>
+          <li>Git Basics</li>
+          <li>Repositories</li>
+          <li>Commits & Branches</li>
+          <li>GitHub Workflow</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section js-deep-dive">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 2</span>
+      <h2>JavaScript Deep Dive</h2>
+      <p>
+        These JavaScript concepts are essential before moving into React.
+        Mastering them will make React feel intuitive instead of confusing.
+      </p>
+    </div>
+
+    <div class="js-grid">
+      <div class="js-card">
+        <span class="js-tag">Core</span>
+        <h3>Closures</h3>
+        <p>
+          Understand how functions retain access to variables from their
+          outer scope, even after execution.
+        </p>
+      </div>
+
+      <div class="js-card">
+        <span class="js-tag">Context</span>
+        <h3><code>this</code> Keyword</h3>
+        <p>
+          Learn how execution context works and how <code>this</code> behaves
+          in functions, objects, and arrow functions.
+        </p>
+      </div>
+
+      <div class="js-card">
+        <span class="js-tag">Async</span>
+        <h3>Promises & async/await</h3>
+        <p>
+          Handle asynchronous operations cleanly using promises and
+          modern async/await syntax.
+        </p>
+      </div>
+
+      <div class="js-card">
+        <span class="js-tag">Arrays</span>
+        <h3>Array Methods</h3>
+        <p>
+          Work efficiently with data using
+          <code>map</code>, <code>filter</code>, and <code>reduce</code>.
+        </p>
+      </div>
+
+      <div class="js-card highlight">
+        <span class="js-tag">Modern JS</span>
+        <h3>Modules</h3>
+        <p>
+          Structure your code using <code>import</code> and
+          <code>export</code> for scalable applications.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section react-fundamentals">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 3</span>
+      <h2>React Fundamentals</h2>
+      <p>
+        Learn the core ideas that make React powerful. These concepts form the
+        foundation of every modern React application.
+      </p>
+    </div>
+
+    <div class="react-grid">
+      <div class="react-card intro">
+        <h3>What is React?</h3>
+        <p>
+          React is a JavaScript library for building fast, interactive user
+          interfaces using a component-based architecture.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>JSX</h3>
+        <p>
+          JSX lets you write UI code that looks like HTML inside JavaScript,
+          making components easy to read and maintain.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>Functional Components</h3>
+        <p>
+          Components are reusable pieces of UI written as JavaScript functions
+          that return JSX.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>Props</h3>
+        <p>
+          Props allow data to flow from parent to child components, making UIs
+          dynamic and reusable.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>State</h3>
+        <p>
+          State is used to store and manage data that changes over time and
+          triggers UI updates.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>Events & User Input</h3>
+        <p>
+          Handle clicks, input changes, and form submissions using React’s
+          synthetic event system.
+        </p>
+      </div>
+
+      <div class="react-card">
+        <h3>Conditional Rendering</h3>
+        <p>
+          Render different UI elements based on conditions using JavaScript
+          logic.
+        </p>
+      </div>
+
+      <div class="react-card highlight">
+        <h3>Lists & Keys</h3>
+        <p>
+          Render collections of data efficiently while helping React track
+          changes using unique keys.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section react-hooks">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 4</span>
+      <h2>React Hooks</h2>
+      <p>
+        Hooks let you use state, lifecycle features, and powerful optimizations
+        without writing class components. This is where React truly shines.
+      </p>
+    </div>
+
+    <div class="hooks-grid">
+      <div class="hook-card essential">
+        <span class="hook-level">Essential</span>
+        <h3>useState</h3>
+        <p>
+          Manage local component state and trigger UI updates when data changes.
+        </p>
+      </div>
+
+      <div class="hook-card essential">
+        <span class="hook-level">Essential</span>
+        <h3>useEffect</h3>
+        <p>
+          Handle side effects like data fetching, subscriptions, and DOM updates.
+        </p>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-level">Context</span>
+        <h3>useContext</h3>
+        <p>
+          Access global state and avoid prop drilling across deeply nested
+          components.
+        </p>
+      </div>
+
+      <div class="hook-card">
+        <span class="hook-level">Refs</span>
+        <h3>useRef</h3>
+        <p>
+          Persist values between renders and directly interact with DOM elements.
+        </p>
+      </div>
+
+      <div class="hook-card optimization">
+        <span class="hook-level">Performance</span>
+        <h3>useMemo</h3>
+        <p>
+          Optimize expensive calculations by memoizing computed values.
+        </p>
+      </div>
+
+      <div class="hook-card optimization">
+        <span class="hook-level">Performance</span>
+        <h3>useCallback</h3>
+        <p>
+          Prevent unnecessary re-renders by memoizing function references.
+        </p>
+      </div>
+
+      <div class="hook-card highlight">
+        <span class="hook-level">Advanced</span>
+        <h3>Custom Hooks</h3>
+        <p>
+          Extract reusable logic into custom hooks to keep components clean
+          and maintainable.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section react-styling">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 5</span>
+      <h2>Styling in React</h2>
+      <p>
+        React offers multiple ways to style your application — from traditional
+        CSS to utility-first frameworks and full-featured UI libraries.
+      </p>
+    </div>
+
+    <div class="styling-groups">
+      <!-- Traditional Styling -->
+      <div class="style-group">
+        <h3>Traditional Styling</h3>
+
+        <div class="style-grid">
+          <div class="style-card">
+            <h4>CSS & SCSS</h4>
+            <p>
+              Use global styles or preprocessors like SCSS for variables,
+              nesting, and reusable mixins.
+            </p>
+          </div>
+
+          <div class="style-card">
+            <h4>CSS Modules</h4>
+            <p>
+              Scope styles locally to components and avoid class name collisions.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CSS-in-JS -->
+      <div class="style-group highlight">
+        <h3>CSS-in-JS</h3>
+
+        <div class="style-grid">
+          <div class="style-card accent">
+            <h4>Styled Components</h4>
+            <p>
+              Write CSS directly inside JavaScript using component-based styling.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Utility & UI Libraries -->
+      <div class="style-group">
+        <h3>Utility & UI Libraries</h3>
+
+        <div class="style-grid">
+          <div class="style-card">
+            <h4>Tailwind CSS</h4>
+            <p>
+              Utility-first CSS framework for building modern UIs rapidly.
+            </p>
+          </div>
+
+          <div class="style-card library">
+            <h4>MUI</h4>
+            <p>
+              Google’s Material Design components with powerful theming support.
+            </p>
+          </div>
+
+          <div class="style-card library">
+            <h4>Ant Design</h4>
+            <p>
+              Enterprise-grade UI components for large-scale applications.
+            </p>
+          </div>
+
+          <div class="style-card library highlight">
+            <h4>Chakra UI</h4>
+            <p>
+              Accessible, composable components with style props built in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section react-routing">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 6</span>
+      <h2>Routing</h2>
+      <p>
+        Routing enables navigation between pages without reloading the browser.
+        React Router is the standard solution for handling routes in React apps.
+      </p>
+    </div>
+
+    <div class="routing-grid">
+      <div class="route-card intro">
+        <h3>React Router</h3>
+        <p>
+          A powerful routing library that allows you to map URLs to components
+          and create single-page applications.
+        </p>
+      </div>
+
+      <div class="route-card">
+        <h3>BrowserRouter</h3>
+        <p>
+          Wraps your app and enables clean URLs using the HTML5 history API.
+        </p>
+      </div>
+
+      <div class="route-card">
+        <h3>Routes & Route</h3>
+        <p>
+          Define which component should render for a given path using declarative
+          route definitions.
+        </p>
+      </div>
+
+      <div class="route-card">
+        <h3>URL Params</h3>
+        <p>
+          Capture dynamic values from the URL to build detail pages and dynamic
+          views.
+        </p>
+      </div>
+
+      <div class="route-card">
+        <h3>Nested Routes</h3>
+        <p>
+          Create layouts with child routes that share UI and structure.
+        </p>
+      </div>
+
+      <div class="route-card highlight">
+        <h3>Protected Routes</h3>
+        <p>
+          Restrict access to routes based on authentication or user roles.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section react-api">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 7</span>
+      <h2>API & Data Fetching</h2>
+      <p>
+        Fetching and managing external data is core to real-world React apps.
+        This step focuses on APIs, async handling, and modern data caching tools.
+      </p>
+    </div>
+
+    <div class="api-grid">
+      <!-- Basics -->
+      <div class="api-card core">
+        <h3>Fetch API</h3>
+        <p>
+          Native browser API for making HTTP requests using promises.
+        </p>
+      </div>
+
+      <div class="api-card core">
+        <h3>Axios</h3>
+        <p>
+          Promise-based HTTP client with interceptors, auto JSON parsing, and
+          better error handling.
+        </p>
+      </div>
+
+      <div class="api-card">
+        <h3>REST APIs</h3>
+        <p>
+          Communicate with backend services using RESTful endpoints and HTTP
+          methods.
+        </p>
+      </div>
+
+      <!-- UX Handling -->
+      <div class="api-card warning">
+        <h3>Error Handling</h3>
+        <p>
+          Gracefully handle failures, network issues, and API errors.
+        </p>
+      </div>
+
+      <div class="api-card loading">
+        <h3>Loading States</h3>
+        <p>
+          Improve UX using spinners, skeletons, and optimistic UI updates.
+        </p>
+      </div>
+
+      <!-- Advanced -->
+      <div class="api-card highlight">
+        <h3>React Query / TanStack Query</h3>
+        <p>
+          Powerful server-state management with caching, background updates,
+          retries, and pagination.
+        </p>
+      </div>
+
+      <div class="api-card highlight">
+        <h3>SWR</h3>
+        <p>
+          Lightweight data fetching with built-in caching and revalidation.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section advanced-react">
+    <div class="roadmap-header">
+      <span class="roadmap-badge">Step 8</span>
+      <h2>Advanced React</h2>
+      <p>
+        Advanced patterns and concepts that help you build scalable, reusable,
+        and resilient React applications.
+      </p>
+    </div>
+
+    <div class="advanced-grid">
+      <div class="advanced-card pattern">
+        <h3>Compound Components</h3>
+        <p>
+          Build flexible, shared-state components with an intuitive API.
+        </p>
+      </div>
+
+      <div class="advanced-card pattern">
+        <h3>Render Props</h3>
+        <p>
+          Share logic between components using functions as children.
+        </p>
+      </div>
+
+      <div class="advanced-card portal">
+        <h3>Portals</h3>
+        <p>
+          Render components outside the DOM hierarchy for modals and overlays.
+        </p>
+      </div>
+
+      <div class="advanced-card safety">
+        <h3>Error Boundaries</h3>
+        <p>
+          Catch JavaScript errors in UI trees and display graceful fallbacks.
+        </p>
+      </div>
+
+      <div class="advanced-card legacy">
+        <h3>Higher-Order Components (HOC)</h3>
+        <p>
+          Enhance components by wrapping them with reusable logic.
+        </p>
+      </div>
+
+      <div class="advanced-card future">
+        <h3>Server Components (Intro)</h3>
+        <p>
+          Learn how React renders components on the server for performance gains.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="roadmap-section projects-section">
+    <div class="roadmap-header">
+      <span class="roadmap-badge critical">Step 9 • Critical</span>
+      <h2>Projects That Prove Your Skills</h2>
+      <p>
+        These projects transform React knowledge into real-world,
+        production-ready experience.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card basic">
+        <h3>Todo App</h3>
+        <ul>
+          <li>CRUD operations</li>
+          <li>State & hooks mastery</li>
+          <li>Local storage</li>
+        </ul>
+        <span class="level">Beginner</span>
+      </article>
+
+      <article class="project-card basic">
+        <h3>Weather App</h3>
+        <ul>
+          <li>API integration</li>
+          <li>Error & loading states</li>
+          <li>Search & UI feedback</li>
+        </ul>
+        <span class="level">Beginner</span>
+      </article>
+
+      <article class="project-card intermediate">
+        <h3>Dashboard</h3>
+        <ul>
+          <li>Charts & analytics</li>
+          <li>Reusable components</li>
+          <li>Responsive layouts</li>
+        </ul>
+        <span class="level">Intermediate</span>
+      </article>
+
+      <article class="project-card intermediate">
+        <h3>E-commerce </h3>
+        <ul>
+          <li>Product listing</li>
+          <li>Cart & checkout UI</li>
+          <li>Global state</li>
+        </ul>
+        <span class="level">Intermediate</span>
+      </article>
+
+      <article class="project-card advanced">
+        <h3>Blog with API</h3>
+        <ul>
+          <li>Auth & protected routes</li>
+          <li>CRUD with backend</li>
+          <li>SEO-friendly UI</li>
+        </ul>
+        <span class="level">Advanced</span>
+      </article>
+
+      <article class="project-card advanced glow">
+        <h3>Real Chat App</h3>
+        <ul>
+          <li>WebSockets / Firebase</li>
+          <li>Live messaging</li>
+          <li>Scalable architecture</li>
+        </ul>
+        <span class="level">Advanced</span>
+      </article>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    renderFooter('../');
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  <script src="../js/react-road.js"></script>
+</body>
+
 </html>

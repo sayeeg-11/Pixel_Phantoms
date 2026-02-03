@@ -272,3 +272,23 @@
         padding-right: 5px;
     }
 }
+
+/* Force glitch even in light theme */
+.glitch-force {
+  color: var(--accent-color);
+  text-shadow:
+    0 0 8px rgba(0, 170, 255, 0.6),
+    0 0 15px rgba(0, 170, 255, 0.4);
+}
+
+.glitch-force::before,
+.glitch-force::after {
+  display: block !important;
+}
+
+/* Bigger title only for Connection Protocol */
+.protocol-title {
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  letter-spacing: 1px;
+  font-weight: 600;
+}

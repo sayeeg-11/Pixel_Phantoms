@@ -746,8 +746,7 @@ body.mobile-menu-open {
     }
 
     .theme-label {
-      -webkit-transition-property: background, border-color, box-shadow;
-      transition-property: background, border-color, box-shadow;
+      transition-property: background, border-color, box-shadow, -webkit-background;
     }
   }
 }
@@ -3168,14 +3167,17 @@ main:focus {
 /* FEEDBACK WIDGET */
 #feedback-widget {
   position: fixed !important;
-  bottom: 120px !important;
-  right: 28px !important;
+  bottom: 28px !important;
+  left: 28px !important;
+  right: auto !important;
   z-index: 1005 !important;
-  transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #feedback-widget.scrolled {
-  bottom: 150px !important;
+  bottom: 28px !important;
+  left: 28px !important;
+  right: auto !important;
 }
 
 #feedback-toggle {
@@ -3424,14 +3426,17 @@ main:focus {
 
 .scroll-to-top,
 #back-to-top {
-  bottom: 90px !important;
+  bottom: 90px !important; /* 20px base + 54px icon + 16px gap */
+    right: 28px !important;
+    position: fixed !important;
 }
 
 @media (max-width: 420px) {
-  #feedback-widget {
-    left: 12px !important;
-    bottom: 12px !important;
-    right: auto !important;
+  feedback-widget,
+  feedback-widget.scrolled {
+    bottom: 160px !important; /* 90px base + 54px icon + 16px gap */
+    right: 28px !important;
+    position: fixed !important;
   }
 
   #feedback-panel {
@@ -3443,7 +3448,8 @@ main:focus {
 
   .scroll-to-top,
   #back-to-top {
-    bottom: 120px !important;
+    bottom: 12px !important;
+    right:  12px !important;
   }
 
   #feedback-panel {
@@ -3908,7 +3914,9 @@ code,
 }
 
 .leaderboard-preview .share-button-container {
-  bottom: 100px;
+  bottom: 20px !important;
+    right: 28px !important;
+    position: fixed !important;
 }
 
 .footer-container,
