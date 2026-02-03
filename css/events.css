@@ -4,7 +4,6 @@
 
 /* Hero Section */
 .events-hero {
-  padding: 80px 20px;
   text-align: center;
   background: var(--bg-primary);
 }
@@ -1364,7 +1363,7 @@ body.dark-mode .modal-close:hover {
   .btn-secondary {
     width: 100%;
   }
-  
+
   #toast-notification {
     min-width: 250px;
     padding: 14px 24px;
