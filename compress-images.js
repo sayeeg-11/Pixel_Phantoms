@@ -56,20 +56,40 @@ async function compressImage(inputPath) {
   let pipeline = sharp(inputPath);
 
   /* ---------------------------------------------------
+   * 4.1 Safeguard against very large images
+   * --------------------------------------------------- */
+  const metadata = await pipeline.metadata();
+  const MAX_PIXELS = 12_000_000;
+
+  if (metadata.width * metadata.height > MAX_PIXELS) {
+    throw new Error(
+      `Image too large to safely process: ${metadata.width}×${metadata.height}`
+    );
+  }
+
+  /* ---------------------------------------------------
    * 5. Apply format-specific compression
    * --------------------------------------------------- */
   if (ext === '.png') {
-    // PNG: lossless compression + palette quantization
+    // PNG: lossless compression
+    // Apply palette quantization only when safe to avoid banding
+    const usePalette =
+      !metadata.hasAlpha &&
+      metadata.width * metadata.height < 3_000_000;
+
     pipeline = pipeline.png({
       compressionLevel: 9,
-      palette: true
+      palette: usePalette
     });
+
   } else if (ext === '.jpg' || ext === '.jpeg') {
-    // JPEG: better compression with mozjpeg
+    // JPEG: optimized, progressive encoding for better web loading
     pipeline = pipeline.jpeg({
       quality: 80,
-      mozjpeg: true
+      mozjpeg: true,
+      progressive: true
     });
+
   } else {
     throw new Error(`Unsupported file type: ${ext}`);
   }
