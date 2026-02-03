@@ -14,14 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Login form fields
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
-    const forgotPasskeyLink = document.getElementById('forgot-passkey-link');
+    const forgotPasskeyLink = document.querySelector('.forgot-link'); // UPDATED: Use class selector
 
     // Sign Up form fields
     const newUsernameInput = document.getElementById('new-username');
     const newEmailInput = document.getElementById('new-email');
     const newPasswordInput = document.getElementById('new-password');
 
-    // Forgot Password elements
+    // Password Recovery Modal Elements (NEW)
+    const recoveryModal = document.getElementById('recovery-modal');
+    const cancelRecoveryBtn = document.getElementById('cancel-recovery-btn');
+    const sendRecoveryBtn = document.getElementById('send-recovery-btn');
+    const recoveryEmailInput = document.getElementById('recovery-email');
+
+    // Forgot Password elements (keeping for compatibility)
     const forgotPasswordView = document.getElementById('forgot-password-view');
     const resetEmailInput = document.getElementById('reset-email');
 
@@ -29,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const verificationIcon = verificationView.querySelector('.verification-icon i');
     const verificationTitle = document.getElementById('verification-title');
     const verificationMessage = document.getElementById('verification-message');
+
+    // Role switching elements
+    const roleBtns = document.querySelectorAll('.role-btn');
+    const roleInput = document.getElementById('selected-role');
 
     // --- AUTHENTICATION DATA MANAGEMENT ---
 
@@ -39,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
      * Fetches the Hidden CSV file to simulate backend database.
      */
     function loadBaseAccounts() {
-        // Path is relative to the HTML file (pages/login.html -> ../data/accounts.csv)
         fetch('../data/accounts.csv')
             .then(response => {
                 if (!response.ok) throw new Error("Failed to load account database.");
@@ -48,12 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(csvText => {
                 baseCsvAccounts = parseCSV(csvText);
                 console.log("System: Secure CSV Database Loaded.", baseCsvAccounts);
-                // Refresh local storage with new base data
                 getAccounts(); 
             })
             .catch(error => {
                 console.error("System Error: Could not access hidden CSV.", error);
-                // Fallback to empty if file is missing, prevents crash
                 baseCsvAccounts = [];
             });
     }
@@ -63,8 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     function parseCSV(csvText) {
         const lines = csvText.trim().split('\n');
-        // Assume first row is header: codename,email,password_hash
-        // Start loop from 1 to skip header
         const accounts = [];
         
         for (let i = 1; i < lines.length; i++) {
@@ -85,53 +90,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /**
      * Retrieves all accounts, merging the "Hidden CSV" data with user-created data.
-     * This simulates a hybrid database (Static Base Data + Dynamic User Data).
      */
     function getAccounts() {
-        // 1. Get user-created accounts from Local Storage
         const userStoredAccounts = JSON.parse(localStorage.getItem('user_accounts')) || [];
-
-        // 2. Create a map of base CSV accounts to prevent duplicates
         const baseCodenameSet = new Set(baseCsvAccounts.map(acc => acc.codename));
-
-        // 3. Filter user accounts: if a user is already in CSV, prefer the CSV version (or exclude duplicate)
         const uniqueUserAccounts = userStoredAccounts.filter(userAcc =>
             !baseCodenameSet.has(userAcc.codename)
         );
-
-        // 4. Merge CSV accounts (Base) with User accounts (New)
         const finalAccounts = [...baseCsvAccounts, ...uniqueUserAccounts];
-
-        // 5. Sync the complete list to Local Storage for quick access during this session
         localStorage.setItem('user_accounts', JSON.stringify(finalAccounts));
-
         return finalAccounts;
     }
 
     function addAccount(codename, email, password) {
-        let accounts = getAccounts(); // Ensures we have the latest list
-
+        let accounts = getAccounts();
         const password_hash = password.trim() + '_secure_hash';
-
         const newAccount = {
             codename: codename.toLowerCase().trim(),
             email: email.toLowerCase().trim(),
             password_hash: password_hash
         };
-
-        // Note: We only push to the array intended for LocalStorage, 
-        // we cannot write back to the CSV file from the browser.
         const userStoredAccounts = JSON.parse(localStorage.getItem('user_accounts')) || [];
         userStoredAccounts.push(newAccount);
-        
-        // Update the storage
         localStorage.setItem('user_accounts', JSON.stringify(userStoredAccounts));
     }
 
     function checkLogin(codename, password) {
         const accounts = getAccounts();
         const expected_hash = password.trim() + '_secure_hash';
-
         return accounts.find(account =>
             account.codename === codename.toLowerCase().trim() &&
             account.password_hash === expected_hash
@@ -142,7 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const accounts = getAccounts();
         const lowerCodename = codename.toLowerCase().trim();
         const lowerEmail = email.toLowerCase().trim();
-
         return accounts.some(account =>
             account.codename === lowerCodename || account.email === lowerEmail
         );
@@ -157,16 +142,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- UTILITY FUNCTIONS ---
     function showError(id, message) {
         const errorElement = document.getElementById(id);
-        errorElement.textContent = message;
-        errorElement.classList.add('show');
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.classList.add('show');
+        }
         accessCard.classList.add('fail-icon');
         setTimeout(() => accessCard.classList.remove('fail-icon'), 500);
     }
 
     function hideError(id) {
         const errorElement = document.getElementById(id);
-        errorElement.textContent = '';
-        errorElement.classList.remove('show');
+        if (errorElement) {
+            errorElement.textContent = '';
+            errorElement.classList.remove('show');
+        }
     }
 
     function validateField(input, errorId, message) {
@@ -176,6 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         hideError(errorId);
         return true;
+    }
+
+    /**
+     * Email validation helper (NEW)
+     */
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
     }
 
     // --- STATE MANAGEMENT ---
@@ -246,6 +243,99 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- PASSWORD RECOVERY MODAL FUNCTIONALITY (NEW) ---
+    
+    /**
+     * Opens the password recovery modal
+     */
+    function openRecoveryModal() {
+        if (recoveryModal) {
+            recoveryModal.style.display = 'flex';
+            statusValue.textContent = 'RECOVERY_MODE';
+            if (recoveryEmailInput) recoveryEmailInput.value = '';
+            hideError('recovery-email-error');
+        }
+    }
+
+    /**
+     * Closes the password recovery modal
+     */
+    function closeRecoveryModal() {
+        if (recoveryModal) {
+            recoveryModal.style.display = 'none';
+            statusValue.textContent = 'STATUS_IDLE';
+            if (recoveryEmailInput) recoveryEmailInput.value = '';
+            hideError('recovery-email-error');
+        }
+    }
+
+    /**
+     * Handles the password recovery email sending
+     */
+    function handlePasswordRecovery() {
+        const email = recoveryEmailInput.value.trim();
+        
+        // Validation
+        if (!email) {
+            showError('recovery-email-error', 'Email Key is required for recovery');
+            return;
+        }
+        
+        if (!validateEmail(email)) {
+            showError('recovery-email-error', 'Please enter a valid Email Key format');
+            return;
+        }
+
+        // Check if email exists in database
+        const emailExists = checkEmailExists(email);
+        
+        // Update status and show verification view
+        setAuthMode('verification');
+        statusValue.textContent = 'RECOVERY_PROTOCOL_INIT';
+        
+        // Close the modal
+        closeRecoveryModal();
+
+        // Start verification animation
+        verificationIcon.className = 'fas fa-paper-plane fa-spin';
+        verificationIcon.classList.remove('success-icon', 'fail-icon');
+        verificationTitle.textContent = 'INITIATING RECOVERY PROTOCOL...';
+        verificationMessage.textContent = 'Searching agent database for associated Email Key.';
+
+        const sequenceSteps = [
+            'SEARCHING AGENT DATABASE BY EMAIL KEY...',
+            'VERIFYING RECOVERY HASH...',
+            'INITIATING SECURE TOKEN GENERATION...',
+            'AWAITING MAIL SERVER RESPONSE...'
+        ];
+
+        let stepIndex = 0;
+        const interval = setInterval(() => {
+            if (stepIndex < sequenceSteps.length) {
+                verificationTitle.textContent = sequenceSteps[stepIndex];
+                stepIndex++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 800 + Math.random() * 400);
+
+        setTimeout(() => {
+            clearInterval(interval);
+
+            if (emailExists) {
+                verificationIcon.className = 'fas fa-paper-plane success-icon';
+                verificationTitle.textContent = 'RECOVERY EMAIL DISPATCHED';
+                verificationMessage.textContent = `A secure passkey reset link has been dispatched to: ${email}. Follow the instructions to regain access.`;
+                statusValue.textContent = 'STATUS_PENDING_RESET';
+            } else {
+                verificationIcon.className = 'fas fa-times-circle fail-icon';
+                verificationTitle.textContent = 'AGENT NOT FOUND';
+                verificationMessage.textContent = 'The entered email key does not match any known records. Please verify the address and try again.';
+                statusValue.textContent = 'STATUS_DENIED';
+            }
+        }, 4000 + Math.random() * 1000);
+    }
+
     // --- SCREENING/SIMULATION LOGIC ---
     function startAuthOrRegistrationSimulation(isLogin) {
         setAuthMode('verification');
@@ -285,13 +375,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let failureReason = '';
 
             if (isLogin) {
-                // Check against the database (CSV + Local)
                 const account = checkLogin(usernameInput.value, passwordInput.value);
                 isSuccess = !!account;
                 if (!isSuccess) {
                     failureReason = 'AUTH_FAIL: Invalid Codename or Passkey.';
                 }
-            } else { // Sign Up Logic
+            } else {
                 const codename = newUsernameInput.value;
                 const email = newEmailInput.value;
                 const password = newPasswordInput.value;
@@ -400,19 +489,39 @@ document.addEventListener('DOMContentLoaded', () => {
     signupTabBtn.addEventListener('click', () => setAuthMode('signup'));
     backToLoginBtn.addEventListener('click', () => setAuthMode('login'));
 
+    // Forgot Passkey Link Handler (UPDATED)
     if (forgotPasskeyLink) {
         forgotPasskeyLink.addEventListener('click', (e) => {
             e.preventDefault();
-            setAuthMode('forgot-password');
+            openRecoveryModal();
         });
     }
 
+    // Recovery Modal Event Handlers (NEW)
+    if (cancelRecoveryBtn) {
+        cancelRecoveryBtn.addEventListener('click', closeRecoveryModal);
+    }
+
+    if (sendRecoveryBtn) {
+        sendRecoveryBtn.addEventListener('click', handlePasswordRecovery);
+    }
+
+    // Close modal when clicking outside (NEW)
+    if (recoveryModal) {
+        recoveryModal.addEventListener('click', function(e) {
+            if (e.target === recoveryModal) {
+                closeRecoveryModal();
+            }
+        });
+    }
+
+    // Form Submit Handler
     authForm.addEventListener('submit', (e) => {
         e.preventDefault();
         let formValid = true;
         const currentView = loginView.classList.contains('active') ? 'login' :
             signupView.classList.contains('active') ? 'signup' :
-            forgotPasswordView.classList.contains('active') ? 'forgot' : null;
+            forgotPasswordView && forgotPasswordView.classList.contains('active') ? 'forgot' : null;
 
         if (currentView === 'login') {
             formValid &= validateField(usernameInput, 'username-error', 'Codename is required');
@@ -440,21 +549,36 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- PASSWORD VISIBILITY TOGGLE ---
     const togglePassword = document.getElementById('togglePassword');
     
-    // We check if it exists so the script doesn't error out
     if (togglePassword && passwordInput) {
         togglePassword.addEventListener('click', function() {
-            // Toggle the type attribute
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            
-            // Toggle the icon classes (closed eye vs open eye)
             this.classList.toggle('fa-eye-slash');
             this.classList.toggle('fa-eye');
-            
-            // Optional: System log for the hacker theme
             console.log(`System: Access key visibility set to ${type.toUpperCase()}`);
         });
     }
+
+    // --- ROLE SWITCHING LOGIC ---
+    roleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            roleBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+
+            const role = btn.dataset.role;
+            roleInput.value = role;
+
+            if (role === 'core_committee') {
+                usernameInput.placeholder = "Codename (Core Handle)";
+            } else {
+                usernameInput.placeholder = "Codename (Member ID)";
+            }
+        });
+    });
 
     // --- INITIALIZATION ---
     authForm.setAttribute('novalidate', 'true');
@@ -526,37 +650,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMatrixRain();
     initHackerStats();
     setAuthMode('login');
-    
-    // --- START DATA LOADING ---
-    loadBaseAccounts(); // <--- Loads the hidden CSV file
+    loadBaseAccounts();
 });
-
-// Add to DOM Elements section
-const roleBtns = document.querySelectorAll('.role-btn');
-const roleInput = document.getElementById('selected-role');
-const usernameInput = document.getElementById('username');
-
-// Role Switching Logic
-roleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        // Toggle active class
-        roleBtns.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        // Update hidden role value
-        const role = btn.dataset.role;
-        roleInput.value = role;
-
-        // Change placeholders for UX
-        if (role === 'core_committee') {
-            usernameInput.placeholder = "Codename (Core Handle)";
-        } else {
-            usernameInput.placeholder = "Codename (Member ID)";
-        }
-    });
-});
-
