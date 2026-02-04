@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CPDSA Resources | Pixel Phantoms</title>
+    <link rel="icon" href="../assets/logo.png" />
+
+    <link rel="stylesheet" href="../css/style.min.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/scroll-buttons.css" />
+    <link rel="stylesheet" href="../css/cursor-effect.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      .resources-page {
+        min-height: 100vh;
+        padding: 80px 20px 100px;
+      }
+
+      .resources-page-header {
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeInDown 0.8s ease-out;
+      }
+
+      .resources-page-header h1 {
+        font-size: 3.5rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        font-family: var(--font-mono);
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .resources-page-header p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+
+      .breadcrumb a {
+        color: var(--accent-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .breadcrumb a:hover {
+        color: var(--text-primary);
+      }
+
+      .resources-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .resources-section {
+        margin-bottom: 80px;
+      }
+
+      .resources-section-title {
+        font-size: 1.8rem;
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--accent-color);
+        letter-spacing: 0.5px;
+      }
+
+      .resources-section-title i {
+        color: var(--accent-color);
+        font-size: 1.5rem;
+      }
+
+      .resources-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .resource-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resource-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), #0088cc);
+        z-index: 2;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 170, 255, 0.15);
+        border-color: var(--accent-color);
+      }
+
+      .resource-card-icon {
+        font-size: 2.5rem;
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+
+      .resource-card h3 {
+        margin: 0 0 12px 0;
+        color: var(--text-primary);
+        font-size: 1.3rem;
+        font-weight: 700;
+        font-family: var(--font-heading);
+      }
+
+      .resource-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0 0 20px 0;
+        flex-grow: 1;
+      }
+
+      .resource-card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        padding: 10px 15px;
+        border-radius: 8px;
+        background: rgba(0, 170, 255, 0.08);
+        border: 1px solid transparent;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: auto;
+        width: fit-content;
+      }
+
+      .resource-card-link:hover {
+        background: var(--accent-color);
+        color: var(--card-bg);
+        border-color: var(--accent-color);
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(0, 170, 255, 0.2);
+      }
+
+      .resource-card-link i {
+        font-size: 0.8rem;
+      }
+
+      /* Dark theme adjustments */
+      [data-theme='dark'] .resource-card {
+        background: var(--card-bg);
+      }
+
+      [data-theme='dark'] .resource-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 170, 255, 0.15);
+      }
+
+      /* Light theme adjustments */
+      [data-theme='light'] .resource-card {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      [data-theme='light'] .resource-card:hover {
+        box-shadow: 0 20px 40px rgba(0, 170, 255, 0.1);
+      }
+
+      /* Back button */
+      .resources-back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 40px;
+        transition: all 0.3s ease;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+      }
+
+      .resources-back-btn:hover {
+        gap: 12px;
+        color: var(--text-primary);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .resources-page {
+          padding: 60px 15px 80px;
+        }
+
+        .resources-page-header h1 {
+          font-size: 2.2rem;
+        }
+
+        .resources-cards-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .resources-section-title {
+          font-size: 1.4rem;
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .resource-card {
+        animation: fadeInUp 0.6s ease-out;
+        animation-fill-mode: both;
+      }
+
+      .resource-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .resource-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .resource-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .resource-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .resource-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .resource-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Footer styling - use default styles from style.min.css */
+      .site-footer {
+        margin-top: 80px;
+      }
+
+      /* Hide share widget if it appears */
+      .share-widget {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <main class="resources-page">
+      <div class="resources-container">
+        <a href="../index.html" class="resources-back-btn">
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          <span>Back to Home</span>
+        </a>
+
+        <div class="resources-page-header">
+          <h1><i class="fas fa-code-branch" aria-hidden="true"></i> CPDSA Resources</h1>
+          <p>
+            Master competitive programming and data structures with curated resources from
+            industry-leading platforms
+          </p>
+        </div>
+
+        <!-- Competitive Programming Platforms -->
+        <div class="resources-section">
+          <h2 class="resources-section-title">
+            <i class="fas fa-trophy" aria-hidden="true"></i>
+            Competitive Coding Platforms
+          </h2>
+          <div class="resources-cards-grid">
+            <div class="resource-card">
+              <i class="fab fa-codepen resource-card-icon" aria-hidden="true"></i>
+              <h3>Codeforces</h3>
+              <p>
+                One of the most popular competitive programming platforms with frequent contests,
+                detailed editorials, and a vibrant community. Perfect for practicing algorithmic
+                problems.
+              </p>
+              <a
+                href="https://codeforces.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-code resource-card-icon" aria-hidden="true"></i>
+              <h3>CodeChef</h3>
+              <p>
+                A global programming community hosting monthly contests and cook-offs. Great for
+                beginners and experienced programmers alike with discussion forums and tutorials.
+              </p>
+              <a
+                href="https://codechef.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-laptop resource-card-icon" aria-hidden="true"></i>
+              <h3>LeetCode</h3>
+              <p>
+                The leading platform for interview preparation with thousands of coding problems.
+                Excellent for learning data structures, algorithms, and preparing for technical
+                interviews.
+              </p>
+              <a
+                href="https://leetcode.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-flag resource-card-icon" aria-hidden="true"></i>
+              <h3>AtCoder</h3>
+              <p>
+                Japan's leading online programming contest platform. Known for well-designed
+                problems and educational contests. Great for learning advanced algorithmic
+                techniques.
+              </p>
+              <a
+                href="https://atcoder.jp"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentation & Learning Resources -->
+        <div class="resources-section">
+          <h2 class="resources-section-title">
+            <i class="fas fa-book" aria-hidden="true"></i>
+            Documentation & Guides
+          </h2>
+          <div class="resources-cards-grid">
+            <div class="resource-card">
+              <i class="fas fa-brain resource-card-icon" aria-hidden="true"></i>
+              <h3>CP Algorithms</h3>
+              <p>
+                Comprehensive encyclopedia of algorithms and data structures with implementations in
+                multiple languages. An essential reference for competitive programmers.
+              </p>
+              <a
+                href="https://cp-algorithms.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-map resource-card-icon" aria-hidden="true"></i>
+              <h3>USACO Guide</h3>
+              <p>
+                A comprehensive guide for competitive programming covering everything from basic
+                algorithms to advanced topics. Designed for all skill levels.
+              </p>
+              <a
+                href="https://usaco.guide"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-graduation-cap resource-card-icon" aria-hidden="true"></i>
+              <h3>GeeksforGeeks DSA</h3>
+              <p>
+                Comprehensive tutorials on data structures and algorithms with code examples.
+                Excellent for learning fundamentals and exploring various problem-solving
+                approaches.
+              </p>
+              <a
+                href="https://www.geeksforgeeks.org/dsa-tutorial/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fab fa-github resource-card-icon" aria-hidden="true"></i>
+              <h3>Coding Interview Guide</h3>
+              <p>
+                GitHub repository containing curated resources for coding interviews, problem
+                patterns, and best practices for technical interviews.
+              </p>
+              <a
+                href="https://github.com/kdn251/interviews"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Practice & Problem Sets -->
+        <div class="resources-section">
+          <h2 class="resources-section-title">
+            <i class="fas fa-tasks" aria-hidden="true"></i>
+            Practice & Problem Sets
+          </h2>
+          <div class="resources-cards-grid">
+            <div class="resource-card">
+              <i class="fas fa-shield-alt resource-card-icon" aria-hidden="true"></i>
+              <h3>HackerRank</h3>
+              <p>
+                Interactive platform for learning and practicing programming. Features tutorials,
+                challenges, and contests across multiple difficulty levels and languages.
+              </p>
+              <a
+                href="https://hackerrank.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-rocket resource-card-icon" aria-hidden="true"></i>
+              <h3>HackerEarth</h3>
+              <p>
+                Platform offering coding challenges, hackathons, and programming competitions. Great
+                for testing skills and competing with programmers worldwide.
+              </p>
+              <a
+                href="https://hackerearth.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-calculator resource-card-icon" aria-hidden="true"></i>
+              <h3>Project Euler</h3>
+              <p>
+                Collection of computational and mathematical problems designed to test your
+                programming and mathematical skills. Ideal for mathematical problem solvers.
+              </p>
+              <a
+                href="https://projecteuler.net"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="resource-card">
+              <i class="fas fa-code resource-card-icon" aria-hidden="true"></i>
+              <h3>SPOJ</h3>
+              <p>
+                Sphere Online Judge is a programming platform with thousands of challenging
+                problems. Features problems from beginner to advanced levels from various online
+                judges.
+              </p>
+              <a
+                href="https://www.spoj.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="resource-card-link"
+              >
+                <span>Visit</span>
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <button class="back-to-top-btn" id="back-to-top-btn" aria-label="Back to top">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <div id="feedback-modal"></div>
+    <div id="feedback-widget"></div>
+
+    <!-- Scripts -->
+    <script src="../js/navbar.js"></script>
+    <script src="../js/footer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/theme.min.js"></script>
+    <script src="../js/cursor-effect.js"></script>
+    <script src="../js/back-to-top.js"></script>
+    <script src="../js/scroll-buttons.js"></script>
+    <script>
+      renderNavbar('../');
+      renderFooter('../');
+    </script>
+  </body>
+</html>
