@@ -146,21 +146,21 @@ function loadMockData() {
   const activityList = document.getElementById('activity-list');
   if (activityList) {
     activityList.innerHTML = `
-            <div class="activity-item">
-                <div class="activity-marker"></div>
-                <div class="commit-msg"><span style="color: var(--accent-color)">Satoshi</span>: Optimized blockchain algorithm</div>
-                <div class="commit-date">2 hours ago</div>
-            </div>
-            <div class="activity-item">
-                <div class="activity-marker"></div>
-                <div class="commit-msg"><span style="color: var(--accent-color)">Ada</span>: Fixed layout bug in CSS</div>
-                <div class="commit-date">5 hours ago</div>
-            </div>
-            <div class="activity-item">
-                <div class="activity-marker"></div>
-                <div class="commit-msg"><span style="color: var(--accent-color)">System</span>: <strong>Deployed Mock Data Protocol</strong></div>
-                <div class="commit-date">Just now</div>
-            </div>
+           <div class="activity-item">
+    <div class="activity-marker bullet"></div>
+    <div class="commit-msg"><span style="color: var(--accent-color)">Satoshi</span>: Optimized blockchain algorithm</div>
+    <div class="commit-date">2 hours ago</div>
+  </div>
+  <div class="activity-item">
+    <div class="activity-marker bullet"></div>
+    <div class="commit-msg"><span style="color: var(--accent-color)">Ada</span>: Fixed layout bug in CSS</div>
+    <div class="commit-date">5 hours ago</div>
+  </div>
+  <div class="activity-item">
+    <div class="activity-marker bullet"></div>
+    <div class="commit-msg"><span style="color: var(--accent-color)">System</span>: <strong>Deployed Mock Data Protocol</strong></div>
+    <div class="commit-date">Just now</div>
+  </div>
         `;
   }
 }
@@ -319,22 +319,22 @@ function renderContributors(page) {
   const paginatedItems = contributorsData.slice(start, end);
 
   if (paginatedItems.length === 0) {
-      grid.innerHTML = '<p class="text-center">No active contributors found yet.</p>';
-      return;
+    grid.innerHTML = '<p class="text-center">No active contributors found yet.</p>';
+    return;
   }
 
   paginatedItems.forEach((contributor, index) => {
-      const globalRank = start + index + 1;
-      const league = getLeagueData(contributor.points);
-      const card = document.createElement('article');
-      
-      // RECTIFIED: card structure matches Elite CSS
-      card.className = `contributor-card ${league.tier}`;
-      card.setAttribute('data-github', contributor.login);
-      card.setAttribute('role', 'listitem');
-      card.setAttribute('tabindex', '0');
+    const globalRank = start + index + 1;
+    const league = getLeagueData(contributor.points);
+    const card = document.createElement('article');
 
-      card.innerHTML = `
+    // RECTIFIED: card structure matches Elite CSS
+    card.className = `contributor-card ${league.tier}`;
+    card.setAttribute('data-github', contributor.login);
+    card.setAttribute('role', 'listitem');
+    card.setAttribute('tabindex', '0');
+
+    card.innerHTML = `
           <img src="${contributor.avatar_url}" alt="Avatar of ${contributor.login}" loading="lazy">
           <h3 class="cont-name">${contributor.login}</h3>
           <span class="cont-commits-badge ${league.class}">
@@ -371,15 +371,15 @@ function renderContributors(page) {
           </div>
       `;
 
-      card.addEventListener('click', () => openModal(contributor, league, globalRank));
-      grid.appendChild(card);
+    card.addEventListener('click', () => openModal(contributor, league, globalRank));
+    grid.appendChild(card);
   });
 
   renderPaginationControls(page);
-  
+
   // Trigger integrations for the new page of cards
   setTimeout(() => {
-      initGitHubIntegrations();
+    initGitHubIntegrations();
   }, 150);
 }
 
@@ -387,10 +387,10 @@ function renderContributors(page) {
 function renderPaginationControls(page) {
   const container = document.getElementById('pagination-controls');
   const totalPages = Math.ceil(contributorsData.length / itemsPerPage);
-  
+
   if (totalPages <= 1) {
-      container.innerHTML = '';
-      return;
+    container.innerHTML = '';
+    return;
   }
 
   container.innerHTML = `
@@ -407,7 +407,7 @@ function renderPaginationControls(page) {
 window.changePage = function (newPage) {
   currentPage = newPage;
   renderContributors(newPage);
-  
+
   // RECTIFIED: Smooth scroll back to top of grid so user sees the new cards immediately
   const gridTop = document.getElementById('top-contributors').offsetTop - 100;
   window.scrollTo({ top: gridTop, behavior: 'smooth' });
@@ -479,10 +479,10 @@ async function fetchRecentActivity() {
                     <div class="commit-msg"><span style="color: var(--accent-color)">${item.commit.author.name}</span>: ${item.commit.message}</div>
                     <div class="commit-date">${date}</div>
                 `;
-                activityList.appendChild(row);
-            });
-        }
-    } catch (error) { console.log('Activity feed unavailable'); }
+        activityList.appendChild(row);
+      });
+    }
+  } catch (error) { console.log('Activity feed unavailable'); }
 }
 
 // =================================================================
@@ -495,92 +495,92 @@ async function fetchRecentActivity() {
  * @returns {Promise<Object>} - User stats or cached data
  */
 async function fetchGitHubStats(username) {
-    console.log(`📊 Fetching GitHub stats for: ${username}`);
-    
-    // Check cache first (24-hour expiration)
-    const cacheKey = `github_stats_${username}`;
-    const cached = localStorage.getItem(cacheKey);
-    
-    if (cached) {
-        try {
-            const { data, timestamp } = JSON.parse(cached);
-            const age = Date.now() - timestamp;
-            const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-            
-            if (age < CACHE_DURATION) {
-                console.log(`✅ Using cached stats for ${username}`);
-                return data;
-            }
-        } catch (e) {
-            console.warn('Cache parse error:', e);
-        }
-    }
+  console.log(`📊 Fetching GitHub stats for: ${username}`);
 
-    // Fetch fresh data from GitHub API
+  // Check cache first (24-hour expiration)
+  const cacheKey = `github_stats_${username}`;
+  const cached = localStorage.getItem(cacheKey);
+
+  if (cached) {
     try {
-        const response = await fetch(`https://api.github.com/users/${username}`);
-        
-        // Handle rate limiting
-        if (response.status === 403) {
-            const rateLimitRemaining = response.headers.get('X-RateLimit-Remaining');
-            console.warn(`⚠️ GitHub API rate limit hit. Remaining: ${rateLimitRemaining}`);
-            
-            // Return cached data even if expired
-            if (cached) {
-                const { data } = JSON.parse(cached);
-                return data;
-            }
-            throw new Error('Rate limit exceeded and no cache available');
-        }
+      const { data, timestamp } = JSON.parse(cached);
+      const age = Date.now() - timestamp;
+      const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
-        // User not found
-        if (response.status === 404) {
-            console.warn(`❌ GitHub user not found: ${username}`);
-            return null;
-        }
-
-        if (!response.ok) {
-            throw new Error(`GitHub API error: ${response.status}`);
-        }
-
-        const userData = await response.json();
-        
-        // Extract relevant data
-        const stats = {
-            public_repos: userData.public_repos || 0,
-            followers: userData.followers || 0,
-            following: userData.following || 0,
-            avatar_url: userData.avatar_url || '',
-            bio: userData.bio || '',
-            name: userData.name || username,
-            html_url: userData.html_url || `https://github.com/${username}`
-        };
-
-        // Cache the result
-        localStorage.setItem(cacheKey, JSON.stringify({
-            data: stats,
-            timestamp: Date.now()
-        }));
-
-        console.log(`✅ Fetched fresh stats for ${username}:`, stats);
-        return stats;
-
-    } catch (error) {
-        console.error(`Error fetching stats for ${username}:`, error);
-        
-        // Try to return cached data as fallback
-        if (cached) {
-            try {
-                const { data } = JSON.parse(cached);
-                console.log(`⚠️ Returning expired cache for ${username}`);
-                return data;
-            } catch (e) {
-                // Cache is corrupted
-            }
-        }
-        
-        return null;
+      if (age < CACHE_DURATION) {
+        console.log(`✅ Using cached stats for ${username}`);
+        return data;
+      }
+    } catch (e) {
+      console.warn('Cache parse error:', e);
     }
+  }
+
+  // Fetch fresh data from GitHub API
+  try {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+
+    // Handle rate limiting
+    if (response.status === 403) {
+      const rateLimitRemaining = response.headers.get('X-RateLimit-Remaining');
+      console.warn(`⚠️ GitHub API rate limit hit. Remaining: ${rateLimitRemaining}`);
+
+      // Return cached data even if expired
+      if (cached) {
+        const { data } = JSON.parse(cached);
+        return data;
+      }
+      throw new Error('Rate limit exceeded and no cache available');
+    }
+
+    // User not found
+    if (response.status === 404) {
+      console.warn(`❌ GitHub user not found: ${username}`);
+      return null;
+    }
+
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
+
+    const userData = await response.json();
+
+    // Extract relevant data
+    const stats = {
+      public_repos: userData.public_repos || 0,
+      followers: userData.followers || 0,
+      following: userData.following || 0,
+      avatar_url: userData.avatar_url || '',
+      bio: userData.bio || '',
+      name: userData.name || username,
+      html_url: userData.html_url || `https://github.com/${username}`
+    };
+
+    // Cache the result
+    localStorage.setItem(cacheKey, JSON.stringify({
+      data: stats,
+      timestamp: Date.now()
+    }));
+
+    console.log(`✅ Fetched fresh stats for ${username}:`, stats);
+    return stats;
+
+  } catch (error) {
+    console.error(`Error fetching stats for ${username}:`, error);
+
+    // Try to return cached data as fallback
+    if (cached) {
+      try {
+        const { data } = JSON.parse(cached);
+        console.log(`⚠️ Returning expired cache for ${username}`);
+        return data;
+      } catch (e) {
+        // Cache is corrupted
+      }
+    }
+
+    return null;
+  }
 }
 
 /**
@@ -589,77 +589,77 @@ async function fetchGitHubStats(username) {
  * @returns {Promise<Array>} - Array of recent repos
  */
 async function fetchRecentRepos(username) {
-    // Check cache first
-    const cacheKey = `github_repos_${username}`;
-    const cached = localStorage.getItem(cacheKey);
-    
-    if (cached) {
-        try {
-            const { data, timestamp } = JSON.parse(cached);
-            const age = Date.now() - timestamp;
-            const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
-            
-            if (age < CACHE_DURATION) {
-                return data;
-            }
-        } catch (e) {
-            console.warn('Repo cache parse error:', e);
-        }
-    }
+  // Check cache first
+  const cacheKey = `github_repos_${username}`;
+  const cached = localStorage.getItem(cacheKey);
 
+  if (cached) {
     try {
-        const response = await fetch(
-            `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`
-        );
+      const { data, timestamp } = JSON.parse(cached);
+      const age = Date.now() - timestamp;
+      const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
-        // Handle rate limiting
-        if (response.status === 403) {
-            if (cached) {
-                const { data } = JSON.parse(cached);
-                return data;
-            }
-            return [];
-        }
-
-        if (!response.ok) {
-            return [];
-        }
-
-        const repos = await response.json();
-        
-        // Extract relevant repo data
-        const repoData = repos.map(repo => ({
-            name: repo.name,
-            description: repo.description || 'No description',
-            stars: repo.stargazers_count || 0,
-            language: repo.language || 'Unknown',
-            html_url: repo.html_url,
-            updated_at: repo.updated_at
-        }));
-
-        // Cache the result
-        localStorage.setItem(cacheKey, JSON.stringify({
-            data: repoData,
-            timestamp: Date.now()
-        }));
-
-        return repoData;
-
-    } catch (error) {
-        console.error(`Error fetching repos for ${username}:`, error);
-        
-        // Try to return cached data as fallback
-        if (cached) {
-            try {
-                const { data } = JSON.parse(cached);
-                return data;
-            } catch (e) {
-                // Cache is corrupted
-            }
-        }
-        
-        return [];
+      if (age < CACHE_DURATION) {
+        return data;
+      }
+    } catch (e) {
+      console.warn('Repo cache parse error:', e);
     }
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`
+    );
+
+    // Handle rate limiting
+    if (response.status === 403) {
+      if (cached) {
+        const { data } = JSON.parse(cached);
+        return data;
+      }
+      return [];
+    }
+
+    if (!response.ok) {
+      return [];
+    }
+
+    const repos = await response.json();
+
+    // Extract relevant repo data
+    const repoData = repos.map(repo => ({
+      name: repo.name,
+      description: repo.description || 'No description',
+      stars: repo.stargazers_count || 0,
+      language: repo.language || 'Unknown',
+      html_url: repo.html_url,
+      updated_at: repo.updated_at
+    }));
+
+    // Cache the result
+    localStorage.setItem(cacheKey, JSON.stringify({
+      data: repoData,
+      timestamp: Date.now()
+    }));
+
+    return repoData;
+
+  } catch (error) {
+    console.error(`Error fetching repos for ${username}:`, error);
+
+    // Try to return cached data as fallback
+    if (cached) {
+      try {
+        const { data } = JSON.parse(cached);
+        return data;
+      } catch (e) {
+        // Cache is corrupted
+      }
+    }
+
+    return [];
+  }
 }
 
 /**
@@ -668,19 +668,19 @@ async function fetchRecentRepos(username) {
  * @param {string} username - GitHub username
  */
 async function displayGitHubStats(card, username) {
-    if (!username) {
-        console.warn('⚠️ No username provided for card');
-        return;
-    }
+  if (!username) {
+    console.warn('⚠️ No username provided for card');
+    return;
+  }
 
-    console.log(`🎯 Displaying stats for: ${username}`);
+  console.log(`🎯 Displaying stats for: ${username}`);
 
-    // Show loading state
-    const statsContainer = card.querySelector('.github-stats');
-    const reposContainer = card.querySelector('.recent-repos');
-    
-    if (statsContainer) {
-        statsContainer.innerHTML = `
+  // Show loading state
+  const statsContainer = card.querySelector('.github-stats');
+  const reposContainer = card.querySelector('.recent-repos');
+
+  if (statsContainer) {
+    statsContainer.innerHTML = `
             <div class="stat-item skeleton">
                 <span class="stat-icon">📦</span>
                 <span class="stat-value">...</span>
@@ -697,18 +697,18 @@ async function displayGitHubStats(card, username) {
                 <span class="stat-label">Following</span>
             </div>
         `;
-    }
+  }
 
-    // Fetch stats and repos in parallel
-    const [stats, repos] = await Promise.all([
-        fetchGitHubStats(username),
-        fetchRecentRepos(username)
-    ]);
+  // Fetch stats and repos in parallel
+  const [stats, repos] = await Promise.all([
+    fetchGitHubStats(username),
+    fetchRecentRepos(username)
+  ]);
 
-    // Display stats
-    if (stats && statsContainer) {
-        console.log(`✅ Displaying stats for ${username}:`, stats);
-        statsContainer.innerHTML = `
+  // Display stats
+  if (stats && statsContainer) {
+    console.log(`✅ Displaying stats for ${username}:`, stats);
+    statsContainer.innerHTML = `
             <div class="stat-item">
                 <span class="stat-icon">📦</span>
                 <span class="stat-value" data-stat="repos">${stats.public_repos}</span>
@@ -725,20 +725,20 @@ async function displayGitHubStats(card, username) {
                 <span class="stat-label">Following</span>
             </div>
         `;
-    } else if (statsContainer) {
-        statsContainer.innerHTML = `
+  } else if (statsContainer) {
+    statsContainer.innerHTML = `
             <div class="stat-error">
                 <i class="fas fa-exclamation-circle"></i>
                 <span>Stats not available</span>
             </div>
         `;
-    }
+  }
 
-    // Display recent repos
-    if (repos && repos.length > 0 && reposContainer) {
-        const repoList = reposContainer.querySelector('.repo-list');
-        if (repoList) {
-            repoList.innerHTML = repos.map(repo => `
+  // Display recent repos
+  if (repos && repos.length > 0 && reposContainer) {
+    const repoList = reposContainer.querySelector('.repo-list');
+    if (repoList) {
+      repoList.innerHTML = repos.map(repo => `
                 <div class="repo-item">
                     <div class="repo-info">
                         <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
@@ -752,13 +752,13 @@ async function displayGitHubStats(card, username) {
                     </div>
                 </div>
             `).join('');
-        }
-    } else if (reposContainer) {
-        const repoList = reposContainer.querySelector('.repo-list');
-        if (repoList) {
-            repoList.innerHTML = '<p class="no-repos">No recent projects</p>';
-        }
     }
+  } else if (reposContainer) {
+    const repoList = reposContainer.querySelector('.repo-list');
+    if (repoList) {
+      repoList.innerHTML = '<p class="no-repos">No recent projects</p>';
+    }
+  }
 }
 
 /**
@@ -766,85 +766,85 @@ async function displayGitHubStats(card, username) {
  * Uses github-calendar library
  */
 function initializeGitHubCalendars() {
-    console.log('📅 Initializing GitHub calendars...');
-    
-    // Check if library is loaded
-    if (typeof GitHubCalendar === 'undefined') {
-        console.warn('⚠️ github-calendar library not loaded yet, retrying in 500ms...');
-        setTimeout(initializeGitHubCalendars, 500);
-        return;
+  console.log('📅 Initializing GitHub calendars...');
+
+  // Check if library is loaded
+  if (typeof GitHubCalendar === 'undefined') {
+    console.warn('⚠️ github-calendar library not loaded yet, retrying in 500ms...');
+    setTimeout(initializeGitHubCalendars, 500);
+    return;
+  }
+
+
+  // Find all calendar containers
+  const calendarElements = document.querySelectorAll('.github-calendar[data-username]');
+  console.log(`Found ${calendarElements.length} calendar elements`);
+
+  calendarElements.forEach((calendarEl, index) => {
+    const username = calendarEl.getAttribute('data-username');
+
+    if (!username) {
+      console.warn(`Calendar ${index} has no username`);
+      return;
     }
-    
 
-    // Find all calendar containers
-    const calendarElements = document.querySelectorAll('.github-calendar[data-username]');
-    console.log(`Found ${calendarElements.length} calendar elements`);
-    
-    calendarElements.forEach((calendarEl, index) => {
-        const username = calendarEl.getAttribute('data-username');
-        
-        if (!username) {
-            console.warn(`Calendar ${index} has no username`);
-            return;
-        }
+    console.log(`📅 Loading calendar for: ${username}`);
 
-        console.log(`📅 Loading calendar for: ${username}`);
+    try {
+      // Clear loading text
+      calendarEl.innerHTML = '';
 
-        try {
-            // Clear loading text
-            calendarEl.innerHTML = '';
-            
-            GitHubCalendar(calendarEl, username, {
-                responsive: true,
-                summary_text: '',
-                global_stats: false,
-                tooltips: true
-            });
-            console.log(`✅ Loaded contribution calendar for ${username}`);
-        } catch (error) {
-            console.error(`❌ Failed to load calendar for ${username}:`, error);
-            calendarEl.innerHTML = '<p class="calendar-error">Contributions unavailable</p>';
-        }
-    });
+      GitHubCalendar(calendarEl, username, {
+        responsive: true,
+        summary_text: '',
+        global_stats: false,
+        tooltips: true
+      });
+      console.log(`✅ Loaded contribution calendar for ${username}`);
+    } catch (error) {
+      console.error(`❌ Failed to load calendar for ${username}:`, error);
+      calendarEl.innerHTML = '<p class="calendar-error">Contributions unavailable</p>';
+    }
+  });
 }
 
 /**
  * Initialize all GitHub integrations on page load
  */
 function initGitHubIntegrations() {
-    console.log('🚀 Starting GitHub integrations...');
-    
-    // Get all contributor cards with GitHub usernames
-    const contributorCards = document.querySelectorAll('.contributor-card[data-github]');
-    console.log(`Found ${contributorCards.length} contributor cards with data-github attribute`);
-    
-    if (contributorCards.length === 0) {
-        console.warn('⚠️ No contributor cards found! Cards might not be rendered yet.');
-        return;
-    }
-    
-    contributorCards.forEach((card, index) => {
-        const username = card.getAttribute('data-github');
-        if (username) {
-            console.log(`Processing card ${index + 1}: ${username}`);
-            displayGitHubStats(card, username);
-        } else {
-            console.warn(`Card ${index + 1} has no data-github attribute`);
-        }
-    });
+  console.log('🚀 Starting GitHub integrations...');
 
-    // Initialize calendars after a delay to ensure library is loaded
-    setTimeout(() => {
-        initializeGitHubCalendars();
-    }, 1000);
-    
-    // Also initialize for project lead card
-    const leadCard = document.querySelector('.project-lead-card[data-github]');
-    if (leadCard) {
-        const leadUsername = leadCard.getAttribute('data-github');
-        console.log(`🎯 Found project lead card: ${leadUsername}`);
-        displayGitHubStats(leadCard, leadUsername);
+  // Get all contributor cards with GitHub usernames
+  const contributorCards = document.querySelectorAll('.contributor-card[data-github]');
+  console.log(`Found ${contributorCards.length} contributor cards with data-github attribute`);
+
+  if (contributorCards.length === 0) {
+    console.warn('⚠️ No contributor cards found! Cards might not be rendered yet.');
+    return;
+  }
+
+  contributorCards.forEach((card, index) => {
+    const username = card.getAttribute('data-github');
+    if (username) {
+      console.log(`Processing card ${index + 1}: ${username}`);
+      displayGitHubStats(card, username);
+    } else {
+      console.warn(`Card ${index + 1} has no data-github attribute`);
     }
+  });
+
+  // Initialize calendars after a delay to ensure library is loaded
+  setTimeout(() => {
+    initializeGitHubCalendars();
+  }, 1000);
+
+  // Also initialize for project lead card
+  const leadCard = document.querySelector('.project-lead-card[data-github]');
+  if (leadCard) {
+    const leadUsername = leadCard.getAttribute('data-github');
+    console.log(`🎯 Found project lead card: ${leadUsername}`);
+    displayGitHubStats(leadCard, leadUsername);
+  }
 }
 
 // Note: initGitHubIntegrations is now called from renderContributors()

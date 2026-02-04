@@ -1,32 +1,171 @@
 /* ================= CONTRIBUTORS PAGE STYLES ================= */
+
+/* CSS VARIABLES FOR THEMES */
 :root {
-  /* DARK THEME (DEFAULT) */
-  --bg-primary: #0a0b10;
-  --card-bg: #12141d;
-  --text-primary: #ffffff;
-  --text-secondary: #a0a0a8;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --accent-color: #00ffa3;
-  --stat-box-bg: rgba(255, 255, 255, 0.03);
-  --shadow-main: 0 20px 40px rgba(0, 0, 0, 0.4);
+  /* Light theme variables */
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-navbar: rgba(255, 255, 255, 0.95);
+  --bg-navbar-scrolled: rgba(255, 255, 255, 0.98);
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --accent-color: #00aaff;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --input-bg: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --nav-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  --activity-icon-color: #ffffff;
+
+  /* Footer Light Theme Variables */
+  --footer-bg: #fcfcff;
+  --footer-bg-secondary: #16213e;
+  --footer-text: #e6e6e6;
+  --footer-text-secondary: #a0aec0;
+  --footer-heading: #ffffff;
+  --footer-link: #cbd5e0;
+  --footer-link-hover: #ffffff;
+  --footer-border: #2d3748;
+  --social-bg: #2d3748;
+  --social-bg-hover: #4a5568;
+  --social-icon: #cbd5e0;
+  --social-icon-hover: #ffffff;
+  --social-border: #4a5568;
+  --footer-input-bg: #2d3748;
+  --input-border: #4a5568;
+  --input-text: #e2e8f0;
+  --input-placeholder: #cbd5e1;
+  --accent-primary: #667eea;
+  --accent-secondary: #764ba2;
+
+  /* Font Variables for Consistency */
+  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: 'Courier New', monospace;
+  --font-hud: 'JetBrains Mono', monospace;
+
+  /* Shared UI Tokens for Consistency */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
+
+  --shadow-hover: 0 8px 25px rgba(0, 170, 255, 0.2);
+  --shadow-hover-strong: 0 12px 30px rgba(0, 170, 255, 0.3);
+
+  --hover-transform: translateY(-5px);
+  --hover-transform-strong: translateY(-8px) scale(1.02);
+
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
 }
 
-/* RECTIFIED LIGHT MODE - HIGH CONTRAST */
-body.light-mode {
-  --bg-primary: #f8fafc;
-  /* Clean slate background */
-  --card-bg: #ffffff;
-  /* Pure white cards */
-  --text-primary: #0f172a;
-  /* Deep navy text for maximum readability */
-  --text-secondary: #475569;
-  /* Slate grey for subtext */
-  --border-color: rgba(0, 0, 0, 0.1);
-  --accent-color: #2563eb;
-  /* Strong blue for high visibility */
-  --stat-box-bg: #f1f5f9;
-  /* Subtle grey for internal containers */
-  --shadow-main: 0 10px 30px rgba(0, 0, 0, 0.05);
+:root .hack-main-card h3 {
+  --text-primary: rgb(255, 250, 250);
+}
+
+.hack-main-card h3,
+#home-event-desc {
+  background: rgba(0, 0, 0, 0.248);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+:root .btn-hollow {
+  --text-primary: white;
+}
+
+:root .btn-hollow:hover {
+  --text-primary: #00aaff;
+}
+
+:root .cyber-card p,
+.stat small,
+.toggle-label {
+  --text-secondary: white;
+}
+
+[data-theme='dark'] {
+  /* Dark theme variables */
+  --bg-primary: #0d0f14;
+  --bg-secondary: #13161d;
+  --bg-navbar: rgba(19, 22, 29, 0.95);
+  --bg-navbar-scrolled: rgba(19, 22, 29, 0.98);
+  --text-primary: #ffffff;
+  --text-secondary: #bbbbbb;
+  --accent-color: #00aaff;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: #1a1d25;
+  --input-bg: #1a1d25;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --nav-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --activity-icon-color: #00aaff;
+
+  /* Footer Dark Theme Variables */
+  --footer-bg: #0f1419;
+  --footer-bg-secondary: #1a202c;
+  --footer-text: #e2e8f0;
+  --footer-text-secondary: #a0aec0;
+  --footer-heading: #ffffff;
+  --footer-link: #cbd5e0;
+  --footer-link-hover: #ffffff;
+  --footer-border: #2d3748;
+  --social-bg: #2d3748;
+  --social-bg-hover: #4a5568;
+  --social-icon: #cbd5e0;
+  --social-icon-hover: #ffffff;
+  --social-border: #4a5568;
+  --footer-input-bg: #2d3748;
+  --input-border: #4a5568;
+  --input-text: #e2e8f0;
+  --input-placeholder: #cbd5e1;
+  --accent-primary: #00aaff;
+  --accent-secondary: #0088cc;
+
+  /* Neon colors for dark theme */
+  --neon-green: #0aff9d;
+  --neon-cyan: #00aaff;
+  --neon-purple: #bc13fe;
+  --neon-red: #ff003c;
+
+  /* Stats Widget Variables for Dark Theme */
+  --panel-bg: rgba(26, 29, 37, 0.85);
+  --panel-border: 1px solid rgba(255, 255, 255, 0.1);
+  --text-main: #ffffff;
+  --text-dim: #bbbbbb;
+  --font-hud: 'JetBrains Mono', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Shared UI Tokens for Consistency */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-xxl: 40px;
+
+  --shadow-hover: 0 8px 25px rgba(0, 170, 255, 0.2);
+  --shadow-hover-strong: 0 12px 30px rgba(0, 170, 255, 0.3);
+
+  --hover-transform: translateY(-5px);
+  --hover-transform-strong: translateY(-8px) scale(1.02);
+
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+}
+
+[data-theme='dark'] .hack-main-card h3 {
+  --text-primary: #ffffff;
 }
 
 /* --- GLOBAL LAYOUT & CENTERING --- */
@@ -315,7 +454,7 @@ body.light-mode .repo-item {
 
 /* The Hover State */
 .activity-item:hover {
-  background-color: #ffffff;
+ 
   border-color: #3b82f6;
   transform: translateX(8px) translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -2124,6 +2263,82 @@ body.dark-mode .calendar .contrib-legend .legend {
   top: -60px;
 }
 
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-radius: 12px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideFadeIn 0.5s forwards;
+  animation-delay: 0.2s; /* will override per item */
+}
+
+/* Slide & fade-in animation */
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Staggered animation using JS (optional) */
+.activity-item:nth-child(1) { animation-delay: 0.1s; }
+.activity-item:nth-child(2) { animation-delay: 0.25s; }
+.activity-item:nth-child(3) { animation-delay: 0.4s; }
+
+/* Hover effect */
+.activity-item:hover {
+  border-color: var(--accent-color);
+  transform: translateX(12px) translateY(-3px) scale(1.02);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
+  background: rgba(0, 217, 255, 0.05);
+}
+
+/* Marker / Bullet styling */
+.activity-marker.bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  margin-right: 14px;
+  flex-shrink: 0;
+  transition: all 0.35s ease;
+  box-shadow: 0 0 6px rgba(0, 217, 255, 0.3);
+}
+
+/* Marker pulse on hover */
+.activity-item:hover .bullet {
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.6), 0 0 20px rgba(0, 217, 255, 0.3);
+}
+
+/* Commit message micro bounce on hover */
+.activity-item:hover .commit-msg {
+  transform: translateY(-2px);
+  transition: transform 0.25s ease;
+}
+
+/* Commit date subtle fade on hover */
+.activity-item:hover .commit-date {
+  color: var(--accent-color);
+  transition: color 0.25s ease;
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 1000px) {
+  .activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+
 @keyframes pulse-dot {
 
   0%,
@@ -2323,4 +2538,165 @@ body.dark-mode .calendar .contrib-legend .legend {
   .roadmap-step:hover {
     transform: none !important;
   }
+}
+
+/* Activity Feed Container */
+#activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* spacing between items */
+
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Activity Item Card */
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background-color: #ffffff; /* white theme */
+  border: 1px solid #e5e7eb; /* subtle border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideFadeIn 0.5s forwards;
+}
+
+/* Slide & fade-in */
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered animation */
+.activity-item:nth-child(1) { animation-delay: 0.1s; }
+.activity-item:nth-child(2) { animation-delay: 0.25s; }
+.activity-item:nth-child(3) { animation-delay: 0.4s; }
+
+/* Hover effect */
+.activity-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border-color: #3b82f6;
+}
+
+/* Marker / Bullet */
+.activity-marker.bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #3b82f6; /* blue accent */
+  margin-right: 14px;
+  flex-shrink: 0;
+  transition: all 0.35s ease;
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.3);
+}
+
+/* Marker pulse on hover */
+.activity-item:hover .bullet {
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Commit Message */
+.commit-msg {
+  flex: 1;
+  margin-right: 16px;
+  color: #111827;
+  font-weight: 500;
+  transition: transform 0.25s ease;
+}
+
+/* User name accent */
+.user-name {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+[data-theme="dark"] {
+  --activity-bg: #1f2937;          /* dark card background */
+  --activity-border: #374151;      /* dark border */
+  --activity-shadow: rgba(0, 0, 0, 0.4); /* stronger shadow */
+  --activity-text: #f9fafb;        /* main text */
+  --activity-text-secondary: #9ca3af; /* secondary text/date */
+  --activity-accent: #3b82f6;      /* accent color */
+}
+
+/* Micro-bounce on hover */
+.activity-item:hover .commit-msg {
+  transform: translateY(-2px);
+}
+
+/* Commit date */
+.commit-date {
+  color: #6b7280;
+  font-size: 0.875rem;
+  transition: color 0.25s ease;
+}
+
+/* Highlight date on hover */
+.activity-item:hover .commit-date {
+  color: #3b82f6;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  #activity-list {
+    padding: 12px;
+  }
+  .activity-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .commit-date {
+    font-size: 0.8rem;
+  }
+}
+
+[data-theme="dark"] #activity-list .activity-item {
+  background-color: var(--activity-bg);
+  border: 1px solid var(--activity-border);
+  box-shadow: 0 4px 12px var(--activity-shadow);
+  color: var(--activity-text);
+}
+
+[data-theme="dark"] #activity-list .activity-item:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-color: var(--activity-accent);
+  background-color: #111827; /* slightly darker hover */
+}
+
+[data-theme="dark"] #activity-list .activity-marker.bullet {
+  background-color: var(--activity-accent);
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] #activity-list .activity-item:hover .bullet {
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] #activity-list .commit-msg {
+  color: var(--activity-text);
+}
+
+[data-theme="dark"] #activity-list .user-name {
+  color: var(--activity-accent);
+}
+
+[data-theme="dark"] #activity-list .commit-date {
+  color: var(--activity-text-secondary);
+}
+
+[data-theme="dark"] #activity-list .activity-item:hover .commit-date {
+  color: var(--activity-accent);
 }
