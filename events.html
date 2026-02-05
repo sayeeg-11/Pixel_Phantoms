@@ -98,13 +98,27 @@
           </div>
         </section>
 
-        <section class="content">
-          <div class="events-container" id="events-container">
-            <p class="loading-msg">Loading events...</p>
+       <section class="content">
+        <div class="container">
+          <div class="section-header-terminal">
+            <h2><i class="fas fa-calendar-alt"></i> UPCOMING_TRANSMISSIONS</h2>
+          <div class="line-scanner"></div>
+        </div>
+          <div class="events-container" id="upcoming-events-container">
+            <p class="loading-msg">Scanning for upcoming events...</p>
           </div>
+        </div>
 
-          <div id="pagination-controls" class="pagination-container"></div>
-        </section>
+        <div class="container" style="margin-top: 4rem;">
+          <div class="section-header-terminal">
+          <h2><i class="fas fa-history"></i> ARCHIVE_LOGS</h2>
+          <div class="line-scanner"></div>
+        </div>
+          <div class="events-container" id="past-events-container">
+            <p class="loading-msg">Retrieving archival data...</p>
+            </div>
+        </div>
+      </section> 
 
         <!-- REDESIGNED HOST EVENT FORM SECTION -->
         <section class="organize-section">

@@ -22,6 +22,92 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
+  <style>
+    /* =========================================
+   FINAL FIX: COMPACT HERO + NO GAPS + NEXT LEVEL FORM
+   ========================================= */
+
+   /* =========================================
+   LIGHT MODE FIXES (For Compact Hero & Form)
+   ========================================= */
+
+[data-theme="light"] .hero-section {
+    /* Lighter, subtle blue gradient instead of dark green */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 170, 255, 0.1) 0%, transparent 60%);
+}
+
+/* Fix Title Visibility in Light Mode */
+[data-theme="light"] .hero-glitch {
+    color: #333 !important; /* Dark text */
+    text-shadow: 2px 2px 0px rgba(0, 170, 255, 0.2); /* Subtle shadow, no heavy neon glow */
+}
+
+/* Invert the Typing Box (White Box, Dark Text) */
+[data-theme="light"] .terminal-box.typing-box {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 170, 255, 0.4);
+    color: #333 !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Typing cursor color fix */
+[data-theme="light"] .typing-cursor {
+    color: var(--accent-color);
+}
+
+/* --- 1. SUPER COMPACT HERO (No Gaps) --- */
+.hero-section {
+    min-height: auto !important; /* Remove fixed height */
+    padding-top: 40px;           /* Minimal top space */
+    padding-bottom: 10px;        /* NO gap at bottom */
+    background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tighter Title */
+.hero-glitch {
+    font-size: 2.5rem !important; 
+    margin-bottom: 10px; /* Small space between title and typing box */
+    margin-top: 0;
+    line-height: 1.2;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+/* Compact Typing Box */
+.terminal-box.typing-box {
+    min-height: auto !important;
+    padding: 8px 15px;
+    margin-bottom: 0; /* Remove bottom margin */
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    font-size: 0.9rem;
+    max-width: 800px;
+}
+
+/* Hide Status Bar to save space (Optional - remove display:none to show) */
+.mission-status-bar {
+   
+}
+
+
+
+
+    .form-terminal .terminal-body {
+    height: auto !important;     /* Removes the 300px limit */
+    min-height: auto !important; /* Removes any minimums */
+    overflow: visible !important; /* Removes the scrollbar */
+    display: block;              /* Resets flex layout if causing alignment issues */
+}
+
+/* Ensure the form elements have enough breathing room */
+.form-terminal {
+    height: auto !important;
+    padding-bottom: 2rem;
+}
+  </style>
   <body class="hacker-theme">
     <!-- Global Page Loader -->
 <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
@@ -140,6 +226,57 @@
           </div>
         </div>
       </section>
+
+      <section class="join-form-section" id="join-form">
+  <div class="container">
+    <div class="section-header-terminal">
+      <h2 class="section-header-glitch" data-text="INIT_REGISTRATION">INIT_REGISTRATION</h2>
+      <div class="line-scanner"></div>
+    </div>
+
+    <div class="terminal-window form-terminal size-large">
+      <div class="terminal-header">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+        <span class="title">root@pixel_phantoms:~/register.sh</span>
+      </div>
+      
+      <div class="terminal-body">
+        <form id="membership-form" class="cyber-form">
+          <div class="form-row responsive-flex">
+            <div class="form-group flex-item">
+              <label for="firstName">>> Enter First Name:</label>
+              <input type="text" id="firstName" name="firstName" class="terminal-input" required placeholder="_">
+            </div>
+            <div class="form-group flex-item">
+              <label for="lastName">>> Enter Last Name:</label>
+              <input type="text" id="lastName" name="lastName" class="terminal-input" required placeholder="_">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="age">>> Enter Age:</label>
+            <input type="number" id="age" name="age" class="terminal-input" required min="13" placeholder="_">
+          </div>
+
+          <div class="form-group">
+            <label for="email">>> Enter Email Protocol:</label>
+            <input type="email" id="email" name="email" class="terminal-input" required placeholder="user@domain.com">
+          </div>
+
+          <input type="hidden" name="eventTitle" value="General Membership">
+
+          <button type="submit" class="btn-glitch-effect submit-btn">
+            <span class="text">EXECUTE_JOIN_PROTOCOL</span>
+            <span class="decoration"></span>
+          </button>
+        </form>
+        <div id="form-feedback" class="terminal-text mt-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section class="terminal-updates">
         <div class="container">

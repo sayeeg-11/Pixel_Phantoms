@@ -1402,3 +1402,31 @@ body.dark-mode .modal-close:hover {
     font-size: 1.4rem;
   }
 }
+
+
+
+/* Ensure the containers don't touch edges on mobile */
+.events-container {
+  width: 100%;
+  display: grid;
+  /* 2 columns on desktop, 1 on mobile */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  /* Stack Event Cards */
+  .events-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Adjust Section Headers */
+  .section-header-terminal h2 {
+    font-size: 1.5rem; /* Smaller font for mobile */
+  }
+  
+  /* Add spacing between Upcoming and Archive sections */
+  .container[style*="margin-top"] {
+    margin-top: 3rem !important; /* Reduce gap slightly on mobile */
+  }
+}

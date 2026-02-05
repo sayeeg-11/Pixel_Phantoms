@@ -331,29 +331,47 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ================================
       INITIALIZATION (Replaces Fetch)
   ================================ */
-  const initEvents = () => {
-    container.innerHTML = ''; // Clear loading message
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
 
-    const upcomingEvents = eventDatabase
-      .filter(e => normalizeDate(e.date) >= today)
-      .sort((a, b) => normalizeDate(a.date) - normalizeDate(b.date));
+const initEvents = () => {
+  const upcomingContainer = document.getElementById('upcoming-events-container');
+  const pastContainer = document.getElementById('past-events-container');
+  
+  if(upcomingContainer) upcomingContainer.innerHTML = '';
+  if(pastContainer) pastContainer.innerHTML = '';
 
-    const pastEvents = eventDatabase
-      .filter(e => normalizeDate(e.date) < today)
-      .sort((a, b) => normalizeDate(b.date) - normalizeDate(a.date));
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-    allEventsData = [...upcomingEvents, ...pastEvents];
+  // Filter Events
+  const upcomingEvents = eventDatabase
+    .filter(e => normalizeDate(e.date) >= today)
+    .sort((a, b) => normalizeDate(a.date) - normalizeDate(b.date));
 
-    if (upcomingEvents.length > 0) {
-      startCountdown(upcomingEvents[0]);
-    }
+  const pastEvents = eventDatabase
+    .filter(e => normalizeDate(e.date) < today)
+    .sort((a, b) => normalizeDate(b.date) - normalizeDate(a.date));
 
-    renderEventsPage();
-  };
+  // Render Upcoming
+  if (upcomingEvents.length > 0) {
+    upcomingEvents.forEach(event => {
+      if(upcomingContainer) upcomingContainer.appendChild(createEventCard(event, today));
+    });
+    startCountdown(upcomingEvents[0]);
+  } else if(upcomingContainer) {
+    upcomingContainer.innerHTML = '<p class="terminal-text">>> No upcoming signals detected.</p>';
+  }
 
-  initEvents(); // Run immediately using local array
+  // Render Past
+  if (pastEvents.length > 0) {
+    pastEvents.forEach(event => {
+      if(pastContainer) pastContainer.appendChild(createEventCard(event, today));
+    });
+  } else if(pastContainer) {
+    pastContainer.innerHTML = '<p class="terminal-text">>> Archive logs are empty.</p>';
+  }
+};
+
+initEvents();
 
   /* ================================
       REGISTRATION MODAL - ENHANCED

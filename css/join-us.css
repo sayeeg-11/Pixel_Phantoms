@@ -292,3 +292,101 @@
   letter-spacing: 1px;
   font-weight: 600;
 }
+
+
+/* ADD TO BOTTOM OF CSS FILE */
+.join-form-section { padding: 4rem 0; }
+.form-terminal {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+}
+.cyber-form .form-group { margin-bottom: 1.5rem; }
+.cyber-form label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+.terminal-input {
+  width: 80%;
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-bottom: 2px solid #333;
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 12px;
+  transition: border-color 0.3s;
+}
+.terminal-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent-color);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+/* --- ENHANCED REGISTRATION SECTION --- */
+
+/* 1. Increase Section Size & Spacing */
+.join-form-section {
+  padding: 8rem 0; /* Larger vertical spacing */
+  background: radial-gradient(circle at center, rgba(0, 255, 136, 0.03) 0%, transparent 70%);
+}
+
+/* 2. Larger Terminal Window with Glow */
+.form-terminal.size-large {
+  max-width: 800px; /* Increased from 600px */
+  width: 90%;
+  margin: 0 auto;
+  min-height: 500px; /* Ensure it looks substantial */
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.15); /* Stronger glow */
+  backdrop-filter: blur(10px);
+}
+
+/* 3. Input Field Enhancement */
+.terminal-input {
+  font-size: 1.1rem; /* Larger text */
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #333;
+}
+
+.terminal-input:focus {
+  background: rgba(0, 255, 136, 0.05);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.1);
+}
+
+/* 4. Submit Button Full Width */
+.submit-btn {
+  width: 100%;
+  margin-top: 2rem;
+  height: 50px;
+  font-size: 1.1rem;
+}
+
+/* 5. RESPONSIVENESS (Mobile Layout) */
+.responsive-flex {
+  display: flex;
+  gap: 20px;
+}
+
+.flex-item {
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .join-form-section {
+    padding: 4rem 0;
+  }
+  
+  .responsive-flex {
+    flex-direction: column; /* Stack name fields on mobile */
+    gap: 0;
+  }
+  
+  .form-terminal.size-large {
+    width: 95%;
+  }
+}

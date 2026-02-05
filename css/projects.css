@@ -1365,3 +1365,56 @@ input:checked + .slider:before {
         color: #666 !important;
     }
 }
+
+
+/* --- ENHANCED PROJECTS GRID & RESPONSIVENESS --- */
+
+/* 1. Responsive Grid Layout */
+.projects-grid {
+  display: grid;
+  /* 3 columns on large screens, auto-fit for smaller */
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+  gap: 40px; /* More breathing room */
+  padding: 20px 0;
+}
+
+/* 2. Card Visual Enhancements ("Looks Best") */
+.project-card {
+  height: 100%;
+  background: rgba(15, 15, 15, 0.9);
+  border: 1px solid #333;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.15);
+}
+
+/* 3. Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Stack filters vertically on mobile */
+  .filter-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Make filter buttons smaller on mobile */
+  .btn-glitch-filter {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  /* Force single column for project cards on small phones */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project-card {
+    max-width: 400px;
+    margin: 0 auto; /* Center cards */
+  }
+}
