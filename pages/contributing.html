@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Contributor Guide | Pixel Phantoms</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .contribute-hero {
+      text-align: center;
+      padding: 90px 20px 50px;
+      background: radial-gradient(circle at top, #e0f2fe, #ffffff);
+    }
+
+    .contribute-hero h1 {
+      font-size: 3.2rem;
+      color: #0284c7;
+      margin-bottom: 12px;
+    }
+
+    .contribute-hero p {
+      font-size: 1.15rem;
+      color: #475569;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .cta-buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      padding: 12px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+    }
+
+    .btn-outline {
+      border: 2px solid #0284c7;
+      color: #0284c7;
+    }
+
+    .btn-outline:hover {
+      background: #e0f2fe;
+    }
+
+    .contribute-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h2 {
+      color: #0284c7;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .card ul {
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .code-box {
+      background: #020617;
+      color: #e5e7eb;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 0.9rem;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+
+    .highlight-card {
+      border-left: 6px solid #0284c7;
+      background: #f0f9ff;
+    }
+
+    .full-width {
+      margin-top: 30px;
+    }
+
+    .welcome-box {
+      margin-top: 70px;
+      text-align: center;
+      padding: 50px 25px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      color: white;
+      box-shadow: 0 20px 40px rgba(2,132,199,0.3);
+    }
+
+    .welcome-box h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .welcome-box p {
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- HERO -->
+  <section class="contribute-hero">
+    <h1>🤝 Contribute to Pixel Phantoms</h1>
+    <p>
+      Join our open-source student community and help build an amazing platform.
+      Whether you’re a beginner or experienced, your contributions matter.
+    </p>
+
+    <div class="cta-buttons">
+      <a href="https://github.com/sayeeg-11/Pixel_Phantoms" class="btn-primary" target="_blank">
+        View GitHub Repo
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <div class="contribute-container">
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>📌 Getting Started</h2>
+        <ul>
+          <li>Fork the repository on GitHub</li>
+          <li>Clone your fork</li>
+        </ul>
+        <div class="code-box">
+          https://github.com/sayeeg-11/Pixel_Phantoms.git<br>
+          cd Pixel-Phantoms
+        </div>
+        <ul>
+          <li>Create a new feature branch</li>
+        </ul>
+        <div class="code-box">
+          git checkout -b feature-your-feature-name
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🧰 Project Setup</h2>
+        <ul>
+          <li>Static website — no backend setup</li>
+          <li>Use VS Code or any editor</li>
+          <li>Open index.html or use Live Server</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card full-width">
+      <h2>📝 What You Can Contribute</h2>
+      <div class="grid-2">
+        <ul>
+          <li>UI/UX improvements</li>
+          <li>Fix layout & responsiveness</li>
+          <li>Add animations & components</li>
+          <li>Enhance JavaScript</li>
+        </ul>
+        <ul>
+          <li>Add new pages</li>
+          <li>Update content</li>
+          <li>Improve documentation</li>
+          <li>Design & media assets</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card highlight-card full-width">
+      <h2>⚠ Contribution Rules</h2>
+      <ul>
+        <li>Follow clean code practices</li>
+        <li>Use proper folder structure</li>
+        <li>❌ Don’t commit node_modules, .vscode, large files</li>
+        <li>Use meaningful commit messages</li>
+        <li>Add screenshots for UI changes</li>
+      </ul>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h2>📤 Submitting a Pull Request</h2>
+        <div class="code-box">
+          git add .<br>
+          git commit -m "Describe your change clearly"<br>
+          git push origin feature-your-feature-name
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🐞 Creating Issues</h2>
+        <ul>
+          <li>Describe the change or bug</li>
+          <li>Explain why it’s needed</li>
+          <li>Add screenshots if UI-related</li>
+          <li>Wait for assignment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card full-width">
+      <h2>🤝 Code of Conduct</h2>
+      <ul>
+        <li>Be respectful & supportive</li>
+        <li>Help beginners</li>
+        <li>Keep discussions constructive</li>
+        <li>Follow open-source etiquette</li>
+      </ul>
+    </div>
+
+    <div class="welcome-box">
+      <h2>🎉 Welcome to Pixel Phantoms</h2>
+      <p>
+        Thank you for contributing your time, skills, and creativity.  
+        Together, let’s build something amazing! 🚀👻
+      </p>
+    </div>
+
+  </div>
+
+  <!-- NAVBAR SCRIPT -->
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar('../');
+  </script>
+
+</body>
+</html>
+
+
+
+
