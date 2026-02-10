@@ -18,11 +18,11 @@
 </head>
 
 <body class="hacker-theme">
-    <!-- Global Page Loader -->
-   <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-      <div class="loader-spinner"></div>
-      <p class="loader-text">Loading...</p>
-   </div>
+  <!-- Global Page Loader -->
+  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Loading...</p>
+  </div>
 
   <div id="scroll-progress-container">
     <div id="scroll-progress-bar"></div>
@@ -173,33 +173,24 @@
         <!-- ================= CONTRIBUTION ROADMAP CTA ================= -->
         <section class="contribute-cta" aria-labelledby="contribute">
           <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
+
           <p class="roadmap-intro">
             Follow this <strong>roadmap</strong> to make your first contribution to Pixel Phantoms.
           </p>
 
           <div class="contribution-roadmap">
             <div class="roadmap-container">
-              <!-- SVG Horizontal Wavy Path -->
+
+              <!-- SVG Path -->
               <div class="roadmap-path" aria-hidden="true">
-                <svg viewBox="0 0 1200 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" style="stop-color:#00d9ff;stop-opacity:1" />
-                      <stop offset="50%" style="stop-color:#0099cc;stop-opacity:1" />
-                      <stop offset="100%" style="stop-color:#00d9ff;stop-opacity:1" />
-                    </linearGradient>
-                  </defs>
-
-                  <!-- Main horizontal wavy path - smooth sine wave -->
+                <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
                   <path class="road-path" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
-
-                  <!-- Animated dashed center line -->
                   <path class="road-dashes" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
                 </svg>
               </div>
 
-              <!-- Step 1: Create an Issue -->
-              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 1: Create an Issue">
+              <!-- STEP 1 -->
+              <div class="roadmap-step" data-step="1" tabindex="0" role="button" aria-label="Step 1: Create an Issue">
                 <div class="step-node">
                   <span class="step-number">1</span>
                   <i class="fas fa-clipboard-list step-icon"></i>
@@ -210,8 +201,9 @@
                 </div>
               </div>
 
-              <!-- Step 2: Fork the Repo -->
-              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 2: Fork the Repository">
+              <!-- STEP 2 -->
+              <div class="roadmap-step" data-step="2" tabindex="0" role="button"
+                aria-label="Step 2: Fork the Repository">
                 <div class="step-node">
                   <span class="step-number">2</span>
                   <i class="fab fa-github-alt step-icon"></i>
@@ -222,8 +214,8 @@
                 </div>
               </div>
 
-              <!-- Step 3: Create a Branch -->
-              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 3: Create a Branch">
+              <!-- STEP 3 -->
+              <div class="roadmap-step" data-step="3" tabindex="0" role="button" aria-label="Step 3: Create a Branch">
                 <div class="step-node">
                   <span class="step-number">3</span>
                   <i class="fas fa-code-branch step-icon"></i>
@@ -234,8 +226,8 @@
                 </div>
               </div>
 
-              <!-- Step 4: Make Changes -->
-              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 4: Make Changes">
+              <!-- STEP 4 -->
+              <div class="roadmap-step" data-step="4" tabindex="0" role="button" aria-label="Step 4: Make Changes">
                 <div class="step-node">
                   <span class="step-number">4</span>
                   <i class="fas fa-code step-icon"></i>
@@ -246,8 +238,9 @@
                 </div>
               </div>
 
-              <!-- Step 5: Submit a PR -->
-              <div class="roadmap-step" tabindex="0" role="button" aria-label="Step 5: Submit a Pull Request">
+              <!-- STEP 5 -->
+              <div class="roadmap-step" data-step="5" tabindex="0" role="button"
+                aria-label="Step 5: Submit a Pull Request">
                 <div class="step-node">
                   <span class="step-number">5</span>
                   <i class="fas fa-upload step-icon"></i>
@@ -257,11 +250,12 @@
                   <p class="step-description">Open a pull request for review.</p>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
+      </section>
     </div>
-    </section>
   </main>
 
   <div id="contributor-modal" class="modal-overlay" aria-hidden="true">
@@ -318,7 +312,37 @@
         );
       }
     });
+
+
   </script>
+
+  <script>
+    steps.forEach(step => {
+      step.addEventListener('mouseenter', () => {
+        steps.forEach(s => s.classList.remove('is-active'));
+        step.classList.add('is-active');
+      });
+      step.addEventListener('focus', () => {
+        steps.forEach(s => s.classList.remove('is-active'));
+        step.classList.add('is-active');
+      });
+    });
+  </script>
+  <script>
+    const steps = document.querySelectorAll('.roadmap-step');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    steps.forEach(step => observer.observe(step));
+  </script>
+
+
 
   <script src="../js/page-transitions.js" defer></script>
   <script src="../js/back-to-top.js"></script>
