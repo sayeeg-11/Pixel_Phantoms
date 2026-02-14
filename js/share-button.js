@@ -64,44 +64,72 @@ function createShareOptionsPanel() {
         </div>
         
         <div class="share-options-list">
-            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(pageTitle)}&url=${encodeURIComponent(pageUrl)}" 
-               class="share-option twitter" 
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fab fa-twitter"></i>
-                <span>Share on Twitter</span>
-            </a>
-            
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}" 
-               class="share-option linkedin" 
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i>
-                <span>Share on LinkedIn</span>
-            </a>
-            
-            <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(pageTitle + ' ' + pageUrl)}" 
-               class="share-option whatsapp" 
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fab fa-whatsapp"></i>
-                <span>Share on WhatsApp</span>
-            </a>
-            
-            <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}" 
-               class="share-option facebook" 
-               target="_blank"
-               rel="noopener noreferrer">
-                <i class="fab fa-facebook"></i>
-                <span>Share on Facebook</span>
-            </a>
-            
-            <a href="mailto:?subject=${encodeURIComponent(pageTitle)}&body=${encodeURIComponent('Check this out: ' + pageUrl)}" 
-               class="share-option email">
-                <i class="fas fa-envelope"></i>
-                <span>Share via Email</span>
-            </a>
-        </div>
+    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(pageTitle)}&url=${encodeURIComponent(pageUrl)}" 
+       class="share-option twitter" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-twitter"></i>
+        <span>Share on Twitter</span>
+    </a>
+    
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}" 
+       class="share-option linkedin" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+        <span>Share on LinkedIn</span>
+    </a>
+    
+    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(pageTitle + ' ' + pageUrl)}" 
+       class="share-option whatsapp" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+        <span>Share on WhatsApp</span>
+    </a>
+
+    <!-- NEW: Telegram -->
+    <a href="https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(pageTitle)}" 
+       class="share-option telegram" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-telegram"></i>
+        <span>Share on Telegram</span>
+    </a>
+
+    <!-- NEW: Reddit -->
+    <a href="https://www.reddit.com/submit?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(pageTitle)}" 
+       class="share-option reddit" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-reddit"></i>
+        <span>Share on Reddit</span>
+    </a>
+
+    <!-- NEW: Discord (fallback invite/share link) -->
+    <a href="https://discord.com/channels/@me" 
+       class="share-option discord" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-discord"></i>
+        <span>Share on Discord</span>
+    </a>
+    
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}" 
+       class="share-option facebook" 
+       target="_blank"
+       rel="noopener noreferrer">
+        <i class="fab fa-facebook"></i>
+        <span>Share on Facebook</span>
+    </a>
+    
+    <a href="mailto:?subject=${encodeURIComponent(pageTitle)}&body=${encodeURIComponent('Check this out: ' + pageUrl)}" 
+       class="share-option email">
+        <i class="fas fa-envelope"></i>
+        <span>Share via Email</span>
+    </a>
+</div>
+
     `;
 
   return shareOptions;
