@@ -274,10 +274,19 @@ body.light-mode .motto-subtitle {
   margin: 0;
 }
 
-/* WHAT WE DO */
+/* ======================================
+   WHAT WE DO SECTION
+====================================== */
+
 .what-we-do-section {
-  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+  background: linear-gradient(
+    to bottom,
+    var(--bg-secondary),
+    var(--bg-primary)
+  );
 }
+
+/* ---------- GRID ---------- */
 
 .activities-grid {
   display: grid;
@@ -285,80 +294,108 @@ body.light-mode .motto-subtitle {
   gap: 30px;
 }
 
+/* ---------- CARD ---------- */
+
 .activity-card {
   background: var(--card-bg);
   border-radius: 16px;
   padding: 35px 25px;
   text-align: center;
   border: 1px solid var(--border-color);
-  
-  transition: all 0.3s ease;
-  cursor: pointer;
-  animation: fadeInUp 0.6s ease-out backwards;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  cursor: default;
+
   position: relative;
-  top: 0;
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+
+  animation: fadeInUp 0.6s ease-out backwards;
 }
 
-/* Stagger animations */
-.activity-card:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s backwards; }
-.activity-card:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s backwards; }
-.activity-card:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s backwards; }
-.activity-card:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s backwards; }
-.activity-card:nth-child(5) { animation: fadeInUp 0.6s ease-out 0.5s backwards; }
-.activity-card:nth-child(6) { animation: fadeInUp 0.6s ease-out 0.6s backwards; }
-.activity-card:nth-child(7) { animation: fadeInUp 0.6s ease-out 0.7s backwards; }
-.activity-card:nth-child(8) { animation: fadeInUp 0.6s ease-out 0.8s backwards; }
+/* Stagger animation */
+.activity-card:nth-child(1) { animation-delay: 0.1s; }
+.activity-card:nth-child(2) { animation-delay: 0.2s; }
+.activity-card:nth-child(3) { animation-delay: 0.3s; }
+.activity-card:nth-child(4) { animation-delay: 0.4s; }
+.activity-card:nth-child(5) { animation-delay: 0.5s; }
+.activity-card:nth-child(6) { animation-delay: 0.6s; }
+.activity-card:nth-child(7) { animation-delay: 0.7s; }
+.activity-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* ---------- HOVER EFFECT ---------- */
 
 .activity-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-10px);
   border-color: var(--accent-color);
-  box-shadow: 0 15px 30px rgba(0, 170, 255, 0.15);
-  border-top: 4px solid var(--accent-color);
+  box-shadow: 0 20px 40px rgba(0, 170, 255, 0.15);
 }
 
-/* In css/about.css */
+/* Accent top border without layout shift */
+.activity-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--accent-color);
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.activity-card:hover::before {
+  opacity: 1;
+}
+
+/* ---------- ICON ---------- */
 
 .activity-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--accent-color), #fbfbfb);
+  background: linear-gradient(
+    135deg,
+    var(--accent-color),
+    rgba(0, 170, 255, 0.7)
+  );
   border-radius: 50%;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin: 0 auto 20px;
-  
-  /* CHANGE THIS LINE */
-  color: #ffffff; /* Force white so it's always visible on the blue background */
-  
+
+  color: #ffffff;
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 .activity-card:hover .activity-icon {
   transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3);
 }
+
+/* ---------- TITLE ---------- */
 
 .activity-card h3 {
   color: var(--text-primary);
   font-size: 1.3rem;
-  margin: 0 0 10px 0;
+  margin: 0 0 12px 0;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .activity-card:hover h3 {
-  /*color: var(--accent-color);*/
-  color:white;
-  font-size: 1.25rem;
-  margin-bottom: 12px;
-  font-weight: 700;
+  color: var(--accent-color);
 }
+
+/* ---------- DESCRIPTION ---------- */
 
 .activity-card p {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
 }
 
