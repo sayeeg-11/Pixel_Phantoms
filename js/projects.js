@@ -104,7 +104,64 @@ function initWobbleToggle() {
     });
   }
 }
-
+const PROJECT_DATA = [
+  {
+      "id": 1,
+      "title": "Neural Nexus",
+      "status": "active",
+      "description": "AI-powered neural network visualization tool",
+      "tech": ["Python", "TensorFlow", "React"]
+  },
+  {
+      "id": 2,
+      "title": "Quantum Quest",
+      "status": "active", 
+      "description": "Quantum computing simulation platform",
+      "tech": ["JavaScript", "Three.js", "Node.js"]
+  },
+  {
+      "id": 3,
+      "title": "Cyber Sentinel",
+      "status": "active",
+      "description": "Real-time cybersecurity monitoring system",
+      "tech": ["Python", "Django", "Redis"]
+  },
+  {
+      "id": 4,
+      "title": "Data Flow",
+      "status": "active",
+      "description": "Interactive data pipeline visualization",
+      "tech": ["React", "D3.js", "Express"]
+  },
+  {
+      "id": 5,
+      "title": "Code Canvas",
+      "status": "active",
+      "description": "Visual programming environment",
+      "tech": ["TypeScript", "Vue.js", "WebGL"]
+  },
+  {
+      "id": 6,
+      "title": "Pixel Portal",
+      "status": "active",
+      "description": "Community collaboration platform",
+      "tech": ["Next.js", "MongoDB", "Socket.io"]
+  },
+  {
+      "id": 7,
+      "title": "VR Vision",
+      "status": "active",
+      "description": "Virtual reality development framework",
+      "tech": ["Unity", "C#", "Blender"]
+  },
+  {
+      "id": 8,
+      "title": "Block Beacon",
+      "status": "active",
+      "description": "Blockchain transaction tracker",
+      "tech": ["Solidity", "Ethereum", "React"]
+  }
+];
 /**
  * Dynamic System Console
  * Fetches data from projects.json and updates the terminal box
@@ -115,12 +172,10 @@ function initSystemConsole() {
 
   // Fetch the project data
   // Note: Path is relative to the HTML file (pages/projects.html -> data/projects.json)
-  fetch('../data/projects.json')
-    .then(response => response.json())
-    .then(data => {
-      const totalProjects = data.length;
-      const activeProjects = data.filter(p => p.status === 'active').length;
-
+ 
+  // Use the static data directly instead of fetching
+  const totalProjects = PROJECT_DATA.length;
+  const activeProjects = PROJECT_DATA.filter(p => p.status === 'active').length;
       // Define the sequence of messages based on real data
       const messages = [
         { text: '> Accessing secure vault...', delay: 0 },
@@ -144,25 +199,15 @@ function initSystemConsole() {
       consoleBox.innerHTML = '';
 
       // Play the animation sequence
-      messages.forEach(msg => {
-        setTimeout(() => {
-          const p = document.createElement('p');
-          p.className = `console-text ${msg.className || ''}`;
-          p.textContent = msg.text;
-          consoleBox.appendChild(p);
-        }, msg.delay);
-      });
-    })
-    .catch(error => {
-      console.error('Error loading project data:', error);
-      // Fallback error message in terminal style
-      consoleBox.innerHTML = `
-                <p class="console-text">> Accessing secure vault...</p>
-                <p class="console-text" style="color: #ff5555">> ERROR: Connection Protocol Failed.</p>
-            `;
-    });
+  messages.forEach(msg => {
+    setTimeout(() => {
+      const p = document.createElement('p');
+      p.className = `console-text ${msg.className || ''}`;
+      p.textContent = msg.text;
+      consoleBox.appendChild(p);
+    }, msg.delay);
+  });
 }
-
 // =========================================
 // INTEGRATE QUICK FILTERS WITH EXISTING GSAP ANIMATIONS
 // =========================================

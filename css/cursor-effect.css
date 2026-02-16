@@ -1,64 +1,51 @@
-/* Provides a glowing cursor follow effect for desktop users */
-
-/* Provides a subtle constant cursor aura for desktop users */
-
-#cursor-highlight {
+#cursor-dot,
+#cursor-outline {
   position: fixed;
   top: 0;
   left: 0;
-
-  width: 220px;
-  height: 220px;
-
-  background:
-  radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.08) 0%,
-    transparent 55%
-  ),
-  radial-gradient(
-    circle,
-    rgba(0, 170, 255, 0.45) 0%,
-    rgba(0, 170, 255, 0.25) 35%,
-    transparent 75%
-  );
-
-  opacity: 1;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 999;
-
   transform: translate(-50%, -50%);
-  will-change: transform;
-  transition: transform 110ms ease-out;
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+  user-select: none;
 }
 
-/* Hide on touch devices */
-@media (pointer: coarse) {
-  #cursor-highlight {
-    display: none;
-  }
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00aaff;
+  box-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+  /* YAHAN CHANGE HAI: Transform se transition hata di taaki lag na kare */
+  transition: opacity 0.3s ease;
 }
 
-/* Hide on mobile viewports */
+#cursor-outline {
+  width: 35px;
+  height: 35px;
+  border: 1.5px solid rgba(0, 170, 255, 0.6);
+  background-color: rgba(0, 170, 255, 0.05);
+  /* Outline thoda late hi achha lagta hai, isliye iska math JavaScript mein hai */
+  transition:
+    width 0.3s ease-out,
+    height 0.3s ease-out,
+    background-color 0.3s ease;
+}
+
+/* Hover: Dot hide and Ring expand */
+#cursor-dot.hover-active {
+  opacity: 0;
+}
+
+#cursor-outline.hover-active {
+  width: 60px;
+  height: 60px;
+  border-color: #00aaff;
+  background-color: rgba(0, 170, 255, 0.15);
+}
+
 @media (max-width: 768px) {
-  #cursor-highlight {
+  #cursor-dot,
+  #cursor-outline {
     display: none;
   }
 }
-
-/* Respect reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  #cursor-highlight {
-    transition: none;
-  }
-}
-
-/* Improve visibility on light backgrounds */
-[data-theme='light'] #cursor-highlight {
-  mix-blend-mode: multiply;
-  opacity: 0.35;
-}
-
-
-
