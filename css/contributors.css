@@ -469,6 +469,332 @@ body.light-mode .repo-item {
   color: #1e293b !important;
 }
 
+/* Add these styles to your CSS file */
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+/* The Hover State */
+.activity-item:hover {
+ 
+  border-color: #3b82f6;
+  transform: translateX(8px) translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Bullet point pulse on hover */
+.activity-item:hover .bullet {
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* ============================================================
+   GLOBAL ACTIVITY HEATMAP (SYSTEM PULSE)
+   ============================================================ */
+
+.section-sub-pulse {
+  color: var(--text-secondary);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.heatmap-container {
+  width: 100%;
+  max-width: 1300px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 80px;
+  box-shadow: var(--shadow-main);
+  text-align: left;
+}
+
+.heatmap-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.heatmap-title {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+
+.heatmap-title i {
+  color: var(--accent-color);
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend-cells {
+  display: flex;
+  gap: 4px;
+}
+
+.legend-cells div,
+.heatmap-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+/* GitHub Green Theme Levels */
+.level-0 {
+  background-color: #161b22;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.level-1 {
+  background-color: #0e4429;
+}
+
+.level-2 {
+  background-color: #006d32;
+}
+
+.level-3 {
+  background-color: #26a641;
+}
+
+.level-4 {
+  background-color: #39d353;
+}
+
+.heatmap-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.heatmap-months {
+  display: flex;
+  margin-bottom: 5px;
+  padding-left: 45px;
+  /* Align with day labels */
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  position: relative;
+  height: 20px;
+}
+
+.heatmap-month-label {
+  white-space: nowrap;
+}
+
+.heatmap-body {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  /* Center the grid body */
+}
+
+.heatmap-days {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 45px 0 10px 0;
+  /* Align with cells (35px top padding of grid + 10px offset) */
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  height: 157px;
+  /* 7 cells (14px) + 6 gaps (4px) + padding */
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 4px;
+  padding: 35px 10px 10px 10px;
+  /* More top padding for tooltips */
+  overflow-x: hidden;
+  border-radius: 4px;
+  max-width: 100%;
+  justify-content: flex-start;
+  /* Start from left */
+}
+
+@media (min-width: 1024px) {
+  .heatmap-grid {
+    justify-content: center;
+    /* Center if it fits */
+  }
+}
+
+.heatmap-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.heatmap-cell {
+  position: relative;
+  cursor: pointer;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.3);
+  z-index: 10;
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Loading State for Heatmap */
+.loading-heatmap {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.heatmap-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+/* Tooltip Simulation (Simple CSS-only tooltip if desired, or JS) */
+.heatmap-cell::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 120%;
+  /* Lift higher */
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: #0d1117;
+  /* Darker, more authentic */
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  z-index: 100;
+  border: 1px solid var(--accent-color);
+}
+
+.heatmap-cell:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Light Mode support */
+body.light-mode .heatmap-container {
+  background: #ffffff;
+}
+
+body.light-mode .level-0 {
+  background-color: #ebedf0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .heatmap-cell::after {
+  background: #24292f;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .heatmap-container {
+    padding: 20px;
+  }
+
+  .heatmap-grid {
+    gap: 3px;
+  }
+
+  .heatmap-cell,
+  .legend-cells div {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Future cells styling */
+.heatmap-cell.future-cell {
+  background-color: transparent !important;
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+body.light-mode .heatmap-cell.future-cell {
+  border: 1px dashed rgba(0, 0, 0, 0.08);
+  background-color: transparent !important;
+}
+
+.heatmap-cell.future-cell:hover {
+  transform: none;
+  box-shadow: none;
+  opacity: 0.3;
+}
+
+.heatmap-cell.future-cell::after {
+  display: none;
+}
+
+/* Empty state for when no heatmap data is available */
+.heatmap-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.heatmap-empty-state i {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  opacity: 0.4;
+  color: var(--accent-color);
+}
+
+.heatmap-empty-state h3 {
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.heatmap-empty-state p {
+  margin-bottom: 15px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* --- RESPONSIVENESS --- */
 @media (max-width: 1000px) {
 
@@ -2569,4 +2895,33 @@ body.light-mode .repo-empty-state i {
 
 [data-theme="dark"] #activity-list .activity-marker {
   box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] #activity-list .activity-item:hover .bullet {
+  transform: scale(1.5);
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+[data-theme="dark"] #activity-list .commit-msg {
+  color: var(--activity-text);
+}
+
+[data-theme="dark"] #activity-list .user-name {
+  color: var(--activity-accent);
+}
+
+[data-theme="dark"] #activity-list .commit-date {
+  color: var(--activity-text-secondary);
+}
+
+[data-theme="dark"] #activity-list .activity-item:hover .commit-date {
+  color: var(--activity-accent);
+}
+
+/* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
+.main-content,
+.page-transition-wrapper,
+.contributors-section {
+  width: 100% !important;
+  max-width: 100% !important;
 }
