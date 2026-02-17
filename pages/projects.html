@@ -24,6 +24,7 @@
       rel="stylesheet"
     />
   </head>
+
   <body class="hacker-theme">
     <div
       id="global-loader"
@@ -222,6 +223,8 @@
                 data-tech="javascript"
                 data-status="active"
                 data-new="false"
+                data-full-desc="Pixel Phantoms Official is the main portal for our community. It features a fully responsive design, custom glassmorphism effects, and dynamic leaderboards. Built with core web technologies to ensure maximum performance and accessibility."
+                data-live-url="https://pixelphantoms.live"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -250,7 +253,7 @@
                     <span>[JS_Core]</span>
                   </div>
                   <div class="card-actions">
-                    <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                    <button class="btn-terminal">View_Details ></button>
                     <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -264,6 +267,8 @@
                 data-tech="python"
                 data-status="active"
                 data-new="false"
+                data-full-desc="Phantom Bot V2 is our next-gen Discord automation tool. It uses advanced NLP models to understand community intent, automate moderation, and provide real-time updates on community events and protocols."
+                data-live-url="#"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -288,7 +293,7 @@
                     <span>[Discord.py]</span>
                   </div>
                   <div class="card-actions">
-                    <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                    <button class="btn-terminal">View_Details ></button>
                     <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -302,6 +307,8 @@
                 data-tech="dart"
                 data-status="active"
                 data-new="true"
+                data-full-desc="Campus Connect is the ultimate mobile companion for students. It streamlines attendance tracking, resource sharing, and campus communications into a single, intuitive interface. Built with Flutter for a seamless cross-platform experience."
+                data-live-url="#"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -330,7 +337,7 @@
                     <span>[Dart]</span>
                   </div>
                   <div class="card-actions">
-                    <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                    <button class="btn-terminal">View_Details ></button>
                     <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -344,6 +351,8 @@
                 data-tech="cpp"
                 data-status="warning"
                 data-new="false"
+                data-full-desc="Smart Lab Matrix is an integrated IoT environment. It uses a network of sensors and actuators to manage laboratory conditions, optimizing for both safety and energy efficiency. The system features a custom C++ kernel for low-latency operations."
+                data-live-url="../pages/hardware-roadmap.html"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -372,9 +381,7 @@
                     <span>[Sensors]</span>
                   </div>
                   <div class="card-actions">
-                    <a href="../pages/hardware-roadmap.html" class="btn-terminal"
-                      >View_Blueprints ></a
-                    >
+                    <button class="btn-terminal">View_Details ></button>
                     <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -388,6 +395,8 @@
                 data-tech="javascript"
                 data-status="active"
                 data-new="false"
+                data-full-desc="Crypto Tracker Dash provides high-fidelity market data at your fingertips. It aggregates data from multiple decentralized exchanges and presents it through beautiful, interactive charts. Perfect for monitoring volatility across the ecosystem."
+                data-live-url="#"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -416,7 +425,7 @@
                     <span>[REST_API]</span>
                   </div>
                   <div class="card-actions">
-                    <a class="btn-terminal disabled" tabindex="-1">Execute_Demo ></a>
+                    <button class="btn-terminal">View_Details ></button>
                     <a class="icon-link disabled" tabindex="-1"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -430,6 +439,8 @@
                 data-tech="python"
                 data-status="active"
                 data-new="false"
+                data-full-desc="The Sign Language Recognizer uses computer vision to break communication barriers. By analyzing hand gestures in real-time, it translates sign language into text, making digital interaction more accessible for the deaf and hard-of-hearing community."
+                data-live-url="#"
               >
                 <div class="card-border-top"></div>
                 <div class="card-image-wrapper">
@@ -458,7 +469,7 @@
                     <span>[PyTorch]</span>
                   </div>
                   <div class="card-actions">
-                    <a href="#" class="btn-terminal">Execute_Demo ></a>
+                    <button class="btn-terminal">View_Details ></button>
                     <a href="#" class="icon-link"><i class="fab fa-github"></i></a>
                   </div>
                 </div>
@@ -466,6 +477,40 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="project-modal">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">
+          <i class="fas fa-times"></i>
+        </button>
+
+        <div class="modal-visual">
+          <img src="" alt="Project Preview" class="modal-image" />
+        </div>
+
+        <div class="modal-details">
+          <h2 class="modal-title"></h2>
+          <p class="modal-description"></p>
+
+          <div class="modal-info-grid">
+            <div class="info-item">
+              <h4>Tech_Stack</h4>
+              <div class="modal-tech-stack"></div>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a href="#" class="btn-modal btn-live" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Visit Live Project
+            </a>
+            <a href="#" class="btn-modal btn-github" target="_blank">
+              <i class="fab fa-github"></i> View Source
+            </a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -483,6 +528,7 @@
     <script src="../js/back-to-top.js"></script>
 
     <script src="../js/projects.js"></script>
+    <script src="../js/project-modal.js"></script>
     <script src="../js/copy-clipboard.js"></script>
     <script src="../js/projects-filters.js"></script>
     <script src="../js/favorites.js"></script>
