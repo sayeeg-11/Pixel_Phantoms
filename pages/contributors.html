@@ -1,359 +1,444 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Phantoms | Contributors</title>
+    <link rel="icon" href="../assets/logo.png" />
+    <link rel="stylesheet" href="../css/scroll-progress.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/contributors.css" />
+    <link rel="stylesheet" href="../css/home-gsap.css" />
+    <link rel="stylesheet" href="../css/back-to-top.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/github-calendar@2.3.2/dist/github-calendar-responsive.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Phantoms | Contributors</title>
-  <link rel="icon" href="../assets/logo.png" />
-  <link rel="stylesheet" href="../css/scroll-progress.css" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/contributors.css" />
-  <link rel="stylesheet" href="../css/home-gsap.css" />
-  <link rel="stylesheet" href="../css/back-to-top.css" />
-  <link rel="stylesheet" href="../css/animations.css" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://unpkg.com/github-calendar@2.3.2/dist/github-calendar-responsive.css" />
-</head>
+  <body class="hacker-theme">
+    <!-- Global Page Loader -->
+    <div
+      id="global-loader"
+      class="global-loader hidden"
+      aria-live="polite"
+      aria-label="Loading page"
+    >
+      <div class="loader-spinner"></div>
+      <p class="loader-text">Loading...</p>
+    </div>
 
-<body class="hacker-theme">
-  <!-- Global Page Loader -->
-  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-    <div class="loader-spinner"></div>
-    <p class="loader-text">Loading...</p>
-  </div>
+    <div id="scroll-progress-container">
+      <div id="scroll-progress-bar"></div>
+    </div>
 
-  <div id="scroll-progress-container">
-    <div id="scroll-progress-bar"></div>
-  </div>
+    <a href="#main-contributors" class="skip-to-content" id="skip-link">
+      <i class="fas fa-forward"></i> Skip to Main Content
+    </a>
 
-  <a href="#main-contributors" class="skip-to-content" id="skip-link">
-    <i class="fas fa-forward"></i> Skip to Main Content
-  </a>
+    <div id="navbar-placeholder"></div>
+    <script src="../js/navbar.js"></script>
+    <script>
+      renderNavbar('../');
+    </script>
 
-  <div id="navbar-placeholder"></div>
-  <script src="../js/navbar.js"></script>
-  <script>
-    renderNavbar('../');
-  </script>
+    <main class="main-content" id="main-contributors" tabindex="-1">
+      <div class="page-transition-wrapper" data-page="contributors">
+        <section class="contributors-section">
+          <header class="section-header">
+            <h1>Our Amazing Contributors</h1>
+            <p>
+              Meet the talented developers who help build, improve, and maintain
+              <strong>Pixel Phantoms</strong>.
+            </p>
+          </header>
 
-  <main class="main-content" id="main-contributors" tabindex="-1">
-    <div class="page-transition-wrapper" data-page="contributors">
-      <section class="contributors-section">
-        <header class="section-header">
-          <h1>Our Amazing Contributors</h1>
-          <p>
-            Meet the talented developers who help build, improve, and maintain
-            <strong>Pixel Phantoms</strong>.
-          </p>
-        </header>
-
-        <section class="stats-grid" aria-label="Project contribution statistics">
-          <div class="stats-card">
-            <h3>Total Contributors</h3>
-            <div class="stat-value" data-key="contributors">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-contributors" aria-live="polite"></span>
+          <section class="stats-grid" aria-label="Project contribution statistics">
+            <div class="stats-card">
+              <h3>Total Contributors</h3>
+              <div class="stat-value" data-key="contributors">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-contributors" aria-live="polite"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="stats-card">
-            <h3>Total Commits</h3>
-            <div class="stat-value" data-key="commits">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-commits"></span>
+            <div class="stats-card">
+              <h3>Total Commits</h3>
+              <div class="stat-value" data-key="commits">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-commits"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="stats-card">
-            <h3>Total PRs</h3>
-            <div class="stat-value" data-key="prs">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-prs"></span>
+            <div class="stats-card">
+              <h3>Total PRs</h3>
+              <div class="stat-value" data-key="prs">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-prs"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="stats-card">
-            <h3>Total Points</h3>
-            <div class="stat-value" data-key="points">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-points"></span>
+            <div class="stats-card">
+              <h3>Total Points</h3>
+              <div class="stat-value" data-key="points">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-points"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="stats-card">
-            <h3>GitHub Stars</h3>
-            <div class="stat-value" data-key="stars">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-stars"></span>
+            <div class="stats-card">
+              <h3>GitHub Stars</h3>
+              <div class="stat-value" data-key="stars">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-stars"></span>
+              </div>
             </div>
-          </div>
 
-          <div class="stats-card">
-            <h3>Forks</h3>
-            <div class="stat-value" data-key="forks">
-              <span class="spinner" aria-hidden="true"></span>
-              <span class="value" id="total-forks"></span>
+            <div class="stats-card">
+              <h3>Forks</h3>
+              <div class="stat-value" data-key="forks">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="value" id="total-forks"></span>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <section class="lead-container" aria-labelledby="project-lead">
-          <h2 id="project-lead">Project Leadership</h2>
+          <section class="lead-container" aria-labelledby="project-lead">
+            <h2 id="project-lead">Project Leadership</h2>
 
-          <div class="project-lead-card" data-github="sayeeg-11">
-            <span class="lead-badge">👑 Founder & Project Lead</span>
+            <div class="project-lead-card" data-github="sayeeg-11">
+              <span class="lead-badge">👑 Founder & Project Lead</span>
 
-            <img src="https://avatars.githubusercontent.com/u/1234567?v=4" id="lead-avatar"
-              alt="Sayee Gosavi – Founder and Project Lead" loading="lazy" />
+              <img
+                src="https://avatars.githubusercontent.com/u/1234567?v=4"
+                id="lead-avatar"
+                alt="Sayee Gosavi – Founder and Project Lead"
+                loading="lazy"
+              />
 
-            <h3 id="lead-name">Sayee Gosavi</h3>
+              <h3 id="lead-name">Sayee Gosavi</h3>
 
-            <p class="role">
-              Founder & core maintainer of Pixel Phantoms, responsible for project direction,
-              architecture, and community leadership.
+              <p class="role">
+                Founder & core maintainer of Pixel Phantoms, responsible for project direction,
+                architecture, and community leadership.
+              </p>
+
+              <div class="lead-socials">
+                <a
+                  href="https://github.com/sayeeg-11"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub profile of Sayee Gosavi"
+                >
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+
+              <div class="github-stats">
+                <div class="stat-item">
+                  <span class="stat-icon">📦</span>
+                  <span class="stat-value" data-stat="repos">0</span>
+                  <span class="stat-label">Repos</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-icon">👥</span>
+                  <span class="stat-value" data-stat="followers">0</span>
+                  <span class="stat-label">Followers</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-icon">🔗</span>
+                  <span class="stat-value" data-stat="following">0</span>
+                  <span class="stat-label">Following</span>
+                </div>
+              </div>
+
+              <div class="contribution-section">
+                <h4>Contribution Activity</h4>
+                <div class="github-calendar" data-username="sayeeg-11">
+                  Loading contributions...
+                </div>
+              </div>
+
+              <div class="recent-repos">
+                <h4>Recent Projects</h4>
+                <div class="repo-list"></div>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="top-contributors">
+            <h2 id="top-contributors">Top Contributors</h2>
+            <div
+              class="contributors-grid"
+              id="contributors-grid"
+              role="list"
+              aria-label="Top contributors"
+              aria-live="polite"
+            ></div>
+            <div id="pagination-controls" class="pagination-container"></div>
+          </section>
+
+          <section aria-labelledby="global-pulse">
+            <h2 id="global-pulse" class="mt-large">Global System Pulse</h2>
+            <p class="section-sub-pulse">
+              > Overall project contribution activity across the ecosystem.
+            </p>
+            <div class="heatmap-container" id="global-heatmap">
+              <div class="heatmap-header">
+                <span class="heatmap-title"
+                  ><i class="fas fa-wave-square"></i> Activity Heatmap</span
+                >
+                <div class="heatmap-legend">
+                  <span>Less</span>
+                  <div class="legend-cells">
+                    <div class="level-0"></div>
+                    <div class="level-1"></div>
+                    <div class="level-2"></div>
+                    <div class="level-3"></div>
+                    <div class="level-4"></div>
+                  </div>
+                  <span>More</span>
+                </div>
+              </div>
+              <div class="heatmap-grid-wrapper">
+                <div class="heatmap-months" id="heatmap-months">
+                  <!-- Month labels will be injected here -->
+                </div>
+                <div class="heatmap-body">
+                  <div class="heatmap-days">
+                    <span>Mon</span>
+                    <span>Wed</span>
+                    <span>Fri</span>
+                  </div>
+                  <div id="heatmap-grid" class="heatmap-grid">
+                    <!-- Heatmap cells will be injected here by JS -->
+                    <div class="loading-heatmap">
+                      <i class="fas fa-dna fa-spin"></i> Synchronizing activity grid...
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="heatmap-footer">
+                <span id="heatmap-stats">Fetching project pulse from Mainframe...</span>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="recent-activity">
+            <h2 id="recent-activity" class="mt-large">Recent Contribution Activity</h2>
+            <div class="activity-container" id="activity-list">
+              <div class="loading-text">
+                <i class="fas fa-spinner fa-spin"></i> Fetching latest commits…
+              </div>
+            </div>
+          </section>
+
+          <!-- ================= CONTRIBUTION ROADMAP CTA ================= -->
+          <section class="contribute-cta" aria-labelledby="contribute">
+            <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
+            <p class="roadmap-intro">
+              Follow this <strong>roadmap</strong> to make your first contribution to Pixel
+              Phantoms.
             </p>
 
-            <div class="lead-socials">
-              <a href="https://github.com/sayeeg-11" target="_blank" rel="noopener noreferrer"
-                aria-label="GitHub profile of Sayee Gosavi">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
+            <div class="contribution-roadmap">
+              <div class="roadmap-container">
+                <!-- SVG Horizontal Wavy Path -->
+                <div class="roadmap-path" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 1200 200"
+                    preserveAspectRatio="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <linearGradient id="roadGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: #00d9ff; stop-opacity: 1" />
+                        <stop offset="50%" style="stop-color: #0099cc; stop-opacity: 1" />
+                        <stop offset="100%" style="stop-color: #00d9ff; stop-opacity: 1" />
+                      </linearGradient>
+                    </defs>
 
-            <div class="github-stats">
-              <div class="stat-item">
-                <span class="stat-icon">📦</span>
-                <span class="stat-value" data-stat="repos">0</span>
-                <span class="stat-label">Repos</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-icon">👥</span>
-                <span class="stat-value" data-stat="followers">0</span>
-                <span class="stat-label">Followers</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-icon">🔗</span>
-                <span class="stat-value" data-stat="following">0</span>
-                <span class="stat-label">Following</span>
-              </div>
-            </div>
+                    <!-- Main horizontal wavy path - smooth sine wave -->
+                    <path
+                      class="road-path"
+                      d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60"
+                    />
 
-            <div class="contribution-section">
-              <h4>Contribution Activity</h4>
-              <div class="github-calendar" data-username="sayeeg-11">
-                Loading contributions...
-              </div>
-            </div>
+                    <!-- Animated dashed center line -->
+                    <path
+                      class="road-dashes"
+                      d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60"
+                    />
+                  </svg>
+                </div>
 
-            <div class="recent-repos">
-              <h4>Recent Projects</h4>
-              <div class="repo-list"></div>
+                <!-- Step 1: Create an Issue -->
+                <div
+                  class="roadmap-step"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Step 1: Create an Issue"
+                >
+                  <div class="step-node">
+                    <span class="step-number">1</span>
+                    <i class="fas fa-clipboard-list step-icon"></i>
+                  </div>
+                  <div class="step-content">
+                    <h3 class="step-title">Create an Issue</h3>
+                    <p class="step-description">Describe your idea or bug clearly.</p>
+                  </div>
+                </div>
+
+                <!-- Step 2: Fork the Repo -->
+                <div
+                  class="roadmap-step"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Step 2: Fork the Repository"
+                >
+                  <div class="step-node">
+                    <span class="step-number">2</span>
+                    <i class="fab fa-github-alt step-icon"></i>
+                  </div>
+                  <div class="step-content">
+                    <h3 class="step-title">Fork the Repo</h3>
+                    <p class="step-description">Get your own copy of the project.</p>
+                  </div>
+                </div>
+
+                <!-- Step 3: Create a Branch -->
+                <div
+                  class="roadmap-step"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Step 3: Create a Branch"
+                >
+                  <div class="step-node">
+                    <span class="step-number">3</span>
+                    <i class="fas fa-code-branch step-icon"></i>
+                  </div>
+                  <div class="step-content">
+                    <h3 class="step-title">Create a Branch</h3>
+                    <p class="step-description">Work safely on a feature branch.</p>
+                  </div>
+                </div>
+
+                <!-- Step 4: Make Changes -->
+                <div
+                  class="roadmap-step"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Step 4: Make Changes"
+                >
+                  <div class="step-node">
+                    <span class="step-number">4</span>
+                    <i class="fas fa-code step-icon"></i>
+                  </div>
+                  <div class="step-content">
+                    <h3 class="step-title">Make Changes</h3>
+                    <p class="step-description">Implement improvements or fixes.</p>
+                  </div>
+                </div>
+
+                <!-- Step 5: Submit a PR -->
+                <div
+                  class="roadmap-step"
+                  tabindex="0"
+                  role="button"
+                  aria-label="Step 5: Submit a Pull Request"
+                >
+                  <div class="step-node">
+                    <span class="step-number">5</span>
+                    <i class="fas fa-upload step-icon"></i>
+                  </div>
+                  <div class="step-content">
+                    <h3 class="step-title">Submit a PR</h3>
+                    <p class="step-description">Open a pull request for review.</p>
+                  </div>
+                </div>
+              </div>
+
             </div>
-          </div>
+          </section>
         </section>
-
-        <section aria-labelledby="top-contributors">
-          <h2 id="top-contributors">Top Contributors</h2>
-          <div class="contributors-grid" id="contributors-grid" role="list" aria-label="Top contributors"
-            aria-live="polite"></div>
-          <div id="pagination-controls" class="pagination-container"></div>
-        </section>
-
-        <section aria-labelledby="recent-activity">
-          <h2 id="recent-activity" class="mt-large">Recent Contribution Activity</h2>
-          <div class="activity-container" id="activity-list">
-            <div class="loading-text">
-              <i class="fas fa-spinner fa-spin"></i> Fetching latest commits…
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= CONTRIBUTION ROADMAP CTA ================= -->
-        <section class="contribute-cta" aria-labelledby="contribute">
-          <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
-
-          <p class="roadmap-intro">
-            Follow this <strong>roadmap</strong> to make your first contribution to Pixel Phantoms.
-          </p>
-
-          <div class="contribution-roadmap">
-            <div class="roadmap-container">
-
-              <!-- SVG Path -->
-              <div class="roadmap-path" aria-hidden="true">
-                <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
-                  <path class="road-path" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
-                  <path class="road-dashes" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
-                </svg>
-              </div>
-
-              <!-- STEP 1 -->
-              <div class="roadmap-step" data-step="1" tabindex="0" role="button" aria-label="Step 1: Create an Issue">
-                <div class="step-node">
-                  <span class="step-number">1</span>
-                  <i class="fas fa-clipboard-list step-icon"></i>
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">Create an Issue</h3>
-                  <p class="step-description">Describe your idea or bug clearly.</p>
-                </div>
-              </div>
-
-              <!-- STEP 2 -->
-              <div class="roadmap-step" data-step="2" tabindex="0" role="button"
-                aria-label="Step 2: Fork the Repository">
-                <div class="step-node">
-                  <span class="step-number">2</span>
-                  <i class="fab fa-github-alt step-icon"></i>
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">Fork the Repo</h3>
-                  <p class="step-description">Get your own copy of the project.</p>
-                </div>
-              </div>
-
-              <!-- STEP 3 -->
-              <div class="roadmap-step" data-step="3" tabindex="0" role="button" aria-label="Step 3: Create a Branch">
-                <div class="step-node">
-                  <span class="step-number">3</span>
-                  <i class="fas fa-code-branch step-icon"></i>
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">Create a Branch</h3>
-                  <p class="step-description">Work safely on a feature branch.</p>
-                </div>
-              </div>
-
-              <!-- STEP 4 -->
-              <div class="roadmap-step" data-step="4" tabindex="0" role="button" aria-label="Step 4: Make Changes">
-                <div class="step-node">
-                  <span class="step-number">4</span>
-                  <i class="fas fa-code step-icon"></i>
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">Make Changes</h3>
-                  <p class="step-description">Implement improvements or fixes.</p>
-                </div>
-              </div>
-
-              <!-- STEP 5 -->
-              <div class="roadmap-step" data-step="5" tabindex="0" role="button"
-                aria-label="Step 5: Submit a Pull Request">
-                <div class="step-node">
-                  <span class="step-number">5</span>
-                  <i class="fas fa-upload step-icon"></i>
-                </div>
-                <div class="step-content">
-                  <h3 class="step-title">Submit a PR</h3>
-                  <p class="step-description">Open a pull request for review.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
-      </section>
-    </div>
-  </main>
-
-  <div id="contributor-modal" class="modal-overlay" aria-hidden="true">
-    <div class="modal-container" role="dialog" aria-modal="true">
-      <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
-
-      <div class="modal-header">
-        <img id="modal-avatar" src="" alt="Contributor avatar" />
-        <h2 id="modal-name">Username</h2>
-        <p id="modal-id" class="modal-subtitle">ID: —</p>
-        <div id="modal-league-badge" class="modal-league-tag"></div>
+        <!-- .contributors-section -->
       </div>
+      <!-- .page-transition-wrapper -->
+    </main>
 
-      <div class="modal-stats-row">
-        <div class="modal-stat">
-          <span class="stat-label">Rank</span>
-          <span class="stat-number" id="modal-rank">#—</span>
-        </div>
-        <div class="modal-stat">
-          <span class="stat-label">Points</span>
-          <span class="stat-number" id="modal-score">—</span>
-        </div>
-        <div class="modal-stat">
-          <span class="stat-label">PRs</span>
-          <span class="stat-number" id="modal-prs">—</span>
-        </div>
-        <div class="modal-stat">
-          <span class="stat-label">Commits</span>
-          <span class="stat-number" id="modal-commits">—</span>
-        </div>
-      </div>
+    <div id="contributor-modal" class="modal-overlay" aria-hidden="true">
+      <div class="modal-container" role="dialog" aria-modal="true">
+        <button class="close-modal" onclick="closeModal()" aria-label="Close">&times;</button>
 
-      <div class="modal-actions">
-        <a id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
-          <i class="fas fa-code-branch"></i> View Pull Requests
-        </a>
-        <a id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
-          <i class="fab fa-github"></i> GitHub Profile
-        </a>
+        <div class="modal-header">
+          <img id="modal-avatar" src="" alt="Contributor avatar" />
+          <h2 id="modal-name">Username</h2>
+          <p id="modal-id" class="modal-subtitle">ID: —</p>
+          <div id="modal-league-badge" class="modal-league-tag"></div>
+        </div>
+
+        <div class="modal-stats-row">
+          <div class="modal-stat">
+            <span class="stat-label">Rank</span>
+            <span class="stat-number" id="modal-rank">#—</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">Points</span>
+            <span class="stat-number" id="modal-score">—</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">PRs</span>
+            <span class="stat-number" id="modal-prs">—</span>
+          </div>
+          <div class="modal-stat">
+            <span class="stat-label">Commits</span>
+            <span class="stat-number" id="modal-commits">—</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <a id="modal-pr-link" target="_blank" class="modal-btn primary-btn">
+            <i class="fas fa-code-branch"></i> View Pull Requests
+          </a>
+          <a id="modal-profile-link" target="_blank" class="modal-btn secondary-btn">
+            <i class="fab fa-github"></i> GitHub Profile
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="footer-placeholder"></div>
-  <script src="../js/footer.js"></script>
-  <script>
-    const basePath = '../';
-    document.addEventListener('DOMContentLoaded', () => {
-      if (typeof renderFooter === 'function') {
-        renderFooter(basePath);
-      } else {
-        console.error(
-          'renderFooter function not found. Make sure footer.js is loaded correctly.'
-        );
-      }
-    });
-
-
-  </script>
-
-  <script>
-    steps.forEach(step => {
-      step.addEventListener('mouseenter', () => {
-        steps.forEach(s => s.classList.remove('is-active'));
-        step.classList.add('is-active');
-      });
-      step.addEventListener('focus', () => {
-        steps.forEach(s => s.classList.remove('is-active'));
-        step.classList.add('is-active');
-      });
-    });
-  </script>
-  <script>
-    const steps = document.querySelectorAll('.roadmap-step');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+    <div id="footer-placeholder"></div>
+    <script src="../js/footer.js"></script>
+    <script>
+      const basePath = '../';
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderFooter === 'function') {
+          renderFooter(basePath);
+        } else {
+          console.error(
+            'renderFooter function not found. Make sure footer.js is loaded correctly.'
+          );
         }
       });
-    }, { threshold: 0.4 });
+    </script>
 
-    steps.forEach(step => observer.observe(step));
-  </script>
+    <script src="../js/page-transitions.js" defer></script>
+    <script src="../js/back-to-top.js"></script>
+    <script src="../js/contributors.js"></script>
+    <script src="../js/scroll-progress.js"></script>
+    <script src="../js/theme.js"></script>
 
-
-
-  <script src="../js/page-transitions.js" defer></script>
-  <script src="../js/back-to-top.js"></script>
-  <script src="../js/contributors.js"></script>
-  <script src="../js/scroll-progress.js"></script>
-  <script src="../js/theme.js"></script>
-
-  <!-- GitHub Calendar Library -->
-  <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
-  <script src="../js/main.js"></script>
-
-</body>
-
+    <!-- GitHub Calendar Library -->
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
 </html>
