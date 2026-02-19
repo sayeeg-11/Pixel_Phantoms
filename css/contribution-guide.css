@@ -208,19 +208,36 @@
 /* BUTTON */
 .footer-actions {
   margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer-actions .btn-primary {
-  padding: 12px 26px;
-  font-size: 1.2rem;
-  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 18px 50px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--accent-color);
+  color: #fff;
+  /* use a subtler shadow to match site-wide feel */
+  box-shadow: 0 6px 20px rgba(0, 170, 255, 0.3);
+  transition: transform var(--animation-medium) ease, box-shadow var(--animation-medium) ease;
 }
 
+/* Restore the site-wide "feel" for hover (small lift + glow) */
 .footer-actions .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
 }
+
+.footer-actions .btn-primary:focus {
+  outline: 3px solid rgba(0, 170, 255, 0.12);
+  outline-offset: 4px;
+}
+
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

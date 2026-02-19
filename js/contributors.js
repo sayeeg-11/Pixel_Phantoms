@@ -307,7 +307,6 @@ function getLeagueData(points) {
   };
 }
 
-
 // 3. Rectified Rendering (Forces "Elite" Layout)
 function renderContributors(page) {
   const grid = document.getElementById('contributors-grid');
@@ -482,6 +481,9 @@ async function fetchRecentActivity() {
         activityList.appendChild(row);
       });
     }
+  } catch (error) {
+    console.log('Activity feed unavailable');
+  }
   } catch (error) { console.log('Activity feed unavailable'); }
 }
 
@@ -553,6 +555,20 @@ async function fetchGitHubStats(username) {
       avatar_url: userData.avatar_url || '',
       bio: userData.bio || '',
       name: userData.name || username,
+      html_url: userData.html_url || `https://github.com/${username}`,
+    };
+
+    // Cache the result
+    localStorage.setItem(
+      cacheKey,
+      JSON.stringify({
+        data: stats,
+        timestamp: Date.now(),
+      })
+    );
+
+    console.log(`✅ Fetched fresh stats for ${username}:`, stats);
+    return stats;
       html_url: userData.html_url || `https://github.com/${username}`
     };
 
@@ -620,6 +636,22 @@ async function fetchRecentRepos(username) {
       }
       return [];
     }
+    }
+  }
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${username}/repos?sort=updated&per_page=3`
+    );
+
+    // Handle rate limiting
+    if (response.status === 403) {
+      if (cached) {
+        const { data } = JSON.parse(cached);
+        return data;
+      }
+      return [];
+    }
 
     if (!response.ok) {
       return [];
@@ -634,6 +666,19 @@ async function fetchRecentRepos(username) {
       stars: repo.stargazers_count || 0,
       language: repo.language || 'Unknown',
       html_url: repo.html_url,
+      updated_at: repo.updated_at,
+    }));
+
+    // Cache the result
+    localStorage.setItem(
+      cacheKey,
+      JSON.stringify({
+        data: repoData,
+        timestamp: Date.now(),
+      })
+    );
+
+    return repoData;
       updated_at: repo.updated_at
     }));
 
@@ -702,6 +747,7 @@ async function displayGitHubStats(card, username) {
   // Fetch stats and repos in parallel
   const [stats, repos] = await Promise.all([
     fetchGitHubStats(username),
+    fetchRecentRepos(username),
     fetchRecentRepos(username)
   ]);
 
@@ -738,7 +784,9 @@ async function displayGitHubStats(card, username) {
   if (repos && repos.length > 0 && reposContainer) {
     const repoList = reposContainer.querySelector('.repo-list');
     if (repoList) {
-      repoList.innerHTML = repos.map(repo => `
+      repoList.innerHTML = repos
+        .map(
+          repo => `
                 <div class="repo-item">
                     <div class="repo-info">
                         <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">
@@ -751,12 +799,20 @@ async function displayGitHubStats(card, username) {
                         <span class="repo-stars">⭐ ${repo.stars}</span>
                     </div>
                 </div>
-            `).join('');
+            `
+        )
+        .join('');
     }
   } else if (reposContainer) {
     const repoList = reposContainer.querySelector('.repo-list');
     if (repoList) {
-      repoList.innerHTML = '<p class="no-repos">No recent projects</p>';
+      repoList.innerHTML = `
+                <div class="repo-empty-state">
+                    <i class="fas fa-folder-open"></i>
+                    <p>No public archives found</p>
+                    <span>This agent hasn't shared any public repositories yet.</span>
+                </div>
+            `;
     }
   }
 }
@@ -774,7 +830,6 @@ function initializeGitHubCalendars() {
     setTimeout(initializeGitHubCalendars, 500);
     return;
   }
-
 
   // Find all calendar containers
   const calendarElements = document.querySelectorAll('.github-calendar[data-username]');
@@ -798,7 +853,7 @@ function initializeGitHubCalendars() {
         responsive: true,
         summary_text: '',
         global_stats: false,
-        tooltips: true
+        tooltips: true,
       });
       console.log(`✅ Loaded contribution calendar for ${username}`);
     } catch (error) {
