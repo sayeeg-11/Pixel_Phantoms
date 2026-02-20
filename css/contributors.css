@@ -2313,14 +2313,6 @@ body.dark-mode .calendar .contrib-legend .legend {
   top: 15%;
 }
 
-.roadmap-step:hover {
-  transform: translateY(-15px) scale(1.05);
-  z-index: 20;
-}
-
-.roadmap-step:nth-child(4):hover {
-  transform: translateX(-50%) translateY(-15px) scale(1.05);
-}
 
 /* Step Node - Circular markers */
 .step-node {
@@ -2875,4 +2867,14 @@ body.dark-mode .calendar .contrib-legend .legend {
 .contributors-section {
   width: 100% !important;
   max-width: 100% !important;
+}
+
+/* This targets the specific middle step and forces it to stay put */
+.roadmap-container .roadmap-step:nth-child(4):hover {
+  transform: translateX(-50%) !important;
+}
+
+/* This stops the other steps from moving */
+.roadmap-container .roadmap-step:hover {
+  transform: translateY(0) !important;
 }
