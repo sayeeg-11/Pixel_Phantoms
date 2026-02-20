@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | App Dev Protocol</title>
+    <meta
+      name="description"
+      content="Pixel Phantoms App Dev Protocol — a structured roadmap for mastering cross-platform mobile development, architecture patterns, and production-ready application design."
+    />
     <link rel="icon" href="../assets/logo.png" />
 
     <link rel="stylesheet" href="../css/scroll-progress.css" />
@@ -28,7 +32,6 @@
       class="global-loader hidden"
       role="status"
       aria-live="polite"
-      aria-hidden="true"
     >
       <div class="loader-spinner" aria-hidden="true"></div>
       <p class="loader-text">Loading...</p>
@@ -42,13 +45,6 @@
 
     <div id="navbar-placeholder"></div>
     <script src="../js/navbar.js" defer></script>
-    <script defer>
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof renderNavbar === 'function') {
-          renderNavbar('../');
-        }
-      });
-    </script>
 
     <main class="main-content" id="main-content">
       <section class="roadmap-header">
@@ -76,8 +72,12 @@
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js" defer></script>
+
     <script defer>
       window.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderNavbar === 'function') {
+          renderNavbar('../');
+        }
         if (typeof renderFooter === 'function') {
           renderFooter('../');
         }
@@ -108,14 +108,12 @@
       function showLoader() {
         const loader = document.getElementById('global-loader');
         loader.classList.remove('hidden');
-        loader.setAttribute('aria-hidden', 'false');
         document.body.setAttribute('aria-busy', 'true');
       }
 
       function hideLoader() {
         const loader = document.getElementById('global-loader');
         loader.classList.add('hidden');
-        loader.setAttribute('aria-hidden', 'true');
         document.body.removeAttribute('aria-busy');
       }
     </script>
