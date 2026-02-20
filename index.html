@@ -49,6 +49,7 @@
 
     <!-- Project Matrix Styles - Single Row Layout -->
     <style>
+     
       .project-matrix {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -71,10 +72,7 @@
       .proj-card::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 0; left: 0; right: 0; bottom: 0;
         background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
         z-index: 1;
         transition: all 0.3s ease;
@@ -92,9 +90,7 @@
 
       .proj-content {
         position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 0; left: 0; right: 0;
         padding: 25px 20px;
         z-index: 2;
         color: white;
@@ -121,55 +117,105 @@
         color: rgba(255, 255, 255, 0.9);
         line-height: 1.5;
       }
+      /* Force into a single line row */
+      .skill-path-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap; /* This forces them onto one line */
+  gap: 15px; /* Space between nodes and lines */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto; /* Allows smooth horizontal swipe on mobile phones */
+  padding: 20px 10px;
+  -webkit-overflow-scrolling: touch;
+}
 
+/* Hide the scrollbar for a cleaner look */
+.skill-path-wrapper::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Decreased size of the cards */
+.skill-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 140px; /* Reduced width */
+  height: 140px; /* Reduced height */
+  padding: 15px; /* Reduced padding */
+  flex-shrink: 0; /* Stops the cards from squishing together */
+  background:#ffff;
+  border: 1px solid #333;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Slightly smaller text/icons to fit the new card size */
+.skill-node .node-icon {
+  font-size: 2rem; /* Reduced from 2.5rem */
+  color: #00d8ff;
+  margin-bottom: 8px;
+}
+
+.skill-node h4 {
+  font-size: 0.85rem; /* Slightly smaller text */
+  margin: 5px 0;
+  text-align: center;
+  color: black;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Decreased size of the connecting lines */
+.connector {
+  height: 2px;
+  width: 30px; /* Shorter connecting line */
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #00d8ff, #8844ff);
+  position: relative;
+}
+
+/* Arrow indicator on the lines */
+.connector::after {
+  content: '>';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8844ff;
+  font-weight: bold;
+}
       /* Responsive Design */
       @media (max-width: 1200px) {
         .project-matrix {
           grid-template-columns: repeat(2, 1fr);
-          gap: 20px;
         }
       }
 
       @media (max-width: 768px) {
         .project-matrix {
           grid-template-columns: 1fr;
-          gap: 20px;
           max-width: 500px;
           margin-left: auto;
           margin-right: auto;
         }
-
-        .proj-card {
-          height: 250px;
-        }
-
-        .proj-content h3 {
-          font-size: 1.2rem;
-        }
-
-        .proj-content p {
-          font-size: 0.9rem;
-        }
+        .proj-card { height: 250px; }
+        .proj-content h3 { font-size: 1.2rem; }
+        .proj-content p { font-size: 0.9rem; }
       }
 
       @media (max-width: 480px) {
-        .proj-card {
-          height: 220px;
-        }
-
-        .proj-content {
-          padding: 20px 15px;
-        }
-
-        .proj-content h3 {
-          font-size: 1.1rem;
-        }
-
-        .proj-content p {
-          font-size: 0.85rem;
-        }
+        .proj-card { height: 220px; }
+        .proj-content { padding: 20px 15px; }
+        .proj-content h3 { font-size: 1.1rem; }
+        .proj-content p { font-size: 0.85rem; }
       }
     </style>
+      
   </head>
 
     <body class="hacker-theme">
@@ -454,9 +500,18 @@
                 <h4>System_Arch</h4>
                 <span class="node-level">Lvl 4</span>
               </a>
-              <div class="center-btn">
-                <a href="events.html" class="btn-hollow">Browse All Modules</a>
-              </div>
+              
+              <div class="connector reveal-node" aria-hidden="true"></div>
+
+              <a href="pages/backend-roadmap.html" class="skill-node reveal-node">
+                <div class="node-icon">
+                  <i class="fas fa-robot" aria-hidden="true"></i>
+                </div>
+                <h4>Backend_Mastery</h4>
+                <span class="node-level">Lvl 5</span>
+              </a>
+            </div> <div class="center-btn" style="width: 100%; display: flex; justify-content: center; margin-top: 40px;">
+              <a href="events.html" class="btn-hollow">Browse All Modules</a>
             </div>
           </div>
         </section>
