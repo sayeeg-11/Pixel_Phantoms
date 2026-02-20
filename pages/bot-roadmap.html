@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | Bot Protocol</title>
+    <meta
+      name="description"
+      content="Pixel Phantoms Bot Protocol — structured roadmap for Discord automation, bot integration, and production-ready automation systems."
+    />
     <link rel="icon" href="../assets/logo.png" />
 
     <link rel="stylesheet" href="../css/scroll-progress.css" />
@@ -22,23 +26,26 @@
   </head>
   <body class="hacker-theme">
     <!-- Global Page Loader -->
-<div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-  <div class="loader-spinner"></div>
-  <p class="loader-text">Loading...</p>
-</div>
+    <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page" role="status">
+      <div class="loader-spinner"></div>
+      <p class="loader-text">Loading...</p>
+    </div>
 
-    <div id="scroll-progress-container">
+    <div id="scroll-progress-container" aria-hidden="true">
       <div id="scroll-progress-bar"></div>
     </div>
 
-    <div id="cursor-highlight"></div>
+    <div id="cursor-highlight" aria-hidden="true"></div>
+
     <div id="navbar-placeholder"></div>
-    <script src="../js/navbar.js"></script>
-    <script>
-      renderNavbar('../');
+    <script src="../js/navbar.js" defer></script>
+    <script defer>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderNavbar === 'function') renderNavbar('../');
+      });
     </script>
 
-    <div class="main-content">
+    <main class="main-content">
       <section class="roadmap-header">
         <div class="header-content">
           <h1 class="glitch-text" data-text="BOT_PROTOCOL">BOT_PROTOCOL</h1>
@@ -64,21 +71,22 @@
           <div class="loading-text">INITIALIZING_CONSTRUCT...</div>
         </div>
       </div>
-    </div>
+    </main>
 
     <div id="footer-placeholder"></div>
-    <script src="../js/footer.js"></script>
-    <script>
-      renderFooter('../');
+    <script src="../js/footer.js" defer></script>
+    <script defer>
+      window.addEventListener('DOMContentLoaded', () => {
+        if (typeof renderFooter === 'function') renderFooter('../');
+      });
     </script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/back-to-top.js"></script>
-
-    <script src="../js/bot-roadmap.js"></script>
-    <script src="../js/scroll-progress.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+    <script src="../js/back-to-top.js" defer></script>
+    <script src="../js/bot-roadmap.js" defer></script>
+    <script src="../js/scroll-progress.js" defer></script>
+    <script src="../js/main.js" defer></script>
   </body>
 </html>
