@@ -1,103 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Learn about Pixel Phantoms - a student-driven tech club focused on empowering learners through coding, collaboration, and community."
-    />
-    <meta property="og:title" content="Pixel Phantoms | About" />
-    <meta
-      property="og:description"
-      content="Learn about Pixel Phantoms - a student-driven tech club focused on empowering learners through coding, collaboration, and community."
-    />
-    <meta property="og:image" content="assets/logo.png" />
-    <meta property="og:url" content="https://pixelphantoms.com/about.html" />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://pixelphantoms.com/about.html" />
-    <title>Pixel Phantoms | About</title>
-    <link rel="icon" href="assets/logo.png" />
 
-    <link rel="stylesheet" href="css/scroll-progress.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/about.css" />
-    <link rel="stylesheet" href="css/home-gsap.css" />
-    <link rel="stylesheet" href="css/back-to-top.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-    <link rel="stylesheet" href="css/cursor-effect.css" />
-    <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="css/events.css" />
-    <link rel="stylesheet" href="css/keyboard-shortcuts.css" />
-    <style>
-      /* Minimal modal styles that reuse login.css form classes */
-      #register-modal {
-        position: fixed;
-        inset: 0;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 9999;
-      }
-      #register-modal.show {
-        display: flex;
-      }
-      #register-modal .modal-dialog {
-        max-width: 560px;
-        width: 100%;
-        padding: 20px;
-        border-radius: 14px;
-        position: relative;
-      }
-      #register-modal .modal-close {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        background: transparent;
-        border: none;
-        color: var(--text-primary);
-        font-size: 1.4rem;
-        cursor: pointer;
-      }
-      #register-modal .register-form .input-group {
-        margin-bottom: 12px;
-      }
-    </style>
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Learn about Pixel Phantoms - a student-driven tech club focused on empowering learners through coding, collaboration, and community." />
+  <meta property="og:title" content="Pixel Phantoms | About" />
+  <meta property="og:description"
+    content="Learn about Pixel Phantoms - a student-driven tech club focused on empowering learners through coding, collaboration, and community." />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:url" content="https://pixelphantoms.com/about.html" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://pixelphantoms.com/about.html" />
+  <title>Pixel Phantoms | About</title>
+  <link rel="icon" href="assets/logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#00aaff" />
 
-  <body class="hacker-theme">
-    <!-- Global Page Loader -->
-    <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
-      <div class="loader-spinner"></div>
-      <p class="loader-text">Loading...</p>
-    </div>
+  <link rel="stylesheet" href="css/scroll-progress.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/home-gsap.css" />
+  <link rel="stylesheet" href="css/back-to-top.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/cursor-effect.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/events.css" />
+  <link rel="stylesheet" href="css/keyboard-shortcuts.css" />
+  <style>
+    /* Minimal modal styles that reuse login.css form classes */
+    #register-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+    }
 
-    <div id="scroll-progress-container">
-      <div id="scroll-progress-bar"></div>
-    </div>
+    #register-modal.show {
+      display: flex;
+    }
 
-    <a href="#main-about" class="skip-to-content" id="skip-link">
-      <i class="fas fa-forward"></i> Skip to Main Content
-    </a>
+    #register-modal .modal-dialog {
+      max-width: 560px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 14px;
+      position: relative;
+    }
 
-    <div id="cursor-highlight"></div>
-    <div id="navbar-placeholder"></div>
-    <script src="js/navbar.js"></script>
-    <script>
-      renderNavbar();
-    </script>
+    #register-modal .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
 
-    <main id="main-content" tabindex="-1">
-      <div class="page-transition-wrapper" data-page="about">
+    #register-modal .register-form .input-group {
+      margin-bottom: 12px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="hacker-theme">
+  <!-- Global Page Loader -->
+  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Loading...</p>
+  </div>
+
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
+  <a href="#main-about" class="skip-to-content" id="skip-link">
+    <i class="fas fa-forward"></i> Skip to Main Content
+  </a>
+
+  <div id="cursor-highlight"></div>
+  <div id="navbar-placeholder"></div>
+  <script src="js/navbar.js"></script>
+  <script>
+    renderNavbar();
+  </script>
+
+  <main id="main-content" tabindex="-1">
+    <div class="page-transition-wrapper" data-page="about">
       <section class="hero-section" role="banner">
         <div class="hero-bg-overlay"></div>
         <div class="hero-content">
@@ -264,22 +261,12 @@
                 <p class="member-tagline">Leads club vision and overall strategy</p>
               </div>
               <div class="member-socials">
-                <a
-                  href="https://linkedin.com/in/prathamesh-wamane"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link linkedin"
-                  aria-label="View Prathamesh Wamane on LinkedIn"
-                >
+                <a href="https://linkedin.com/in/prathamesh-wamane" target="_blank" rel="noopener noreferrer"
+                  class="social-link linkedin" aria-label="View Prathamesh Wamane on LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a
-                  href="https://github.com/prathamesh-wamane"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link github"
-                  aria-label="View Prathamesh Wamane on GitHub"
-                >
+                <a href="https://github.com/prathamesh-wamane" target="_blank" rel="noopener noreferrer"
+                  class="social-link github" aria-label="View Prathamesh Wamane on GitHub">
                   <i class="fab fa-github"></i>
                 </a>
               </div>
@@ -295,22 +282,12 @@
                 <p class="member-tagline">Oversees club operations and leadership</p>
               </div>
               <div class="member-socials">
-                <a
-                  href="https://linkedin.com/in/krishna-shimpi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link linkedin"
-                  aria-label="View Krishna Shimpi on LinkedIn"
-                >
+                <a href="https://linkedin.com/in/krishna-shimpi" target="_blank" rel="noopener noreferrer"
+                  class="social-link linkedin" aria-label="View Krishna Shimpi on LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a
-                  href="https://github.com/krishna-shimpi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link github"
-                  aria-label="View Krishna Shimpi on GitHub"
-                >
+                <a href="https://github.com/krishna-shimpi" target="_blank" rel="noopener noreferrer"
+                  class="social-link github" aria-label="View Krishna Shimpi on GitHub">
                   <i class="fab fa-github"></i>
                 </a>
               </div>
@@ -326,22 +303,12 @@
                 <p class="member-tagline">Supports presidential duties and initiatives</p>
               </div>
               <div class="member-socials">
-                <a
-                  href="https://linkedin.com/in/pratik-thorat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link linkedin"
-                  aria-label="View Pratik Thorat on LinkedIn"
-                >
+                <a href="https://linkedin.com/in/pratik-thorat" target="_blank" rel="noopener noreferrer"
+                  class="social-link linkedin" aria-label="View Pratik Thorat on LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a
-                  href="https://github.com/pratik-thorat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link github"
-                  aria-label="View Pratik Thorat on GitHub"
-                >
+                <a href="https://github.com/pratik-thorat" target="_blank" rel="noopener noreferrer"
+                  class="social-link github" aria-label="View Pratik Thorat on GitHub">
                   <i class="fab fa-github"></i>
                 </a>
               </div>
@@ -357,31 +324,16 @@
                 <p class="member-tagline">Heads all technical initiatives and projects</p>
               </div>
               <div class="member-socials">
-                <a
-                  href="https://linkedin.com/in/harsh-pawar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link linkedin"
-                  aria-label="View Harsh Pawar on LinkedIn"
-                >
+                <a href="https://linkedin.com/in/harsh-pawar" target="_blank" rel="noopener noreferrer"
+                  class="social-link linkedin" aria-label="View Harsh Pawar on LinkedIn">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a
-                  href="https://github.com/harsh-pawar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link github"
-                  aria-label="View Harsh Pawar on GitHub"
-                >
+                <a href="https://github.com/harsh-pawar" target="_blank" rel="noopener noreferrer"
+                  class="social-link github" aria-label="View Harsh Pawar on GitHub">
                   <i class="fab fa-github"></i>
                 </a>
-                <a
-                  href="https://discord.com/users/harsh-pawar"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="social-link discord"
-                  aria-label="Connect with Harsh Pawar on Discord"
-                >
+                <a href="https://discord.com/users/harsh-pawar" target="_blank" rel="noopener noreferrer"
+                  class="social-link discord" aria-label="Connect with Harsh Pawar on Discord">
                   <i class="fab fa-discord"></i>
                 </a>
               </div>
@@ -422,38 +374,42 @@
             </div>
           </div>
           <div class="organize-image">
-            <img
-              src="https://picsum.photos/seed/community/400/500"
-              alt="Pixel Phantoms Community"
-              loading="lazy"
-            />
+            <img src="https://picsum.photos/seed/community/400/500" alt="Pixel Phantoms Community" loading="lazy" />
           </div>
         </div>
       </section>
     </div>
-    </main>
+  </main>
 
-    <div id="footer-placeholder"></div>
-    <script src="js/footer.js"></script>
-    <script>
-      const basePath = '';
-      document.addEventListener('DOMContentLoaded', () => {
-        if (typeof renderFooter === 'function') {
-          renderFooter(basePath);
-        } else {
-          console.error(
-            'renderFooter function not found. Make sure footer.js is loaded correctly.'
-          );
-        }
+  <div id="footer-placeholder"></div>
+  <script src="js/footer.js"></script>
+  <script>
+    const basePath = '';
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof renderFooter === 'function') {
+        renderFooter(basePath);
+      } else {
+        console.error(
+          'renderFooter function not found. Make sure footer.js is loaded correctly.'
+        );
+      }
+    });
+  </script>
+
+  <script src="js/page-transitions.js" defer></script>
+  <script src="js/theme.js"></script>
+  <script src="js/cursor-effect.js"></script>
+  <script src="js/back-to-top.js"></script>
+  <script src="js/scroll-progress.js"></script>
+  <script src="js/about.js"></script>
+  <script src="js/keyboard-shortcuts.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
       });
-    </script>
+    }
+  </script>
+</body>
 
-    <script src="js/page-transitions.js" defer></script>
-    <script src="js/theme.js"></script>
-    <script src="js/cursor-effect.js"></script>
-    <script src="js/back-to-top.js"></script>
-    <script src="js/scroll-progress.js"></script>
-    <script src="js/about.js"></script>
-    <script src="js/keyboard-shortcuts.js"></script>
-  </body>
 </html>

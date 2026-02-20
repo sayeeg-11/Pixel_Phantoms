@@ -1825,6 +1825,26 @@ main:focus {
     z-index: 999999 !important
 }
 
+#feedback-toggle::after {
+  content: "Give Feedback";
+  position: absolute;
+  left: 75px;
+  white-space: nowrap;
+  background: #111;
+  color: white;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 0.2s ease;
+}
+
+#feedback-toggle:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 #feedback-toggle {
     width: 54px;
     height: 54px;
@@ -1837,7 +1857,8 @@ main:focus {
     justify-content: center;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .35);
     cursor: pointer;
-    transition: all .3s ease
+    transition: all .3s ease;
+    font-size: x-large;
 }
 
 #feedback-toggle:hover {

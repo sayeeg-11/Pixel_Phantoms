@@ -79,6 +79,7 @@ body {
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(50px, 50px);
   }
@@ -114,6 +115,7 @@ body {
   100% {
     transform: translate(0, 0) scale(1);
   }
+
   50% {
     transform: translate(30px, -30px) scale(1.1);
   }
@@ -143,29 +145,31 @@ body {
 }
 
 .hero-title {
-    font-size: 2.8rem;   
-    font-weight: 800;
-    text-align: center;
-    display: block;
-    white-space: nowrap;   
-    overflow: visible;     
-    perspective: 1000px;
-    margin-bottom: 20px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+  perspective: 1000px;
+  margin-bottom: 20px;
 }
 
 .wave-letter {
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                color 0.3s ease;
-    cursor: default;
-    will-change: transform;
+  display: inline-block;
+  transition:
+    transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    color 0.3s ease;
+  cursor: default;
+  will-change: transform;
 }
 
 .wave-letter:hover {
-    transform: scale(1.5) translateY(-15px);
-    color: var(--primary); 
-    z-index: 10;
+  transform: scale(1.5) translateY(-15px);
+  color: var(--primary);
+  z-index: 10;
 }
+
 .gradient-text {
   background: linear-gradient(135deg, var(--primary) 0%, #00ffff 100%);
   -webkit-background-clip: text;
@@ -179,6 +183,7 @@ body {
   100% {
     filter: hue-rotate(0deg);
   }
+
   50% {
     filter: hue-rotate(20deg);
   }
@@ -239,6 +244,7 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -258,18 +264,18 @@ body {
 }
 
 .form-header h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;         
-    width: 0;            
-    height: 3px;      
-    background-color: #20b2aa; 
-    transition: width 0.3s ease-in-out; 
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 3px;
+  background-color: #20b2aa;
+  transition: width 0.3s ease-in-out;
 }
 
 .form-header h2:hover::after {
-    width: 100%;          
+  width: 100%;
 }
 
 .form-header p {
@@ -372,9 +378,11 @@ body {
   100% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-10px);
   }
+
   75% {
     transform: translateX(10px);
   }
@@ -425,6 +433,7 @@ body {
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -583,15 +592,21 @@ body {
 .info-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--primary), #00ffff);
-  border-radius: 16px;
+  background: linear-gradient(135deg, var(--accent-color), #fbfbfb);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: #000;
+  color: white;
   margin-bottom: 20px;
   transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(var(--accent-rgb), 0.15);
+}
+
+.info-card-new:hover .info-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 25px rgba(var(--accent-rgb), 0.25);
 }
 
 .info-card-new:hover .info-icon {
@@ -614,7 +629,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--primary);
+  color: var(--accent-color);
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
@@ -622,7 +637,8 @@ body {
 
 .info-link:hover {
   gap: 12px;
-  color: #00ffff;
+  color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(var(--accent-rgb, 0, 170, 255), 0.3);
 }
 
 .info-link i {
@@ -660,27 +676,7 @@ body {
   gap: 15px;
 }
 
-.social-icon {
-  width: 50px;
-  height: 50px;
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.social-icon:hover {
-  background: var(--primary);
-  color: #000;
-  transform: translateY(-5px) rotate(5deg);
-  box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
-}
+/* Social icons now globally styled in style.css as .social-icon */
 
 /* ================= FAQ SECTION ================= */
 .faq-section-new {
@@ -799,6 +795,7 @@ body {
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -810,6 +807,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -821,6 +819,7 @@ body {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -832,6 +831,7 @@ body {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -1276,83 +1276,79 @@ body {
 }
 
 @media (max-width: 768px) {
-    .hero-title {
-        white-space: normal; 
-        font-size: 2rem;    
-    }
+  .hero-title {
+    white-space: normal;
+    font-size: 2rem;
+  }
 }
 
 /* ================= ENLARGED EMOJI RATING ================= */
 
 .rating-line-container {
-    width: 100% !important;
-    text-align: center !important;
-    margin: 20px 0 10px 0 !important;
-    padding-bottom: 5px !important;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.1) !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin: 20px 0 10px 0 !important;
+  padding-bottom: 5px !important;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.1) !important;
 }
 
 .rating-label {
-    
-    color: var(--text-color) !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1.5px !important;
-    margin-bottom: 30px !important;
-    display: block !important;
-    white-space: nowrap !important;
+  color: var(--text-color) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 30px !important;
+  display: block !important;
+  white-space: nowrap !important;
 }
 
 .cyber-rating {
-   
-    display: flex !important;
-    justify-content: center !important;
-    flex-wrap: nowrap !important;
-    gap: 30px !important; 
-    width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  flex-wrap: nowrap !important;
+  gap: 30px !important;
+  width: 100% !important;
 }
 
 .rate-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    min-width: 80px !important; 
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  min-width: 80px !important;
 }
 
 .emoji-icon {
-   
-    font-size: 2.5rem !important; 
-    margin-bottom: 10px !important;
-    transition: transform 0.3s ease !important;
+  font-size: 2.5rem !important;
+  margin-bottom: 10px !important;
+  transition: transform 0.3s ease !important;
 }
 
 .emoji-name {
- 
-    font-size: 0.75rem !important;
-    color: var(--text-color) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    opacity: 0.8 !important;
+  font-size: 0.75rem !important;
+  color: var(--text-color) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  opacity: 0.8 !important;
 }
 
 .cyber-emoji {
-    cursor: pointer !important;
-    filter: grayscale(100%) brightness(0.6) !important;
-    opacity: 0.7 !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  cursor: pointer !important;
+  filter: grayscale(100%) brightness(0.6) !important;
+  opacity: 0.7 !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
 }
 
 .cyber-emoji:hover,
 .cyber-rating input:checked + label.cyber-emoji {
-    filter: grayscale(0%) brightness(1.2) !important;
-    opacity: 1 !important;
-    transform: scale(1.2) translateY(-10px) !important;
+  filter: grayscale(0%) brightness(1.2) !important;
+  opacity: 1 !important;
+  transform: scale(1.2) translateY(-10px) !important;
 }
 
 .cyber-rating input:checked + label.cyber-emoji .emoji-name {
-    color: #20b2aa !important; /* Sea Green */
-    text-shadow: 0 0 10px rgba(32, 178, 170, 0.5) !important;
-    opacity: 1 !important;
+  color: #20b2aa !important;
+  /* Sea Green */
+  text-shadow: 0 0 10px rgba(32, 178, 170, 0.5) !important;
+  opacity: 1 !important;
 }
-

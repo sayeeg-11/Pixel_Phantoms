@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Phantoms | The Future of Tech</title>
     <link rel="icon" href="assets/logo.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00aaff" />
 
     <link rel="stylesheet" href="css/style.min.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
@@ -170,25 +172,19 @@
     </style>
   </head>
 
-  <body class="hacker-theme">
-    <div
-      id="global-loader"
-      class="global-loader hidden"
-      aria-live="polite"
-      aria-label="Loading page"
-    >
-      <div class="loader-spinner"></div>
-      <p class="loader-text">Loading...</p>
-    </div>
-    <div id="scroll-progress-container">
-      <div id="scroll-progress-bar"></div>
+    <body class="hacker-theme">
+
+  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div class="loader-spinner"></div>
+     <p class="loader-text">Loading...</p>
     </div>
 
     <a href="#main-content" class="skip-to-content" id="skip-link">
       <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
     </a>
 
-    <div id="cursor-highlight"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
     <div id="navbar-placeholder"></div>
 
     <main id="main-content" tabindex="-1">
@@ -733,6 +729,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/navbar.js"></script>
+    
     <script src="js/footer.js"></script>
     <script>
       // Render these immediately so the theme.js can find the toggle switch
@@ -758,14 +755,14 @@
         }
       });
     </script>
-    <script src="js/theme.min.js"></script>
+    
     <script src="js/cursor-effect.js"></script>
     <script src="js/scroll-buttons.js"></script>
     <script src="js/home-gsap.min.js"></script>
     <script src="js/home-leaderboard.min.js"></script>
     <script src="js/quick-stats.js"></script>
     <script src="js/home-stats-enhanced.js"></script>
-    <script src="js/theme-enhanced.js"></script>
+    
     <script src="js/share-button.js"></script>
     <script>
       // Initialize quick stats widget for home page
@@ -941,5 +938,19 @@
       });
     </script>
     <script src="js/main.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('./sw.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            })
+            .catch((error) => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

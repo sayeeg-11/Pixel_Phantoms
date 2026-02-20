@@ -21,498 +21,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <style>
-      :root {
-        --bg-color: #020617;
-        --card-bg: rgba(15, 23, 42, 0.9);
-        --text-color: #f8fafc;
-        --text-dim: #94a3b8;
-        --primary: #00d4ff;
-        --border: rgba(0, 212, 255, 0.2);
-      }
-
-      [data-theme='light'],
-      .light-theme {
-        --bg-color: #ffffff;
-        --card-bg: #f8fafc;
-        --text-color: #0f172a;
-        --text-dim: #475569;
-        --primary: #0284c7;
-        --border: #e2e8f0;
-      }
-
-      body {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        font-family: 'JetBrains Mono', monospace;
-        margin: 0;
-        transition: all 0.3s ease;
-      }
-
-      #main-content {
-        padding-top: 110px;
-      }
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      .section-header {
-        text-align: center;
-        margin-bottom: 50px;
-      }
-      .section-header h2 {
-        font-size: 3rem;
-        color: var(--primary);
-        text-transform: uppercase;
-      }
-
-      .contact-box-wrapper {
-        max-width: 1000px;
-        width: 100%;
-        margin: 0 auto 80px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 50px 60px;
-        border-radius: 20px;
-      }
-
-      input,
-      textarea {
-        width: 100%;
-        background: rgba(0, 0, 0, 0.1) !important;
-        border: 1px solid var(--border) !important;
-        color: var(--text-color) !important;
-        padding: 14px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        font-family: inherit;
-        box-sizing: border-box;
-      }
-
-      .btn-submit {
-        width: 100%;
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 16px;
-        font-weight: 800;
-        border-radius: 10px;
-        cursor: pointer;
-        text-transform: uppercase;
-      }
-      .contact-box h3 {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 40px;
-        color: var(--primary);
-      }
-
-      .input-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: var(--text-dim);
-      }
-
-      .input-group {
-        margin-bottom: 25px;
-      }
-
-      /* Horizontal Info Cards */
-      .info-grid-horizontal {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        margin-bottom: 80px;
-      }
-
-      .info-card-modern {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 30px;
-        border-radius: 15px;
-        text-align: center;
-      }
-
-      .info-card-modern:hover {
-        border-color: var(--primary);
-        border-top: 4px solid var(--primary);
-        box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
-        transform: translateY(-5px);
-        transition: all 0.3s ease;
-      }
-
-      /* Fixed Email Styling: No bluish highlight */
-      .info-card-modern a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-size: 0.9rem;
-      }
-
-      .icon-circle {
-        width: 50px;
-        height: 50px;
-        background: var(--primary);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 15px;
-      }
-
-      /* REDESIGNED FAQ SECTION */
-      .faq-section-redesign {
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.03) 100%);
-        padding: 100px 0;
-        border-top: 1px solid var(--border);
-        position: relative;
-      }
-
-      .faq-section-redesign::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--primary), transparent);
-      }
-
-      .faq-container-new {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .faq-header-new {
-        text-align: center;
-        margin-bottom: 60px;
-      }
-
-      .faq-header-new .section-badge {
-        display: inline-block;
-        background: rgba(0, 212, 255, 0.1);
-        border: 1px solid var(--primary);
-        padding: 8px 20px;
-        border-radius: 30px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        color: var(--primary);
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-      }
-
-      .faq-header-new h2 {
-        font-size: 2.8rem;
-        margin: 20px 0 15px;
-        line-height: 1.2;
-      }
-
-      .faq-header-new .gradient-text {
-        background: linear-gradient(135deg, var(--primary), #0ea5e9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .faq-header-new p {
-        color: var(--text-dim);
-        font-size: 1.1rem;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Search Bar */
-      .faq-search-wrapper {
-        max-width: 600px;
-        margin: 0 auto 40px;
-        position: relative;
-      }
-
-      .faq-search-input {
-        width: 100%;
-        padding: 18px 50px 18px 50px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 15px;
-        color: var(--text-color);
-        font-family: inherit;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-      }
-
-      .faq-search-input:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
-      }
-
-      .faq-search-icon {
-        position: absolute;
-        left: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-dim);
-        pointer-events: none;
-      }
-
-      .faq-clear-search {
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        background: none;
-        border: none;
-        color: var(--text-dim);
-        cursor: pointer;
-        font-size: 1.2rem;
-        display: none;
-        transition: color 0.3s ease;
-      }
-
-      .faq-clear-search:hover {
-        color: var(--primary);
-      }
-
-      .faq-clear-search.active {
-        display: block;
-      }
-
-      /* Category Tabs */
-      .faq-categories {
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-      }
-
-      .faq-category-btn {
-        padding: 10px 24px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 25px;
-        color: var(--text-dim);
-        font-family: inherit;
-        font-size: 0.9rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .faq-category-btn:hover {
-        border-color: var(--primary);
-        color: var(--primary);
-      }
-
-      .faq-category-btn.active {
-        background: var(--primary);
-        border-color: var(--primary);
-        color: white;
-      }
-
-      /* Accordion Items */
-      .faq-accordion {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .faq-item-new {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-      }
-
-      .faq-item-new.hidden {
-        display: none;
-      }
-
-      .faq-item-new:hover {
-        border-color: var(--primary);
-        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
-      }
-
-      .faq-question {
-        width: 100%;
-        padding: 24px 28px;
-        background: none;
-        border: none;
-        text-align: left;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        color: var(--text-color);
-        font-family: inherit;
-        font-size: 1.05rem;
-        font-weight: 700;
-        transition: all 0.3s ease;
-      }
-
-      .faq-question:hover {
-        color: var(--primary);
-      }
-
-      .faq-question-text {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .faq-question-icon {
-        font-size: 1.3rem;
-        color: var(--primary);
-        flex-shrink: 0;
-      }
-
-      .faq-toggle-icon {
-        font-size: 1.2rem;
-        color: var(--primary);
-        transition: transform 0.3s ease;
-        flex-shrink: 0;
-      }
-
-      .faq-item-new.active .faq-toggle-icon {
-        transform: rotate(180deg);
-      }
-
-      .faq-answer {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease, padding 0.4s ease;
-      }
-
-      .faq-item-new.active .faq-answer {
-        max-height: 500px;
-        padding: 0 28px 24px 28px;
-      }
-
-      .faq-answer p {
-        color: var(--text-dim);
-        line-height: 1.8;
-        margin: 0;
-        font-size: 0.95rem;
-        padding-left: 42px;
-      }
-
-      /* No Results Message */
-      .faq-no-results {
-        text-align: center;
-        padding: 60px 20px;
-        display: none;
-      }
-
-      .faq-no-results.active {
-        display: block;
-      }
-
-      .faq-no-results i {
-        font-size: 3rem;
-        color: var(--text-dim);
-        margin-bottom: 20px;
-        opacity: 0.5;
-      }
-
-      .faq-no-results h3 {
-        color: var(--text-color);
-        margin-bottom: 10px;
-      }
-
-      .faq-no-results p {
-        color: var(--text-dim);
-      }
-
-      /* Still Have Questions CTA */
-      .faq-cta {
-        text-align: center;
-        margin-top: 60px;
-        padding: 40px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-      }
-
-      .faq-cta h3 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-        color: var(--text-color);
-      }
-
-      .faq-cta p {
-        color: var(--text-dim);
-        margin-bottom: 25px;
-        font-size: 1rem;
-      }
-
-      .faq-cta-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 14px 32px;
-        background: var(--primary);
-        color: white;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: 700;
-        transition: all 0.3s ease;
-      }
-
-      .faq-cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(0, 212, 255, 0.3);
-      }
-
-      @media (max-width: 768px) {
-        .faq-header-new h2 {
-          font-size: 2rem;
-        }
-
-        .faq-categories {
-          gap: 8px;
-        }
-
-        .faq-category-btn {
-          padding: 8px 16px;
-          font-size: 0.85rem;
-        }
-
-        .faq-question {
-          padding: 20px 20px;
-          font-size: 0.95rem;
-        }
-
-        .faq-question-icon {
-          font-size: 1.1rem;
-        }
-
-        .faq-item-new.active .faq-answer {
-          padding: 0 20px 20px 20px;
-        }
-
-        .faq-answer p {
-          padding-left: 36px;
-          font-size: 0.9rem;
-        }
-
-        .faq-cta {
-          padding: 30px 20px;
-        }
-
-        .faq-cta h3 {
-          font-size: 1.5rem;
-        }
-      }
-    </style>
   </head>
+
   <body class="hacker-theme">
     <!-- Global Page Loader -->
     <div
@@ -547,9 +57,7 @@
           <div class="container">
             <div class="hero-content">
               <span class="hero-badge"> <i class="fas fa-paper-plane"></i> Get in Touch </span>
-              <h1 class="hero-title" id="wave-text">
-                Let's Build Something Amazing Together
-              </h1>
+              <h1 class="hero-title" id="wave-text">Let's Build Something Amazing Together</h1>
               <p class="hero-description">
                 Have a question, suggestion, or just want to say hi? We're here to help and would
                 love to hear from you.
@@ -590,185 +98,156 @@
                         <div class="error-message" id="name-error"></div>
                       </div>
 
-                      <div class="input-wrapper">
-                        <label for="contact-email" class="floating-label">
-                          <i class="fas fa-envelope"></i> Email Address
-                        </label>
-                        <input
-                          type="email"
-                          id="contact-email"
-                          name="email"
-                          class="modern-input"
-                          placeholder="john@example.com"
-                          required
-                        />
-                        <div class="input-border"></div>
-                        <div class="error-message" id="email-error"></div>
-                      </div>
+                <form id="contact-form" class="modern-form">
+                  <div class="form-row">
+                    <div class="input-wrapper">
+                      <label for="contact-name" class="floating-label">
+                        <i class="fas fa-user"></i> Full Name
+                      </label>
+                      <input type="text" id="contact-name" name="name" class="modern-input" placeholder="John Doe"
+                        required minlength="2" maxlength="50" />
+                      <div class="input-border"></div>
+                      <div class="error-message" id="name-error"></div>
                     </div>
 
                     <div class="input-wrapper">
-                      <label for="contact-message" class="floating-label">
-                        <i class="fas fa-comment-dots"></i> Your Message
+                      <label for="contact-email" class="floating-label">
+                        <i class="fas fa-envelope"></i> Email Address
                       </label>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        class="modern-input modern-textarea"
-                        placeholder="Tell us what's on your mind..."
-                        required
-                        minlength="10"
-                        maxlength="500"
-                        rows="6"
-                      ></textarea>
+                      <input type="email" id="contact-email" name="email" class="modern-input"
+                        placeholder="john@example.com" required />
                       <div class="input-border"></div>
-                      <div class="char-counter"><span id="char-count">0</span>/500 characters</div>
-                      <div class="error-message" id="message-error"></div>
+                      <div class="error-message" id="email-error"></div>
                     </div>
+                  </div>
 
-                    <div class="form-row full-width">
-                      <div class="rating-line-container">
-                        <p class="rating-label">How was your experience using this website?</p>
+                  <div class="input-wrapper">
+                    <label for="contact-message" class="floating-label">
+                      <i class="fas fa-comment-dots"></i> Your Message
+                    </label>
+                    <textarea id="contact-message" name="message" class="modern-input modern-textarea"
+                      placeholder="Tell us what's on your mind..." required minlength="10" maxlength="500"
+                      rows="6"></textarea>
+                    <div class="input-border"></div>
+                    <div class="char-counter"><span id="char-count">0</span>/500 characters</div>
+                    <div class="error-message" id="message-error"></div>
+                  </div>
 
-                        <div class="cyber-rating">
-                          <div class="rate-item">
-                            <input type="radio" name="experience" id="rate-1" value="1" />
-                            <label for="rate-1" class="cyber-emoji">
-                              <span class="emoji-icon">😫</span>
-                              <span class="emoji-name">Poor</span>
-                            </label>
-                          </div>
+                  <div class="form-row full-width">
+                    <div class="rating-line-container">
+                      <p class="rating-label">How was your experience using this website?</p>
 
-                          <div class="rate-item">
-                            <input type="radio" name="experience" id="rate-2" value="2" />
-                            <label for="rate-2" class="cyber-emoji">
-                              <span class="emoji-icon">😕</span>
-                              <span class="emoji-name">Bad</span>
-                            </label>
-                          </div>
+                      <div class="cyber-rating">
+                        <div class="rate-item">
+                          <input type="radio" name="experience" id="rate-1" value="1" />
+                          <label for="rate-1" class="cyber-emoji">
+                            <span class="emoji-icon">😫</span>
+                            <span class="emoji-name">Poor</span>
+                          </label>
+                        </div>
 
-                          <div class="rate-item">
-                            <input type="radio" name="experience" id="rate-3" value="3" />
-                            <label for="rate-3" class="cyber-emoji">
-                              <span class="emoji-icon">😐</span>
-                              <span class="emoji-name">Average</span>
-                            </label>
-                          </div>
+                        <div class="rate-item">
+                          <input type="radio" name="experience" id="rate-2" value="2" />
+                          <label for="rate-2" class="cyber-emoji">
+                            <span class="emoji-icon">😕</span>
+                            <span class="emoji-name">Bad</span>
+                          </label>
+                        </div>
 
-                          <div class="rate-item">
-                            <input type="radio" name="experience" id="rate-4" value="4" />
-                            <label for="rate-4" class="cyber-emoji">
-                              <span class="emoji-icon">😃</span>
-                              <span class="emoji-name">Good</span>
-                            </label>
-                          </div>
+                        <div class="rate-item">
+                          <input type="radio" name="experience" id="rate-3" value="3" />
+                          <label for="rate-3" class="cyber-emoji">
+                            <span class="emoji-icon">😐</span>
+                            <span class="emoji-name">Average</span>
+                          </label>
+                        </div>
 
-                          <div class="rate-item">
-                            <input type="radio" name="experience" id="rate-5" value="5" />
-                            <label for="rate-5" class="cyber-emoji">
-                              <span class="emoji-icon">🤩</span>
-                              <span class="emoji-name">Excellent</span>
-                            </label>
-                          </div>
+                        <div class="rate-item">
+                          <input type="radio" name="experience" id="rate-4" value="4" />
+                          <label for="rate-4" class="cyber-emoji">
+                            <span class="emoji-icon">😃</span>
+                            <span class="emoji-name">Good</span>
+                          </label>
+                        </div>
+
+                        <div class="rate-item">
+                          <input type="radio" name="experience" id="rate-5" value="5" />
+                          <label for="rate-5" class="cyber-emoji">
+                            <span class="emoji-icon">🤩</span>
+                            <span class="emoji-name">Excellent</span>
+                          </label>
                         </div>
                       </div>
                     </div>
-                    <!-- Honeypot -->
-                    <div class="input-wrapper honeypot-group" style="display: none">
-                      <label for="website" class="sr-only">Website</label>
-                      <input
-                        type="text"
-                        id="website"
-                        name="website"
-                        data-honeypot="true"
-                        autocomplete="off"
-                        tabindex="-1"
-                      />
-                    </div>
+                  </div>
+                  <!-- Honeypot -->
+                  <div class="input-wrapper honeypot-group" style="display: none">
+                    <label for="website" class="sr-only">Website</label>
+                    <input type="text" id="website" name="website" data-honeypot="true" autocomplete="off"
+                      tabindex="-1" />
+                  </div>
 
-                    <button type="submit" class="btn-submit-modern">
-                      <span class="btn-text">Send Message</span>
-                      <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
-                      <div class="btn-glow"></div>
-                    </button>
+                  <button type="submit" class="btn-submit-modern">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                    <div class="btn-glow"></div>
+                  </button>
 
-                    <div
-                      id="form-feedback"
-                      class="feedback-message"
-                      role="status"
-                      aria-live="polite"
-                    ></div>
-                  </form>
+                  <div id="form-feedback" class="feedback-message" role="status" aria-live="polite"></div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Contact Info Sidebar -->
+            <div class="info-sidebar">
+              <div class="info-card-new">
+                <div class="info-icon">
+                  <i class="fas fa-envelope"></i>
                 </div>
+                <h3>Email Us</h3>
+                <p>Drop us an email anytime</p>
+                <a href="mailto:sayeeygosavi@gmail.com" class="info-link">
+                  sayeeygosavi@gmail.com
+                  <i class="fas fa-arrow-right"></i>
+                </a>
               </div>
 
-              <!-- Contact Info Sidebar -->
-              <div class="info-sidebar">
-                <div class="info-card-new">
-                  <div class="info-icon">
-                    <i class="fas fa-envelope"></i>
-                  </div>
-                  <h3>Email Us</h3>
-                  <p>Drop us an email anytime</p>
-                  <a href="mailto:sayeeygosavi@gmail.com" class="info-link">
-                    sayeeygosavi@gmail.com
-                    <i class="fas fa-arrow-right"></i>
+              <div class="info-card-new">
+                <div class="info-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location</h3>
+                <p>Find us at</p>
+                <span class="info-text">Nashik, Maharashtra</span>
+              </div>
+
+              <div class="info-card-new">
+                <div class="info-icon">
+                  <i class="fab fa-discord"></i>
+                </div>
+                <h3>Join Community</h3>
+                <p>Connect with us on Discord</p>
+                <a href="https://discord.com/invite/your-invite-link" class="info-link" target="_blank">
+                  Join Discord Server
+                  <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="social-connect">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                  <a href="https://github.com/sayeeg-11/Pixel_Phantoms" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
                   </a>
-                </div>
-
-                <div class="info-card-new">
-                  <div class="info-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                  </div>
-                  <h3>Location</h3>
-                  <p>Find us at</p>
-                  <span class="info-text">Nashik, Maharashtra</span>
-                </div>
-
-                <div class="info-card-new">
-                  <div class="info-icon">
+                  <a href="https://www.instagram.com/pixelphantoms_" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://discord.com/" target="_blank" class="social-icon">
                     <i class="fab fa-discord"></i>
-                  </div>
-                  <h3>Join Community</h3>
-                  <p>Connect with us on Discord</p>
-                  <a
-                    href="https://discord.com/invite/your-invite-link"
-                    class="info-link"
-                    target="_blank"
-                  >
-                    Join Discord Server
-                    <i class="fas fa-arrow-right"></i>
                   </a>
-                </div>
-
-                <div class="social-connect">
-                  <h4>Follow Us</h4>
-                  <div class="social-icons">
-                    <a
-                      href="https://github.com/sayeeg-11/Pixel_Phantoms"
-                      target="_blank"
-                      class="social-icon"
-                    >
-                      <i class="fab fa-github"></i>
-                    </a>
-                    <a
-                      href="https://www.instagram.com/pixelphantoms_"
-                      target="_blank"
-                      class="social-icon"
-                    >
-                      <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://discord.com/" target="_blank" class="social-icon">
-                      <i class="fab fa-discord"></i>
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/company/pixel-phantoms/"
-                      target="_blank"
-                      class="social-icon"
-                    >
-                      <i class="fab fa-linkedin"></i>
-                    </a>
-                  </div>
+                  <a href="https://www.linkedin.com/company/pixel-phantoms/" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -781,185 +260,194 @@
             <div class="faq-container-new">
               <!-- Header -->
               <div class="faq-header-new">
-                <span class="section-badge">
-                  <i class="fas fa-question-circle"></i> FAQ
-                </span>
+                <span class="section-badge"> <i class="fas fa-question-circle"></i> FAQ </span>
                 <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
                 <p>Everything you need to know about Pixel Phantoms</p>
               </div>
 
-              <!-- Search Bar -->
-              <div class="faq-search-wrapper">
-                <i class="fas fa-search faq-search-icon"></i>
-                <input
-                  type="text"
-                  class="faq-search-input"
-                  id="faq-search"
-                  placeholder="Search for answers..."
-                  aria-label="Search FAQs"
-                />
-                <button class="faq-clear-search" id="faq-clear" aria-label="Clear search">
-                  <i class="fas fa-times"></i>
+            <!-- Search Bar -->
+            <div class="faq-search-wrapper">
+              <i class="fas fa-search faq-search-icon"></i>
+              <input type="text" class="faq-search-input" id="faq-search" placeholder="Search for answers..."
+                aria-label="Search FAQs" />
+              <button class="faq-clear-search" id="faq-clear" aria-label="Clear search">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="faq-categories">
+              <button class="faq-category-btn active" data-category="all">All Questions</button>
+              <button class="faq-category-btn" data-category="getting-started">
+                Getting Started
+              </button>
+              <button class="faq-category-btn" data-category="contributions">
+                Contributions
+              </button>
+              <button class="faq-category-btn" data-category="events">Events</button>
+              <button class="faq-category-btn" data-category="support">Support</button>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-accordion" id="faq-accordion">
+              <!-- Getting Started -->
+              <div class="faq-item-new" data-category="getting-started">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-users faq-question-icon"></i>
+                    <span>How can I join Pixel Phantoms?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
                 </button>
+                <div class="faq-answer">
+                  <p>
+                    You can join by hopping into our Discord server or watching out for our
+                    recruitment drives announced on the Events page. We welcome developers of all
+                    skill levels!
+                  </p>
+                </div>
               </div>
 
-              <!-- Category Filter -->
-              <div class="faq-categories">
-                <button class="faq-category-btn active" data-category="all">All Questions</button>
-                <button class="faq-category-btn" data-category="getting-started">
-                  Getting Started
+              <div class="faq-item-new" data-category="getting-started">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-graduation-cap faq-question-icon"></i>
+                    <span>Is this community beginner friendly?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
                 </button>
-                <button class="faq-category-btn" data-category="contributions">
-                  Contributions
+                <div class="faq-answer">
+                  <p>
+                    Absolutely! Our motto is "From Students, For Students." We have mentorship
+                    programs, workshops, and resources specifically designed for beginners to help
+                    you grow.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Contributions -->
+              <div class="faq-item-new" data-category="contributions">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-code-branch faq-question-icon"></i>
+                    <span>Can I contribute to Open Source projects?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
                 </button>
-                <button class="faq-category-btn" data-category="events">Events</button>
-                <button class="faq-category-btn" data-category="support">Support</button>
-              </div>
-
-              <!-- FAQ Accordion -->
-              <div class="faq-accordion" id="faq-accordion">
-                <!-- Getting Started -->
-                <div class="faq-item-new" data-category="getting-started">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-users faq-question-icon"></i>
-                      <span>How can I join Pixel Phantoms?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      You can join by hopping into our Discord server or watching out for our
-                      recruitment drives announced on the Events page. We welcome developers of all
-                      skill levels!
-                    </p>
-                  </div>
-                </div>
-
-                <div class="faq-item-new" data-category="getting-started">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-graduation-cap faq-question-icon"></i>
-                      <span>Is this community beginner friendly?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      Absolutely! Our motto is "From Students, For Students." We have mentorship
-                      programs, workshops, and resources specifically designed for beginners to help
-                      you grow.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Contributions -->
-                <div class="faq-item-new" data-category="contributions">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-code-branch faq-question-icon"></i>
-                      <span>Can I contribute to Open Source projects?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      Yes! Check out our GitHub organization or the Projects page to find
-                      repositories looking for contributors. We encourage and support open source
-                      contributions.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Events -->
-                <div class="faq-item-new" data-category="events">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-calendar-alt faq-question-icon"></i>
-                      <span>What kind of events do you organize?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      We organize hackathons, workshops, coding challenges, tech talks, and
-                      networking events. Check our Events page for upcoming activities and past
-                      event highlights.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="faq-item-new" data-category="events">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-trophy faq-question-icon"></i>
-                      <span>Are there any competitions or challenges?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      Yes! We regularly host coding competitions, design challenges, and hackathons
-                      with exciting prizes and recognition opportunities for participants.
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Support -->
-                <div class="faq-item-new" data-category="support">
-                  <button class="faq-question" aria-expanded="false">
-                    <span class="faq-question-text">
-                      <i class="fas fa-hands-helping faq-question-icon"></i>
-                      <span>How can I get help or mentorship?</span>
-                    </span>
-                    <i class="fas fa-chevron-down faq-toggle-icon"></i>
-                  </button>
-                  <div class="faq-answer">
-                    <p>
-                      Join our Discord community where experienced members and mentors are always
-                      ready to help. We also have dedicated mentorship programs for focused
-                      learning.
-                    </p>
-                  </div>
+                <div class="faq-answer">
+                  <p>
+                    Yes! Check out our GitHub organization or the Projects page to find
+                    repositories looking for contributors. We encourage and support open source
+                    contributions.
+                  </p>
                 </div>
               </div>
 
-              <!-- No Results Message -->
-              <div class="faq-no-results" id="faq-no-results">
-                <i class="fas fa-search"></i>
-                <h3>No results found</h3>
-                <p>Try adjusting your search or browse all questions</p>
+              <!-- Events -->
+              <div class="faq-item-new" data-category="events">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-calendar-alt faq-question-icon"></i>
+                    <span>What kind of events do you organize?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    We organize hackathons, workshops, coding challenges, tech talks, and
+                    networking events. Check our Events page for upcoming activities and past
+                    event highlights.
+                  </p>
+                </div>
               </div>
 
-              <!-- CTA Section -->
-              <div class="faq-cta">
-                <h3>Still have questions?</h3>
-                <p>Can't find the answer you're looking for? We're here to help!</p>
-                <a href="#contact-form" class="faq-cta-btn">
-                  <i class="fas fa-paper-plane"></i>
-                  Contact Us
-                </a>
+              <div class="faq-item-new" data-category="events">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-trophy faq-question-icon"></i>
+                    <span>Are there any competitions or challenges?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Yes! We regularly host coding competitions, design challenges, and hackathons
+                    with exciting prizes and recognition opportunities for participants.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Support -->
+              <div class="faq-item-new" data-category="support">
+                <button class="faq-question" aria-expanded="false">
+                  <span class="faq-question-text">
+                    <i class="fas fa-hands-helping faq-question-icon"></i>
+                    <span>How can I get help or mentorship?</span>
+                  </span>
+                  <i class="fas fa-chevron-down faq-toggle-icon"></i>
+                </button>
+                <div class="faq-answer">
+                  <p>
+                    Join our Discord community where experienced members and mentors are always
+                    ready to help. We also have dedicated mentorship programs for focused
+                    learning.
+                  </p>
+                </div>
               </div>
             </div>
+
+            <!-- No Results Message -->
+            <div class="faq-no-results" id="faq-no-results">
+              <i class="fas fa-search"></i>
+              <h3>No results found</h3>
+              <p>Try adjusting your search or browse all questions</p>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="faq-cta">
+              <h3>Still have questions?</h3>
+              <p>Can't find the answer you're looking for? We're here to help!</p>
+              <a href="#contact-form" class="faq-cta-btn">
+                <i class="fas fa-paper-plane"></i>
+                Contact Us
+              </a>
+            </div>
           </div>
-        </section>
-      </div>
-    </main>
-    <div id="footer-placeholder"></div>
-    <script src="js/footer.js"></script>
-    <script>
-      const basePath = '';
-      document.addEventListener('DOMContentLoaded', () => {
-        if (typeof renderFooter === 'function') {
-          renderFooter(basePath);
-        } else {
-          console.error(
-            'renderFooter function not found. Make sure footer.js is loaded correctly.'
-          );
-        }
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="footer-placeholder"></div>
+  <script src="js/footer.js"></script>
+  <script>
+    const basePath = '';
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof renderFooter === 'function') {
+        renderFooter(basePath);
+      } else {
+        console.error(
+          'renderFooter function not found. Make sure footer.js is loaded correctly.'
+        );
+      }
+    });
+  </script>
+
+  <script src="js/keyboard-shortcuts.js" defer></script>
+  <script src="js/page-transitions.js" defer></script>
+  <script src="js/back-to-top.min.js" defer></script>
+  <script src="js/theme.min.js" defer></script>
+  <script src="js/cursor-effect.js" defer></script>
+
+  <script src="js/main.js" defer></script>
+
+  <script src="js/contact.js" defer></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
       });
     </script>
-   
+
     <script src="js/keyboard-shortcuts.js" defer></script>
     <script src="js/page-transitions.js" defer></script>
     <script src="js/back-to-top.min.js" defer></script>
@@ -969,7 +457,5 @@
     <script src="js/main.js" defer></script>
 
     <script src="js/contact.js" defer></script>
-
-
   </body>
 </html>

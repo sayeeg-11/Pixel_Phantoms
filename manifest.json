@@ -1,0 +1,23 @@
+{
+    "name": "Pixel Phantoms",
+    "short_name": "PixelPhantoms",
+    "description": "A student-driven tech community empowering learners through code, design, and collaboration.",
+    "start_url": "./index.html",
+    "scope": ".",
+    "display": "standalone",
+    "background_color": "#0d0f14",
+    "theme_color": "#00aaff",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "assets/logo_compressed.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/logo_compressed.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
