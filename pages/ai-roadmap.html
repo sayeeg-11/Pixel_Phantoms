@@ -1,19 +1,9 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pixel Phantoms | AI & ML Protocol</title>
-  <link rel="icon" href="../assets/logo.png" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/ai-roadmap.css" />
-  <link rel="stylesheet" href="../css/python-road.css" />
-  <link rel="stylesheet" href="../css/home-gsap.min.css" />
-  <link rel="stylesheet" href="../css/style.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
-</head>
+  <body class="hacker-theme">
+    <div id="navbar-placeholder"></div>
+    <script src="../js/navbar.js" defer></script>
 
 <body class="hacker-theme">
   <div id="navbar-placeholder"></div>
@@ -46,380 +36,56 @@
         <a href="#roadmap-start" class="btn-primary">Initialize Protocol</a>
       </div>
 
-      <div class="intro-right">
-        <div class="animation-card">
-          <img src="https://cdn-icons-png.flaticon.com/512/4616/4616238.png" alt="Robot Artificial Intelligence"
-            class="floating-img ai-img">
-          
-          <div class="floating-circle circle1"></div>
-          <div class="floating-circle circle2"></div>
-          <div class="floating-circle circle3"></div>
+      <section id="other-courses">
+        <h2 style="text-align: center; text-decoration: underline; text-decoration-thickness: 1px">
+          Explore-Other-Protocols
+        </h2>
+        <div class="skill-path-wrapper">
+          <a href="python-road.html" class="skill-node reveal-node">
+            <div class="node-icon"><i class="fab fa-python"></i></div>
+            <h4>Python_Mastery</h4>
+            <span class="node-level">Lvl 1</span>
+          </a>
+          <a href="react-road.html" class="skill-node reveal-node">
+            <div class="node-icon"><i class="fab fa-react"></i></div>
+            <h4>React_Core</h4>
+            <span class="node-level">Lvl 2</span>
+          </a>
+          <a href="system-design-road.html" class="skill-node reveal-node">
+            <div class="node-icon"><i class="fas fa-network-wired"></i></div>
+            <h4>System_Arch</h4>
+            <span class="node-level">Lvl 4</span>
+          </a>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </main>
 
-  <div class="roadmap-wrapper" id="roadmap-start">
-  
-    <section class="roadmap-section">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 1</span>
-        <h2>Mathematical & Python Foundations</h2>
-        <p>
-          Before training intelligent models, you must understand the mathematical language of AI and the programming tools to execute it.
-        </p>
-      </div>
-  
-      <div class="roadmap-grid">
-        <div class="roadmap-card">
-          <h3>🐍 <a href="python-road.html" style="color: inherit; text-decoration: none;">Python Programming <i class="fas fa-link" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Master the standard language of AI. Focus on object-oriented programming (OOP), list comprehensions, and memory efficiency to write scalable training scripts.
-          </p>
-        </div>
-  
-        <div class="roadmap-card">
-          <h3>📐 <a href="https://www.3blue1brown.com/topics/linear-algebra" target="_blank" style="color: inherit; text-decoration: none;">Linear Algebra <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The core mechanics of deep learning. Understand vectors, matrices, dot products, and multi-dimensional arrays (Tensors) used to represent data.
-          </p>
-        </div>
-  
-        <div class="roadmap-card">
-          <h3>📈 <a href="https://www.3blue1brown.com/topics/calculus" target="_blank" style="color: inherit; text-decoration: none;">Calculus (Derivatives) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Calculus explains how models "learn". Master partial derivatives, gradients, and the chain rule to understand backpropagation and loss optimization.
-          </p>
-        </div>
-  
-        <div class="roadmap-card highlight">
-          <h3>📊 <a href="https://statquest.org/" target="_blank" style="color: inherit; text-decoration: none;">Statistics & Probability <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            AI is heavily reliant on reasoning under uncertainty. Grasp probability distributions, Bayes' Theorem, hypothesis testing, and standard deviation.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section js-deep-dive">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 2</span>
-        <h2>Data Analysis & Visualization Stack</h2>
-        <p>
-          AI models are only as good as the data you feed them. Master the essential libraries used to clean, parse, and visualize datasets before modeling.
-        </p>
-      </div>
-  
-      <div class="js-grid">
-        <div class="js-card">
-          <span class="js-tag">Processing</span>
-          <h3>🔢 <a href="https://numpy.org/" target="_blank" style="color: inherit; text-decoration: none;">NumPy <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            High-performance scientific computing. NumPy provides C-optimized multi-dimensional arrays for lightning-fast mathematical operations.
-          </p>
-        </div>
-  
-        <div class="js-card">
-          <span class="js-tag">Wrangling</span>
-          <h3>🐼 <a href="https://pandas.pydata.org/" target="_blank" style="color: inherit; text-decoration: none;">Pandas <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The industry standard for data manipulation. Master DataFrames to handle missing values, merge massive datasets, and engineer robust features.
-          </p>
-        </div>
-  
-        <div class="js-card">
-          <span class="js-tag">Visuals</span>
-          <h3>📉 <a href="https://matplotlib.org/" target="_blank" style="color: inherit; text-decoration: none;">Matplotlib <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The foundational plotting library. Create line graphs, scatter plots, and histograms to understand data trends and model loss curves.
-          </p>
-        </div>
-  
-        <div class="js-card highlight">
-          <span class="js-tag">Insights</span>
-          <h3>🎨 <a href="https://seaborn.pydata.org/" target="_blank" style="color: inherit; text-decoration: none;">Seaborn <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Built on top of Matplotlib, Seaborn generates beautiful, complex statistical graphics like correlation heatmaps and distribution plots with minimal code.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-fundamentals">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 3</span>
-        <h2>Core Machine Learning (<a href="https://scikit-learn.org/stable/" target="_blank" style="color: inherit; text-decoration: underline;">Scikit-Learn</a>)</h2>
-        <p>
-          Learn classical algorithms before diving into deep learning. Scikit-Learn is the premier library for building foundational, highly-interpretable models.
-        </p>
-      </div>
-  
-      <div class="react-grid">
-        <div class="react-card intro">
-          <h3>🎯 <a href="https://scikit-learn.org/stable/supervised_learning.html" target="_blank" style="color: inherit; text-decoration: none;">Supervised Learning <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Train models on labeled datasets. Learn to predict continuous numbers (Regression) and categorize data into discrete classes (Classification).
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>📏 <a href="https://scikit-learn.org/stable/modules/linear_model.html" target="_blank" style="color: inherit; text-decoration: none;">Linear & Logistic Regression <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The simplest yet most fundamental algorithms. Use Linear for price predictions and Logistic for binary classification (e.g., spam detection).
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🌳 <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees" target="_blank" style="color: inherit; text-decoration: none;">Decision Trees & Forests <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Tree-based models that split data based on features. Random Forests aggregate hundreds of trees to prevent overfitting and boost accuracy.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>⚔️ <a href="https://scikit-learn.org/stable/modules/svm.html" target="_blank" style="color: inherit; text-decoration: none;">Support Vector Machines <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Powerful algorithms that find the optimal hyper-plane to separate complex, high-dimensional datasets into distinct classes.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🕵️ <a href="https://scikit-learn.org/stable/unsupervised_learning.html" target="_blank" style="color: inherit; text-decoration: none;">Unsupervised Learning <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Algorithms that discover hidden structures in unlabeled data. Crucial for customer segmentation and exploratory data analysis.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🧩 <a href="https://scikit-learn.org/stable/modules/clustering.html#k-means" target="_blank" style="color: inherit; text-decoration: none;">K-Means Clustering <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Automatically group similar data points into 'K' distinct clusters without any prior human labeling or guidance.
-          </p>
-        </div>
-  
-        <div class="react-card">
-          <h3>🔽 <a href="https://scikit-learn.org/stable/modules/decomposition.html#pca" target="_blank" style="color: inherit; text-decoration: none;">Dimensionality (PCA) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Principal Component Analysis (PCA) reduces complex data with hundreds of features down to the most important variables, speeding up training.
-          </p>
-        </div>
-  
-        <div class="react-card highlight">
-          <h3>💯 <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" style="color: inherit; text-decoration: none;">Model Evaluation <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Don't just train—evaluate. Master Cross-Validation, Confusion Matrices, Precision, Recall, and the F1-Score to truly measure model performance.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-hooks">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 4</span>
-        <h2>Deep Learning Architectures</h2>
-        <p>
-          Venture into Artificial Neural Networks (ANNs). Learn the frameworks and network structures that power computer vision, speech recognition, and modern AI.
-        </p>
-      </div>
-  
-      <div class="hooks-grid">
-        <div class="hook-card essential">
-          <span class="hook-level">Framework</span>
-          <h3>🟧 <a href="https://www.tensorflow.org/" target="_blank" style="color: inherit; text-decoration: none;">TensorFlow & Keras <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Google's robust, production-ready ecosystem for building and deploying deep neural networks at massive scale.
-          </p>
-        </div>
-  
-        <div class="hook-card essential">
-          <span class="hook-level">Framework</span>
-          <h3>🔥 <a href="https://pytorch.org/" target="_blank" style="color: inherit; text-decoration: none;">PyTorch <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Meta's dynamic, Pythonic deep learning library. Heavily favored in AI research and rapidly becoming the industry standard.
-          </p>
-        </div>
-  
-        <div class="hook-card">
-          <span class="hook-level">Vision</span>
-          <h3>👁️ <a href="https://cs231n.github.io/" target="_blank" style="color: inherit; text-decoration: none;">Convolutional NNs (CNNs) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Networks that use spatial convolutions to process grid-like data. Essential for image classification, facial recognition, and object detection.
-          </p>
-        </div>
-  
-        <div class="hook-card">
-          <span class="hook-level">Sequence</span>
-          <h3>🔁 <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/" target="_blank" style="color: inherit; text-decoration: none;">Recurrent NNs (RNN) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Networks with internal memory loops designed to process sequential data like time-series financial forecasting, speech, and basic text.
-          </p>
-        </div>
-  
-        <div class="hook-card optimization">
-          <span class="hook-level">Mechanics</span>
-          <h3>⚡ <a href="https://ml-cheatsheet.readthedocs.io/en/latest/activation_functions.html" target="_blank" style="color: inherit; text-decoration: none;">Activation Functions <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The mathematical gates (ReLU, Sigmoid, Softmax) that introduce non-linearity, allowing networks to learn complex patterns.
-          </p>
-        </div>
-  
-        <div class="hook-card optimization">
-          <span class="hook-level">Mechanics</span>
-          <h3>⚙️ <a href="https://keras.io/api/optimizers/" target="_blank" style="color: inherit; text-decoration: none;">Optimizers & Loss <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Learn how algorithms like Adam and SGD minimize the 'Loss Function' to adjust network weights and improve accuracy during training.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section react-api">
-      <div class="roadmap-header">
-        <span class="roadmap-badge">Step 5</span>
-        <h2>Generative AI & LLMs</h2>
-        <p>
-          The absolute bleeding edge of artificial intelligence. Master the architectures that allow machines to generate text, images, and code.
-        </p>
-      </div>
-  
-      <div class="api-grid">
-        <div class="api-card core">
-          <h3>🤖 <a href="https://huggingface.co/docs/transformers/index" target="_blank" style="color: inherit; text-decoration: none;">Transformers <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            The breakthrough "Attention Is All You Need" architecture that abandoned RNNs in favor of Self-Attention, powering all modern LLMs.
-          </p>
-        </div>
-  
-        <div class="api-card core">
-          <h3>💬 <a href="https://huggingface.co/models" target="_blank" style="color: inherit; text-decoration: none;">Large Language Models <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Deep dive into models like GPT, Llama, and Claude. Understand tokenization, prompt engineering, and context windows.
-          </p>
-        </div>
-  
-        <div class="api-card">
-          <h3>📚 <a href="https://www.promptingguide.ai/techniques/rag" target="_blank" style="color: inherit; text-decoration: none;">RAG (Retrieval-Augmented) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Connect LLMs to external databases and documents to prevent hallucinations and generate answers based on your private data.
-          </p>
-        </div>
-  
-        <div class="api-card warning">
-          <h3>🔧 <a href="https://huggingface.co/docs/peft/index" target="_blank" style="color: inherit; text-decoration: none;">Fine-Tuning (LoRA) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
-          <p>
-            Learn cost-effective methods to retrain massive foundational models on your specific datasets without needing a supercomputer.
-          </p>
-        </div>
-  
-        <div class="api-card highlight">
-          <h3>
-            🔗 <a href="https://python.langchain.com/" target="_blank" style="color: inherit; text-decoration: none;">LangChain <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a>
-          </h3>
-          <p>
-            The orchestration frameworks used to chain together prompts, memory, agents, and external APIs to build autonomous AI applications.
-          </p>
-        </div>
-      </div>
-    </section>
-  
-    <section class="roadmap-section projects-section">
-      <div class="roadmap-header">
-        <span class="roadmap-badge critical">Step 6 • Critical</span>
-        <h2>Projects That Prove Your Skills</h2>
-        <p>
-          The only way to truly master AI is by building. These projects take you from basic data cleaning to deploying full AI applications.
-        </p>
-      </div>
-  
-      <div class="projects-grid">
-        <article class="project-card basic">
-          <h3>🏠 Housing Price Predictor</h3>
-          <ul>
-            <li>Pandas data cleaning</li>
-            <li>Scikit-Learn Random Forests</li>
-            <li>Feature engineering</li>
-          </ul>
-          <span class="level">Beginner</span>
-        </article>
-  
-        <article class="project-card basic">
-          <h3>👥 Customer Segmentation</h3>
-          <ul>
-            <li>Unsupervised learning</li>
-            <li>K-Means Clustering</li>
-            <li>Seaborn data visualization</li>
-          </ul>
-          <span class="level">Beginner</span>
-        </article>
-  
-        <article class="project-card intermediate">
-          <h3>🩻 Pneumonia X-Ray Detector</h3>
-          <ul>
-            <li>PyTorch or TensorFlow</li>
-            <li>CNN Architecture implementation</li>
-            <li>Medical image preprocessing</li>
-          </ul>
-          <span class="level">Intermediate</span>
-        </article>
-  
-        <article class="project-card intermediate">
-          <h3>😊 Sentiment Analysis API</h3>
-          <ul>
-            <li>Natural Language Processing</li>
-            <li><a href="https://flask.palletsprojects.com/" target="_blank" style="color: inherit; text-decoration: underline;">Flask</a> / <a href="https://fastapi.tiangolo.com/" target="_blank" style="color: inherit; text-decoration: underline;">FastAPI</a></li>
-            <li>RNNs or Naive Bayes</li>
-          </ul>
-          <span class="level">Intermediate</span>
-        </article>
-  
-        <article class="project-card advanced">
-          <h3>📄 Custom PDF Chatbot</h3>
-          <ul>
-            <li>LangChain & <a href="https://www.pinecone.io/learn/vector-database/" target="_blank" style="color: inherit; text-decoration: underline;">Vector Databases</a></li>
-            <li><a href="https://platform.openai.com/docs/" target="_blank" style="color: inherit; text-decoration: underline;">OpenAI</a> / HuggingFace APIs</li>
-            <li>Semantic document retrieval</li>
-          </ul>
-          <span class="level">Advanced</span>
-        </article>
-  
-        <article class="project-card advanced glow">
-          <h3>🌐 Autonomous Web Agent</h3>
-          <ul>
-            <li>LLM function calling</li>
-            <li>Web scraping automation</li>
-            <li>Multi-agent orchestration</li>
-          </ul>
-          <span class="level">Advanced</span>
-        </article>
-      </div>
-    </section>
-  
-  </div>
+    <style>
+      #other-courses {
+        margin-top: 70px;
+        margin-bottom: 20px;
+        padding: 20px 10px;
+        border: 2px solid rgba(163, 0, 255, 0.3); /* Purple tint for AI */
+      }
+    </style>
 
-  <div id="footer-placeholder"></div>
-  <script src="../js/footer.js"></script>
-  <script>
-    renderFooter('../');
-  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="../js/theme-enhanced.js" defer></script>
+    <script src="../js/ai-roadmap.js" defer></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="../js/theme-enhanced.js"></script>
-  <script src="../js/ai-roadmap.js"></script>
-  <script>
-    // Simple Theme Toggle
-    const toggleBtn = document.querySelector('#theme-toggle');
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        if (currentTheme === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'light');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
+    <div id="footer-placeholder"></div>
+    <script src="../js/footer.js" defer></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof renderNavbar === "function") {
+          renderNavbar('../');
+        }
+        if (typeof renderFooter === "function") {
+          renderFooter('../');
         }
       });
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
