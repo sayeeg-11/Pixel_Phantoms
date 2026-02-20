@@ -1,943 +1,641 @@
-.roadmap-section {
-  background: var(--bg-primary);
-  padding: var(--spacing-xxl) var(--spacing-xl);
-  font-family: var(--font-primary);
-  padding-top: calc(var(--spacing-xxl) + 60px);
-}
+/* ==========================================================================
+   PIXEL PHANTOMS: REACT MASTERY PROTOCOL STYLES
+   Theme: React (Cyan, Blue, Purple, Neon Accents)
+   Layout: Center-Aligned Flexbox Grid with Inline Headers
+   ========================================================================== */
 
-.roadmap-section {
-  background: var(--bg-primary);
-  padding: var(--spacing-xxl) var(--spacing-xl);
-  font-family: var(--font-primary);
-  padding-top: calc(var(--spacing-xxl) + 60px);
-}
-
-.roadmap-header {
-  max-width: 700px;
-  margin-bottom: var(--spacing-xxl);
-}
-
-.roadmap-badge {
-  display: inline-block;
-  background: linear-gradient(
-    135deg,
-    var(--accent-primary),
-    var(--accent-secondary)
-  );
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.roadmap-header h2 {
-  color: var(--text-primary);
-  font-size: 2.4rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.roadmap-header p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.roadmap-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-.roadmap-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-.roadmap-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.08),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.roadmap-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.roadmap-card:hover::before {
-  opacity: 1;
-}
-
-.roadmap-card h3 {
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-sm);
-  font-size: 1.2rem;
-}
-
-.roadmap-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.roadmap-card li {
-  color: var(--text-secondary);
-  padding-left: 18px;
-  position: relative;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
-}
-
-.roadmap-card li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
-  color: var(--accent-color);
-}
-
-.roadmap-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-@media (max-width: 768px) {
-  .roadmap-header h2 {
-    font-size: 2rem;
+/* =========================================================
+   1. INTRO / HERO SECTION
+   ========================================================= */
+   .intro-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-xxl) var(--spacing-lg);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+    min-height: 90vh;
+    padding-top: calc(var(--spacing-xxl) + 60px);
+    transition: background 0.3s ease, color 0.3s ease;
   }
-}
-.js-deep-dive {
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary),
-    var(--bg-secondary)
-  );
-}
-
-/* Grid */
-.js-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.js-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
-  position: relative;
-  transition: all 0.35s ease;
-  overflow: hidden;
-}
-
-/* Glow sweep */
-.js-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.12),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.js-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.js-card:hover::after {
-  opacity: 1;
-}
-
-/* Tag */
-.js-tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: rgba(0, 170, 255, 0.12);
-  color: var(--accent-color);
-  margin-bottom: var(--spacing-sm);
-}
-
-/* Headings */
-.js-card h3 {
-  color: var(--text-primary);
-  margin-bottom: var(--spacing-sm);
-  font-size: 1.25rem;
-}
-
-.js-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Inline code */
-.js-card code {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  background: rgba(0, 0, 0, 0.08);
-  padding: 2px 6px;
-  border-radius: 6px;
-  color: var(--accent-color);
-}
-
-/* Highlight card */
-.js-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Responsive polish */
-@media (max-width: 768px) {
-  .roadmap-header h2 {
-    font-size: 2rem;
+  
+  .intro-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: var(--spacing-xxl);
+    align-items: center;
   }
-}
-.react-fundamentals {
-  background: radial-gradient(
-    circle at top,
-    rgba(0, 170, 255, 0.06),
-    transparent 60%
-  );
-}
-
-/* Grid */
-.react-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.react-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
-  transition: all 0.35s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Soft glass shimmer */
-.react-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.15),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.react-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.react-card:hover::before {
-  opacity: 1;
-}
-
-/* Intro card */
-.react-card.intro {
-  grid-column: span 2;
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.05)
-  );
-}
-
-/* Text */
-.react-card h3 {
-  color: var(--text-primary);
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.react-card p {
-  color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-/* Highlight */
-.react-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Responsive refinement */
-@media (max-width: 768px) {
-  .react-card.intro {
-    grid-column: span 1;
+  
+  /* LEFT SIDE */
+  .intro-left {
+    flex: 1;
+    min-width: 320px;
+    animation: fadeInLeft 1s ease forwards;
   }
-
-  .roadmap-header h2 {
-    font-size: 2rem;
+  
+  .intro-left .section-title {
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-color, #00d8ff);
+    line-height: 1.2;
   }
-}
-.react-hooks {
-  background: radial-gradient(
-    circle at top,
-    rgba(0, 170, 255, 0.08),
-    transparent 65%
-  );
-}
-
-/* Grid */
-.hooks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.hook-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-color);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-/* Glow sweep */
-.hook-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.18),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.hook-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.hook-card:hover::before {
-  opacity: 1;
-}
-
-/* Labels */
-.hook-level {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  border-radius: 999px;
-  margin-bottom: var(--spacing-sm);
-  background: rgba(0, 170, 255, 0.12);
-  color: var(--accent-color);
-  letter-spacing: 0.4px;
-}
-
-/* Text */
-.hook-card h3 {
-  color: var(--text-primary);
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.hook-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Emphasis styles */
-.hook-card.essential {
-  border-left: 4px solid var(--accent-color);
-}
-
-.hook-card.optimization {
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.04)
-  );
-}
-
-.hook-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Responsive polish */
-@media (max-width: 768px) {
-  .roadmap-header h2 {
-    font-size: 2rem;
-  }
-}
-.react-styling {
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary),
-    var(--bg-secondary)
-  );
-}
-
-/* Groups */
-.styling-groups {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-}
-
-/* Group Header */
-.style-group h3 {
-  color: var(--text-primary);
-  font-size: 1.4rem;
-  margin-bottom: var(--spacing-md);
-}
-
-/* Grid */
-.style-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.style-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  position: relative;
-  transition: all 0.35s ease;
-  overflow: hidden;
-}
-
-/* Glow sweep */
-.style-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.15),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.style-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.style-card:hover::after {
-  opacity: 1;
-}
-
-/* Text */
-.style-card h4 {
-  color: var(--text-primary);
-  font-size: 1.1rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.style-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Accents */
-.style-card.accent {
-  border-left: 4px solid var(--accent-color);
-}
-
-.style-card.library {
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.04)
-  );
-}
-
-/* Group highlight */
-.style-group.highlight {
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-xl);
-  background: radial-gradient(
-    circle at top,
-    rgba(0, 170, 255, 0.08),
-    transparent 65%
-  );
-}
-
-/* Highlight card */
-.style-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .style-group h3 {
+  
+  .intro-left .section-desc {
     font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xl);
+    max-width: 600px;
   }
-}
-.react-routing {
-  background: linear-gradient(
-    180deg,
-    var(--bg-primary),
-    var(--bg-secondary)
-  );
-}
-
-/* Grid */
-.routing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.route-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-/* Directional glow */
-.route-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 170, 255, 0.18),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.route-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-.route-card:hover::after {
-  opacity: 1;
-}
-
-/* Intro emphasis */
-.route-card.intro {
-  grid-column: span 2;
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.06)
-  );
-}
-
-/* Text */
-.route-card h3 {
-  color: var(--text-primary);
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.route-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Highlight */
-.route-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .route-card.intro {
-    grid-column: span 1;
+  
+  /* STEPS LIST */
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: var(--spacing-xl);
   }
-
+  
+  .step-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+    cursor: default;
+  }
+  
+  .step-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(0, 216, 255, 0.2);
+    border-left: 4px solid var(--accent-color, #00d8ff);
+  }
+  
+  .step-icon {
+    font-size: 1.75rem;
+    margin-right: var(--spacing-md);
+  }
+  
+  /* RIGHT SIDE - ANIMATION CARD */
+  .intro-right {
+    flex: 1;
+    min-width: 320px;
+    position: relative;
+  }
+  
+  .animation-card {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: auto;
+    perspective: 1000px;
+  }
+  
+  /* FLOATING REACT LOGO */
+  .floating-img {
+    width: 150px;
+    animation: float 5s ease-in-out infinite;
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    z-index: 10;
+    transition: transform 0.3s ease;
+  }
+  
+  .floating-img:hover {
+    transform: rotateY(20deg) rotateX(10deg) scale(1.1);
+  }
+  
+  /* FLOATING CIRCLES */
+  .floating-circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation: floatCircle 6s ease-in-out infinite;
+  }
+  
+  .circle1 {
+    width: 100px;
+    height: 100px;
+    background: #00d8ff;
+    top: 10%;
+    left: 5%;
+  }
+  
+  .circle2 {
+    width: 60px;
+    height: 60px;
+    background: #ff007f;
+    bottom: 10%;
+    right: 10%;
+  }
+  
+  .circle3 {
+    width: 140px;
+    height: 140px;
+    background: #8844ff;
+    top: 50%;
+    right: 5%;
+  }
+  
+  /* BUTTON */
+  .btn-primary {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    background: linear-gradient(135deg, #0055ff, #00d8ff);
+    color: white;
+    border-radius: var(--border-radius-lg);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 20px rgba(0, 216, 255, 0.2);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 216, 255, 0.4);
+    background: linear-gradient(135deg, #00d8ff, #0055ff);
+  }
+  
+  /* ANIMATIONS */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-15px) translateX(5px) rotate(5deg); }
+    50% { transform: translateY(-25px) translateX(-5px) rotate(0deg); }
+    75% { transform: translateY(-15px) translateX(5px) rotate(-5deg); }
+  }
+  
+  @keyframes floatCircle {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(45deg); }
+  }
+  
+  @keyframes fadeInLeft {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  
+  
+  /* =========================================================
+     2. ALIGN BADGE AND TITLE ON SAME LINE
+     ========================================================= */
+  .roadmap-section, .js-deep-dive, .react-fundamentals, .react-hooks, .react-styling, .react-api, .react-routing, .advanced-react, .projects-section {
+    padding: calc(var(--spacing-xxl) + 40px) 20px;
+    font-family: var(--font-primary);
+    text-align: center;
+  }
+  
+  .roadmap-header {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xxl) auto;
+    text-align: center;
+  }
+  
+  /* FORCE BADGE AND TITLE ON SAME LINE */
+  .roadmap-header > div:first-child {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-bottom: 15px !important;
+    flex-wrap: nowrap !important;
+    max-width: 100% !important;
+  }
+  
+  .roadmap-header .roadmap-badge {
+    margin: 0 !important;
+    white-space: nowrap !important; 
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+    background: linear-gradient(135deg, #0055ff, #00d8ff);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0, 216, 255, 0.3);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  
+  .roadmap-header .roadmap-badge.critical {
+    background: linear-gradient(135deg, #ff0055, #ffaa00);
+    box-shadow: 0 4px 15px rgba(255, 0, 85, 0.3);
+    animation: pulseCritical 2s infinite alternate;
+  }
+  
+  @keyframes pulseCritical {
+    0% { box-shadow: 0 4px 15px rgba(255, 0, 85, 0.4); }
+    100% { box-shadow: 0 4px 25px rgba(255, 0, 85, 0.8); }
+  }
+  
   .roadmap-header h2 {
-    font-size: 2rem;
+    margin: 0 !important;
+    display: inline-block !important;
+    text-align: left; 
+    white-space: nowrap !important;
+    color: var(--text-primary);
+    font-size: 2.2rem;
+    line-height: 1;
   }
-}
-.react-api {
-  background: radial-gradient(
-    circle at top,
-    rgba(0, 170, 255, 0.08),
-    transparent 70%
-  );
-}
-
-/* Grid */
-.api-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.api-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-}
-
-/* Data pulse effect */
-.api-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.2),
-    transparent
-  );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-}
-
-.api-card:hover::before {
-  transform: translateX(100%);
-}
-
-.api-card:hover {
-  transform: var(--hover-transform);
-  box-shadow: var(--shadow-hover);
-}
-
-/* Text */
-.api-card h3 {
-  color: var(--text-primary);
-  font-size: 1.2rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.api-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Card types */
-.api-card.core {
-  border-left: 4px solid var(--accent-primary);
-}
-
-.api-card.warning {
-  border-left: 4px solid var(--neon-red, var(--accent-color));
-}
-
-.api-card.loading {
-  border-left: 4px solid var(--neon-cyan, var(--accent-color));
-}
-
-/* Highlight advanced tools */
-.api-card.highlight {
-  border: 1px solid var(--accent-color);
-  box-shadow: var(--shadow-hover-strong);
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.06)
-  );
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .api-card h3 {
-    font-size: 1.1rem;
-  }
-}
-.advanced-react {
-  background: radial-gradient(
-    circle at top right,
-    rgba(118, 75, 162, 0.12),
-    transparent 70%
-  );
-}
-
-/* Grid */
-.advanced-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card base */
-.advanced-card {
-  background: var(--card-bg);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-/* Glow frame */
-.advanced-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  box-shadow: inset 0 0 0 1px transparent;
-  transition: box-shadow 0.4s ease;
-}
-
-.advanced-card:hover::after {
-  box-shadow: inset 0 0 0 1px var(--accent-color);
-}
-
-.advanced-card:hover {
-  transform: var(--hover-transform-strong);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Typography */
-.advanced-card h3 {
-  color: var(--text-primary);
-  font-size: 1.25rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.advanced-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* Categories */
-.advanced-card.pattern {
-  border-left: 4px solid var(--accent-primary);
-}
-
-.advanced-card.portal {
-  border-left: 4px solid var(--neon-purple, var(--accent-secondary));
-}
-
-.advanced-card.safety {
-  border-left: 4px solid var(--neon-red, var(--accent-color));
-}
-
-.advanced-card.legacy {
-  border-left: 4px solid var(--text-secondary);
-  opacity: 0.95;
-}
-
-.advanced-card.future {
-  background: linear-gradient(
-    135deg,
-    var(--card-bg),
-    rgba(0, 170, 255, 0.08)
-  );
-  border: 1px solid var(--accent-color);
-}
-
-/* Subtle floating animation */
-@keyframes floatCard {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-.advanced-card.future {
-  animation: floatCard 6s ease-in-out infinite;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .advanced-card h3 {
+  
+  .roadmap-header p {
+    color: var(--text-secondary);
+    line-height: 1.6;
     font-size: 1.15rem;
+    margin-top: 20px;
+    display: block;
   }
-}
-/* Section Background */
-.projects-section {
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(0, 170, 255, 0.05),
-    transparent
-  );
-}
-
-/* Badge */
-.roadmap-badge.critical {
-  background: linear-gradient(135deg, #ff003c, #ff6a00);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(255, 0, 60, 0.35);
-}
-
-/* Grid */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--spacing-lg);
-}
-
-/* Card */
-.project-card {
-  position: relative;
-  background: var(--card-bg);
-  border-radius: var(--border-radius-xl);
-  padding: var(--spacing-lg);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-  transition: all 0.4s ease;
-  overflow: hidden;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(0, 170, 255, 0.12),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.project-card:hover::before {
-  opacity: 1;
-}
-
-.project-card:hover {
-  transform: var(--hover-transform-strong);
-  box-shadow: var(--shadow-hover-strong);
-}
-
-/* Typography */
-.project-card h3 {
-  color: var(--text-primary);
-  font-size: 1.3rem;
-  margin-bottom: var(--spacing-sm);
-}
-
-.project-card ul {
-  padding-left: 18px;
-  margin-bottom: var(--spacing-md);
-}
-
-.project-card li {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 6px;
-}
-
-/* Level Badge */
-.project-card .level {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 0.75rem;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-weight: 600;
-}
-
-/* Difficulty Styles */
-.project-card.basic {
-  border-left: 4px solid var(--accent-secondary);
-}
-
-.project-card.basic .level {
-  background: rgba(118, 75, 162, 0.15);
-  color: var(--accent-secondary);
-}
-
-.project-card.intermediate {
-  border-left: 4px solid var(--accent-color);
-}
-
-.project-card.intermediate .level {
-  background: rgba(0, 170, 255, 0.15);
-  color: var(--accent-color);
-}
-
-.project-card.advanced {
-  border-left: 4px solid var(--neon-green, #0aff9d);
-}
-
-.project-card.advanced .level {
-  background: rgba(10, 255, 157, 0.15);
-  color: var(--neon-green, #0aff9d);
-}
-
-/* Highlight Final Project */
-.project-card.glow {
-  animation: pulseGlow 4s infinite;
-}
-
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 rgba(0, 170, 255, 0); }
-  50% { box-shadow: 0 0 35px rgba(0, 170, 255, 0.35); }
-  100% { box-shadow: 0 0 0 rgba(0, 170, 255, 0); }
-}
-
-/* Mobile */
-@media (max-width: 768px) {
+  
+  
+  /* =========================================================
+     3. PERFECT CENTERING FOR ALL GRIDS & CARDS (FLEXBOX)
+     ========================================================= */
+  .roadmap-grid, 
+  .js-grid, 
+  .react-grid, 
+  .hooks-grid, 
+  .style-grid,
+  .api-grid, 
+  .routing-grid,
+  .advanced-grid,
+  .projects-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 30px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .roadmap-card, 
+  .js-card, 
+  .react-card, 
+  .hook-card, 
+  .style-card,
+  .api-card, 
+  .route-card,
+  .advanced-card,
+  .project-card {
+    flex: 1 1 300px !important;
+    max-width: 350px !important;
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 30px 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  /* Ensure large "Intro" cards span perfectly */
+  .react-card.intro, .route-card.intro {
+    flex: 1 1 100% !important;
+    max-width: 730px !important;
+  }
+  
+  /* Global Hover Effects */
+  .roadmap-card:hover, .js-card:hover, .react-card:hover, .hook-card:hover, .style-card:hover, .api-card:hover, .route-card:hover, .advanced-card:hover, .project-card:hover {
+    transform: translateY(-8px);
+  }
+  
+  /* Card Typography */
+  .roadmap-card h3, .js-card h3, .react-card h3, .hook-card h3, .style-card h3, .api-card h3, .route-card h3, .advanced-card h3, .project-card h3 {
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.3rem;
+    line-height: 1.4;
+  }
+  
+  .roadmap-card p, .js-card p, .react-card p, .hook-card p, .style-card p, .api-card p, .route-card p, .advanced-card p, .project-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  
+  .project-card ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto 15px auto;
+    padding-left: 0;
+  }
+  
+  .project-card li {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    list-style-position: inside;
+  }
+  
+  
+  /* =========================================================
+     STEP 1: JS DEEP DIVE (Blue / Cyan)
+     ========================================================= */
+  .js-deep-dive {
+    background: linear-gradient(180deg, var(--bg-primary), rgba(0, 216, 255, 0.03));
+  }
+  
+  .js-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(0, 216, 255, 0.12), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .js-card:hover { box-shadow: 0 10px 30px rgba(0, 216, 255, 0.15); }
+  .js-card:hover::after { opacity: 1; }
+  
+  .js-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(0, 216, 255, 0.12);
+    color: #00d8ff;
+    margin-bottom: var(--spacing-md);
+    font-weight: bold;
+  }
+  
+  .js-card.highlight {
+    border: 1px solid #00d8ff;
+    box-shadow: 0 8px 25px rgba(0, 216, 255, 0.25);
+  }
+  
+  
+  /* =========================================================
+     STEP 2: REACT FUNDAMENTALS (Teal / Cyan)
+     ========================================================= */
+  .react-fundamentals {
+    background: radial-gradient(circle at top, rgba(0, 255, 170, 0.04), transparent 60%);
+  }
+  
+  .react-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(0, 255, 170, 0.12), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .react-card:hover { box-shadow: 0 10px 30px rgba(0, 255, 170, 0.15); }
+  .react-card:hover::before { opacity: 1; }
+  
+  .react-card.intro {
+    background: linear-gradient(135deg, var(--card-bg), rgba(0, 255, 170, 0.04));
+  }
+  
+  
+  /* =========================================================
+     STEP 3: REACT HOOKS (Indigo / Purple)
+     ========================================================= */
+  .react-hooks {
+    background: radial-gradient(circle at top, rgba(136, 68, 255, 0.05), transparent 65%);
+  }
+  
+  .hook-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(136, 68, 255, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .hook-card:hover { box-shadow: 0 10px 30px rgba(136, 68, 255, 0.15); }
+  .hook-card:hover::before { opacity: 1; }
+  
+  .hook-level {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: var(--spacing-md);
+    background: rgba(136, 68, 255, 0.12);
+    color: #aa66ff;
+    letter-spacing: 0.4px;
+    font-weight: bold;
+  }
+  
+  .hook-card.essential { border-top: 4px solid #aa66ff; border-left: none; }
+  .hook-card.optimization { background: linear-gradient(135deg, var(--card-bg), rgba(136, 68, 255, 0.03)); }
+  
+  
+  /* =========================================================
+     STEP 4: STYLING (Pink / Magenta)
+     ========================================================= */
+  .react-styling {
+    background: linear-gradient(180deg, transparent, rgba(255, 0, 127, 0.03), transparent);
+  }
+  
+  .style-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 0, 127, 0.12), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .style-card:hover { box-shadow: 0 10px 30px rgba(255, 0, 127, 0.15); }
+  .style-card:hover::after { opacity: 1; }
+  
+  .style-card.highlight {
+    border: 1px solid #ff007f;
+    box-shadow: 0 8px 25px rgba(255, 0, 127, 0.25);
+  }
+  
+  
+  /* =========================================================
+     STEP 5: API & DATA FETCHING (Orange / Amber)
+     ========================================================= */
+  .react-api {
+    background: radial-gradient(circle at top, rgba(255, 153, 0, 0.05), transparent 70%);
+  }
+  
+  .api-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 153, 0, 0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+  
+  .api-card:hover { box-shadow: 0 10px 30px rgba(255, 153, 0, 0.15); }
+  .api-card:hover::before { transform: translateX(100%); }
+  
+  .api-card.core { border-top: 4px solid #ff9900; border-left: none; }
+  .api-card.warning { border-top: 4px solid #ff3333; border-left: none; }
+  .api-card.loading { border-top: 4px solid #00d8ff; border-left: none; }
+  .api-card.highlight {
+    border: 1px solid #ff9900;
+    box-shadow: 0 8px 25px rgba(255, 153, 0, 0.2);
+    background: linear-gradient(135deg, var(--card-bg), rgba(255, 153, 0, 0.05));
+  }
+  
+  
+  /* =========================================================
+     STEP 6: ROUTING (Green / Forest)
+     ========================================================= */
+  .react-routing {
+    background: linear-gradient(180deg, transparent, rgba(0, 200, 80, 0.03), transparent);
+  }
+  
+  .route-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(0, 200, 80, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .route-card:hover { box-shadow: 0 10px 30px rgba(0, 200, 80, 0.15); }
+  .route-card:hover::after { opacity: 1; }
+  .route-card.highlight {
+    border: 1px solid #00c850;
+    box-shadow: 0 8px 25px rgba(0, 200, 80, 0.25);
+  }
+  
+  
+  /* =========================================================
+     STEP 7: ADVANCED REACT (Deep Purple / Neon)
+     ========================================================= */
+  .advanced-react {
+    background: radial-gradient(circle at top right, rgba(170, 0, 255, 0.08), transparent 70%);
+  }
+  
+  .advanced-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px transparent;
+    transition: box-shadow 0.4s ease;
+  }
+  
+  .advanced-card:hover { box-shadow: 0 12px 35px rgba(170, 0, 255, 0.2); }
+  .advanced-card:hover::after { box-shadow: inset 0 0 0 2px #aa00ff; }
+  
+  .advanced-card.pattern { border-top: 4px solid #00d8ff; border-left: none; }
+  .advanced-card.portal { border-top: 4px solid #ff007f; border-left: none; }
+  .advanced-card.safety { border-top: 4px solid #aa00ff; border-left: none; }
+  .advanced-card.future {
+    background: linear-gradient(135deg, var(--card-bg), rgba(170, 0, 255, 0.08));
+    border: 1px solid #aa00ff;
+  }
+  
+  
+  /* =========================================================
+     STEP 8: PROJECTS (Cyan / Blue)
+     ========================================================= */
+  .projects-section {
+    background: linear-gradient(180deg, transparent, rgba(0, 216, 255, 0.03), transparent);
+  }
+  
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(0, 216, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  
+  .project-card:hover { box-shadow: 0 12px 35px rgba(0, 216, 255, 0.15); }
+  .project-card:hover::before { opacity: 1; }
+  
   .project-card h3 {
-    font-size: 1.15rem;
+    margin-top: 35px;
   }
-}
+  
+  .project-card .level {
+    position: absolute;
+    top: 15px;
+    right: 15px; 
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .project-card.basic { border-top: 4px solid var(--border-color); border-left: none; }
+  .project-card.basic .level { background: rgba(0, 216, 255, 0.15); color: #00d8ff; }
+  
+  .project-card.intermediate { border-top: 4px solid var(--border-color); border-left: none; }
+  .project-card.intermediate .level { background: rgba(0, 85, 255, 0.2); color: #4da6ff; }
+  
+  .project-card.advanced { border-top: 4px solid var(--border-color); border-left: none; }
+  .project-card.advanced .level { background: rgba(136, 68, 255, 0.2); color: #aa66ff; }
+  
+  .project-card.glow {
+    animation: pulseGlowReact 4s infinite alternate;
+  }
+  
+  @keyframes pulseGlowReact {
+    0% { box-shadow: 0 0 0 rgba(0, 216, 255, 0); }
+    50% { box-shadow: 0 0 35px rgba(0, 216, 255, 0.3); }
+    100% { box-shadow: 0 0 0 rgba(0, 216, 255, 0); }
+  }
+  
+  
+  /* =========================================================
+     RESPONSIVE MEDIA QUERIES
+     ========================================================= */
+  @media (max-width: 1024px) {
+    .intro-left .section-title { font-size: 2.5rem; }
+    .intro-left .section-desc { font-size: 1.15rem; }
+  }
+  
+  @media (max-width: 768px) {
+    .intro-section .container { flex-direction: column; gap: var(--spacing-xl); text-align: center; }
+    .intro-right { margin-top: var(--spacing-xl); }
+    
+    .step-item { justify-content: center; }
+  
+    .roadmap-header > div:first-child {
+      gap: 6px !important;
+    }
+    
+    .roadmap-header h2 {
+      font-size: clamp(1rem, 4vw, 1.5rem) !important; 
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+    
+    .roadmap-header .roadmap-badge {
+      font-size: 0.7rem !important;
+      padding: 4px 10px !important;
+    }
+  
+    .react-card.intro, .route-card.intro { 
+      grid-column: span 1; 
+    }
+    
+    .roadmap-card h3, .js-card h3, .react-card h3, .hook-card h3, .style-card h3, .api-card h3, .route-card h3, .advanced-card h3, .project-card h3 {
+      font-size: 1.15rem;
+    }
+  }
