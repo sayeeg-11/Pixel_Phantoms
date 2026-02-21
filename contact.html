@@ -78,26 +78,6 @@
                     <p>Fill out the form below and we'll get back to you as soon as possible</p>
                   </div>
 
-                  <form id="contact-form" class="modern-form">
-                    <div class="form-row">
-                      <div class="input-wrapper">
-                        <label for="contact-name" class="floating-label">
-                          <i class="fas fa-user"></i> Full Name
-                        </label>
-                        <input
-                          type="text"
-                          id="contact-name"
-                          name="name"
-                          class="modern-input"
-                          placeholder="John Doe"
-                          required
-                          minlength="2"
-                          maxlength="50"
-                        />
-                        <div class="input-border"></div>
-                        <div class="error-message" id="name-error"></div>
-                      </div>
-
                 <form id="contact-form" class="modern-form">
                   <div class="form-row">
                     <div class="input-wrapper">
@@ -133,7 +113,7 @@
                     <div class="error-message" id="message-error"></div>
                   </div>
 
-                  <div class="form-row full-width">
+                  <div class="rating-wrapper">
                     <div class="rating-line-container">
                       <p class="rating-label">How was your experience using this website?</p>
 
@@ -446,6 +426,7 @@
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js');
       });
+    }
     </script>
 
     <script src="js/keyboard-shortcuts.js" defer></script>
@@ -457,5 +438,73 @@
     <script src="js/main.js" defer></script>
 
     <script src="js/contact.js" defer></script>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const searchInput = document.getElementById("faq-search");
+      const clearBtn = document.getElementById("faq-clear");
+      const categoryButtons = document.querySelectorAll(".faq-category-btn");
+      const faqItems = document.querySelectorAll(".faq-item-new");
+      const noResults = document.getElementById("faq-no-results");
+
+      let activeCategory = "all";
+
+      function filterFAQs() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let visibleCount = 0;
+
+        faqItems.forEach(item => {
+          const category = item.dataset.category;
+          const text = item.innerText.toLowerCase();
+
+          const matchesCategory =
+            activeCategory === "all" || category === activeCategory;
+
+          const matchesSearch =
+            text.includes(searchTerm);
+
+          if (matchesCategory && matchesSearch) {
+            item.style.display = "block";
+            visibleCount++;
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        // Show or hide no results message
+        if (visibleCount === 0) {
+          noResults.style.display = "block";
+        } else {
+          noResults.style.display = "none";
+        }
+      }
+
+      // 🔎 Search input
+      searchInput.addEventListener("input", filterFAQs);
+
+      // ❌ Clear search
+      clearBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        filterFAQs();
+      });
+
+      // 🏷 Category buttons
+      categoryButtons.forEach(button => {
+        button.addEventListener("click", () => {
+
+          categoryButtons.forEach(btn =>
+            btn.classList.remove("active")
+          );
+
+          button.classList.add("active");
+          activeCategory = button.dataset.category;
+
+          filterFAQs();
+        });
+      });
+
+    });
+    </script>
   </body>
 </html>
