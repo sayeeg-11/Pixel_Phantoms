@@ -941,3 +941,57 @@
     font-size: 1.15rem;
   }
 }
+
+/* ================================
+   Difficulty Level Tags (Roadmap Cards)
+================================ */
+.api-card,
+.react-card,
+.hook-card,
+.route-card,
+.advanced-card,
+.style-card {
+  position: relative;
+}
+
+/* Base Tag */
+.difficulty-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.5px;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+/* Beginner */
+.difficulty-tag.beginner {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+/* Intermediate */
+.difficulty-tag.intermediate {
+  background: rgba(59, 130, 246, 0.15);
+  color: #2563eb;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+/* Advanced */
+.difficulty-tag.advanced {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+/* Light Mode Compatibility */
+body:not(.hacker-theme) .difficulty-tag {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #e2e8f0;
+}
