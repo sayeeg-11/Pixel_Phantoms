@@ -1,5 +1,5 @@
-/* ABOUT PAGE STYLES - Matching Events Page Design */
-@import url('style.css');
+
+
 
 /* =========================================
    HERO SECTION - ENHANCED
@@ -205,11 +205,12 @@ body.light-mode .motto-subtitle {
   position: relative;
 }
 
-.container {
+.content-section .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
 }
+
 
 .section-title {
   text-align: center;
@@ -892,4 +893,24 @@ body.light-mode .motto-subtitle {
   .social-link:hover {
     transform: none;
   }
+}
+
+/* ===== FIX FOOTER ALIGNMENT (MATCH HOME PAGE) ===== */
+#footer-placeholder footer {
+  width: 100%;
+}
+
+#footer-placeholder footer .container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 24px !important;
+  box-sizing: border-box;
+}
+
+/* Ensure footer grid stays centered */
+#footer-placeholder .footer-content,
+#footer-placeholder .footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
