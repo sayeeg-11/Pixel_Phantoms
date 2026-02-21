@@ -161,6 +161,75 @@
                 </div>
               </div>
 
+       <section aria-labelledby="top-contributors">
+ <h2 id="top-contributors">Top Contributors</h2>
+
+<!-- 🔽 SORT + SEARCH CONTROLS -->
+<div class="contributors-search-wrapper" style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+
+  <!-- Sorting Dropdown -->
+  <select id="contributors-sort" aria-label="Sort contributors">
+    <option value="default">Sort: Default</option>
+    <option value="points">Points (High → Low)</option>
+    <option value="prs">PRs (High → Low)</option>
+    <option value="repos">Repositories (High → Low)</option>
+    <option value="followers">Followers (High → Low)</option>
+  </select>
+
+  <!-- Existing Search (UNCHANGED) -->
+  <input
+    type="text"
+    id="contributors-search"
+    placeholder="Search contributors by name or username..."
+    aria-label="Search contributors"
+  />
+</div>
+
+  <div class="contributors-grid" id="contributors-grid" role="list" aria-label="Top contributors"
+    aria-live="polite"></div>
+
+  <div id="pagination-controls" class="pagination-container"></div>
+</section>
+
+        <section aria-labelledby="recent-activity">
+  <div class="activity-header">
+    <h2 id="recent-activity" class="mt-large">Recent Contribution Activity</h2>
+
+    <!-- 🔽 NEW: Filter Controls -->
+    <div class="activity-filters">
+      <select id="activity-filter">
+        <option value="all">All</option>
+        <option value="merge">Merges</option>
+        <option value="feat">Features</option>
+        <option value="fix">Fixes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="activity-container" id="activity-list">
+    <div class="loading-text">
+      <i class="fas fa-spinner fa-spin"></i> Fetching latest commits…
+    </div>
+  </div>
+</section>
+
+        <!-- ================= CONTRIBUTION ROADMAP CTA ================= -->
+        <section class="contribute-cta" aria-labelledby="contribute">
+          <h2 id="contribute" class="mt-large">Want to Contribute?</h2>
+
+          <p class="roadmap-intro">
+            Follow this <strong>roadmap</strong> to make your first contribution to Pixel Phantoms.
+          </p>
+
+          <div class="contribution-roadmap">
+            <div class="roadmap-container">
+
+              <!-- SVG Path -->
+              <div class="roadmap-path" aria-hidden="true">
+                <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+                  <path class="road-path" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
+                  <path class="road-dashes" d="M 0 60 Q 150 20, 300 60 T 600 60 Q 750 100, 900 60 T 1200 60" />
+                </svg>
               <div class="contribution-section">
                 <h4>Contribution Activity</h4>
                 <div class="github-calendar" data-username="sayeeg-11">

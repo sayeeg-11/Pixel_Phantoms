@@ -1,18 +1,17 @@
 /* --- Roadmap Layout Variables --- */
 :root {
-    --roadmap-line-color: #333;
-    --roadmap-node-bg: #0a0a0a;
-    --roadmap-node-border: #00ff41; /* Neon Green */
-    --roadmap-text-color: #eee;
-    --spine-width: 6px;
+    --roadmap-line-color: #e2e8f0; /* soft light divider */
+    --roadmap-node-bg: #ffffff; /* match site cards */
+    --roadmap-node-border: #2563eb; /* site primary blue */
+    --roadmap-text-color: #1f2937; /* dark readable text */
 }
 
 /* Header Styling */
 .roadmap-header {
     text-align: center;
     padding: 80px 20px 40px;
-    background: #050505;
-    border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    background: #f8fafc; /* FIXED */
+    border-bottom: 1px solid #e2e8f0; /* FIXED */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,9 +68,9 @@
 }
 
 .phase-header {
-    background: #000;
+    background: #ffffff; /* FIXED */
     border: 2px solid var(--roadmap-node-border);
-    color: var(--roadmap-node-border);
+    color: #2563eb; /* FIXED */
     padding: 15px 30px;
     width: fit-content;
     margin: 0 auto 40px;
@@ -79,8 +78,8 @@
     font-family: 'JetBrains Mono', monospace;
     font-weight: bold;
     text-transform: uppercase;
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+    border-radius: 8px; /* optional smoother */
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15); /* FIXED */
     z-index: 2;
     text-align: center;
 }
@@ -97,13 +96,14 @@
     position: relative;
     width: 40%;
     padding: 20px;
-    background: var(--roadmap-node-bg);
-    border: 1px solid #333;
-    border-radius: 8px;
+    background: var(--roadmap-node-bg); /* now white */
+    border: 1px solid #e2e8f0; /* FIXED */
+    border-radius: 12px; /* optional but looks better */
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
     display: block;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06); /* FIXED */
 }
 
 .module-node:hover {
@@ -113,13 +113,13 @@
 }
 
 .module-node h4 {
-    color: #fff;
+    color: #1f2937;
     margin: 0 0 5px;
     font-family: 'JetBrains Mono', monospace;
 }
 
 .module-node p {
-    color: #aaa;
+    color: #6b7280;
     font-size: 0.85rem;
     margin: 0;
     line-height: 1.4;
@@ -165,7 +165,8 @@
     top: 50%;
     width: 12px;
     height: 12px;
-    background: #000;
+    background: #ffffff;
+border: 2px solid #2563eb;
     border: 2px solid var(--roadmap-line-color);
     border-radius: 50%;
     transform: translateY(-50%);
