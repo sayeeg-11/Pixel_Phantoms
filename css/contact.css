@@ -1563,3 +1563,103 @@ body {
   border-color: var(--primary);
   box-shadow: 0 0 25px rgba(0, 212, 255, 0.25);
 }
+
+/* ================= FAQ NO RESULTS ================= */
+
+.faq-no-results {
+  display: none; /* shown via JS */
+  text-align: center;
+  padding: 60px 30px;
+  margin: 50px auto;
+  max-width: 600px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.faq-no-results i {
+  font-size: 2.8rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+  display: block;
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.faq-no-results h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--text-color);
+}
+
+.faq-no-results p {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* Subtle glow animation */
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ================= FAQ CTA ================= */
+
+.faq-cta {
+  text-align: center;
+  margin-top: 80px;
+  padding: 60px 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.08),
+    rgba(0, 255, 255, 0.03)
+  );
+  border-radius: 28px;
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-cta h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.faq-cta p {
+  color: var(--text-dim);
+  margin-bottom: 30px;
+  font-size: 1rem;
+}
+
+.faq-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--primary), #00ffff);
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 212, 255, 0.35);
+}
+
+.faq-cta-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+}
+
+.faq-cta-btn i {
+  transition: transform 0.3s ease;
+}
+
+.faq-cta-btn:hover i {
+  transform: translateX(5px);
+}
