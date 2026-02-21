@@ -246,3 +246,52 @@
         grid-template-columns: 1fr 1fr;
     }
 }
+
+/* ===== EXPANDED PRIVACY CONCERNS SECTION ===== */
+.privacy-concerns {
+  margin-top: 30px;
+}
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.privacy-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 153, 0.15);
+  border-radius: 12px;
+  padding: 18px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.privacy-card:hover {
+  transform: translateY(-6px);
+  border-color: #00ff99;
+  box-shadow: 0 8px 25px rgba(0, 255, 153, 0.15);
+}
+
+.privacy-card h3 {
+  color: #00ff99;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.privacy-card ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.privacy-card li {
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.privacy-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
