@@ -321,6 +321,10 @@
 .top-contributors {
   width: 100%;
   margin: 150px auto 80px auto;
+}
+
+
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 40px;
@@ -332,6 +336,9 @@
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+
 
 .contributor-card:hover {
   transform: translateY(-8px);
@@ -996,6 +1003,27 @@ body.light-mode .heatmap-cell.future-cell {
   color: var(--accent-color);
 }
 
+
+/* --- CONTRIBUTORS GRID --- */
+/* --- CONTRIBUTORS GRID (OPTIMIZED FOR 5 CARDS PER ROW) --- */
+/* FINAL SINGLE SOURCE OF TRUTH */
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  width: 100%;
+  max-width: 1700px;
+  margin: 40px auto;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+/* Base Card Style */
+.contributor-card {
+  width: 100%;
+  /* REMOVE max-width: 500px; */
+  max-width: 100%; /* or just delete the max-width line */
+
 /* Base Card Style */
 .contributor-card {
   width: 100%;
@@ -1009,6 +1037,10 @@ body.light-mode .heatmap-cell.future-cell {
   box-shadow: var(--shadow-main);
   box-sizing: border-box;
   transition: transform 0.3s ease;
+
+  /* CHANGE THIS */
+  margin: 0; /* instead of margin: 0 auto */
+
   cursor: pointer;
   gap: 16px;
   position: relative;
@@ -1969,6 +2001,12 @@ body.dark-mode .repo-item {
 }
 
 @media (min-width: 1028px) and (max-width: 1444px) {
+  .contributors-grid {
+    grid-template-columns: repeat(4, 1fr); /* was 3 → now 4 */
+    gap: 20px;
+    padding: 0 32px;
+  }
+
   .contributors-section {
     padding: 50px 32px;
   }
@@ -2693,6 +2731,9 @@ body.dark-mode .calendar .contrib-legend .legend {
   outline-offset: 6px;
 }
 
+  .roadmap-step:hover {
+    transform: none !important;
+  }
 .roadmap-step:hover {
   transform: none !important;
 }
@@ -2860,6 +2901,123 @@ body.dark-mode .calendar .contrib-legend .legend {
 [data-theme="dark"] #activity-list .activity-item:hover .commit-date {
   color: var(--activity-accent);
 }
+/* ===== Contributors Search (Non-intrusive) ===== */
+.contributors-search-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 16px auto 24px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#contributors-search {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#contributors-search:focus {
+  outline: none;
+  border-color: #4f9cff;
+  box-shadow: 0 0 0 2px rgba(79, 156, 255, 0.15);
+}
+
+/* =========================
+   Recent Activity Enhancement
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.activity-filters select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Timeline Style Layout */
+.activity-container {
+  position: relative;
+  padding-left: 30px;
+  border-left: 2px solid var(--border-color);
+}
+
+.activity-item {
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect (visual hierarchy improvement) */
+.activity-item:hover {
+  transform: translateX(4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Timeline dot */
+.activity-marker {
+  position: absolute;
+  left: -40px;
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+/* Better typography */
+.commit-msg {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.commit-date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ===== Contributors Sort Dropdown ===== */
+#contributors-sort {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+  min-width: 180px;
+}
+
+#contributors-sort:focus {
+  outline: none;
+  border-color: #4f9cff;
+  box-shadow: 0 0 0 2px rgba(79, 156, 255, 0.15);
 
 /* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
 .main-content,
