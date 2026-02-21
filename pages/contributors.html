@@ -161,6 +161,23 @@
                 </div>
               </div>
 
+       <section aria-labelledby="top-contributors">
+  <h2 id="top-contributors">Top Contributors</h2>
+
+  <!-- 🔍 Search Bar (ADDED - does not affect existing layout) -->
+  <div class="contributors-search-wrapper">
+    <input
+      type="text"
+      id="contributors-search"
+      placeholder="Search contributors by name or username..."
+      aria-label="Search contributors"
+    />
+  </div>
+
+  <div class="contributors-grid" id="contributors-grid" role="list" aria-label="Top contributors"
+    aria-live="polite"></div>
+          <div id="pagination-controls" class="pagination-container"></div>
+        </section>
               <div class="contribution-section">
                 <h4>Contribution Activity</h4>
                 <div class="github-calendar" data-username="sayeeg-11">

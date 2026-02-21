@@ -1205,5 +1205,34 @@ function initGitHubIntegrations() {
   }
 }
 
+
+/* =========================
+   Search Contributors (Enhancement Only)
+   Does NOT modify existing rendering
+========================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("contributors-search");
+  const grid = document.getElementById("contributors-grid");
+
+  if (!searchInput || !grid) return;
+
+  searchInput.addEventListener("input", function () {
+    const query = this.value.toLowerCase().trim();
+    const cards = grid.children;
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+
+      // Get searchable text (username + any text inside card)
+      const text = card.textContent.toLowerCase();
+
+      if (text.includes(query)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    }
+  });
+});
 // Note: initGitHubIntegrations is now called from renderContributors()
 // This ensures it runs AFTER the cards are rendered

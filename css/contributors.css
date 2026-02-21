@@ -2693,6 +2693,9 @@ body.dark-mode .calendar .contrib-legend .legend {
   outline-offset: 6px;
 }
 
+  .roadmap-step:hover {
+    transform: none !important;
+  }
 .roadmap-step:hover {
   transform: none !important;
 }
@@ -2860,6 +2863,31 @@ body.dark-mode .calendar .contrib-legend .legend {
 [data-theme="dark"] #activity-list .activity-item:hover .commit-date {
   color: var(--activity-accent);
 }
+/* ===== Contributors Search (Non-intrusive) ===== */
+.contributors-search-wrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 16px auto 24px auto;
+  display: flex;
+  justify-content: center;
+}
+
+#contributors-search {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+#contributors-search:focus {
+  outline: none;
+  border-color: #4f9cff;
+  box-shadow: 0 0 0 2px rgba(79, 156, 255, 0.15);
 
 /* FORCE FULL WIDTH FOR CONTRIBUTORS PAGE */
 .main-content,
