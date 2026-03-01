@@ -128,9 +128,13 @@ function initSmartFilters() {
 
   const searchInput = document.getElementById('project-search');
   if (searchInput) {
+    let searchTimeout;
     searchInput.addEventListener('input', e => {
-      window.currentFilters.search = e.target.value;
-      applySystemProtocols();
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        window.currentFilters.search = e.target.value;
+        applySystemProtocols();
+      }, 300);
     });
   }
 

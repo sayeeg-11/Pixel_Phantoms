@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | DevOps Protocol</title>
+  <link rel="icon" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/ai-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/system-design-road.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* --- Base Variables & Utilities --- */
+    :root {
+        --accent-color: #00ffcc; /* Fallback accent for hacker theme */
+        --card-bg: rgba(20, 20, 20, 0.7);
+        --card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- Existing Styles --- */
+    .filler-text {
+        opacity: 0.15;
+        font-size: 0.75rem;
+        user-select: none;
+        line-height: 1.4;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--accent-color);
+        margin: 2px 0;
+    }
+    .terminal-dump-container {
+        background: #050505;
+        padding: 40px 20px;
+        border-top: 1px solid #1a1a1a;
+        margin-top: 100px;
+        overflow: hidden;
+        position: relative;
+    }
+    .terminal-dump-container::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+        pointer-events: none;
+    }
+    .roadmap-section {
+        margin-bottom: 120px;
+        padding: 0 20px; /* Added side padding for mobile */
+    }
+    .protocol-description {
+        max-width: 900px;
+        margin: 20px auto;
+        line-height: 1.8;
+        color: var(--text-secondary, #aaa);
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    /* --- Responsive Containers & Alignments --- */
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        gap: 40px;
+    }
+    .intro-left, .intro-right {
+        flex: 1;
+        min-width: 300px;
+    }
+    .intro-right {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* --- Responsive Grids --- */
+    .roadmap-grid, .js-grid, .react-grid, .hooks-grid, .api-grid, .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        max-width: 1200px;
+        margin: 40px auto 0;
+    }
+    .glossary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 40px auto 0;
+        max-width: 1200px;
+    }
+    /* --- Media Queries for Mobile Responsiveness --- */
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+        .intro-left {
+            order: 2; /* Move text under image on mobile */
+        }
+        .intro-right {
+            order: 1;
+            margin-bottom: 30px;
+        }
+        .steps-list {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .roadmap-grid, .js-grid, .react-grid, .hooks-grid, .api-grid, .projects-grid, .glossary-grid {
+            grid-template-columns: 1fr; /* Force 1 column on small screens */
+        }
+        #devops-intro {
+            padding-top: 80px !important;
+        }
+    }
+    .filler-text {
+        opacity: 0.15;
+        font-size: 0.75rem;
+        user-select: none;
+        line-height: 1.4;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--accent-color);
+        margin: 2px 0;
+    }
+    .terminal-dump-container {
+        background: #050505;
+        padding: 40px 20px;
+        border-top: 1px solid #1a1a1a;
+        margin-top: 100px;
+        overflow: hidden;
+        position: relative;
+    }
+    .terminal-dump-container::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.8) 100%);
+        pointer-events: none;
+    }
+    .roadmap-section {
+        margin-bottom: 120px;
+    }
+    .protocol-description {
+        max-width: 900px;
+        margin: 20px auto;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+    .glossary-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+    }
+    .glossary-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+    .glossary-item:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-2px);
+    }
+    .glossary-term {
+        color: var(--accent-color);
+        font-weight: 700;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+    .glossary-def {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body class="hacker-theme">
+  <!-- Global Page Loader -->
+  <div id="global-loader" class="global-loader hidden" aria-live="polite" aria-label="Loading page">
+    <div class="loader-spinner"></div>
+    <p class="loader-text">Loading...</p>
+  </div>
+
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    renderNavbar('../');
+  </script>
+
+  <section id="devops-intro" class="intro-section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="intro-left">
+        <h2 class="section-title">DevOps & SRE Protocol</h2>
+        <p class="section-desc">
+          Bridge the gap between development and operations. Master the culture, tools, and practices designed to increase an organization's ability to deliver applications and services at high velocity.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon">♾️</span>
+            CI/CD Pipelines & Automation
+          </li>
+          <li class="step-item">
+            <span class="step-icon">🐳</span>
+            Containerization & Orchestration
+          </li>
+          <li class="step-item">
+            <span class="step-icon">🏗️</span>
+            Infrastructure as Code (IaC)
+          </li>
+        </ul>
+        <a href="#roadmap-start" class="btn-primary">Initialize Pipeline</a>
+      </div>
+
+      <div class="intro-right">
+        <div class="animation-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker Logo"
+            class="floating-img ai-img">
+          
+          <div class="floating-circle circle1"></div>
+          <div class="floating-circle circle2"></div>
+          <div class="floating-circle circle3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="roadmap-wrapper" id="roadmap-start">
+  
+    <!-- Step 1: Version Control & OS Foundations -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 1</span>
+          <h2 style="margin: 0 !important;">Foundational Workflow & OS</h2>
+        </div>
+        <div class="protocol-description">
+            Before automating, you must master the environment. DevOps starts with the Command Line Interface (CLI) and an absolute understanding of how Linux processes, permissions, and networking function.
+        </div>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <h3>🐧 <a href="https://training.linuxfoundation.org/resources/free-courses/introduction-to-linux/" target="_blank" style="color: inherit; text-decoration: none;">Linux Mastery <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Master Bash scripting, Vim/Nano, SSH, Systemd, and Process Management. Linux is the backbone of the cloud.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <h3>🌿 <a href="https://git-scm.com/book/en/v2/Git-Branching-Branching-Workflows" target="_blank" style="color: inherit; text-decoration: none;">GitOps & Branching <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand Trunk-Based Development vs GitFlow. Learn how to manage merge conflicts and maintain a clean commit history.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <h3>🐚 <a href="https://www.shellscript.sh/" target="_blank" style="color: inherit; text-decoration: none;">Scripting & Automation <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Automate repetitive tasks using Python, Go, or Bash. If you have to do it twice, you should script it.
+          </p>
+        </div>
+  
+        <div class="roadmap-card highlight">
+          <h3>🌐 <a href="https://roadmap.sh/devops" target="_blank" style="color: inherit; text-decoration: none;">Networking Basics <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            OSI Model, DNS, HTTP/HTTPS, FTP, SSL/TLS, and basic firewall configurations (UFW/IPTables).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 2: CI/CD Pipelines -->
+    <section class="roadmap-section js-deep-dive">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 2</span>
+          <h2 style="margin: 0 !important;">CI/CD: Continuous Everything</h2>
+        </div>
+        <div class="protocol-description">
+            Automating the build, test, and deployment phases reduces human error and accelerates time-to-market. This is the "Engine Room" of modern software delivery.
+        </div>
+      </div>
+  
+      <div class="js-grid">
+        <div class="js-card">
+          <span class="js-tag">Integration</span>
+          <h3>🔄 <a href="https://docs.github.com/en/actions" target="_blank" style="color: inherit; text-decoration: none;">GitHub Actions <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Build workflows directly in your repository. Master triggers, secrets, and reusable actions for automated testing.
+          </p>
+        </div>
+  
+        <div class="js-card">
+          <span class="js-tag">Automation</span>
+          <h3>🏗️ <a href="https://www.jenkins.io/doc/" target="_blank" style="color: inherit; text-decoration: none;">Jenkins Pipelines <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Learn the industry standard for self-hosted CI/CD. Understand Jenkinsfiles (Groovy), master-agent architecture, and plugins.
+          </p>
+        </div>
+  
+        <div class="js-card">
+          <span class="js-tag">Delivery</span>
+          <h3>🚀 <a href="https://about.gitlab.com/topics/ci-cd/" target="_blank" style="color: inherit; text-decoration: none;">GitLab CI <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Explore integrated CI/CD solutions. Learn about runners, <code>.gitlab-ci.yml</code> configuration, and environments.
+          </p>
+        </div>
+  
+        <div class="js-card highlight">
+          <span class="js-tag">Deployment</span>
+          <h3>⚓ <a href="https://argo-cd.readthedocs.io/en/stable/" target="_blank" style="color: inherit; text-decoration: none;">ArgoCD (GitOps) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Move towards declarative continuous delivery for Kubernetes. Ensure your cluster state always matches your Git repo state.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Containerization -->
+    <section class="roadmap-section react-fundamentals">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 3</span>
+          <h2 style="margin: 0 !important;">Containers & Orchestration</h2>
+        </div>
+        <div class="protocol-description">
+            Containers ensure consistency across development, staging, and production. Orchestration allows you to manage these containers at a massive scale across clusters of servers.
+        </div>
+      </div>
+  
+      <div class="react-grid">
+        <div class="react-card intro">
+          <h3>🐳 <a href="https://docs.docker.com/get-started/" target="_blank" style="color: inherit; text-decoration: none;">Docker Essentials <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Learn to write efficient Dockerfiles. Master multi-stage builds, networking, volumes, and Docker Compose for local dev.
+          </p>
+        </div>
+  
+        <div class="react-card">
+          <h3>☸️ <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank" style="color: inherit; text-decoration: none;">Kubernetes (K8s) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand Pods, Services, Deployments, and Ingress. Learn how to scale and manage self-healing applications.
+          </p>
+        </div>
+  
+        <div class="react-card">
+          <h3>📦 <a href="https://helm.sh/docs/" target="_blank" style="color: inherit; text-decoration: none;">Helm Charts <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            The package manager for Kubernetes. Simplify the deployment of complex applications using templates and versioned charts.
+          </p>
+        </div>
+  
+        <div class="react-card">
+          <h3>🕸️ <a href="https://istio.io/latest/about/service-mesh/" target="_blank" style="color: inherit; text-decoration: none;">Service Mesh (Istio) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Manage service-to-service communication. Learn about traffic splitting, mTLS security, and observability in a microservices mesh.
+          </p>
+        </div>
+  
+        <div class="react-card">
+          <h3>🖼️ <a href="https://goharbor.io/docs/" target="_blank" style="color: inherit; text-decoration: none;">Container Registries <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Manage and secure your images. Learn about Harbor, Docker Hub, and cloud-native registries (AWS ECR / Google Artifact Registry).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4: IaC -->
+    <section class="roadmap-section react-hooks">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 4</span>
+          <h2 style="margin: 0 !important;">Infrastructure as Code (IaC)</h2>
+        </div>
+        <div class="protocol-description">
+            Treat your infrastructure like software. Version it, review it, and deploy it automatically. This eliminates "Snowflake Servers" and ensures environment parity.
+        </div>
+      </div>
+  
+      <div class="hooks-grid">
+        <div class="hook-card essential">
+          <span class="hook-level">Provisioning</span>
+          <h3>🏗️ <a href="https://developer.hashicorp.com/terraform/intro" target="_blank" style="color: inherit; text-decoration: none;">Terraform <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Master HCL (HashiCorp Configuration Language). Provision infrastructure across multiple cloud providers using a single workflow.
+          </p>
+        </div>
+  
+        <div class="hook-card essential">
+          <span class="hook-level">Configuration</span>
+          <h3>📜 <a href="https://docs.ansible.com/ansible/latest/network/getting_started/basic_concepts.html" target="_blank" style="color: inherit; text-decoration: none;">Ansible <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Agentless configuration management. Learn to automate server setup, application deployment, and system updates via SSH.
+          </p>
+        </div>
+  
+        <div class="hook-card">
+          <span class="hook-level">Cloud-Native</span>
+          <h3>☁️ <a href="https://www.pulumi.com/docs/concepts/vs/terraform/" target="_blank" style="color: inherit; text-decoration: none;">Pulumi <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Define infrastructure using familiar programming languages like Python, TypeScript, or Go instead of DSLs like YAML or HCL.
+          </p>
+        </div>
+  
+        <div class="hook-card optimization">
+          <span class="hook-level">Immutable</span>
+          <h3>🧱 <a href="https://developer.hashicorp.com/packer/intro" target="_blank" style="color: inherit; text-decoration: none;">Packer <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Create identical machine images (AMIs) for multiple platforms from a single source configuration. Perfect for building golden images.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5: Monitoring -->
+    <section class="roadmap-section react-api">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 5</span>
+          <h2 style="margin: 0 !important;">Observability & SRE</h2>
+        </div>
+        <div class="protocol-description">
+            You cannot improve what you cannot measure. Observability is about understanding the internal state of a system by looking at the data it produces (Logs, Metrics, Traces).
+        </div>
+      </div>
+  
+      <div class="api-grid">
+        <div class="api-card core">
+          <h3>📈 <a href="https://prometheus.io/docs/introduction/overview/" target="_blank" style="color: inherit; text-decoration: none;">Prometheus & Grafana <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Scrape time-series metrics using Prometheus and visualize them by building powerful, real-time Grafana dashboards.
+          </p>
+        </div>
+  
+        <div class="api-card core">
+          <h3>🪵 <a href="https://www.elastic.co/what-is/elk-stack" target="_blank" style="color: inherit; text-decoration: none;">ELK / EFK Stack <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Centralized logging. Master Elasticsearch, Logstash/Fluentd, and Kibana to search through terabytes of logs in seconds.
+          </p>
+        </div>
+  
+        <div class="api-card warning">
+          <h3>🔍 <a href="https://opentelemetry.io/" target="_blank" style="color: inherit; text-decoration: none;">OpenTelemetry & Tracing <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Track requests as they travel through microservices using Distributed Tracing tools like Jaeger or Zipkin.
+          </p>
+        </div>
+  
+        <div class="api-card highlight">
+          <h3>
+            💥 <a href="https://principlesofchaos.org/" target="_blank" style="color: inherit; text-decoration: none;">Chaos Engineering <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a>
+          </h3>
+          <p>
+            Break things on purpose. Use tools like Chaos Mesh or Gremlin to test system resilience under simulated failure conditions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 6: Cloud Providers -->
+    <section class="roadmap-section js-deep-dive">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge">Step 6</span>
+          <h2 style="margin: 0 !important;">Cloud Architecture</h2>
+        </div>
+        <div class="protocol-description">
+            The physical servers are gone. Modern DevOps requires deep knowledge of at least one major public cloud provider's ecosystem.
+        </div>
+      </div>
+  
+      <div class="js-grid">
+        <div class="js-card">
+          <span class="js-tag">Market Leader</span>
+          <h3>☁️ <a href="https://aws.amazon.com/getting-started/" target="_blank" style="color: inherit; text-decoration: none;">Amazon Web Services (AWS) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Learn the core trinity: EC2 (Compute), S3 (Storage), and VPC (Networking). Expand into IAM, RDS, and EKS.
+          </p>
+        </div>
+  
+        <div class="js-card">
+          <span class="js-tag">Enterprise</span>
+          <h3>💼 <a href="https://learn.microsoft.com/en-us/azure/" target="_blank" style="color: inherit; text-decoration: none;">Microsoft Azure <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Highly integrated with enterprise Microsoft environments. Focus on Azure DevOps, Azure Kubernetes Service (AKS), and Entra ID.
+          </p>
+        </div>
+  
+        <div class="js-card">
+          <span class="js-tag">Data-Centric</span>
+          <h3>📊 <a href="https://cloud.google.com/docs" target="_blank" style="color: inherit; text-decoration: none;">Google Cloud Platform (GCP) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            The birthplace of Kubernetes. Excellent for data analytics and ML. Master GKE, BigQuery, and Cloud Run.
+          </p>
+        </div>
+  
+        <div class="js-card highlight">
+          <span class="js-tag">Serverless</span>
+          <h3>⚡ <a href="https://serverless.com/" target="_blank" style="color: inherit; text-decoration: none;">Serverless Computing <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Focus entirely on code. Learn AWS Lambda, Azure Functions, or Google Cloud Functions for event-driven architectures.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DevOps Glossary -->
+    <section class="roadmap-section">
+        <div class="roadmap-header">
+            <h2 style="margin: 0 !important; text-align: center;">DevOps Terminology Glossary</h2>
+            <p style="text-align: center; color: var(--text-secondary);">The language of Site Reliability</p>
+        </div>
+        
+        <div class="glossary-grid">
+            <div class="glossary-item">
+                <div class="glossary-term">CI/CD</div>
+                <div class="glossary-def">Continuous Integration (merging code frequently) and Continuous Deployment (releasing to production automatically).</div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-term">SRE</div>
+                <div class="glossary-def">Site Reliability Engineering. Applying software engineering practices to IT operations problems.</div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-term">SLI, SLO, SLA</div>
+                <div class="glossary-def">Indicators (metrics), Objectives (internal goals), and Agreements (external contracts) for service reliability.</div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-term">Immutable Infrastructure</div>
+                <div class="glossary-def">Servers that are never modified after deployment. If a change is needed, a new server is deployed.</div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-term">Blue/Green Deployment</div>
+                <div class="glossary-def">Running two identical production environments to switch traffic seamlessly with zero downtime.</div>
+            </div>
+            <div class="glossary-item">
+                <div class="glossary-term">Canary Release</div>
+                <div class="glossary-def">Rolling out a new feature to a small percentage of users before a full deployment to monitor for errors.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 7: Projects -->
+    <section class="roadmap-section projects-section">
+      <div class="roadmap-header">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 15px;">
+          <span class="roadmap-badge Critical">Step 7 • Mission</span>
+          <h2 style="margin: 0 !important;">Real-World Pipeline Projects</h2>
+        </div>
+        <p>
+          Apply your skills by building production-ready pipelines. A true DevOps engineer is a force multiplier for any development team.
+        </p>
+      </div>
+  
+      <div class="projects-grid">
+        <article class="project-card basic">
+          <h3>🏠 Personal Lab</h3>
+          <ul>
+            <li>Home Server (Proxmox/ESXi)</li>
+            <li>Self-hosted Git & CI</li>
+            <li>Local DNS (Pi-hole) & VPN</li>
+          </ul>
+          <span class="level">Beginner</span>
+        </article>
+  
+        <article class="project-card basic">
+          <h3>🚀 Static Site CI/CD</h3>
+          <ul>
+            <li>GitHub Actions to S3</li>
+            <li>CloudFront Invalidation</li>
+            <li>Automated SSL/TLS Setup</li>
+          </ul>
+          <span class="level">Beginner</span>
+        </article>
+  
+        <article class="project-card intermediate">
+          <h3>📦 K8s Microservices</h3>
+          <ul>
+            <li>Deploy 3-tier App on Minikube/EKS</li>
+            <li>Horizontal Pod Autoscaling</li>
+            <li>Persistent Storage Volumes</li>
+          </ul>
+          <span class="level">Intermediate</span>
+        </article>
+  
+        <article class="project-card intermediate">
+          <h3>🏗️ Full Stack IaC</h3>
+          <ul>
+            <li>Provision VPC + EC2 with Terraform</li>
+            <li>Configure nodes with Ansible</li>
+            <li>Zero-Downtime Deployment logic</li>
+          </ul>
+          <span class="level">Intermediate</span>
+        </article>
+  
+        <article class="project-card advanced">
+          <h3>🛡️ DevSecOps Pipeline</h3>
+          <ul>
+            <li>SAST/DAST Code Scanning</li>
+            <li>Trivy Container Vuln Scans</li>
+            <li>HashiCorp Vault for Secrets</li>
+          </ul>
+          <span class="level">Advanced</span>
+        </article>
+  
+        <article class="project-card glow">
+          <h3>🌍 Multi-Region Failover</h3>
+          <ul>
+            <li>Cross-Cloud/Region DR plan</li>
+            <li>Database Global Replication</li>
+            <li>Route53 Global Load Balancing</li>
+          </ul>
+          <span class="level">Advanced</span>
+        </article>
+      </div>
+    </section>
+
+    
+
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    renderFooter('../');
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  <script src="../js/ai-roadmap.js"></script> 
+  <script>
+    // Theme Toggle Handler
+    const toggleBtn = document.querySelector('#theme-toggle');
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      });
+    }
+  </script>
+</body>
+</html>

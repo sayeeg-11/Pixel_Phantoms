@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM_OS | Markdown Processor</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        :root {
+            --neon-green: #00ff88;
+            --bg-dark: #050608;
+            --panel-bg: rgba(10, 15, 20, 0.95);
+            --border-glow: rgba(0, 255, 136, 0.2);
+            --text-main: #e0f7ff;
+        }
+
+        * { box-sizing: border-box; cursor: crosshair; }
+
+        body {
+            background: var(--bg-dark);
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.02), rgba(0, 0, 0, 0), rgba(0, 255, 136, 0.02));
+            background-size: 100% 4px, 3px 100%;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- Scrollbar Styling --- */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green); }
+
+        header {
+            background: var(--panel-bg);
+            border-bottom: 1px solid var(--neon-green);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+            z-index: 10;
+        }
+
+        .logo-box h2 {
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+            font-size: 1rem;
+            text-shadow: 0 0 8px var(--neon-green);
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex: 1;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .pane {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pane:first-child { border-right: 1px solid var(--border-glow); }
+
+        .pane-header {
+            background: rgba(0, 255, 136, 0.05);
+            padding: 8px 20px;
+            font-size: 0.65rem;
+            color: var(--neon-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--border-glow);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        textarea {
+            flex: 1;
+            background: transparent;
+            color: #fff;
+            border: none;
+            padding: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            resize: none;
+            outline: none;
+            tab-size: 4;
+        }
+
+        #preview {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            background: rgba(0, 255, 136, 0.02);
+            line-height: 1.6;
+        }
+
+        /* --- Markdown Styling Overrides --- */
+        #preview h1, #preview h2 { 
+            color: var(--neon-green); 
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 5px;
+            text-transform: uppercase;
+        }
+        #preview code { 
+            background: rgba(0, 255, 136, 0.15); 
+            padding: 2px 6px; 
+            color: var(--neon-green);
+            font-size: 0.9em;
+        }
+        #preview pre {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border: 1px solid var(--border-glow);
+            overflow-x: auto;
+        }
+        #preview blockquote { 
+            border-left: 3px solid var(--neon-green); 
+            margin: 1.5rem 0; 
+            padding: 0.5rem 1.5rem; 
+            background: rgba(0, 255, 136, 0.03);
+            font-style: italic;
+        }
+        #preview hr { border: none; border-top: 1px dashed var(--neon-green); margin: 2rem 0; opacity: 0.5; }
+        #preview table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        #preview th, #preview td { border: 1px solid var(--border-glow); padding: 10px; text-align: left; }
+        #preview th { background: rgba(0, 255, 136, 0.1); color: var(--neon-green); }
+
+        .controls { display: flex; gap: 10px; }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            padding: 6px 14px;
+            font-family: inherit;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--neon-green);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+
+        .btn-danger:hover {
+            background: #ff4444;
+            border-color: #ff4444;
+            box-shadow: 0 0 15px #ff4444;
+        }
+
+        footer {
+            background: var(--panel-bg);
+            border-top: 1px solid var(--border-glow);
+            padding: 5px 20px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: #555;
+        }
+
+        .status-node { color: var(--neon-green); margin-left: 15px; }
+
+        @media (max-width: 850px) {
+            main { grid-template-columns: 1fr; }
+            .pane:first-child { border-right: none; border-bottom: 1px solid var(--border-glow); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-box">
+        <h2>> DATA_STREAM_v2.0</h2>
+    </div>
+    <div class="controls">
+        <button class="btn" onclick="copyHtml()">COPY_RAW_HTML</button>
+        <button class="btn btn-danger" onclick="clearEditor()">WIPE_BUFFER</button>
+    </div>
+</header>
+
+<main>
+    <div class="pane">
+        <div class="pane-header">
+            <span>Uplink_Source</span>
+            <span id="sync-status" style="opacity:0.5">IDLE</span>
+        </div>
+        <textarea id="editor" spellcheck="false" placeholder="Awaiting markdown input..."># DECRYPTION_LOG_001
+## Status: Active
+
+The matrix is currently **synchronizing**. 
+- [x] Establish neural link
+- [ ] Bypass firewall
+- [ ] Export core data
+
+> "The grid is a feeling of constant motion."
+
+---
+
+### Security_Levels
+| Level | Access | Protocol |
+| :--- | :--- | :--- |
+| Alpha | Root | Override |
+| Beta | Admin | Restricted |
+
+`SYSTEM_INIT_COMPLETE`</textarea>
+    </div>
+    <div class="pane">
+        <div class="pane-header">Visual_Render</div>
+        <div id="preview"></div>
+    </div>
+</main>
+
+<footer>
+    <div>PROTOCOL: MD_PARSER_ACTIVE</div>
+    <div>
+        WORDS: <span id="word-count" class="status-node">0</span>
+        CHARS: <span id="char-count" class="status-node">0</span>
+    </div>
+</footer>
+
+<script>
+    const editor = document.getElementById('editor');
+    const preview = document.getElementById('preview');
+    const syncStatus = document.getElementById('sync-status');
+    const wordDisplay = document.getElementById('word-count');
+    const charDisplay = document.getElementById('char-count');
+
+    function updatePreview() {
+        const text = editor.value;
+        
+        // Render Markdown
+        preview.innerHTML = marked.parse(text);
+
+        // Update Stats
+        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+        wordDisplay.textContent = words;
+        charDisplay.textContent = text.length;
+
+        // Visual Sync Feedback
+        syncStatus.textContent = "SYNCING...";
+        syncStatus.style.opacity = "1";
+        setTimeout(() => {
+            syncStatus.textContent = "STABLE";
+            syncStatus.style.opacity = "0.5";
+        }, 500);
+    }
+
+    async function copyHtml() {
+        const html = preview.innerHTML;
+        await navigator.clipboard.writeText(html);
+        
+        const originalText = syncStatus.textContent;
+        syncStatus.textContent = "COPIED_TO_CLIPBOARD";
+        syncStatus.style.color = "var(--neon-green)";
+        setTimeout(() => {
+            syncStatus.textContent = originalText;
+            syncStatus.style.color = "";
+        }, 2000);
+    }
+
+    function clearEditor() {
+        if(confirm("CRITICAL: Wipe entire text buffer?")) {
+            editor.value = '';
+            updatePreview();
+        }
+    }
+
+    editor.addEventListener('input', updatePreview);
+    
+    // Initializing custom marked options for better security/formatting
+    marked.setOptions({
+        breaks: true,
+        gfm: true
+    });
+
+    // Run first render
+    updatePreview();
+</script>
+</body>
+</html>
