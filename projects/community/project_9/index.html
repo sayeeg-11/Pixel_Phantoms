@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Cyber Unit Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-purple: #bc13fe;
+            --bg-dark: #0a0b10;
+            --border-color: rgba(188, 19, 254, 0.3);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0f7ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .converter-box {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid var(--neon-purple);
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 0 25px rgba(188, 19, 254, 0.1);
+        }
+
+        h2 {
+            color: var(--neon-purple);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            color: var(--neon-purple);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input, select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--neon-purple);
+        }
+
+        .result-display {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px dashed var(--neon-purple);
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-purple);
+            word-break: break-all;
+        }
+
+        .btn-convert {
+            width: 100%;
+            background: var(--neon-purple);
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-convert:hover {
+            box-shadow: 0 0 15px var(--neon-purple);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-box">
+    <h2>> DATA_UNIT_CONVERTER_v1.0</h2>
+    
+    <div class="input-group">
+        <div>
+            <label>SOURCE_VALUE</label>
+            <input type="number" id="inputValue" value="1" oninput="convert()">
+        </div>
+        <div>
+            <label>SOURCE_UNIT</label>
+            <select id="fromUnit" onchange="convert()">
+                <option value="B">Bytes (B)</option>
+                <option value="KB">Kilobytes (KB)</option>
+                <option value="MB" selected>Megabytes (MB)</option>
+                <option value="GB">Gigabytes (GB)</option>
+                <option value="TB">Terabytes (TB)</option>
+            </select>
+        </div>
+    </div>
+
+    <label>TARGET_UNIT</label>
+    <select id="toUnit" onchange="convert()" style="margin-bottom: 20px;">
+        <option value="B">Bytes (B)</option>
+        <option value="KB" selected>Kilobytes (KB)</option>
+        <option value="MB">Megabytes (MB)</option>
+        <option value="GB">Gigabytes (GB)</option>
+        <option value="TB">Terabytes (TB)</option>
+    </select>
+
+    <div class="result-display">
+        <label>CALCULATED_OUTPUT</label>
+        <div class="result-value" id="resultValue">1024 KB</div>
+    </div>
+
+    <button class="btn-convert" onclick="copyResult()">COPY_RESULT</button>
+</div>
+
+<script>
+    const units = {
+        'B': 1,
+        'KB': 1024,
+        'MB': 1024 * 1024,
+        'GB': 1024 * 1024 * 1024,
+        'TB': 1024 * 1024 * 1024 * 1024
+    };
+
+    function convert() {
+        const value = parseFloat(document.getElementById('inputValue').value);
+        const from = document.getElementById('fromUnit').value;
+        const to = document.getElementById('toUnit').value;
+        const resultDiv = document.getElementById('resultValue');
+
+        if (isNaN(value)) {
+            resultDiv.textContent = "INVALID_INPUT";
+            return;
+        }
+
+        const bytes = value * units[from];
+        const result = bytes / units[to];
+        
+        // Format result: use 4 decimal places if not an integer
+        const formattedResult = Number.isInteger(result) ? result : result.toFixed(4);
+        resultDiv.textContent = `${formattedResult} ${to}`;
+    }
+
+    async function copyResult() {
+        const result = document.getElementById('resultValue').textContent;
+        await navigator.clipboard.writeText(result);
+        alert(`UPLINK: ${result} copied to clipboard.`);
+    }
+
+    // Initial conversion
+    convert();
+</script>
+</body>
+</html>
