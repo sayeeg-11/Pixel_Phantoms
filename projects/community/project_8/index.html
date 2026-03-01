@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Cyber Morse Translator</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-orange: #ff9d00;
+            --bg-dark: #0a0b10;
+            --border-color: rgba(255, 157, 0, 0.3);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0f7ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .translator-card {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid var(--neon-orange);
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 25px rgba(255, 157, 0, 0.1);
+        }
+
+        h2 {
+            color: var(--neon-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .visualizer {
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px dashed var(--border-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .pulse {
+            width: 10px;
+            height: 10px;
+            background: var(--neon-orange);
+            border-radius: 50%;
+            margin: 0 5px;
+            opacity: 0;
+        }
+
+        .pulse.active {
+            opacity: 1;
+            box-shadow: 0 0 10px var(--neon-orange);
+            transform: scale(1.5);
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            color: var(--neon-orange);
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        textarea {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: none;
+            height: 80px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--neon-orange);
+        }
+
+        .result-box {
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--neon-orange);
+            word-break: break-all;
+            min-height: 40px;
+            color: var(--neon-orange);
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: #00ff88;
+            margin-top: 10px;
+            text-align: right;
+            height: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="translator-card">
+    <h2>> MORSE_TRANSLATOR_v1.0</h2>
+    
+    <div class="visualizer" id="signal-display">
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+        <div class="pulse"></div>
+    </div>
+
+    <div class="input-group">
+        <div class="form-group">
+            <label>TEXT_INPUT / MORSE_INPUT</label>
+            <textarea id="mainInput" placeholder="Enter text or Morse code (./-)..." oninput="autoTranslate()"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>TRANSLATED_OUPUT</label>
+            <div id="resultOutput" class="result-box">Waiting for signal...</div>
+        </div>
+    </div>
+    <div id="status" class="status"></div>
+</div>
+
+<script>
+    const morseDict = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+        'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+        'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+        'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
+        '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
+        '9': '----.', '0': '-----', ' ': '/'
+    };
+
+    const reverseDict = Object.fromEntries(Object.entries(morseDict).map(([k, v]) => [v, k]));
+
+    function autoTranslate() {
+        const input = document.getElementById('mainInput').value.trim().toUpperCase();
+        const resultDiv = document.getElementById('resultOutput');
+        
+        if (!input) {
+            resultDiv.textContent = "Waiting for signal...";
+            return;
+        }
+
+        let result = '';
+        const isMorse = /^[\.\-\/\s]+$/.test(input);
+
+        if (isMorse) {
+            // Decode Morse to Text
+            result = input.split(' ').map(code => reverseDict[code] || '?').join('');
+        } else {
+            // Encode Text to Morse
+            result = input.split('').map(char => morseDict[char] || '?').join(' ');
+        }
+
+        resultDiv.textContent = result;
+        visualizeSignal();
+    }
+
+    function visualizeSignal() {
+        const pulses = document.querySelectorAll('.pulse');
+        pulses.forEach((p, i) => {
+            setTimeout(() => {
+                p.classList.add('active');
+                setTimeout(() => p.classList.remove('active'), 200);
+            }, i * 150);
+        });
+    }
+
+    function showStatus(msg) {
+        const s = document.getElementById('status');
+        s.textContent = `> ${msg}`;
+        setTimeout(() => s.textContent = '', 2000);
+    }
+</script>
+</body>
+</html>
