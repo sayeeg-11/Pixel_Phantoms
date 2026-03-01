@@ -8,6 +8,8 @@
     <link rel="icon" href="assets/logo.png" />
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#00aaff" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#00aaff" />
 
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/back-to-top.css" />
@@ -192,6 +194,7 @@
 }
 .skill-path-wrapper {
   display: flex;
+
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -263,6 +266,7 @@
 }
 .skill-path-wrapper {
   display: flex;
+
   flex-wrap: wrap; 
   align-items: center;
   justify-content: center; 
@@ -318,6 +322,8 @@
       <i class="fas fa-forward" aria-hidden="true"></i> Skip to Main Content
     </a>
 
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
     <div id="cursor-dot"></div>
     <div id="cursor-outline"></div>
     <div id="navbar-placeholder"></div>
@@ -543,14 +549,13 @@
             </div>
           </div>
         </section>
-
         <section class="skill-tree-section" aria-labelledby="skills-heading" id="modules">
           <div class="container">
             <h2 class="section-header-glitch" data-text="UPGRADE_SKILLS" id="skills-heading">
               <span aria-hidden="true">UPGRADE_SKILLS</span>
               <span class="sr-only">Upgrade Skills</span>
             </h2>
-
+        
             <div class="skill-path-wrapper">
               <a href="pages/python-road.html" class="skill-node reveal-node">
                 <div class="node-icon">
@@ -559,9 +564,9 @@
                 <h4>Python_Mastery</h4>
                 <span class="node-level">Lvl 1</span>
               </a>
-
+        
               <div class="connector reveal-node" aria-hidden="true"></div>
-
+        
               <a href="pages/react-road.html" class="skill-node reveal-node">
                 <div class="node-icon">
                   <i class="fab fa-react" aria-hidden="true"></i>
@@ -569,9 +574,9 @@
                 <h4>React_Core</h4>
                 <span class="node-level">Lvl 2</span>
               </a>
-
+        
               <div class="connector reveal-node" aria-hidden="true"></div>
-
+        
               <a href="pages/ai-roadmap.html" class="skill-node reveal-node">
                 <div class="node-icon">
                   <i class="fas fa-robot" aria-hidden="true"></i>
@@ -579,9 +584,9 @@
                 <h4>AI_Neural_Nets</h4>
                 <span class="node-level">Lvl 3</span>
               </a>
-
+        
               <div class="connector reveal-node" aria-hidden="true"></div>
-
+        
               <a href="pages/system-design-road.html" class="skill-node reveal-node">
                 <div class="node-icon">
                   <i class="fab fa-python" aria-hidden="true"></i>
@@ -590,8 +595,11 @@
                 <span class="node-level">Lvl 4</span>
               </a>
               
-              <div class="connector reveal-node" aria-hidden="true"></div>
-        
+
+              <a href="pages/backend-roadmap.html" class="skill-node reveal-node">
+                <div class="node-icon">
+
+
               <a href="pages/backend-roadmap.html" class="skill-node reveal-node">
                 <div class="node-icon">
                   <i class="fas fa-server" aria-hidden="true"></i> </div>
@@ -619,6 +627,40 @@
                 <h4>DevOps_Mastery</h4>
                 <span class="node-level">Lvl 7</span>
               </a>
+        
+        
+            <div class="center-btn" style="width: 100%; display: flex; justify-content: center; margin-top: 40px;">
+
+
+              <a href="pages/backend-roadmap.html" class="skill-node reveal-node">
+                <div class="node-icon">
+                  <i class="fas fa-server" aria-hidden="true"></i> </div>
+
+                <h4>Backend_Mastery</h4>
+                <span class="node-level">Lvl 5</span>
+              </a>
+        
+              <div class="connector-down reveal-node" aria-hidden="true">
+                <i class="fas fa-level-down-alt"></i>
+              </div>
+        
+              <div class="flex-break"></div>
+        
+              <a href="pages/security-roadmap.html" class="skill-node reveal-node">
+                <div class="node-icon">
+                  <i class="fas fa-shield-alt" aria-hidden="true"></i> </div>
+                <h4>Cyber_Security</h4>
+
+                <span class="node-level">Lvl 6</span>
+              </a>
+              <div class="connector reveal-node" aria-hidden="true"></div>
+        
+              <a href="pages/devops-roadmap.html" class="skill-node reveal-node">
+                <div class="node-icon">
+                  <i class="fas fa-server" aria-hidden="true"></i> </div>
+                <h4>DevOps_Mastery</h4>
+                <span class="node-level">Lvl 7</span>
+              </a>
               <div class="connector reveal-node" aria-hidden="true"></div>
         
               <a href="pages/web3-roadmap.html" class="skill-node reveal-node">
@@ -628,6 +670,11 @@
                 <span class="node-level">Lvl 8</span>
               </a>
               <div class="connector reveal-node" aria-hidden="true"></div>
+
+                <span class="node-level">Lvl 5</span>
+              </a>
+        
+
         
               <a href="pages/dataengineer-roadmap.html" class="skill-node reveal-node">
                 <div class="node-icon">
