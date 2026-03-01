@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Phantoms | Cyber Morse Translator</title>
+    <title>PHANTOM_OS | Morse Signal Decryptor</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --neon-orange: #ff9d00;
-            --bg-dark: #0a0b10;
-            --border-color: rgba(255, 157, 0, 0.3);
+            --bg-dark: #050608;
+            --panel-bg: rgba(15, 12, 10, 0.95);
+            --border-glow: rgba(255, 157, 0, 0.2);
         }
+
+        * { box-sizing: border-box; cursor: crosshair; }
 
         body {
             background: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(255, 157, 0, 0.03) 0%, transparent 80%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+            background-size: 100% 100%, 100% 4px, 3px 100%;
             color: #e0f7ff;
             font-family: 'JetBrains Mono', monospace;
             display: flex;
@@ -21,127 +29,190 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            overflow-x: hidden;
+        }
+
+        .terminal-container {
+            width: 95%;
+            max-width: 650px;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: var(--neon-orange);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            display: flex;
+            justify-content: space-between;
+            clip-path: polygon(0 0, 100% 0, 97% 100%, 0% 100%);
         }
 
         .translator-card {
-            background: rgba(20, 20, 30, 0.9);
+            background: var(--panel-bg);
             border: 1px solid var(--neon-orange);
-            padding: 2rem;
-            width: 90%;
-            max-width: 600px;
-            box-shadow: 0 0 25px rgba(255, 157, 0, 0.1);
+            border-top: none;
+            padding: 2.5rem;
+            box-shadow: 0 0 30px rgba(255, 157, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         h2 {
             color: var(--neon-orange);
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            letter-spacing: 4px;
+            margin: 0 0 20px 0;
             font-size: 1.2rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-orange);
         }
 
-        .visualizer {
-            height: 40px;
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px dashed var(--border-color);
-            margin-bottom: 20px;
+        /* Signal Visualizer */
+        .aperture-module {
+            height: 60px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--border-glow);
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .pulse {
-            width: 10px;
-            height: 10px;
-            background: var(--neon-orange);
+        .signal-light {
+            width: 20px;
+            height: 20px;
+            background: #222;
             border-radius: 50%;
-            margin: 0 5px;
-            opacity: 0;
+            transition: 0.05s;
         }
 
-        .pulse.active {
-            opacity: 1;
-            box-shadow: 0 0 10px var(--neon-orange);
-            transform: scale(1.5);
+        .signal-light.active {
+            background: var(--neon-orange);
+            box-shadow: 0 0 25px var(--neon-orange), 0 0 50px var(--neon-orange);
+            transform: scale(1.4);
         }
 
-        .input-group {
+        .input-area {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
         label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--neon-orange);
-            opacity: 0.8;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
         }
 
         textarea {
-            background: rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border-color);
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-glow);
             color: #fff;
-            padding: 12px;
+            padding: 15px;
             font-family: inherit;
             font-size: 1rem;
             resize: none;
-            height: 80px;
+            height: 100px;
+            transition: 0.3s;
         }
 
         textarea:focus {
             outline: none;
             border-color: var(--neon-orange);
+            box-shadow: 0 0 15px rgba(255, 157, 0, 0.1);
         }
 
-        .result-box {
-            margin-top: 10px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
+        .output-box {
+            background: rgba(255, 255, 255, 0.03);
             border-left: 3px solid var(--neon-orange);
+            padding: 15px;
+            min-height: 60px;
             word-break: break-all;
-            min-height: 40px;
             color: var(--neon-orange);
+            font-size: 1.1rem;
+            position: relative;
         }
 
-        .status {
-            font-size: 0.7rem;
-            color: #00ff88;
-            margin-top: 10px;
+        .action-bar {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid var(--neon-orange);
+            color: var(--neon-orange);
+            padding: 12px;
+            font-family: inherit;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.75rem;
+        }
+
+        .btn:hover {
+            background: var(--neon-orange);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-orange);
+        }
+
+        .btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        #status-msg {
+            margin-top: 15px;
+            font-size: 0.65rem;
+            color: #444;
             text-align: right;
-            height: 1rem;
         }
     </style>
 </head>
 <body>
 
-<div class="translator-card">
-    <h2>> MORSE_TRANSLATOR_v1.0</h2>
-    
-    <div class="visualizer" id="signal-display">
-        <div class="pulse"></div>
-        <div class="pulse"></div>
-        <div class="pulse"></div>
-        <div class="pulse"></div>
-        <div class="pulse"></div>
+<div class="terminal-container">
+    <div class="terminal-header">
+        <span>SIGNAL_TYPE: LW_ENCRYPTION</span>
+        <span>OS_v1.0.9</span>
     </div>
 
-    <div class="input-group">
-        <div class="form-group">
-            <label>TEXT_INPUT / MORSE_INPUT</label>
-            <textarea id="mainInput" placeholder="Enter text or Morse code (./-)..." oninput="autoTranslate()"></textarea>
+    <div class="translator-card">
+        <h2>> MORSE_TRANSMITTER</h2>
+        
+        <div class="aperture-module">
+            <div id="signalLight" class="signal-light"></div>
+            <div style="position: absolute; left: 10px; font-size: 0.6rem; color: #444;">AUDIO_VIS_STREAMS</div>
         </div>
 
-        <div class="form-group">
-            <label>TRANSLATED_OUPUT</label>
-            <div id="resultOutput" class="result-box">Waiting for signal...</div>
+        <div class="input-area">
+            <div>
+                <label>Input_Buffer (Text or ./ -)</label>
+                <textarea id="mainInput" placeholder="TYPE_MESSAGE_HERE..." oninput="autoTranslate()"></textarea>
+            </div>
+
+            <div>
+                <label>Decoded_Stream</label>
+                <div id="resultOutput" class="output-box">WAITING_FOR_SIGNAL...</div>
+            </div>
         </div>
+
+        <div class="action-bar">
+            <button id="playBtn" class="btn" onclick="playMorse()">Execute Playback</button>
+            <button class="btn" onclick="copyResult()">Copy</button>
+            <button class="btn" onclick="clearAll()">Reset</button>
+        </div>
+
+        <div id="status-msg">TRANSCEIVER_READY</div>
     </div>
-    <div id="status" class="status"></div>
 </div>
 
 <script>
@@ -152,49 +223,111 @@
         'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
         'Y': '-.--', 'Z': '--..', '1': '.----', '2': '..---', '3': '...--',
         '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..',
-        '9': '----.', '0': '-----', ' ': '/'
+        '9': '----.', '0': '-----', '.': '.-.-.-', ',': '--..--', '?': '..--..',
+        '!': '-.-.--', ' ': '/'
     };
 
     const reverseDict = Object.fromEntries(Object.entries(morseDict).map(([k, v]) => [v, k]));
+    
+    // Audio Context Setup
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    let isPlaying = false;
 
     function autoTranslate() {
         const input = document.getElementById('mainInput').value.trim().toUpperCase();
-        const resultDiv = document.getElementById('resultOutput');
+        const output = document.getElementById('resultOutput');
         
         if (!input) {
-            resultDiv.textContent = "Waiting for signal...";
+            output.textContent = "WAITING_FOR_SIGNAL...";
             return;
         }
 
-        let result = '';
         const isMorse = /^[\.\-\/\s]+$/.test(input);
+        let result = '';
 
         if (isMorse) {
-            // Decode Morse to Text
-            result = input.split(' ').map(code => reverseDict[code] || '?').join('');
+            result = input.split(' ').map(code => reverseDict[code] || '').join('');
         } else {
-            // Encode Text to Morse
-            result = input.split('').map(char => morseDict[char] || '?').join(' ');
+            result = input.split('').map(char => morseDict[char] || '').join(' ');
         }
 
-        resultDiv.textContent = result;
-        visualizeSignal();
+        output.textContent = result;
     }
 
-    function visualizeSignal() {
-        const pulses = document.querySelectorAll('.pulse');
-        pulses.forEach((p, i) => {
+    async function playMorse() {
+        if (isPlaying) return;
+        
+        const text = document.getElementById('mainInput').value.trim().toUpperCase();
+        const isMorseInput = /^[\.\-\/\s]+$/.test(text);
+        
+        // Always play the Morse version
+        const morseCode = isMorseInput ? text : document.getElementById('resultOutput').textContent;
+        
+        if (!morseCode || morseCode.includes("WAITING")) return;
+
+        isPlaying = true;
+        document.getElementById('playBtn').disabled = true;
+        updateStatus("TRANSMITTING...");
+
+        const unit = 100; // ms per dot
+        const light = document.getElementById('signalLight');
+
+        for (const char of morseCode) {
+            if (char === '.') {
+                await pulse(unit, light);
+            } else if (char === '-') {
+                await pulse(unit * 3, light);
+            } else if (char === ' ') {
+                await sleep(unit * 3);
+            } else if (char === '/') {
+                await sleep(unit * 7);
+            }
+            await sleep(unit); // gap between symbols
+        }
+
+        isPlaying = false;
+        document.getElementById('playBtn').disabled = false;
+        updateStatus("TRANSMISSION_COMPLETE");
+    }
+
+    function pulse(duration, element) {
+        return new Promise(resolve => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            element.classList.add('active');
+            osc.start();
+            
             setTimeout(() => {
-                p.classList.add('active');
-                setTimeout(() => p.classList.remove('active'), 200);
-            }, i * 150);
+                osc.stop();
+                element.classList.remove('active');
+                resolve();
+            }, duration);
         });
     }
 
-    function showStatus(msg) {
-        const s = document.getElementById('status');
-        s.textContent = `> ${msg}`;
-        setTimeout(() => s.textContent = '', 2000);
+    function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+
+    function updateStatus(msg) {
+        document.getElementById('status-msg').textContent = msg;
+    }
+
+    function clearAll() {
+        document.getElementById('mainInput').value = '';
+        document.getElementById('resultOutput').textContent = 'WAITING_FOR_SIGNAL...';
+        updateStatus("BUFFER_CLEARED");
+    }
+
+    async function copyResult() {
+        const text = document.getElementById('resultOutput').textContent;
+        await navigator.clipboard.writeText(text);
+        updateStatus("COPIED_TO_CLIPBOARD");
     }
 </script>
 </body>
