@@ -5,7 +5,6 @@
     "description": "A single-file high-visibility neon digital clock with system synchronization.",
     "folder": "project_1",
     "file": "index.html"
-
   },
   {
     "id": "comm_02",
@@ -13,7 +12,6 @@
     "description": "A high-performance falling code animation utilizing HTML5 Canvas and system characters.",
     "folder": "project_2",
     "file": "index.html"
-
   },
   {
     "id": "comm_03",
@@ -21,7 +19,6 @@
     "description": "A secure, single-file password generation utility with custom entropy protocols and strength analysis.",
     "folder": "project_3",
     "file": "index.html"
-
   },
   {
     "id": "comm_04",
@@ -29,7 +26,6 @@
     "description": "A persistent task management interface with local storage integration and terminal-style interactions.",
     "folder": "project_4",
     "file": "index.html"
-
   },
   {
     "id": "comm_05",
@@ -37,6 +33,40 @@
     "description": "A terminal-ready utility for encoding and decoding Base64 data streams with instant validation.",
     "folder": "project_5",
     "file": "index.html"
-
+  },
+  {
+    "id": "comm_06",
+    "title": "Cyber_Epoch_Converter",
+    "description": "A terminal-style utility for converting Unix timestamps to human-readable system time and vice versa.",
+    "folder": "project_6",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_07",
+    "title": "Hex_Color_Sentinel",
+    "description": "A cyber-themed color palette generator for extracting neon and high-contrast HEX codes for UI development.",
+    "folder": "project_7",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_08",
+    "title": "Cyber_Morse_Translator",
+    "description": "A terminal-style utility for encoding and decoding encrypted Morse code transmissions with a real-time signal visualizer.",
+    "folder": "project_8",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_09",
+    "title": "Cyber_Unit_Converter",
+    "description": "A high-tech data storage converter for translating between Bytes, KB, MB, GB, and TB with precision system metrics.",
+    "folder": "project_9",
+    "file": "index.html"
+  },
+  {
+    "id": "comm_10",
+    "title": "Cyber_Markdown_Previewer",
+    "description": "A real-time Markdown editor and visualizer with live system rendering and terminal styling.",
+    "folder": "project_10",
+    "file": "index.html"
   }
 ]
