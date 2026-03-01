@@ -19,28 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Hide loader after page fully loads
   window.addEventListener('load', hideLoader);
 
-  // ✅ Event delegation (works even if navbar links are added later)
-  document.addEventListener('click', e => {
-    const link = e.target.closest('a');
-    if (!link) return;
-
-    const href = link.getAttribute('href');
-    if (!href) return;
-
-    // Ignore hash links, external links, mailto/tel
-    if (
-      href.startsWith('#') ||
-      href.startsWith('http') ||
-      href.startsWith('mailto:') ||
-      href.startsWith('tel:')
-    ) {
-      return;
-    }
-
-    // Show loader for internal navigation
-    showLoader();
-  });
-
   /* ============================
      SERVICE WORKER REGISTRATION
      ============================ */
@@ -60,5 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('SW registration failed: ', registrationError);
         });
     });
+  }
+
+  // ✅ Initialize SPA Router
+  if (window.PageTransitions) {
+    PageTransitions.init();
   }
 });

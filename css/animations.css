@@ -16,14 +16,16 @@ Requirements implemented:
 :root {
   /* Default duration, can be overridden by a page or script */
   --page-transition-duration: 300ms;
-  --page-transition-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --page-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* A wrapper around page content. Keep it relative so children can be positioned. */
 .page-transition-wrapper {
   position: relative;
-  overflow: hidden; /* prevent scrollbars during slide animations */
-  contain: layout; /* improve rendering performance */
+  overflow: hidden;
+  /* prevent scrollbars during slide animations */
+  contain: layout;
+  /* improve rendering performance */
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -31,45 +33,77 @@ Requirements implemented:
 /* Base state for entering pages (before animation starts) */
 .page-enter {
   opacity: 0;
-  transform: translateX(6%); /* subtle offset for slide effect */
-  will-change: transform, opacity;
+  transform: translateX(20px) scale(0.98);
+  filter: blur(10px);
+  will-change: transform, opacity, filter;
 }
 
 /* Active entering state (animation applied) */
 .page-enter-active {
-  transition: opacity var(--page-transition-duration) var(--page-transition-easing),
-              transform var(--page-transition-duration) var(--page-transition-easing);
+  transition:
+    opacity var(--page-transition-duration) var(--page-transition-easing),
+    transform var(--page-transition-duration) var(--page-transition-easing),
+    filter var(--page-transition-duration) var(--page-transition-easing);
   opacity: 1;
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
+  filter: blur(0);
 }
 
 /* Base state for exiting pages (before animation starts) */
 .page-exit {
   opacity: 1;
-  transform: translateX(0);
-  will-change: transform, opacity;
+  transform: translateX(0) scale(1);
+  filter: blur(0);
+  will-change: transform, opacity, filter;
 }
 
 /* Active exiting state (animation applied) */
 .page-exit-active {
-  transition: opacity var(--page-transition-duration) var(--page-transition-easing),
-              transform var(--page-transition-duration) var(--page-transition-easing);
+  transition:
+    opacity var(--page-transition-duration) var(--page-transition-easing),
+    transform var(--page-transition-duration) var(--page-transition-easing),
+    filter var(--page-transition-duration) var(--page-transition-easing);
   opacity: 0;
-  transform: translateX(-6%); /* slide slightly left when leaving */
-  pointer-events: none; /* avoid interactions during exit */
+  transform: translateX(-20px) scale(0.98);
+  filter: blur(10px);
+  pointer-events: none;
+  /* avoid interactions during exit */
 }
 
 /* Alternative utility classes for purely fading (no slide) */
-.fade-enter { opacity: 0; }
-.fade-enter-active { opacity: 1; transition: opacity var(--page-transition-duration) var(--page-transition-easing); }
-.fade-exit { opacity: 1; }
-.fade-exit-active { opacity: 0; transition: opacity var(--page-transition-duration) var(--page-transition-easing); pointer-events: none; }
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity var(--page-transition-duration) var(--page-transition-easing);
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity var(--page-transition-duration) var(--page-transition-easing);
+  pointer-events: none;
+}
 
 /* Developer helper: fast reduced-motion fallback */
 @media (prefers-reduced-motion: reduce) {
-  :root { --page-transition-duration: 1ms; }
-  .page-enter, .page-enter-active, .page-exit, .page-exit-active,
-  .fade-enter, .fade-enter-active, .fade-exit, .fade-exit-active {
+  :root {
+    --page-transition-duration: 1ms;
+  }
+
+  .page-enter,
+  .page-enter-active,
+  .page-exit,
+  .page-exit-active,
+  .fade-enter,
+  .fade-enter-active,
+  .fade-exit,
+  .fade-exit-active {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
@@ -89,6 +123,7 @@ Requirements implemented:
   pointer-events: none;
   transition: opacity calc(var(--page-transition-duration) / 2) var(--page-transition-easing);
 }
+
 .page-loading-overlay.show {
   opacity: 1;
   pointer-events: auto;
@@ -98,7 +133,7 @@ Requirements implemented:
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 4px solid rgba(255,255,255,0.3);
+  border: 4px solid rgba(255, 255, 255, 0.3);
   border-top-color: #fff;
   animation: spin 1s linear infinite;
   -webkit-backface-visibility: hidden;
@@ -106,18 +141,23 @@ Requirements implemented:
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Respect reduced motion for the spinner too */
 @media (prefers-reduced-motion: reduce) {
-  .page-loading-spinner { animation: none; }
+  .page-loading-spinner {
+    animation: none;
+  }
 }
 
 /* Accessibility: visually-hidden utility (if needed) */
 .visually-hidden {
   position: absolute !important;
-  height: 1px; width: 1px;
+  height: 1px;
+  width: 1px;
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
