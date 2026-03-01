@@ -54,6 +54,11 @@ function renderNavbar(basePath = '') {
   setActiveNavItem();
 }
 
+// Listen for SPA page changes to update active states
+document.addEventListener('router:page-changed', () => {
+  setActiveNavItem();
+});
+
 // Set the active nav item based on the current page URL
 function setActiveNavItem() {
   const currentPath = window.location.pathname;

@@ -17,24 +17,24 @@
   --activity-icon-color: #ffffff;
 
   /* Footer Light Theme Variables */
-  --footer-bg: #fcfcff;
-  --footer-bg-secondary: #16213e;
-  --footer-text: #e6e6e6;
-  --footer-text-secondary: #a0aec0;
-  --footer-heading: #ffffff;
-  --footer-link: #cbd5e0;
-  --footer-link-hover: #ffffff;
-  --footer-border: #2d3748;
-  --social-bg: #2d3748;
-  --social-bg-hover: #4a5568;
-  --social-icon: #cbd5e0;
-  --social-icon-hover: #ffffff;
-  --social-border: #4a5568;
-  --footer-input-bg: #2d3748;
-  --input-border: #4a5568;
-  --input-text: #e2e8f0;
-  --input-placeholder: #cbd5e1;
-  --accent-primary: #667eea;
+  --footer-bg: #f8fafc;
+  --footer-bg-secondary: #ffffff;
+  --footer-text: #475569;
+  --footer-text-secondary: #64748b;
+  --footer-heading: #0f172a;
+  --footer-link: #475569;
+  --footer-link-hover: #0ea5e9;
+  --footer-border: #e2e8f0;
+  --social-bg: #f1f5f9;
+  --social-bg-hover: #e2e8f0;
+  --social-icon: #475569;
+  --social-icon-hover: #0ea5e9;
+  --social-border: #cbd5e1;
+  --footer-input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-text: #0f172a;
+  --input-placeholder: #94a3b8;
+  --accent-primary: #0ea5e9;
   --accent-secondary: #764ba2;
 
   /* Font Variables for Consistency */

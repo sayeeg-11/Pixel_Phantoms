@@ -22,6 +22,125 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
   </head>
+  <style>
+   /* ================= COMMUNITY SHOWCASE ================= */
+.community-showcase-section {
+  padding: 80px 20px;
+  background: rgba(10, 11, 16, 0.5);
+  border-top: 1px dashed var(--border-color);
+}
+
+.showcase-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#community-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.showcase-card {
+  background: var(--card-bg);
+  border: 1px dashed var(--accent-color);
+  border-radius: 15px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.showcase-card:hover {
+  transform: translateY(-5px);
+  border-style: solid;
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.2);
+}
+
+.showcase-card h3 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.showcase-card p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+/* LIGHT MODE OVERRIDE: Forces description text to black */
+.hacker-theme.light-mode .showcase-card p {
+    color: #000000 !important;
+}
+
+.showcase-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-cyber, .btn-terminal {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-cyber {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.btn-cyber:hover {
+  box-shadow: 0 0 15px var(--accent-color);
+  filter: brightness(1.1);
+}
+
+.btn-terminal {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary) !important;
+}
+
+/* LIGHT MODE OVERRIDE: Forces COPY_SOURCE button text to black */
+.hacker-theme.light-mode .showcase-card .btn-terminal {
+    color: #000000 !important;
+    border-color: #000000;
+}
+
+.btn-terminal:hover {
+  background: var(--border-color);
+  color: white !important;
+}
+
+/* Copy Notification Toast */
+.copy-notification {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: bold;
+  z-index: 2000;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+  </style>
   <body class="hacker-theme">
     <div id="scroll-progress-container">
       <div id="scroll-progress-bar"></div>
@@ -57,6 +176,7 @@
           >
             <i class="fab fa-discord"></i> Join Discord Server
           </a>
+        
         </div>
       </section>
 
@@ -175,11 +295,22 @@
           </div>
         </div>
       </section>
+
+      <section class="content community-showcase-section reveal" aria-labelledby="showcase-title">
+        <h2 class="section-title" id="showcase-title">Community Showcase</h2>
+        
+        <div class="showcase-container">
+          <div class="projects-grid" id="community-grid">
+            <div class="loader-text">Initializing system link...</div>
+          </div>
+        </div>
+      </section>
     </div>
     </main>
 
     <div id="footer-placeholder"></div>
     <script src="../js/footer.js"></script>
+    <script src="../js/community-showcase.js"></script>
     <script>
       const basePath = '../';
       document.addEventListener('DOMContentLoaded', () => {
