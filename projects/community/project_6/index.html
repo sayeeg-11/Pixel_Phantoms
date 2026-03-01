@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Phantoms | Cyber Epoch Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-cyan: #00e5ff;
+            --bg-dark: #0a0b10;
+            --border-color: rgba(0, 229, 255, 0.3);
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: #e0f7ff;
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .converter-card {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid var(--neon-cyan);
+            padding: 2.5rem;
+            width: 95%;
+            max-width: 600px;
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.1);
+        }
+
+        h2 {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .current-epoch {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border: 1px dashed var(--neon-cyan);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .current-epoch span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        .input-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 0.75rem;
+            color: var(--neon-cyan);
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+        }
+
+        .btn-convert {
+            background: var(--neon-cyan);
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-convert:hover {
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transform: translateY(-2px);
+        }
+
+        .result-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--neon-cyan);
+            word-break: break-all;
+            min-height: 40px;
+        }
+
+        .status {
+            font-size: 0.7rem;
+            color: #48bb78;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<div class="converter-card">
+    <h2>> EPOCH_CONVERTER_v1.0</h2>
+    
+    <div class="current-epoch">
+        <label>CURRENT_SYSTEM_EPOCH</label>
+        <span id="liveEpoch">0000000000</span>
+    </div>
+
+    <div class="input-section">
+        <div class="form-group">
+            <label>UNIX_TIMESTAMP_TO_HUMAN</label>
+            <input type="number" id="tsInput" placeholder="Enter timestamp (e.g. 1700000000)">
+            <button class="btn-convert" onclick="toHuman()">CONVERT_TO_DATE</button>
+            <div id="humanResult" class="result-box">Waiting for input...</div>
+        </div>
+
+        <div style="margin: 10px 0; border-top: 1px dashed var(--border-color);"></div>
+
+        <div class="form-group">
+            <label>HUMAN_DATE_TO_TIMESTAMP</label>
+            <input type="text" id="dateInput" placeholder="YYYY-MM-DD HH:MM:SS">
+            <button class="btn-convert" onclick="toEpoch()">CONVERT_TO_EPOCH</button>
+            <div id="epochResult" class="result-box">Waiting for input...</div>
+        </div>
+    </div>
+    <div id="status" class="status"></div>
+</div>
+
+<script>
+    // Live Epoch Counter
+    function updateLive() {
+        document.getElementById('liveEpoch').textContent = Math.floor(Date.now() / 1000);
+    }
+    setInterval(updateLive, 1000);
+    updateLive();
+
+    // Convert Timestamp to Human Date
+    function toHuman() {
+        const ts = document.getElementById('tsInput').value;
+        const resultDiv = document.getElementById('humanResult');
+        if (!ts) return;
+
+        try {
+            const date = new Date(ts * 1000);
+            if (isNaN(date.getTime())) throw new Error();
+            resultDiv.textContent = `UTC: ${date.toUTCString()} | LOCAL: ${date.toLocaleString()}`;
+            showStatus("CONVERSION_COMPLETE");
+        } catch (e) {
+            resultDiv.textContent = "ERROR: INVALID_TIMESTAMP_PROTOCOL";
+        }
+    }
+
+    // Convert Human Date to Epoch
+    function toEpoch() {
+        const dateStr = document.getElementById('dateInput').value;
+        const resultDiv = document.getElementById('epochResult');
+        if (!dateStr) return;
+
+        try {
+            const date = new Date(dateStr);
+            if (isNaN(date.getTime())) throw new Error();
+            resultDiv.textContent = `EPOCH: ${Math.floor(date.getTime() / 1000)}`;
+            showStatus("CONVERSION_COMPLETE");
+        } catch (e) {
+            resultDiv.textContent = "ERROR: INVALID_DATE_FORMAT (Use YYYY-MM-DD)";
+        }
+    }
+
+    function showStatus(msg) {
+        const s = document.getElementById('status');
+        s.textContent = `> ${msg}`;
+        setTimeout(() => s.textContent = '', 3000);
+    }
+
+    // Set default date input to now for convenience
+    document.getElementById('dateInput').value = new Date().toISOString().slice(0, 19).replace('T', ' ');
+</script>
+</body>
+</html>
