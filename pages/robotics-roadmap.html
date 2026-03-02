@@ -1,0 +1,1112 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Robotics & Physical AI Protocol</title>
+  <meta name="description" content="Bridge the Intelligence Gap. Learn to deploy Physical AI, master ROS 2, Perception, Kinematics, and Sim-to-Real robotics transfer." />
+  <link rel="icon" href="../assets/logo.png" />
+  
+  <link rel="stylesheet" href="../css/ai-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/system-design-road.css" />
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  
+  <!-- Font and Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       ROBOTICS & PHYSICAL AI SPECIFIC STYLES & OVERRIDES 
+       ========================================================================== */
+    :root {
+      /* Cyber-Industrial / Mecha Palette */
+      --robo-primary: #ff5500;    /* Industrial Orange */
+      --robo-secondary: #4a90e2;  /* Sensor Blue */
+      --robo-accent: #f0c000;     /* Warning Yellow */
+      --robo-dark: #0a0b0e;       /* Metallic Dark */
+      --ros-color: #22314E;       /* ROS Navy */
+      --slam-color: #00ffaa;      /* LiDAR Green */
+      --sim-color: #76b900;       /* NVIDIA Green */
+      --kinematics-color: #d100d1;/* Math Purple */
+    }
+
+    body.hacker-theme {
+      background-color: #060709;
+      color: #e0e2e5;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Gradients for Text */
+    .robo-gradient {
+      background: linear-gradient(90deg, var(--robo-primary) 0%, var(--robo-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .fw-gradient {
+      background: linear-gradient(90deg, var(--robo-secondary) 0%, var(--robo-primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      padding: 150px 0 80px;
+      border-bottom: 1px solid rgba(255, 85, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(255, 85, 0, 0.05) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Grid Overlay for Industrial Feel */
+    .intro-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 30px 30px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .intro-left {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 40px;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .section-desc {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #a0aab5;
+      margin-bottom: 30px;
+      max-width: 650px;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ccc;
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 85, 0, 0.1);
+      border-radius: 4px;
+      border: 1px solid rgba(255, 85, 0, 0.3);
+      color: var(--robo-primary);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, var(--robo-primary), var(--robo-accent));
+      color: #000;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 1.1rem;
+      border-radius: 2px;
+      box-shadow: 0 0 20px rgba(255, 85, 0, 0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 1px solid transparent;
+      clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(240, 192, 0, 0.6);
+      transform: translateY(-2px);
+      background: #fff;
+      border-color: var(--robo-primary);
+    }
+
+    .intro-right {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Complex Mecha Animation Card */
+    .animation-card {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .robot-arm {
+      width: 160px;
+      z-index: 10;
+      animation: arm-move 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(255, 85, 0, 0.6));
+    }
+
+    .lidar-scan {
+      position: absolute;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 255, 170, 0.1);
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .lidar-scan::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 50%; height: 50%;
+      background: linear-gradient(to right, rgba(0, 255, 170, 0) 0%, rgba(0, 255, 170, 0.4) 100%);
+      transform-origin: 0% 0%;
+      animation: radar-spin 3s linear infinite;
+    }
+
+    .mech-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(74, 144, 226, 0.3);
+      animation: spin linear infinite;
+    }
+
+    .ring1 { width: 220px; height: 220px; animation-duration: 15s; border-color: rgba(255, 85, 0, 0.3); }
+    .ring2 { width: 280px; height: 280px; border-style: dotted; border-width: 4px; border-color: rgba(74, 144, 226, 0.2); animation-duration: 20s; animation-direction: reverse; }
+    .ring3 { width: 340px; height: 340px; animation-duration: 25s; border: 1px solid rgba(255, 255, 255, 0.1); }
+
+    /* Roadmap Sections */
+    .roadmap-wrapper {
+      padding: 60px 0;
+      background: #060709;
+    }
+
+    .roadmap-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .roadmap-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .roadmap-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba(255, 85, 0, 0.1);
+      color: var(--robo-primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      border: 1px solid var(--robo-primary);
+      border-radius: 2px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .roadmap-badge.Critical {
+      background: rgba(240, 192, 0, 0.1);
+      color: #f0c000;
+      border-color: #f0c000;
+    }
+
+    .roadmap-header h2 {
+      font-size: 2.5rem;
+      margin: 10px 0 20px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .roadmap-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: #a0aab5;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Card Grids */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .roadmap-card {
+      background: rgba(14, 17, 23, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Hardware circuit board accents on cards */
+    .roadmap-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 40px; height: 40px;
+      background: radial-gradient(circle at 100% 100%, rgba(255, 85, 0, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .roadmap-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--robo-primary), var(--robo-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .roadmap-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 85, 0, 0.3);
+      background: rgba(20, 24, 32, 0.9);
+    }
+
+    .roadmap-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .roadmap-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .roadmap-card h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .roadmap-card h3 a:hover {
+      color: var(--robo-accent);
+    }
+
+    .roadmap-card p {
+      color: #909ba8;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* Specific Tag Styles */
+    .tag {
+      position: absolute;
+      top: 15px; right: 15px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.ros { background: rgba(34, 49, 78, 0.3); color: #82aaff; border: 1px solid #4a90e2; }
+    .tag.perception { background: rgba(0, 255, 170, 0.1); color: #00ffaa; border: 1px solid #00ffaa; }
+    .tag.kinematics { background: rgba(209, 0, 209, 0.1); color: #e65ce6; border: 1px solid #d100d1; }
+    .tag.sim { background: rgba(118, 185, 0, 0.1); color: #76b900; border: 1px solid #76b900; }
+    .tag.physical-ai { background: rgba(255, 85, 0, 0.1); color: #ff5500; border: 1px solid #ff5500; }
+
+    .highlight-card {
+      border: 1px solid rgba(255, 85, 0, 0.3);
+      box-shadow: inset 0 0 20px rgba(255, 85, 0, 0.05);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #0d1017;
+      border: 1px solid #2d333b;
+      border-radius: 4px;
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 95% 100%, 0 100%);
+    }
+    
+    .project-card:hover {
+      border-color: var(--robo-primary);
+      box-shadow: 0 5px 20px rgba(255, 85, 0, 0.15);
+    }
+
+    .project-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
+      color: #a0aab5;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .level {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-weight: bold;
+    }
+
+    .project-card.basic .level { background: rgba(74, 144, 226, 0.1); color: #4a90e2; border: 1px solid rgba(74, 144, 226, 0.3); }
+    .project-card.intermediate .level { background: rgba(240, 192, 0, 0.1); color: #f0c000; border: 1px solid rgba(240, 192, 0, 0.3); }
+    .project-card.advanced .level { background: rgba(255, 85, 0, 0.1); color: #ff5500; border: 1px solid rgba(255, 85, 0, 0.3); }
+    
+    .project-card.glow {
+      box-shadow: 0 0 30px rgba(255, 85, 0, 0.15);
+      border-color: rgba(255, 85, 0, 0.5);
+    }
+
+    /* Code Snippet Blueprint Section */
+    .blueprint-section {
+      background: #040507;
+      padding: 80px 0;
+      border-top: 1px solid #1a1e24;
+      border-bottom: 1px solid #1a1e24;
+      position: relative;
+    }
+
+    /* Terminal/IDE Window */
+    .code-window {
+      background: #0d1117;
+      border-radius: 6px;
+      border: 1px solid #30363d;
+      overflow: hidden;
+      margin: 30px auto;
+      max-width: 950px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+
+    .code-header {
+      background: #161b22;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #30363d;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .code-title {
+      color: #8b949e;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin-left: 15px;
+    }
+
+    .code-body {
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .code-body pre {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #c9d1d9;
+    }
+
+    /* Syntax Highlighting Mock (GitHub Dark Dimmed style) */
+    .kw { color: #ff7b72; font-weight: bold; } /* Keyword */
+    .tp { color: #79c0ff; } /* Type/Class */
+    .fn { color: #d2a8ff; } /* Function */
+    .st { color: #a5d6ff; } /* String */
+    .cm { color: #8b949e; font-style: italic; } /* Comment */
+    .vr { color: #c9d1d9; } /* Variable */
+    .op { color: #ff7b72; } /* Operator */
+    .num { color: #79c0ff; } /* Numbers */
+
+    /* Glossary Section */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .glossary-item {
+      background: #0d1117;
+      padding: 25px;
+      border-left: 4px solid var(--robo-primary);
+      border-radius: 2px 6px 6px 2px;
+      transition: background 0.3s ease;
+    }
+    
+    .glossary-item:hover {
+      background: #161b22;
+    }
+
+    .glossary-item h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0 0 12px 0;
+      font-size: 1.15rem;
+    }
+
+    .glossary-item p {
+      color: #8b949e;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Keyframes */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes radar-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes arm-move {
+      0% { transform: rotate(-5deg); }
+      50% { transform: rotate(15deg) translateY(-5px); }
+      100% { transform: rotate(-5deg); }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .section-title { font-size: 2.2rem; }
+      .intro-right { display: none; }
+      .roadmap-header h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body class="hacker-theme">
+  <!-- Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    if (typeof renderNavbar === 'function') {
+      renderNavbar('../');
+    }
+  </script>
+
+  <!-- HERO SECTION -->
+  <section id="robotics-intro" class="intro-section">
+    <div class="container">
+      <div class="intro-left">
+        <h2 class="section-title">Physical AI & <br><span class="robo-gradient">Robotics Protocol</span></h2>
+        <p class="section-desc">
+          <strong>The 2026 Intelligence Gap:</strong> While digital AI excels, the next frontier is deploying machine learning onto hardware. Master Physical AI to architect systems capable of perceiving, reasoning, and acting within dynamic, real-world environments.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-microchip"></i></span>
+            The Robot Nervous System (ROS 2 & Linux)
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-eye"></i></span>
+            Perception, SLAM, & Spatial Awareness
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-vr-cardboard"></i></span>
+            Sim-to-Real Transfer & Digital Twins
+          </li>
+        </ul>
+        <a href="#roadmap-start" class="btn-primary">Initialize Hardware</a>
+      </div>
+
+      <div class="intro-right">
+        <div class="animation-card">
+          <!-- Industrial Robotic Arm Icon -->
+           
+          <img src="https://cdn-icons-png.flaticon.com/512/2822/2822184.png" alt="Robotic Arm" class="robot-arm" style="filter: invert(56%) sepia(93%) saturate(1633%) hue-rotate(1deg) brightness(101%) contrast(104%);">
+          
+          <div class="lidar-scan"></div>
+          <div class="mech-ring ring1"></div>
+          <div class="mech-ring ring2"></div>
+          <div class="mech-ring ring3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP CONTENT -->
+  <div class="roadmap-wrapper" id="roadmap-start">
+  
+    <!-- PHASE 1: THE ROBOT NERVOUS SYSTEM -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 1</span>
+          <h2>The Robot Nervous System (ROS 2)</h2>
+          <p>
+            Modern robots aren't built on monolithic scripts. They run on ROS 2—the industry standard framework for distributed, modular robotics communication.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag ros">System</span>
+            <h3>🐧 <a href="https://ubuntu.com/robotics" target="_blank">Linux & C++/Python <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Robotics development demands Ubuntu Linux. Master the terminal, write highly optimized C++ for motor control, and utilize Python for high-level AI and API integrations.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag ros">Framework</span>
+            <h3>🤖 <a href="https://docs.ros.org/en/humble/index.html" target="_blank">ROS 2 Fundamentals <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn the core building blocks: Nodes (individual processes), Topics (data streams), Publishers/Subscribers, Services (RPC), and Actions (long-running tasks).
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag ros">Networking</span>
+            <h3>📡 <a href="https://design.ros2.org/articles/ros_on_dds.html" target="_blank">DDS Middleware <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Understand Data Distribution Service (DDS). It's the secure, real-time networking protocol that ensures your robot's camera data reaches its processor with zero latency.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag ros">Debugging</span>
+            <h3>🛠️ <a href="https://docs.ros.org/en/foxy/Concepts/About-RQt.html" target="_blank">RQt & TF2 <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Use RQt graphs to visualize how your robot's software nodes connect. Master TF2 (Transform Framework) to track coordinate frames (e.g., where the arm is relative to the base).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 2: PERCEPTION & SPATIAL AWARENESS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 2</span>
+          <h2>Perception & Spatial Awareness</h2>
+          <p>
+            A robot without sensors is blind. Learn how to process visual data and use LiDAR to map dynamic environments in real-time.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag perception">Vision</span>
+            <h3>👁️ <a href="https://opencv.org/" target="_blank">Computer Vision (OpenCV) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Process RGB camera feeds. Implement color thresholding, edge detection (Canny), and ArUco marker tracking to allow robots to recognize and locate objects.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag perception">Sensors</span>
+            <h3>📏 <a href="https://en.wikipedia.org/wiki/Lidar" target="_blank">LiDAR & Point Clouds <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Handle 2D and 3D LiDAR data. Learn to parse Point Cloud Data (PCL) to detect distances, identify obstacles, and create topological scans of the environment.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag perception">Mapping</span>
+            <h3>🗺️ <a href="https://navigation.ros.org/tutorials/docs/navigation2_with_slam.html" target="_blank">SLAM Algorithms <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Simultaneous Localization and Mapping. The holy grail of mobile robotics. Use algorithms like Cartographer or RTAB-Map to build maps while tracking the robot's location inside them.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag perception">State</span>
+            <h3>🔄 <a href="https://en.wikipedia.org/wiki/Kalman_filter" target="_blank">Sensor Fusion & Odometry <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              No sensor is perfect. Use Extended Kalman Filters (EKF) to mathematically fuse wheel encoders, IMU (gyroscope), and GPS data for accurate position estimation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 3: KINEMATICS & MOTION PLANNING -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 3</span>
+          <h2>Kinematics & Motion Planning</h2>
+          <p>
+            The math of movement. Translate high-level commands ("pick up the cup") into low-level electrical signals that move physical joints safely.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag kinematics">Math</span>
+            <h3>📐 <a href="https://en.wikipedia.org/wiki/Inverse_kinematics" target="_blank">Inverse Kinematics (IK) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              If a robotic arm needs its hand at coordinates (X, Y, Z), what angles must its 6 joints be? Master the linear algebra and Jacobian matrices required to solve IK.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag kinematics">Manipulation</span>
+            <h3>🏗️ <a href="https://moveit.ros.org/" target="_blank">MoveIt 2 <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The industry standard for robotic arm manipulation. Configure your robot's URDF (Unified Robot Description Format) to use MoveIt for automated trajectory generation.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag kinematics">Navigation</span>
+            <h3>🏎️ <a href="https://navigation.ros.org/" target="_blank">Nav2 (ROS Navigation) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              For mobile robots. Implement global path planning (A*, Dijkstra) to find the shortest route, and local planning (DWA) to avoid dynamic obstacles like walking humans.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag kinematics">Control</span>
+            <h3>🎛️ <a href="https://en.wikipedia.org/wiki/PID_controller" target="_blank">PID Controllers <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Proportional-Integral-Derivative loops. The fundamental control theory algorithm used to ensure motors reach their target speeds smoothly without violent oscillation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 4: SIM-TO-REAL TRANSFER -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 4</span>
+          <h2>Sim-to-Real & Digital Twins</h2>
+          <p>
+            Hardware breaks, and testing AI on physical robots is dangerous. Train your models in physics-accurate virtual environments before real-world deployment.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag sim">Simulation</span>
+            <h3>🎮 <a href="https://gazebosim.org/home" target="_blank">Gazebo & PyBullet <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Start with open-source physics engines. Build worlds, spawn your robot URDF, and simulate gravity, friction, and LiDAR rays entirely in software.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag sim">Enterprise</span>
+            <h3>🟢 <a href="https://developer.nvidia.com/isaac-sim" target="_blank">NVIDIA Isaac Sim <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The future of Digital Twins. Utilize NVIDIA Omniverse for photorealistic, GPU-accelerated simulations to train vision models on synthetically generated data.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag sim">RL</span>
+            <h3>🧠 <a href="https://gymnasium.farama.org/" target="_blank">Reinforcement Learning <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Train robots using trial and error. Use libraries like Stable Baselines3 to teach robotic dogs how to walk by rewarding forward progress in simulation.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag sim">Transfer</span>
+            <h3>🎲 <a href="https://bair.berkeley.edu/blog/2019/03/14/domain-randomization/" target="_blank">Domain Randomization <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The real world is messy. To prevent AI from overfitting to the simulator, heavily randomize the virtual lighting, friction, and camera noise during training.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 5: PHYSICAL AI AGENTS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge Critical">Phase 5 • Critical</span>
+          <h2>Physical AI Agents & VLA Models</h2>
+          <p>
+            Moving beyond hardcoded paths. Architecting autonomous agents that use large multimodal models to understand natural language and act physically.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag physical-ai">Models</span>
+            <h3>🦾 <a href="https://robotics-transformer2.github.io/" target="_blank">VLA Models (RT-X) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Vision-Language-Action. Study models like Google's RT-2 that take camera images and text ("pick up the apple") and directly output motor joint velocities.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag physical-ai">Edge</span>
+            <h3>⚡ <a href="https://developer.nvidia.com/embedded/jetson-nano" target="_blank">Edge Computing <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Robots can't rely on cloud latency to avoid walls. Deploy quantized, lightweight AI models directly onto onboard hardware like NVIDIA Jetson or Raspberry Pi.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag physical-ai">Loop</span>
+            <h3>🪞 <a href="#" target="_blank">Self-Correcting Loops <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Implement continuous feedback. The AI attempts to grasp an object -> detects a slip via force sensors -> autonomously adjusts its grip strength in real-time.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag physical-ai">Safety</span>
+            <h3>🛡️ <a href="https://en.wikipedia.org/wiki/Fail-safe" target="_blank">Hardware Guardrails <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              AI makes mistakes. Physical mistakes break things. Implement hardcoded, non-AI software overrides (Emergency Stops, speed limits) to ensure human safety.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLUEPRINT SECTION: CODE EXAMPLES -->
+    <section class="blueprint-section">
+      <div class="container">
+        <div class="roadmap-header" style="margin-bottom: 30px;">
+          <h2>Architectural Blueprints</h2>
+          <p>A glimpse into the ROS 2 code that powers physical machine control.</p>
+        </div>
+
+        <!-- Code Window 1: ROS 2 Publisher -->
+        <div class="code-window">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="code-title">queen_controller_node.py (ROS 2 Humble)</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="kw">import</span> rclpy
+<span class="kw">from</span> rclpy.node <span class="kw">import</span> Node
+<span class="kw">from</span> geometry_msgs.msg <span class="kw">import</span> Twist
+
+<span class="kw">class</span> <span class="tp">SupremeCommanderNode</span>(Node):
+    <span class="kw">def</span> <span class="fn">__init__</span>(<span class="vr">self</span>):
+        <span class="fn">super</span>().<span class="fn">__init__</span>(<span class="st">'queen_of_the_world_controller'</span>)
+        
+        <span class="cm"># The Queen dictates the velocity of the robotic swarm</span>
+        <span class="vr">self</span>.publisher_ <span class="op">=</span> <span class="vr">self</span>.create_publisher(Twist, <span class="st">'cmd_vel'</span>, <span class="num">10</span>)
+        
+        <span class="cm"># Execute control loop every 0.1 seconds (10Hz)</span>
+        <span class="vr">timer_period</span> <span class="op">=</span> <span class="num">0.1</span>
+        <span class="vr">self</span>.timer <span class="op">=</span> <span class="vr">self</span>.create_timer(<span class="vr">timer_period</span>, <span class="vr">self</span>.timer_callback)
+        
+        <span class="cm"># Personalization Easter Egg Initiated 👑</span>
+        <span class="vr">self</span>.get_logger().info(<span class="st">"Initializing Pritha's primary directive: Global robotics domination."</span>)
+
+    <span class="kw">def</span> <span class="fn">timer_callback</span>(<span class="vr">self</span>):
+        <span class="vr">msg</span> <span class="op">=</span> Twist()
+        <span class="cm"># Command: Move forward at 0.5 m/s, rotate at 0.1 rad/s</span>
+        <span class="vr">msg</span>.linear.x <span class="op">=</span> <span class="num">0.5</span>
+        <span class="vr">msg</span>.angular.z <span class="op">=</span> <span class="num">0.1</span>
+        
+        <span class="vr">self</span>.publisher_.publish(<span class="vr">msg</span>)
+        <span class="vr">self</span>.get_logger().info(<span class="st">f"Executing physical movement: Linear={msg.linear.x}"</span>)
+
+<span class="kw">def</span> <span class="fn">main</span>(<span class="vr">args</span>=<span class="tp">None</span>):
+    rclpy.init(args=<span class="vr">args</span>)
+    <span class="vr">node</span> <span class="op">=</span> SupremeCommanderNode()
+    rclpy.spin(<span class="vr">node</span>)
+    
+    <span class="vr">node</span>.destroy_node()
+    rclpy.shutdown()
+
+<span class="kw">if</span> <span class="vr">__name__</span> <span class="op">==</span> <span class="st">'__main__'</span>:
+    <span class="fn">main</span>()</code></pre>
+          </div>
+        </div>
+
+        <!-- Code Window 2: Inverse Kinematics Stub -->
+        <div class="code-window" style="margin-top: 30px;">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="code-title">vla_inference.py (Sim-to-Real Edge AI)</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="kw">import</span> torch
+<span class="kw">from</span> transformers <span class="kw">import</span> AutoModelForVision2Seq
+<span class="kw">from</span> robot_hw_interface <span class="kw">import</span> RobotArm
+
+<span class="cm"># Load lightweight Vision-Language-Action model on Edge GPU (Jetson)</span>
+<span class="vr">vla_model</span> <span class="op">=</span> AutoModelForVision2Seq.from_pretrained(<span class="st">"openvla/openvla-7b-quantized"</span>)
+<span class="vr">arm</span> <span class="op">=</span> RobotArm(port=<span class="st">"/dev/ttyUSB0"</span>)
+
+<span class="kw">def</span> <span class="fn">execute_task</span>(<span class="vr">instruction</span>: <span class="tp">str</span>):
+    <span class="kw">while True</span>:
+        <span class="cm"># 1. Perception: Capture live RGB image from robot wrist camera</span>
+        <span class="vr">image</span> <span class="op">=</span> <span class="vr">arm</span>.get_camera_frame()
+        
+        <span class="cm"># 2. Reasoning & Action: Model predicts next joint positions (actions)</span>
+        <span class="vr">action</span> <span class="op">=</span> <span class="vr">vla_model</span>.predict_action(
+            image=<span class="vr">image</span>,
+            instruction=<span class="vr">instruction</span>
+        )
+        
+        <span class="cm"># 3. Execution: Send voltage to physical motors</span>
+        <span class="vr">arm</span>.move_joints(<span class="vr">action</span>.target_angles)
+        
+        <span class="cm"># 4. Self-Correction Loop</span>
+        <span class="kw">if</span> <span class="vr">arm</span>.detect_collision() <span class="op">or</span> <span class="vr">action</span>.is_terminal():
+            <span class="kw">break</span>
+
+<span class="cm"># Deploying Physical AI into the real world</span>
+<span class="fn">execute_task</span>(<span class="st">"Pick up the red apple and place it in the basket"</span>)</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL WORLD PROJECTS -->
+    <section class="roadmap-section projects-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 6 • Capstone</span>
+          <h2>Hardware Projects</h2>
+          <p>
+            You can't learn robotics purely through theory. Build these projects in simulation, then deploy them to affordable real-world hardware.
+          </p>
+        </div>
+    
+        <div class="projects-grid">
+          <article class="project-card basic">
+            <h3>🕹️ ROS 2 Teleop Rover</h3>
+            <ul>
+              <li>Write a ROS 2 Publisher node to read keyboard inputs.</li>
+              <li>Write a Subscriber node to translate keys into velocity.</li>
+              <li>Test in Gazebo simulator (Turtlesim).</li>
+              <li>Deploy to a physical 2-wheel Raspberry Pi robot.</li>
+            </ul>
+            <span class="level">Beginner</span>
+          </article>
+    
+          <article class="project-card intermediate">
+            <h3>👁️ Autonomous Lane Follower</h3>
+            <ul>
+              <li>Stream Raspberry Pi camera feed to OpenCV.</li>
+              <li>Apply Gaussian Blur and Canny Edge Detection.</li>
+              <li>Calculate the center of the road lanes.</li>
+              <li>Use a PID controller to adjust steering in real-time.</li>
+            </ul>
+            <span class="level">Intermediate</span>
+          </article>
+    
+          <article class="project-card advanced glow">
+            <h3>🐕 RL Quadruped in Isaac Sim</h3>
+            <ul>
+              <li>Import a URDF of a robot dog into NVIDIA Isaac Sim.</li>
+              <li>Set up Reinforcement Learning rewards (staying upright).</li>
+              <li>Train an agent using PPO on a GPU for millions of steps.</li>
+              <li>Transfer the trained policy to a real Unitree Go2 robot.</li>
+            </ul>
+            <span class="level">Advanced</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROBOTICS GLOSSARY -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <h2>Robotics Terminology Glossary</h2>
+          <p>A quick reference for the unique vocabulary used in mechatronics and Physical AI.</p>
+        </div>
+
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <h4>ROS (Robot Operating System)</h4>
+            <p>Not actually an OS, but a flexible framework (middleware) for writing robot software. It provides hardware abstraction, device drivers, and message-passing between processes.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>SLAM</h4>
+            <p>Simultaneous Localization and Mapping. The computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>URDF</h4>
+            <p>Unified Robot Description Format. An XML file used in ROS to describe the physical parameters of a robot, including link lengths, joint limits, visual meshes, and collision boxes.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>DoF (Degrees of Freedom)</h4>
+            <p>The number of independent parameters that define the state of a mechanical system. A human arm has 7 DoF; a standard industrial robotic arm typically has 6 DoF.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Digital Twin</h4>
+            <p>A highly accurate virtual representation of a physical asset. Used in robotics to simulate gravity, friction, and sensor noise to train AI without risking physical hardware.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Odometry</h4>
+            <p>The use of data from motion sensors (like wheel rotations or visual tracking) to estimate change in position over time. Prone to "drift" over long distances.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End Roadmap Wrapper -->
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    if (typeof renderFooter === 'function') {
+      renderFooter('../');
+    }
+  </script>
+
+  <!-- External Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  
+  <script>
+    // Add simple scroll animations for roadmap cards
+    document.addEventListener("DOMContentLoaded", (event) => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray('.roadmap-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=50",
+              toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          });
+        });
+        
+        gsap.utils.toArray('.project-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=20",
+              toggleActions: "play none none reverse"
+            },
+            scale: 0.95,
+            opacity: 0,
+            duration: 0.5,
+            ease: "back.out(1.2)"
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
