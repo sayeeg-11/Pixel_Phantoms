@@ -1,28 +1,16 @@
-/*
-PageTransitions Module
-- Intercepts internal navigation and applies exit/enter animations
-- Uses History API for smooth navigation and back/forward handling
-- Respects prefers-reduced-motion
-- Has safe fallbacks when JS or fetch fails (graceful degradation)
-
-Usage:
-  PageTransitions.init({ duration: 300, type: 'fade-slide', scrollToTop: true, showLoadingIndicator: true });
-*/
 (function (window, document) {
   'use strict';
 
   const PageTransitions = (function () {
-    // Default config
     const DEFAULTS = {
-      duration: 300,
-      type: 'fade-slide', // 'fade' | 'slide' | 'fade-slide'
+      duration: 350,
+      type: 'fade-slide',
       scrollToTop: true,
       showLoadingIndicator: true,
-      loadingThreshold: 500 // ms
+      loadingThreshold: 300,
     };
 
-    // Utilities
-    const isInternalLink = (link) => {
+    const isInternalLink = link => {
       try {
         const url = new URL(link.href, location.href);
         return url.origin === location.origin && !link.hasAttribute('download');
@@ -31,236 +19,178 @@ Usage:
       }
     };
 
-    const isAnchorLink = (link) => link.hash && link.pathname === location.pathname;
+    const isAnchorLink = link => link.hash && link.pathname === location.pathname;
 
-    // Module state
     let config = { ...DEFAULTS };
     let isTransitioning = false;
     let prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let loadingTimer = null;
     let loadingOverlay = null;
+    const cache = new Map();
 
-    // Helpers for DOM manipulation
     function findWrapper(doc) {
       return doc.querySelector('.page-transition-wrapper');
     }
 
-    function runTransitionOut(oldWrapper, duration) {
-      return new Promise((resolve) => {
+    function runTransitionOut(oldWrapper) {
+      return new Promise(resolve => {
         if (!oldWrapper || prefersReducedMotion) return resolve();
-
         oldWrapper.classList.add('page-exit');
-        // Force reflow to ensure the initial state is applied
-        oldWrapper.getBoundingClientRect();
+        oldWrapper.getBoundingClientRect(); // trigger reflow
         oldWrapper.classList.add('page-exit-active');
-
-        setTimeout(() => {
-          resolve();
-        }, duration);
+        setTimeout(resolve, config.duration);
       });
     }
 
-    function runTransitionIn(newWrapper, duration) {
-      return new Promise((resolve) => {
+    function runTransitionIn(newWrapper) {
+      return new Promise(resolve => {
         if (!newWrapper || prefersReducedMotion) return resolve();
-
         newWrapper.classList.add('page-enter');
-        // Force reflow
-        newWrapper.getBoundingClientRect();
+        newWrapper.getBoundingClientRect(); // trigger reflow
         newWrapper.classList.add('page-enter-active');
-
         setTimeout(() => {
-          // cleanup classes
           newWrapper.classList.remove('page-enter', 'page-enter-active');
           resolve();
-        }, duration);
+        }, config.duration);
       });
     }
 
     async function fetchPage(url) {
-      try {
-        const res = await fetch(url, { credentials: 'same-origin' });
-        if (!res.ok) throw new Error('Network response was not ok');
-        const text = await res.text();
-        const parser = new DOMParser();
-        return parser.parseFromString(text, 'text/html');
-      } catch (err) {
-        console.warn('[PageTransitions] Fetch failed, falling back to normal navigation:', err);
-        throw err;
-      }
+      if (cache.has(url)) return cache.get(url);
+
+      const res = await fetch(url, { credentials: 'same-origin' });
+      if (!res.ok) throw new Error('Fetch failed');
+      const text = await res.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      cache.set(url, doc);
+      return doc;
     }
 
-    function replaceContent(newDoc) {
-      const newWrapper = findWrapper(newDoc);
-      const oldWrapper = findWrapper(document);
-      if (!newWrapper || !oldWrapper) {
-        // Structure not found; fall back to full navigation
-        return false;
-      }
-
-      // Replace old content
-      oldWrapper.replaceWith(newWrapper.cloneNode(true));
-      // Restore the document title
+    function syncMetadata(newDoc) {
       document.title = newDoc.title || document.title;
-      // Re-run any inline scripts inside the wrapper (simple approach)
-      // Find scripts in newWrapper and execute them
-      const scripts = document.querySelectorAll('.page-transition-wrapper script');
-      scripts.forEach((s) => {
-        const script = document.createElement('script');
-        if (s.src) script.src = s.src;
-        if (s.type) script.type = s.type;
-        script.textContent = s.textContent;
-        document.body.appendChild(script);
-        // remove immediately to keep DOM clean
-        script.parentNode && script.parentNode.removeChild(script);
+      const newMeta = newDoc.querySelector('meta[name="description"]');
+      const oldMeta = document.querySelector('meta[name="description"]');
+      if (newMeta && oldMeta) oldMeta.setAttribute('content', newMeta.getAttribute('content'));
+
+      // Sync body attributes (critical for page-specific CSS)
+      const newBody = newDoc.body;
+      document.body.className = newBody.className;
+      Array.from(newBody.attributes).forEach(attr => {
+        if (attr.name !== 'class') document.body.setAttribute(attr.name, attr.value);
       });
-
-      return true;
     }
 
-    function showLoadingIfSlow() {
-      if (!config.showLoadingIndicator) return;
-      clearTimeout(loadingTimer);
-      loadingTimer = setTimeout(() => {
-        if (!loadingOverlay) createLoadingOverlay();
-        loadingOverlay.classList.add('show');
-      }, config.loadingThreshold);
-    }
-
-    function hideLoading() {
-      clearTimeout(loadingTimer);
-      if (loadingOverlay) loadingOverlay.classList.remove('show');
-    }
-
-    function createLoadingOverlay() {
-      loadingOverlay = document.createElement('div');
-      loadingOverlay.className = 'page-loading-overlay';
-      loadingOverlay.innerHTML = '<div class="page-loading-spinner" aria-hidden="true"></div><span class="visually-hidden" aria-live="polite">Loading…</span>';
-      document.body.appendChild(loadingOverlay);
+    function executeScripts(container) {
+      const scripts = container.querySelectorAll('script');
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        Array.from(oldScript.attributes).forEach(attr =>
+          newScript.setAttribute(attr.name, attr.value)
+        );
+        newScript.textContent = oldScript.textContent;
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
     }
 
     async function navigateTo(url, isPopState = false) {
       if (isTransitioning) return;
-      isTransitioning = true;
+      const currentUrl = location.href;
+      if (url === currentUrl && !isPopState) return;
 
-      const oldWrapper = findWrapper(document);
-      const duration = config.duration;
+      isTransitioning = true;
+      document.dispatchEvent(new CustomEvent('router:before-nav', { detail: { url } }));
 
       try {
-        // Start loading indicator timer
-        showLoadingIfSlow();
+        showLoadingSpinner();
+        const oldWrapper = findWrapper(document);
+        await runTransitionOut(oldWrapper);
 
-        // Run exit animation
-        await runTransitionOut(oldWrapper, duration);
-
-        // Fetch new page
         const newDoc = await fetchPage(url);
+        const newWrapper = findWrapper(newDoc);
 
-        // Replace content
-        const success = replaceContent(newDoc);
-        if (!success) {
-          // Can't replace content safely; do full navigation
+        if (!newWrapper) {
           location.href = url;
           return;
         }
 
-        // push state if not popstate
-        if (!isPopState) {
-          history.pushState({ url }, '', url);
-        }
+        syncMetadata(newDoc);
+        if (!isPopState) history.pushState({ url }, '', url);
 
-        // Scroll handling
-        if (config.scrollToTop) window.scrollTo({ top: 0, behavior: 'instant' in document.documentElement.style ? 'instant' : 'auto' });
+        const activeWrapper = findWrapper(document);
+        activeWrapper.replaceWith(newWrapper.cloneNode(true));
 
-        // Run enter animation on new wrapper
-        const newWrapper = findWrapper(document);
-        await runTransitionIn(newWrapper, duration);
+        const freshWrapper = findWrapper(document);
+        executeScripts(freshWrapper);
 
-        // Accessibility: focus main heading or first focusable element
-        const mainHeading = newWrapper.querySelector('h1, h2, h3');
-        if (mainHeading && typeof mainHeading.focus === 'function') {
-          mainHeading.setAttribute('tabindex', '-1');
-          mainHeading.focus({ preventScroll: true });
-        }
+        if (config.scrollToTop) window.scrollTo({ top: 0, behavior: 'instant' });
 
+        // Dispatch events for components to re-init
+        document.dispatchEvent(
+          new CustomEvent('router:page-changed', {
+            detail: { url, page: freshWrapper.dataset.page },
+          })
+        );
+
+        await runTransitionIn(freshWrapper);
       } catch (err) {
-        // If anything fails, fallback to hard navigation
-        console.error('[PageTransitions] Error during navigation: ', err);
+        console.error('[Router] Navigation failed:', err);
         location.href = url;
       } finally {
-        hideLoading();
+        hideLoadingSpinner();
         isTransitioning = false;
+        document.dispatchEvent(new CustomEvent('router:after-nav', { detail: { url } }));
       }
     }
 
-    function onLinkClick(e) {
-      // Only left-click without modifier keys
-      if (e.defaultPrevented) return;
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-
-      const anchor = e.target.closest('a');
-      if (!anchor) return;
-
-      // Ignore external links, downloads, anchors, targets
-      if (!isInternalLink(anchor) || anchor.target === '_blank' || anchor.hasAttribute('data-no-transition') || isAnchorLink(anchor)) return;
-
-      e.preventDefault();
-      const url = anchor.href;
-      navigateTo(url);
+    function showLoadingSpinner() {
+      if (!config.showLoadingIndicator) return;
+      loadingTimer = setTimeout(() => {
+        if (!loadingOverlay) {
+          loadingOverlay = document.createElement('div');
+          loadingOverlay.className = 'page-loading-overlay';
+          loadingOverlay.innerHTML = '<div class="page-loading-spinner"></div>';
+          document.body.appendChild(loadingOverlay);
+        }
+        loadingOverlay.classList.add('show');
+      }, config.loadingThreshold);
     }
 
-    function onPopState(e) {
-      const url = (e.state && e.state.url) || location.href;
-      navigateTo(url, true);
-    }
-
-    function attachListeners() {
-      document.addEventListener('click', onLinkClick);
-      window.addEventListener('popstate', onPopState);
-    }
-
-    function detachListeners() {
-      document.removeEventListener('click', onLinkClick);
-      window.removeEventListener('popstate', onPopState);
+    function hideLoadingSpinner() {
+      clearTimeout(loadingTimer);
+      if (loadingOverlay) loadingOverlay.classList.remove('show');
     }
 
     function init(userConfig = {}) {
       config = { ...config, ...userConfig };
-      prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // allow CSS variable duration to override JS duration if present
-      try {
-        const cssDuration = getComputedStyle(document.documentElement).getPropertyValue('--page-transition-duration');
-        if (cssDuration) {
-          // Parse e.g., "300ms" -> 300
-          const m = cssDuration.match(/(\d+)/);
-          if (m) config.duration = parseInt(m[1], 10);
-        }
-      } catch (e) {
-        // ignore
-      }
+      document.addEventListener('click', e => {
+        if (e.defaultPrevented) return;
+        const anchor = e.target.closest('a');
+        if (
+          !anchor ||
+          !isInternalLink(anchor) ||
+          anchor.target === '_blank' ||
+          anchor.hasAttribute('data-no-transition') ||
+          isAnchorLink(anchor)
+        )
+          return;
 
-      // Attach listeners
-      attachListeners();
+        e.preventDefault();
+        navigateTo(anchor.href);
+      });
 
-      // Push current state so back/forward has state data
-      history.replaceState({ url: location.href }, '', location.href);
+      window.addEventListener('popstate', e => {
+        navigateTo(location.href, true);
+      });
 
-      // Optional: expose debug logs
-      console.info('[PageTransitions] Initialized with config:', config);
+      // Cache initial page
+      cache.set(location.href, document);
+      console.info('[Router] Active');
     }
 
-    function destroy() {
-      detachListeners();
-      if (loadingOverlay && loadingOverlay.parentNode) loadingOverlay.parentNode.removeChild(loadingOverlay);
-    }
-
-    return {
-      init,
-      destroy
-    };
+    return { init, navigateTo };
   })();
 
-  // Expose globally
   window.PageTransitions = PageTransitions;
 })(window, document);

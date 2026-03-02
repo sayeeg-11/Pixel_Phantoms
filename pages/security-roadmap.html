@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Cyber Security Protocol</title>
+  <link rel="icon" href="../assets/logo.png" />
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  
+  <!-- Inheriting layout styles from Backend and System Design for consistency -->
+  <link rel="stylesheet" href="../css/ai-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/backend-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/system-design-road.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Security Specific Customizations */
+  .security-img {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6)) hue-rotate(300deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .security-img:hover {
+    transform: scale(1.05) rotate(2deg);
+  }
+
+  .security-badge {
+    background: rgba(255, 0, 85, 0.1);
+    color: #ff0055;
+    border: 1px solid rgba(255, 0, 85, 0.3);
+  }
+
+  /* Smooth Card Hover Effects */
+  .roadmap-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roadmap-card:hover {
+    transform: translateY(-8px);
+    border-color: #ff0055 !important;
+    box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
+    background: rgba(255, 0, 85, 0.02);
+  }
+
+  /* Glitch effect on Section Titles */
+  .section-title:hover {
+    text-shadow: 2px 0 #ff0055, -2px 0 #8844ff;
+  }
+
+  /* Button Pulse Animation */
+  .btn-primary {
+    transition: 0.3s;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn-primary:hover {
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+  }
+
+  /* Image tag transitions */
+  .js-tag, .roadmap-badge {
+    transition: 0.3s ease;
+  }
+  
+  .roadmap-card:hover .js-tag {
+    background: #ff0055;
+    color: white;
+  }
+  /* Security Specific Customizations */
+  .security-img {
+    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6)) hue-rotate(300deg);
+    transition: transform 0.5s ease;
+  }
+  
+  .security-img:hover {
+    transform: scale(1.05) rotate(2deg);
+  }
+
+  .security-badge {
+    background: rgba(255, 0, 85, 0.1);
+    color: #ff0055;
+    border: 1px solid rgba(255, 0, 85, 0.3);
+  }
+
+  /* Smooth Card Hover Effects */
+  .roadmap-card {
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roadmap-card:hover {
+    transform: translateY(-8px);
+    border-color: #ff0055 !important;
+    box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
+    background: rgba(255, 0, 85, 0.02);
+  }
+
+  /* Glitch effect on Section Titles */
+  .section-title:hover {
+    text-shadow: 2px 0 #ff0055, -2px 0 #8844ff;
+  }
+
+  /* Button Pulse Animation */
+  .btn-primary {
+    transition: 0.3s;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn-primary:hover {
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+  }
+
+  /* Image tag transitions */
+  .js-tag, .roadmap-badge {
+    transition: 0.3s ease;
+  }
+  
+  .roadmap-card:hover .js-tag {
+    background: #ff0055;
+    color: white;
+  }
+
+    /* Security Specific Customizations */
+    .security-img {
+      filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.6)) hue-rotate(300deg);
+    }
+    .security-badge {
+      background: rgba(255, 0, 85, 0.1);
+      color: #ff0055;
+      border: 1px solid rgba(255, 0, 85, 0.3);
+    }
+    .roadmap-card h3 a:hover {
+      color: #ff0055 !important;
+    }
+  </style>
+</head>
+
+<body class="hacker-theme">
+  <div id="navbar-placeholder"></div>
+
+  <section id="security-intro" class="intro-section" style="padding-top: 120px;">
+    <div class="container">
+      <div class="intro-left">
+        <h2 class="section-title">Cyber Security Protocol</h2>
+        <p class="section-desc">
+          Defend the digital realm. Master the art of identifying vulnerabilities, securing infrastructure, and protecting applications from malicious attacks. Learn offensive (Red Team) and defensive (Blue Team) strategies.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon">🛡️</span>
+            Web App Security & OWASP
+          </li>
+          <li class="step-item">
+            <span class="step-icon">🔐</span>
+            Cryptography & Access Control
+          </li>
+          <li class="step-item">
+            <span class="step-icon">⚔️</span>
+            Penetration Testing & Exploitation
+          </li>
+        </ul>
+        <a href="#roadmap-start" class="btn-primary">Initialize Protocol</a>
+      </div>
+
+      <div class="intro-right">
+        <div class="animation-card">
+          <!-- Shield/Security Icon -->
+          <img src="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" alt="Cyber Security Shield"
+            class="floating-img security-img">
+          
+          <div class="floating-circle circle1" style="background: #ff0055;"></div>
+          <div class="floating-circle circle2" style="background: #8844ff;"></div>
+          <div class="floating-circle circle3" style="background: #ff0088;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="roadmap-wrapper" id="roadmap-start">
+  
+    <!-- STEP 1: NETWORKING & OS HARDENING -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge security-badge">Step 1</span>
+          <h2>Networking & OS Hardening</h2>
+        </div>
+        <p>
+          You cannot protect what you don't understand. A deep knowledge of operating systems and network architecture is the foundation of cybersecurity.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="js-tag">Networking</span>
+          <h3>🌐 <a href="https://www.cloudflare.com/learning/network-layer/what-is-the-network-layer/" target="_blank" style="color: inherit; text-decoration: none;">TCP/IP & DNS <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand the OSI model, subnetting, TCP three-way handshakes, UDP, and how DNS caching/spoofing works.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <span class="js-tag">Linux</span>
+          <h3>🐧 <a href="https://overthewire.org/wargames/bandit/" target="_blank" style="color: inherit; text-decoration: none;">Terminal Mastery <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Hackers live in the terminal. Master Bash scripting, grep, awk, file permissions (chmod/chown), and process management.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <span class="js-tag">Hardening</span>
+          <h3>🧱 <a href="https://www.cisecurity.org/cis-benchmarks" target="_blank" style="color: inherit; text-decoration: none;">OS Security <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Learn how to secure Windows and Linux environments. Close unnecessary ports, disable root SSH logins, and enforce password policies.
+          </p>
+        </div>
+  
+        <div class="roadmap-card highlight">
+          <span class="js-tag">Enterprise</span>
+          <h3>🏢 <a href="https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview" target="_blank" style="color: inherit; text-decoration: none;">Active Directory <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            The backbone of corporate networks. Understand Domain Controllers, Kerberos, Group Policies, and common AD attack vectors.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- STEP 2: WEB APPLICATION SECURITY -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge security-badge">Step 2</span>
+          <h2>Web App Security (OWASP Top 10)</h2>
+        </div>
+        <p>
+          Websites are the most common attack surface. Learn to identify and patch the most critical vulnerabilities found in modern web applications.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card essential">
+          <h3>💉 <a href="https://portswigger.net/web-security/sql-injection" target="_blank" style="color: inherit; text-decoration: none;">SQL Injection (SQLi) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Learn how attackers manipulate backend databases through unsanitized user inputs, and how to prevent it using Prepared Statements.
+          </p>
+        </div>
+  
+        <div class="roadmap-card essential">
+          <h3>📜 <a href="https://portswigger.net/web-security/cross-site-scripting" target="_blank" style="color: inherit; text-decoration: none;">XSS & CSRF <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Cross-Site Scripting allows attackers to run malicious JS in a victim's browser. CSRF forces users to execute unwanted actions.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <h3>🚪 <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank" style="color: inherit; text-decoration: none;">Broken Access Control <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand IDOR (Insecure Direct Object Reference) and privilege escalation, where users access data they shouldn't.
+          </p>
+        </div>
+  
+        <div class="roadmap-card highlight">
+          <h3>⚙️ <a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/" target="_blank" style="color: inherit; text-decoration: none;">Security Misconfig <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Unpatched flaws, default passwords, unprotected files, and exposed AWS S3 buckets. The most easily preventable yet common attacks.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: CRYPTOGRAPHY & IDENTITY -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge security-badge">Step 3</span>
+          <h2>Cryptography & Identity</h2>
+        </div>
+        <p>
+          Protecting data at rest and in transit. Dive into encryption, secure hashing, and modern authentication flows.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <span class="hook-level">Crypto</span>
+          <h3>🔑 <a href="https://www.crypto101.io/" target="_blank" style="color: inherit; text-decoration: none;">Hashing vs Encryption <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand symmetric (AES) vs asymmetric (RSA) encryption, and why passwords must be hashed (SHA-256/Bcrypt) with a salt.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <span class="hook-level">Transit</span>
+          <h3>🔒 <a href="https://www.cloudflare.com/learning/ssl/what-is-ssl/" target="_blank" style="color: inherit; text-decoration: none;">SSL / TLS <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            How data is secured over the internet. Learn about public/private key pairs, Certificate Authorities (CAs), and Handshakes.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <span class="hook-level">Auth</span>
+          <h3>🛡️ <a href="https://jwt.io/introduction" target="_blank" style="color: inherit; text-decoration: none;">JWT & OAuth2 <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Master stateless authentication using JSON Web Tokens. Understand OAuth2 flows for secure third-party login delegations.
+          </p>
+        </div>
+  
+        <div class="roadmap-card highlight">
+          <span class="hook-level">Identity</span>
+          <h3>📱 <a href="https://auth0.com/learn/mfa/" target="_blank" style="color: inherit; text-decoration: none;">MFA & Zero Trust <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Implement Multi-Factor Authentication (TOTP). Adopt a "Zero Trust" architecture where no user or device is trusted by default.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- STEP 4: PENETRATION TESTING & TOOLS -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge security-badge">Step 4</span>
+          <h2>Penetration Testing & Tools</h2>
+        </div>
+        <p>
+          Equip yourself with the industry-standard arsenal used by ethical hackers to perform reconnaissance and exploitation.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <h3>👁️ <a href="https://nmap.org/" target="_blank" style="color: inherit; text-decoration: none;">Nmap (Recon) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            The ultimate network scanner. Learn to map network topologies, discover open ports, and detect running services and OS versions.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <h3>🕷️ <a href="https://portswigger.net/burp" target="_blank" style="color: inherit; text-decoration: none;">Burp Suite <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            The holy grail of web application security. Use the proxy to intercept, inspect, and modify HTTP requests on the fly.
+          </p>
+        </div>
+  
+        <div class="roadmap-card">
+          <h3>🦈 <a href="https://www.wireshark.org/" target="_blank" style="color: inherit; text-decoration: none;">Wireshark <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Deep packet inspection. Capture network traffic in real-time to analyze malicious payloads, cleartext credentials, or network anomalies.
+          </p>
+        </div>
+  
+        <div class="roadmap-card highlight">
+          <h3>💣 <a href="https://www.metasploit.com/" target="_blank" style="color: inherit; text-decoration: none;">Metasploit <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            A powerful exploitation framework. Learn to use payloads, encoders, and listeners to gain remote shells on vulnerable systems.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- STEP 5: CLOUD & NETWORK SECURITY -->
+    <section class="roadmap-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge security-badge">Step 5</span>
+          <h2>Cloud & Network Security</h2>
+        </div>
+        <p>
+          As infrastructure moves to the cloud, securing virtual networks, firewalls, and cloud access policies is paramount.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <div class="roadmap-card pattern">
+          <h3>☁️ <a href="https://aws.amazon.com/security/" target="_blank" style="color: inherit; text-decoration: none;">Cloud Sec (AWS/Azure) <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Understand the Shared Responsibility Model. Master AWS IAM policies, Security Groups, and securing S3 storage buckets.
+          </p>
+        </div>
+  
+        <div class="roadmap-card portal">
+          <h3>🧱 <a href="https://www.fortinet.com/resources/cyberglossary/what-is-a-firewall" target="_blank" style="color: inherit; text-decoration: none;">Firewalls & VPNs <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Configure rule-based Firewalls to block malicious traffic. Understand IPSec/OpenVPN to secure remote communications.
+          </p>
+        </div>
+  
+        <div class="roadmap-card safety">
+          <h3>🚨 <a href="https://www.snort.org/" target="_blank" style="color: inherit; text-decoration: none;">IDS / IPS <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a></h3>
+          <p>
+            Intrusion Detection & Prevention Systems. Learn how tools like Snort analyze packet signatures to detect real-time attacks.
+          </p>
+        </div>
+  
+        <div class="roadmap-card future">
+          <h3>
+            🛡️ <a href="https://www.cloudflare.com/learning/security/what-is-a-waf/" target="_blank" style="color: inherit; text-decoration: none;">WAF Deployment <i class="fas fa-external-link-alt" style="font-size: 0.7em; opacity: 0.7;"></i></a>
+          </h3>
+          <p>
+            Web Application Firewalls. Defend against Layer 7 attacks like DDoS, SQLi, and Botnets before they ever hit your servers.
+          </p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- STEP 6: CAPSTONE PROJECTS -->
+    <section class="roadmap-section projects-section">
+      <div class="roadmap-header">
+        <div>
+          <span class="roadmap-badge critical" style="background: #ff0055; color: #fff;">Step 6 • Capstone</span>
+          <h2>Real-World Cyber Projects</h2>
+        </div>
+        <p>
+          Theory is useless without execution. Build these security projects to validate your skills and construct a powerful portfolio.
+        </p>
+      </div>
+  
+      <div class="roadmap-grid">
+        <article class="roadmap-card project-card basic">
+          <h3>🧪 Hacker Lab Setup</h3>
+          <ul>
+            <li>Deploy Kali Linux & Metasploitable VMs</li>
+            <li>Configure a safe NAT network</li>
+            <li>Perform basic Nmap vulnerability scans</li>
+          </ul>
+          <span class="level">Beginner</span>
+        </article>
+  
+        <article class="roadmap-card project-card basic">
+          <h3>🔍 Wireshark Packet Sniffer</h3>
+          <ul>
+            <li>Capture HTTP/DNS traffic</li>
+            <li>Extract cleartext passwords from PCAPs</li>
+            <li>Analyze malicious malware pingbacks</li>
+          </ul>
+          <span class="level">Beginner</span>
+        </article>
+  
+        <article class="roadmap-card project-card intermediate">
+          <h3>🔐 Bulletproof Auth System</h3>
+          <ul>
+            <li>Implement Bcrypt password hashing</li>
+            <li>Secure stateless JWT verification</li>
+            <li>Rate limiting to prevent brute force</li>
+          </ul>
+          <span class="level">Intermediate</span>
+        </article>
+  
+        <article class="roadmap-card project-card intermediate">
+          <h3>🛡️ Custom Python Keylogger</h3>
+          <ul>
+            <li>Capture keyboard events via OS hooks</li>
+            <li>Encrypt the payload locally</li>
+            <li>Send reports securely to a webhook</li>
+          </ul>
+          <span class="level">Intermediate</span>
+        </article>
+  
+        <article class="roadmap-card project-card advanced">
+          <h3>🎯 Custom CTF Challenge</h3>
+          <ul>
+            <li>Design a vulnerable web app container</li>
+            <li>Embed hidden flags via Steganography</li>
+            <li>Host on Docker for others to hack</li>
+          </ul>
+          <span class="level">Advanced</span>
+        </article>
+  
+        <article class="roadmap-card project-card advanced glow" style="border-color: #ff0055;">
+          <h3>👑 SOC Dashboard</h3>
+          <ul>
+            <li>Queen-level Security Operations Center</li>
+            <li>Ingest syslogs via Elastic Stack (ELK)</li>
+            <li>Live threat mapping & anomaly detection</li>
+          </ul>
+          <span class="level">Advanced</span>
+        </article>
+      </div>
+    </section>
+  
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <script src="../js/navbar.js"></script>
+  <script src="../js/footer.js"></script>
+  <script>
+    renderNavbar('../');
+    renderFooter('../');
+  </script>
+
+  <script src="../js/theme-enhanced.js"></script>
+  <script src="../js/react-road.js"></script> 
+</body>
+
+</html>

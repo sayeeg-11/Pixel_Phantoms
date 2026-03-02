@@ -5,6 +5,9 @@ async function initProjectLoader() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
 
+  // Show skeletons immediately
+  showSkeletons(grid, 6);
+
   try {
     const response = await fetch('../data/projects.json');
     if (!response.ok) throw new Error('Failed to fetch project data');
@@ -32,6 +35,36 @@ async function initProjectLoader() {
     console.error('[SmartLoader] Error:', error);
     grid.innerHTML = `<div class="error-msg">Failed to load projects. System link offline.</div>`;
   }
+}
+
+/**
+ * Renders skeleton placeholders
+ */
+function showSkeletons(container, count) {
+  let skeletonHtml = '';
+  for (let i = 0; i < count; i++) {
+    skeletonHtml += `
+      <div class="project-skeleton">
+        <div class="skeleton-image skeleton-shimmer"></div>
+        <div class="skeleton-content">
+          <div class="skeleton-id skeleton-shimmer"></div>
+          <div class="skeleton-title skeleton-shimmer"></div>
+          <div class="skeleton-desc skeleton-shimmer"></div>
+          <div class="skeleton-desc short skeleton-shimmer"></div>
+          <div class="skeleton-tag-group">
+            <div class="skeleton-tag skeleton-shimmer"></div>
+            <div class="skeleton-tag skeleton-shimmer"></div>
+            <div class="skeleton-tag skeleton-shimmer"></div>
+          </div>
+          <div class="skeleton-footer">
+            <div class="skeleton-link skeleton-shimmer"></div>
+            <div class="skeleton-icon skeleton-shimmer"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+  container.innerHTML = skeletonHtml;
 }
 
 /**
