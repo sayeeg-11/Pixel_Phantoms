@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Web3 & Blockchain Protocol</title>
+  <meta name="description" content="Master the decentralized web. Learn Blockchain, Solidity, Smart Contracts, and dApp Architecture." />
+  <link rel="icon" href="../assets/logo.png" />
+  
+  <link rel="stylesheet" href="../css/ai-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/system-design-road.css" />
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  
+  <!-- Font and Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       WEB3 SPECIFIC STYLES & OVERRIDES (Expanded to ensure comprehensive UI)
+       ========================================================================== */
+    :root {
+      --web3-primary: #8a2be2;
+      --web3-secondary: #00ffff;
+      --web3-accent: #ff00ff;
+      --eth-color: #627eea;
+      --btc-color: #f7931a;
+      --sol-color: #14f195;
+    }
+
+    body.hacker-theme {
+      background-color: #050505;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Gradients for Text */
+    .web3-gradient {
+      background: linear-gradient(90deg, var(--web3-primary) 0%, var(--web3-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .eth-gradient {
+      background: linear-gradient(90deg, #627eea 0%, #a1b5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      padding: 150px 0 80px;
+      border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .intro-left {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 40px;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .section-desc {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: #a0a0a0;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(138, 43, 226, 0.1);
+      border-radius: 8px;
+      border: 1px solid rgba(138, 43, 226, 0.3);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, var(--web3-primary), var(--web3-secondary));
+      color: #fff;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .intro-right {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animation-card {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floating-img {
+      width: 150px;
+      z-index: 10;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.8));
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(0, 255, 255, 0.3);
+      animation: spin linear infinite;
+    }
+
+    .circle1 { width: 200px; height: 200px; animation-duration: 20s; }
+    .circle2 { width: 250px; height: 250px; border-style: solid; border-color: rgba(138, 43, 226, 0.2); animation-duration: 15s; animation-direction: reverse; }
+    .circle3 { width: 300px; height: 300px; animation-duration: 25s; }
+
+    /* Roadmap Sections */
+    .roadmap-wrapper {
+      padding: 60px 0;
+      background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.05)"/></svg>');
+    }
+
+    .roadmap-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .roadmap-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .roadmap-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba(138, 43, 226, 0.1);
+      color: var(--web3-secondary);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      border: 1px solid var(--web3-primary);
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .roadmap-header h2 {
+      font-size: 2.5rem;
+      margin: 10px 0 20px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .roadmap-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #a0a0a0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Card Grids */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .roadmap-card {
+      background: rgba(15, 15, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .roadmap-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--web3-primary), var(--web3-secondary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .roadmap-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-color: rgba(138, 43, 226, 0.4);
+    }
+
+    .roadmap-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .roadmap-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .roadmap-card h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .roadmap-card h3 a:hover {
+      color: var(--web3-secondary);
+    }
+
+    .roadmap-card p {
+      color: #999;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Specific Tag Styles */
+    .tag {
+      position: absolute;
+      top: 15px; right: 15px;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .tag.core { background: rgba(98, 126, 234, 0.2); color: #627eea; border: 1px solid #627eea; }
+    .tag.solidity { background: rgba(54, 54, 54, 0.4); color: #fff; border: 1px solid #888; }
+    .tag.frontend { background: rgba(97, 218, 251, 0.2); color: #61dafb; border: 1px solid #61dafb; }
+    .tag.security { background: rgba(255, 76, 76, 0.2); color: #ff4c4c; border: 1px solid #ff4c4c; }
+
+    .highlight-card {
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: inset 0 0 20px rgba(0, 255, 255, 0.05);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .project-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .level {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .project-card.basic .level { background: rgba(0, 255, 136, 0.1); color: #00ff88; }
+    .project-card.intermediate .level { background: rgba(255, 204, 0, 0.1); color: #ffcc00; }
+    .project-card.advanced .level { background: rgba(255, 76, 76, 0.1); color: #ff4c4c; }
+    
+    .project-card.glow {
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.15);
+      border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    /* Code Snippet Blueprint Section */
+    .blueprint-section {
+      background: #0a0a0a;
+      padding: 80px 0;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+
+    .code-window {
+      background: #1e1e1e;
+      border-radius: 8px;
+      border: 1px solid #333;
+      overflow: hidden;
+      margin: 30px auto;
+      max-width: 900px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .code-header {
+      background: #2d2d2d;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .code-title {
+      color: #999;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin-left: 15px;
+    }
+
+    .code-body {
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .code-body pre {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #d4d4d4;
+    }
+
+    /* Syntax Highlighting Mock */
+    .kw { color: #569cd6; } /* Keyword */
+    .tp { color: #4ec9b0; } /* Type */
+    .fn { color: #dcdcaa; } /* Function */
+    .st { color: #ce9178; } /* String */
+    .cm { color: #6a9955; } /* Comment */
+
+    /* Glossary Section */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .glossary-item {
+      background: #151515;
+      padding: 20px;
+      border-left: 3px solid var(--web3-primary);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .glossary-item h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .glossary-item p {
+      color: #aaa;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Keyframes */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .section-title { font-size: 2.5rem; }
+      .intro-right { display: none; }
+      .roadmap-header h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body class="hacker-theme">
+  <!-- Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    if (typeof renderNavbar === 'function') {
+      renderNavbar('../');
+    }
+  </script>
+
+  <!-- HERO SECTION -->
+  <section id="web3-intro" class="intro-section">
+    <div class="container">
+      <div class="intro-left">
+        <h2 class="section-title">Decentralized Systems & <br><span class="web3-gradient">Web3 Protocol</span></h2>
+        <p class="section-desc">
+          Transition from centralized databases to trustless, permissionless networks. Master cryptography, smart contract architecture, and the decentralized application (dApp) stack to build the next iteration of the internet.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon"><i class="fab fa-ethereum" style="color: #627eea;"></i></span>
+            Blockchain Architecture & EVM
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-file-contract" style="color: #a0a0a0;"></i></span>
+            Solidity & Smart Contract Security
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-cubes" style="color: #00ffff;"></i></span>
+            DeFi, Oracles, and Layer 2 Scaling
+          </li>
+        </ul>
+        <a href="#roadmap-start" class="btn-primary">Initialize Protocol</a>
+      </div>
+
+      <div class="intro-right">
+        <div class="animation-card">
+          <!-- Central glowing Web3 icon -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Ethereum_logo_2014.svg" alt="Ethereum Logo" class="floating-img">
+          
+          <div class="floating-circle circle1"></div>
+          <div class="floating-circle circle2"></div>
+          <div class="floating-circle circle3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP CONTENT -->
+  <div class="roadmap-wrapper" id="roadmap-start">
+  
+    <!-- PHASE 1: BLOCKCHAIN FUNDAMENTALS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 1</span>
+          <h2>Cryptography & Blockchain Core</h2>
+          <p>
+            Before writing smart contracts, you must understand the mathematics and architecture that make blockchains secure, immutable, and decentralized.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag core">Concept</span>
+            <h3>🔐 <a href="https://bitcoin.org/bitcoin.pdf" target="_blank">Cryptography Basics <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Understand Public/Private Key pairs (Asymmetric Cryptography), Digital Signatures (ECDSA), and Cryptographic Hash Functions (SHA-256, Keccak-256).
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Architecture</span>
+            <h3>⛓️ <a href="https://ethereum.org/en/developers/docs/intro-to-ethereum/" target="_blank">Distributed Ledgers <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn how blocks are chained together. Understand the anatomy of a block (Nonce, Previous Hash, Merkle Root, Timestamp) and Peer-to-Peer (P2P) networks.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Consensus</span>
+            <h3>⚖️ <a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/" target="_blank">Consensus Mechanisms <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              How nodes agree on the truth without a central authority. Deep dive into Proof of Work (PoW) vs Proof of Stake (PoS), and Byzantine Fault Tolerance (BFT).
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag core">EVM</span>
+            <h3>⚙️ <a href="https://ethereum.org/en/developers/docs/evm/" target="_blank">The EVM & Gas <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The Ethereum Virtual Machine is the global computer. Master how transactions are processed, how state changes, and how Gas limits infinite loops.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 2: SMART CONTRACT DEVELOPMENT -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 2</span>
+          <h2>Smart Contracts & <span class="eth-gradient">Solidity</span></h2>
+          <p>
+            Smart contracts are self-executing code stored on the blockchain. Solidity is the primary language used to write them for the EVM.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag solidity">Language</span>
+            <h3>💎 <a href="https://docs.soliditylang.org/" target="_blank">Solidity Syntax <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Master strongly-typed variables, `structs`, `enums`, and the critical differences between `memory`, `storage`, and `calldata` data locations.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag solidity">Logic</span>
+            <h3>🧱 <a href="https://solidity-by-example.org/" target="_blank">Mappings & Modifiers <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Use `mapping(address => uint)` for ledgers. Create custom `modifiers` to enforce access control (e.g., `onlyOwner`) before executing functions.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag solidity">Communication</span>
+            <h3>📡 <a href="https://docs.soliditylang.org/en/latest/contracts.html#events" target="_blank">Events & Logs <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Smart contracts cannot read their own logs. Emit `events` to write data efficiently to the transaction receipt, which frontends listen to.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag solidity">Advanced</span>
+            <h3>🔄 <a href="https://eips.ethereum.org/EIPS/eip-20" target="_blank">Interfaces & Standards <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn how contracts talk to each other. Master standard Ethereum Improvement Proposals (EIPs) like ERC-20 (Tokens) and ERC-721 (NFTs).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 3: DEVELOPMENT FRAMEWORKS & TOOLING -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 3</span>
+          <h2>Frameworks & Testing Infrastructure</h2>
+          <p>
+            Writing contracts is only 10% of the job. You need powerful toolchains to compile, test, debug, and deploy your code to local and live networks.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag core">Environment</span>
+            <h3>👷 <a href="https://hardhat.org/" target="_blank">Hardhat Ecosystem <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The industry standard JavaScript/TypeScript framework. Compile contracts, spin up local nodes, and write deployment scripts using Ethers.js.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag core">Testing</span>
+            <h3>🔥 <a href="https://book.getfoundry.sh/" target="_blank">Foundry (Forge) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The blazing fast Rust-based toolkit. Write your tests entirely in Solidity. Use `forge` for testing, `cast` for RPC calls, and `anvil` for local nodes.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Infrastructure</span>
+            <h3>🔌 <a href="https://www.alchemy.com/" target="_blank">RPC Nodes & Providers <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              You need a gateway to talk to the blockchain. Learn to integrate node providers like Alchemy, Infura, or QuickNode to broadcast transactions.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Verification</span>
+            <h3>🔍 <a href="https://etherscan.io/" target="_blank">Block Explorers <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn to read Etherscan. Understand internal transactions, state changes, and programmatically verify your contract source code via APIs.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 4: THE DAPP FRONTEND -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 4</span>
+          <h2>Web3 Frontend Architecture</h2>
+          <p>
+            Connecting the user interface to the blockchain. This is where React meets Smart Contracts via wallet providers.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag frontend">Integration</span>
+            <h3>🦊 <a href="https://docs.metamask.io/" target="_blank">Wallet Connection <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Detect `window.ethereum`. Handle account switching, chain network detection (Mainnet vs Testnet), and gracefully request user signatures.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag frontend">Libraries</span>
+            <h3>🌐 <a href="https://docs.ethers.org/v6/" target="_blank">Ethers.js / Viem <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The bridge between JS and the EVM. Convert Hex to BigInt, instantiate Contract objects using ABIs, and execute `read` and `write` methods.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag frontend">React</span>
+            <h3>⚛️ <a href="https://wagmi.sh/" target="_blank">Wagmi & RainbowKit <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Modern React hooks for Web3. Dramatically simplify fetching balances, signing messages, and implementing beautiful "Connect Wallet" modals.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag frontend">Data</span>
+            <h3>📉 <a href="https://thegraph.com/docs/en/" target="_blank">Indexing (The Graph) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Querying historical blockchain data directly is painfully slow. Build Subgraphs to index contract events into a GraphQL API for your frontend.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLUEPRINT SECTION: CODE EXAMPLES -->
+    <section class="blueprint-section">
+      <div class="container">
+        <div class="roadmap-header" style="margin-bottom: 30px;">
+          <h2>Architectural Blueprints</h2>
+          <p>A glimpse into the anatomy of a secure smart contract and its frontend integration.</p>
+        </div>
+
+        <!-- Code Window 1: Solidity -->
+        <div class="code-window">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="code-title">Vault.sol (Solidity v0.8.20)</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="cm">// SPDX-License-Identifier: MIT</span>
+<span class="kw">pragma solidity</span> ^0.8.20;
+
+<span class="kw">contract</span> <span class="tp">SecureVault</span> {
+    <span class="kw">mapping</span>(<span class="tp">address</span> => <span class="tp">uint256</span>) <span class="kw">public</span> balances;
+    
+    <span class="kw">event</span> <span class="fn">Deposited</span>(<span class="tp">address</span> <span class="kw">indexed</span> user, <span class="tp">uint256</span> amount);
+    <span class="kw">event</span> <span class="fn">Withdrawn</span>(<span class="tp">address</span> <span class="kw">indexed</span> user, <span class="tp">uint256</span> amount);
+
+    <span class="cm">// Checks-Effects-Interactions Pattern prevents Reentrancy</span>
+    <span class="kw">function</span> <span class="fn">withdraw</span>() <span class="kw">external</span> {
+        <span class="tp">uint256</span> amount = balances[<span class="kw">msg.sender</span>];
+        <span class="kw">require</span>(amount > <span class="kw">0</span>, <span class="st">"Insufficient funds"</span>);
+
+        <span class="cm">// Effect: Update state BEFORE sending ether</span>
+        balances[<span class="kw">msg.sender</span>] = <span class="kw">0</span>;
+
+        <span class="cm">// Interaction: Send ether</span>
+        (<span class="tp">bool</span> success, ) = <span class="kw">msg.sender</span>.<span class="fn">call</span>{value: amount}(<span class="st">""</span>);
+        <span class="kw">require</span>(success, <span class="st">"Transfer failed"</span>);
+
+        <span class="kw">emit</span> <span class="fn">Withdrawn</span>(<span class="kw">msg.sender</span>, amount);
+    }
+    
+    <span class="kw">receive</span>() <span class="kw">external payable</span> {
+        balances[<span class="kw">msg.sender</span>] += <span class="kw">msg.value</span>;
+        <span class="kw">emit</span> <span class="fn">Deposited</span>(<span class="kw">msg.sender</span>, <span class="kw">msg.value</span>);
+    }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 5: ADVANCED PROTOCOLS & DEFI -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 5</span>
+          <h2>Decentralized Finance (DeFi) & Oracles</h2>
+          <p>
+            Blockchains are isolated networks. Learn how to bring real-world data on-chain and build complex financial protocols.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag core">Data</span>
+            <h3>🔮 <a href="https://docs.chain.link/" target="_blank">Oracles (Chainlink) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Smart contracts cannot make HTTP requests. Use Decentralized Oracle Networks like Chainlink to fetch off-chain Price Feeds, Weather Data, and Verifiable Randomness (VRF).
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Storage</span>
+            <h3>📦 <a href="https://docs.ipfs.tech/" target="_blank">IPFS & Decentralized Storage <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Storing images on Ethereum is incredibly expensive. Learn to pin NFT metadata and frontend files to IPFS, Arweave, or Filecoin for permanent, distributed hosting.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag core">DeFi</span>
+            <h3>💱 <a href="https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works" target="_blank">AMMs & Liquidity Pools <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Understand the Constant Product Formula (x * y = k). Learn how Uniswap works without an order book, allowing users to swap tokens via decentralized liquidity.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag core">Scaling</span>
+            <h3>⚡ <a href="https://ethereum.org/en/layer-2/" target="_blank">Layer 2 Rollups <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Ethereum mainnet is expensive. Understand how Optimistic Rollups (Arbitrum, Optimism) and Zero-Knowledge Rollups (zkSync, Starknet) scale transactions off-chain.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 6: SECURITY & AUDITING -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge Critical">Phase 6 • Critical</span>
+          <h2>Security & Smart Contract Auditing</h2>
+          <p>
+            In Web3, code is law. A single bug can drain millions of dollars instantly. Security is not an afterthought; it is the foundation.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag security">Vulnerability</span>
+            <h3>🛑 <a href="https://swcregistry.io/docs/SWC-107" target="_blank">Reentrancy Attacks <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The attack that took down the DAO. Understand how malicious fallback functions recursively call your contract before state updates occur. Use ReentrancyGuards.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag security">Vulnerability</span>
+            <h3>⏱️ <a href="https://consensys.github.io/smart-contract-best-practices/attacks/frontrunning/" target="_blank">Front-Running & MEV <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Transactions sit in the public Mempool before execution. Learn how searchers use bots to sandwich user trades by paying higher gas fees to miners.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag security">Tooling</span>
+            <h3>🛡️ <a href="https://github.com/crytic/slither" target="_blank">Static Analysis (Slither) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Automate vulnerability detection. Learn to use tools like Slither, Mythril, and Echidna (Fuzz testing) to mathematically prove contract safety.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag security">Architecture</span>
+            <h3>🔐 <a href="https://docs.openzeppelin.com/contracts/4.x/api/access" target="_blank">Access Control <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Never leave admin functions unprotected. Utilize OpenZeppelin's Ownable and Role-Based Access Control (RBAC) to secure privileged operations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL WORLD PROJECTS -->
+    <section class="roadmap-section projects-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 7 • Capstone</span>
+          <h2>The Grand Archives Projects</h2>
+          <p>
+            Tutorial hell ends here. Build these decentralized systems to prove your mastery of the Web3 protocol stack.
+          </p>
+        </div>
+    
+        <div class="projects-grid">
+          <article class="project-card basic">
+            <h3>🎟️ NFT Ticketing System</h3>
+            <ul>
+              <li>Deploy an ERC-721 Contract</li>
+              <li>Host Metadata JSON on IPFS via Pinata</li>
+              <li>React frontend to mint and display tickets</li>
+              <li>Restrict transfers (Soulbound tokens)</li>
+            </ul>
+            <span class="level">Beginner</span>
+          </article>
+    
+          <article class="project-card intermediate">
+            <h3>🗳️ Decentralized Autonomous Org (DAO)</h3>
+            <ul>
+              <li>ERC-20 Governance Token creation</li>
+              <li>On-chain voting mechanisms</li>
+              <li>Timelock execution for passed proposals</li>
+              <li>Frontend dashboard for proposal creation</li>
+            </ul>
+            <span class="level">Intermediate</span>
+          </article>
+    
+          <article class="project-card intermediate">
+            <h3>💰 Staking / Yield Farming dApp</h3>
+            <ul>
+              <li>Users deposit Token A to earn Token B</li>
+              <li>Implement reward calculation math</li>
+              <li>Handle withdrawal penalties</li>
+              <li>Wagmi frontend for staking stats</li>
+            </ul>
+            <span class="level">Intermediate</span>
+          </article>
+    
+          <article class="project-card advanced glow">
+            <h3>🦄 Decentralized Exchange (DEX)</h3>
+            <ul>
+              <li>Create Liquidity Pools from scratch</li>
+              <li>Implement the AMM pricing curve formula</li>
+              <li>Calculate slippage and output amounts</li>
+              <li>Route swaps between multiple token pairs</li>
+            </ul>
+            <span class="level">Advanced</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WEB3 GLOSSARY TO ENSURE COMPREHENSIVENESS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <h2>Web3 Terminology Glossary</h2>
+          <p>A quick reference for the unique vocabulary used in decentralized systems.</p>
+        </div>
+
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <h4>Mempool</h4>
+            <p>A "waiting room" for unconfirmed transactions before a miner/validator picks them up and includes them in a block.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Gas Limit</h4>
+            <p>The maximum amount of computational effort a user is willing to spend on a specific transaction to prevent infinite loops.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>ABI (Application Binary Interface)</h4>
+            <p>A JSON file that details the functions and structures of a smart contract, allowing the frontend to interact with it.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Nonce</h4>
+            <p>In Ethereum, it's a number representing the count of transactions sent from a given address. Prevents replay attacks.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Mainnet / Testnet</h4>
+            <p>Mainnet is the live production blockchain where tokens have real value. Testnets (e.g., Sepolia) simulate the mainnet using fake tokens for testing.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Zero-Knowledge Proof (ZKP)</h4>
+            <p>A cryptographic method where one party can prove to another that they know a value, without conveying any information apart from the fact that they know it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End Roadmap Wrapper -->
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    if (typeof renderFooter === 'function') {
+      renderFooter('../');
+    }
+  </script>
+
+  <!-- External Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  
+  <script>
+    // Add simple scroll animations if GSAP is loaded
+    document.addEventListener("DOMContentLoaded", (event) => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray('.roadmap-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=50",
+              toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
