@@ -99,6 +99,26 @@
   animation: blink 1s infinite;
 }
 
+/* Light Theme Overrides for Hero Section */
+:root:not([data-theme='dark']) .hero-section.project-hero {
+  background: #f8fafc;
+}
+
+:root:not([data-theme='dark']) .terminal-box {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 170, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+:root:not([data-theme='dark']) .console-text {
+  color: #334155;
+}
+
+:root:not([data-theme='dark']) .console-text.success {
+  color: #16a34a;
+  text-shadow: none;
+}
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -244,6 +264,7 @@
 }
 
 @keyframes wobble-effect {
+
   0%,
   100% {
     transform: rotate(0deg) scale(1);
@@ -310,12 +331,12 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: var(--accent-color);
   box-shadow: 0 0 10px var(--accent-color);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   transform: translateX(20px);
 }
 
@@ -546,6 +567,7 @@ body.light-mode .cyber-card {
 
 /* System Flicker/Glitch Animation */
 @keyframes status-flicker {
+
   0%,
   100% {
     opacity: 1;
@@ -1670,6 +1692,7 @@ body.light-mode .filter-results {
 }
 
 @media print {
+
   /* Projects page specific adjustments */
   .project-hero {
     min-height: auto !important;
@@ -1922,6 +1945,7 @@ body.light-mode .filter-results {
 
 /* 3. Mobile Responsiveness */
 @media (max-width: 768px) {
+
   /* Stack filters vertically on mobile */
   .filter-container {
     flex-wrap: wrap;
@@ -2082,4 +2106,136 @@ body.light-mode .filter-results {
 
 :root:not([data-theme='dark']) .featured-card .stat small {
   color: #64748b;
+
 }
+
+/* =========================================
+   PROJECT SKELETON PLACEHOLDERS
+   ========================================= */
+
+.project-skeleton {
+  pointer-events: none;
+  background: var(--card-bg, rgba(20, 20, 30, 0.6));
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 480px;
+  /* Approximate height of a real card */
+}
+
+[data-theme='light'] .project-skeleton,
+body.light-mode .project-skeleton {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.skeleton-shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme='light'] .skeleton-shimmer,
+body.light-mode .skeleton-shimmer {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(255, 255, 255, 0.12) 60%,
+    transparent 100%
+  );
+  animation: skeleton-shimmer 2s infinite;
+}
+
+[data-theme='light'] .skeleton-shimmer::after,
+body.light-mode .skeleton-shimmer::after {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0,
+    rgba(0, 170, 255, 0.05) 20%,
+    rgba(0, 170, 255, 0.1) 60%,
+    transparent 100%
+  ) !important;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton-image {
+  height: 200px;
+  width: 100%;
+}
+
+.skeleton-content {
+  padding: 20px;
+}
+
+.skeleton-id {
+  width: 60px;
+  height: 12px;
+  margin-bottom: 20px;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 24px;
+  margin-bottom: 15px;
+}
+
+.skeleton-desc {
+  width: 100%;
+  height: 16px;
+  margin-bottom: 8px;
+}
+
+.skeleton-desc.short {
+  width: 60%;
+  margin-bottom: 25px;
+}
+
+.skeleton-tag-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.skeleton-tag {
+  width: 50px;
+  height: 18px;
+}
+
+.skeleton-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.skeleton-link {
+  width: 100px;
+  height: 16px;
+}
+
+.skeleton-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+}
+

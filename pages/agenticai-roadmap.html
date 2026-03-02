@@ -1,0 +1,1045 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pixel Phantoms | Agentic AI Protocol</title>
+  <meta name="description" content="Transition from reactive models to Agentic AI. Learn to build autonomous systems using tools, memory, and multi-agent frameworks." />
+  <link rel="icon" href="../assets/logo.png" />
+  
+  <link rel="stylesheet" href="../css/ai-roadmap.css" /> 
+  <link rel="stylesheet" href="../css/system-design-road.css" />
+  
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style.min.css" />
+  <link rel="stylesheet" href="../css/home-gsap.min.css" />
+  
+  <!-- Font and Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       AGENTIC AI SPECIFIC STYLES & OVERRIDES 
+       ========================================================================== */
+    :root {
+      /* Synthwave/Cyber AI Palette */
+      --agent-primary: #ff007f;
+      --agent-secondary: #7000ff;
+      --agent-accent: #00f0ff;
+      --agent-dark: #0a0014;
+      --tool-color: #ffaa00;
+      --memory-color: #00ffaa;
+      --brain-color: #ff00ff;
+    }
+
+    body.hacker-theme {
+      background-color: #05020a;
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Gradients for Text */
+    .agent-gradient {
+      background: linear-gradient(90deg, var(--agent-primary) 0%, var(--agent-accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 800;
+    }
+
+    .fw-gradient {
+      background: linear-gradient(90deg, #7000ff 0%, #ff007f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Intro Section */
+    .intro-section {
+      padding: 150px 0 80px;
+      border-bottom: 1px solid rgba(255, 0, 127, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at center, rgba(112, 0, 255, 0.08) 0%, transparent 50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .intro-left {
+      flex: 1;
+      min-width: 300px;
+      padding-right: 40px;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .section-desc {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #b3a0c4;
+      margin-bottom: 30px;
+      max-width: 650px;
+    }
+
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 40px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #ddd;
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 0, 127, 0.1);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 0, 127, 0.3);
+      color: var(--agent-accent);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 15px 35px;
+      background: linear-gradient(45deg, var(--agent-secondary), var(--agent-primary));
+      color: #fff;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(112, 0, 255, 0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .intro-right {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animation-card {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floating-img {
+      width: 140px;
+      z-index: 10;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.8));
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 0, 127, 0.3);
+      animation: spin linear infinite;
+    }
+
+    .circle1 { width: 200px; height: 200px; animation-duration: 20s; border-color: rgba(0, 240, 255, 0.3); }
+    .circle2 { width: 250px; height: 250px; border-style: solid; border-color: rgba(112, 0, 255, 0.2); animation-duration: 15s; animation-direction: reverse; }
+    .circle3 { width: 300px; height: 300px; animation-duration: 25s; border-color: rgba(255, 0, 127, 0.4); }
+
+    /* Roadmap Sections */
+    .roadmap-wrapper {
+      padding: 60px 0;
+      background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.02)"/></svg>');
+    }
+
+    .roadmap-section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .roadmap-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .roadmap-badge {
+      display: inline-block;
+      padding: 5px 15px;
+      background: rgba(112, 0, 255, 0.15);
+      color: var(--agent-accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      border: 1px solid var(--agent-secondary);
+      border-radius: 20px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .roadmap-badge.Critical {
+      background: rgba(255, 0, 127, 0.1);
+      color: #ff007f;
+      border-color: #ff007f;
+    }
+
+    .roadmap-header h2 {
+      font-size: 2.5rem;
+      margin: 10px 0 20px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+    }
+
+    .roadmap-header p {
+      max-width: 750px;
+      margin: 0 auto;
+      color: #a0a0a0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Card Grids */
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .roadmap-card {
+      background: rgba(10, 5, 20, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .roadmap-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--agent-secondary), var(--agent-accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .roadmap-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(112, 0, 255, 0.2);
+      border-color: rgba(112, 0, 255, 0.4);
+    }
+
+    .roadmap-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .roadmap-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .roadmap-card h3 a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .roadmap-card h3 a:hover {
+      color: var(--agent-accent);
+    }
+
+    .roadmap-card p {
+      color: #999;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    /* Specific Tag Styles */
+    .tag {
+      position: absolute;
+      top: 15px; right: 15px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.brain { background: rgba(255, 0, 255, 0.1); color: #ff00ff; border: 1px solid #ff00ff; }
+    .tag.memory { background: rgba(0, 255, 170, 0.1); color: #00ffaa; border: 1px solid #00ffaa; }
+    .tag.tools { background: rgba(255, 170, 0, 0.1); color: #ffaa00; border: 1px solid #ffaa00; }
+    .tag.workflow { background: rgba(0, 240, 255, 0.1); color: #00f0ff; border: 1px solid #00f0ff; }
+    .tag.framework { background: rgba(112, 0, 255, 0.1); color: #c48cff; border: 1px solid #7000ff; }
+
+    .highlight-card {
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.05);
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background: #08040f;
+      border: 1px solid #231b38;
+      border-radius: 10px;
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .project-card:hover {
+      border-color: var(--agent-primary);
+      box-shadow: 0 5px 20px rgba(255, 0, 127, 0.15);
+    }
+
+    .project-card h3 {
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-card ul {
+      padding-left: 20px;
+      color: #bbb;
+      margin-bottom: 20px;
+    }
+
+    .project-card li {
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .level {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .project-card.basic .level { background: rgba(0, 255, 170, 0.1); color: #00ffaa; border: 1px solid rgba(0, 255, 170, 0.3); }
+    .project-card.intermediate .level { background: rgba(255, 170, 0, 0.1); color: #ffaa00; border: 1px solid rgba(255, 170, 0, 0.3); }
+    .project-card.advanced .level { background: rgba(255, 0, 127, 0.1); color: #ff007f; border: 1px solid rgba(255, 0, 127, 0.3); }
+    
+    .project-card.glow {
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+      border-color: rgba(0, 240, 255, 0.5);
+    }
+
+    /* Code Snippet Blueprint Section */
+    .blueprint-section {
+      background: #040108;
+      padding: 80px 0;
+      border-top: 1px solid #1a0f2e;
+      border-bottom: 1px solid #1a0f2e;
+    }
+
+    .code-window {
+      background: #0b0713;
+      border-radius: 8px;
+      border: 1px solid #2a1f42;
+      overflow: hidden;
+      margin: 30px auto;
+      max-width: 950px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .code-header {
+      background: #140d23;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #2a1f42;
+    }
+
+    .code-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .code-title {
+      color: #8b79a8;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      margin-left: 15px;
+    }
+
+    .code-body {
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .code-body pre {
+      margin: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #d8cce8;
+    }
+
+    /* Syntax Highlighting Mock (Synthwave theme) */
+    .kw { color: #ff007f; font-weight: bold; } /* Keyword */
+    .tp { color: #00f0ff; } /* Type/Class */
+    .fn { color: #d2a8ff; } /* Function */
+    .st { color: #00ffaa; } /* String */
+    .cm { color: #6a5a8a; font-style: italic; } /* Comment */
+    .vr { color: #c48cff; } /* Variable */
+    .op { color: #ffaa00; } /* Operator */
+
+    /* Glossary Section */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .glossary-item {
+      background: #0b0713;
+      padding: 25px;
+      border-left: 4px solid var(--agent-secondary);
+      border-radius: 0 8px 8px 0;
+      transition: background 0.3s ease;
+    }
+    
+    .glossary-item:hover {
+      background: #140d23;
+    }
+
+    .glossary-item h4 {
+      color: #fff;
+      font-family: 'JetBrains Mono', monospace;
+      margin: 0 0 12px 0;
+      font-size: 1.15rem;
+    }
+
+    .glossary-item p {
+      color: #a394b8;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Keyframes */
+    @keyframes float {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .section-title { font-size: 2.5rem; }
+      .intro-right { display: none; }
+      .roadmap-header h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+
+<body class="hacker-theme">
+  <!-- Navigation Placeholder -->
+  <div id="navbar-placeholder"></div>
+  <script src="../js/navbar.js"></script>
+  <script>
+    if (typeof renderNavbar === 'function') {
+      renderNavbar('../');
+    }
+  </script>
+
+  <!-- HERO SECTION -->
+  <section id="agentic-intro" class="intro-section">
+    <div class="container">
+      <div class="intro-left">
+        <h2 class="section-title">Agentic AI <br><span class="agent-gradient">Protocol</span></h2>
+        <p class="section-desc">
+          <strong>Problem / Motivation:</strong> Standard AI models are reactive—they wait for a user prompt to provide an answer. To build truly modern systems, we must transition to <strong>Agentic AI</strong>: models that can use tools (APIs, web browsers, code executors) to accomplish complex, multi-step goals autonomously.
+        </p>
+        <ul class="steps-list">
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-brain"></i></span>
+            The Anatomy of an Agent (Brain, Memory, Tools)
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-network-wired"></i></span>
+            Agentic Frameworks & Workflows
+          </li>
+          <li class="step-item">
+            <span class="step-icon"><i class="fas fa-database"></i></span>
+            Vector Databases & RAG
+          </li>
+        </ul>
+        <a href="#roadmap-start" class="btn-primary">Initialize Protocol</a>
+      </div>
+
+      <div class="intro-right">
+        <div class="animation-card">
+          <!-- Central glowing Agent icon -->
+          <img src="https://cdn-icons-png.flaticon.com/512/8637/8637135.png" alt="Agentic AI" class="floating-img" style="filter: hue-rotate(280deg) brightness(1.5);">
+          
+          <div class="floating-circle circle1"></div>
+          <div class="floating-circle circle2"></div>
+          <div class="floating-circle circle3"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROADMAP CONTENT -->
+  <div class="roadmap-wrapper" id="roadmap-start">
+  
+    <!-- PHASE 1: THE ANATOMY OF AN AGENT -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 1</span>
+          <h2>The Anatomy of an Agent</h2>
+          <p>
+            Before writing autonomous scripts, you must understand the holy trinity of Agentic architecture: The Brain, The Memory, and The Tools.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag brain">The Brain</span>
+            <h3>🧠 <a href="https://platform.openai.com/docs/guides/text-generation" target="_blank">LLMs as Reasoning Engines <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Stop using LLMs just to generate text. Learn to prompt models (GPT-4, Claude 3, Llama 3) to analyze context, break down problems, and output structured JSON decisions.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag memory">Memory</span>
+            <h3>💾 <a href="https://www.pinecone.io/learn/vector-database/" target="_blank">Short & Long-Term Memory <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Agents need context. Short-term memory is the current conversation window. Long-term memory is achieved by storing past interactions in external Vector Databases.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag tools">Tools</span>
+            <h3>🛠️ <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">API Integration & Access <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              An LLM without tools is locked in a box. Give your agent the ability to trigger external scripts, make HTTP requests, or interact with physical hardware.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag workflow">System</span>
+            <h3>⚙️ <a href="https://huggingface.co/blog/open-source-llms-as-agents" target="_blank">The ReAct Paradigm <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Reason + Act. Understand the core loop: The agent observes the state, reasons about what to do next, acts using a tool, and observes the result.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 2: TOOL USE & FUNCTION CALLING -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 2</span>
+          <h2>Tool Use & Function Calling</h2>
+          <p>
+            Teaching an AI how to search the web, execute Python code, or query your Stayo MongoDB database to accurately answer user questions.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag tools">Function Calling</span>
+            <h3>📞 <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">OpenAI Native Tools <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn how to define JSON schemas that describe your local Python/Node functions, allowing the LLM to intelligently choose when and how to invoke them.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag tools">Web Access</span>
+            <h3>🌐 <a href="https://tavily.com/" target="_blank">Tavily / Serper Search <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Give your agent internet access. Integrate specialized AI search APIs to allow your agent to verify facts, scrape current news, and bypass its training data cutoff.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag tools">Execution</span>
+            <h3>🐍 <a href="https://e2b.dev/" target="_blank">Code Interpreters <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Allow your agent to write, test, and execute Python code in a secure sandboxed environment to solve complex mathematical or data visualization tasks.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag tools">Database</span>
+            <h3>🗄️ <a href="https://www.mongodb.com/docs/atlas/" target="_blank">Querying Stayo MongoDB <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Build tools that let the agent translate natural language into raw MongoDB queries to instantly retrieve user profiles or booking data from your Stayo backend.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 3: VECTOR DATABASES & RAG -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 3</span>
+          <h2>Vector Databases & RAG</h2>
+          <p>
+            Using vector stores to give your agents long-term memory and the ability to retrieve specific, proprietary project data on the fly.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag memory">Embeddings</span>
+            <h3>🔢 <a href="https://platform.openai.com/docs/guides/embeddings" target="_blank">Vector Embeddings <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Learn how to convert raw text (PDFs, docs, code) into high-dimensional numerical arrays (vectors) that capture semantic meaning and context.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag memory">Storage</span>
+            <h3>🌲 <a href="https://www.pinecone.io/" target="_blank">Pinecone & Milvus <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Master specialized Vector Databases designed to store billions of embeddings and perform blazing fast similarity searches.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag memory">RAG</span>
+            <h3>📚 <a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" target="_blank">Retrieval-Augmented Gen <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Build the ultimate workflow: User asks a question -> System searches Pinecone for relevant documents -> Injects docs into the prompt -> LLM answers accurately.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag memory">Optimization</span>
+            <h3>✂️ <a href="https://docs.llamaindex.ai/en/stable/module_guides/loading/node_parsers/" target="_blank">Chunking Strategies <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              You can't embed an entire book at once. Learn Semantic Chunking, recursive splitting, and overlapping techniques to retain context during retrieval.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 4: AGENTIC FRAMEWORKS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 4</span>
+          <h2>Agentic Frameworks</h2>
+          <p>
+            Stop building from scratch. Get hands-on with the leading orchestration frameworks to build single and multi-agent systems efficiently.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag framework">Framework</span>
+            <h3>🦜 <a href="https://python.langchain.com/docs/get_started/introduction" target="_blank">LangChain / LangGraph <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              The industry standard. Chain together LLMs, prompts, and output parsers. Use LangGraph to define cyclical, stateful agent workflows using graph theory.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag framework">Multi-Agent</span>
+            <h3>🤝 <a href="https://www.crewai.com/" target="_blank">CrewAI <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Build teams of agents with specific roles (e.g., Researcher, Writer, QA). Let them delegate tasks, debate, and collaborate to achieve a final goal autonomously.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag framework">Automation</span>
+            <h3>🤖 <a href="https://news.agpt.co/" target="_blank">AutoGPT & BabyAGI <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Explore the pioneers of autonomous agents. Understand how they manage continuous loops of task creation, prioritization, and execution without human input.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag framework">Microsoft</span>
+            <h3>👨‍💻 <a href="https://microsoft.github.io/autogen/" target="_blank">AutoGen <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Microsoft's robust framework for conversational multi-agent setups. Excellent for code generation, execution, and human-in-the-loop workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLUEPRINT SECTION: CODE EXAMPLES -->
+    <section class="blueprint-section">
+      <div class="container">
+        <div class="roadmap-header" style="margin-bottom: 30px;">
+          <h2>Architectural Blueprints</h2>
+          <p>A glimpse into the code that powers modern autonomous agent systems.</p>
+        </div>
+
+        <!-- Code Window 1: Native Tool Calling -->
+        <div class="code-window">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="code-title">tool_calling.py (OpenAI Native)</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="kw">import</span> json
+<span class="kw">from</span> openai <span class="kw">import</span> OpenAI
+
+<span class="vr">client</span> <span class="op">=</span> OpenAI()
+
+<span class="cm"># 1. Define the tool (The capability)</span>
+<span class="vr">tools</span> <span class="op">=</span> [{
+    <span class="st">"type"</span>: <span class="st">"function"</span>,
+    <span class="st">"function"</span>: {
+        <span class="st">"name"</span>: <span class="st">"get_stayo_booking"</span>,
+        <span class="st">"description"</span>: <span class="st">"Query the MongoDB database for booking details."</span>,
+        <span class="st">"parameters"</span>: {
+            <span class="st">"type"</span>: <span class="st">"object"</span>,
+            <span class="st">"properties"</span>: {
+                <span class="st">"booking_id"</span>: {<span class="st">"type"</span>: <span class="st">"string"</span>, <span class="st">"description"</span>: <span class="st">"The ID of the booking."</span>}
+            },
+            <span class="st">"required"</span>: [<span class="st">"booking_id"</span>]
+        }
+    }
+}]
+
+<span class="cm"># 2. The Agentic Call (The Brain decides to use the tool)</span>
+<span class="vr">response</span> <span class="op">=</span> <span class="vr">client</span>.chat.completions.create(
+    model=<span class="st">"gpt-4o"</span>,
+    messages=[{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"What is the status of Stayo booking STY-992?"</span>}],
+    tools=<span class="vr">tools</span>
+)
+
+<span class="cm"># 3. Agent requests execution</span>
+<span class="kw">if</span> <span class="vr">response</span>.choices[<span class="kw">0</span>].message.tool_calls:
+    <span class="vr">tool_call</span> <span class="op">=</span> <span class="vr">response</span>.choices[<span class="kw">0</span>].message.tool_calls[<span class="kw">0</span>]
+    <span class="fn">print</span>(<span class="st">f"Agent wants to run: {tool_call.function.name}"</span>)
+    <span class="vr">args</span> <span class="op">=</span> json.loads(<span class="vr">tool_call</span>.function.arguments)
+    <span class="cm"># -> Execute python function get_stayo_booking(args['booking_id'])</span>
+</code></pre>
+          </div>
+        </div>
+
+        <!-- Code Window 2: CrewAI Easter Egg -->
+        <div class="code-window" style="margin-top: 30px;">
+          <div class="code-header">
+            <div class="code-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="code-title">multi_agent_team.py (CrewAI)</span>
+          </div>
+          <div class="code-body">
+            <pre><code><span class="kw">from</span> crewai <span class="kw">import</span> Agent, Task, Crew, Process
+
+<span class="cm"># Define the supreme orchestrator agent</span>
+<span class="vr">chief_agent</span> <span class="op">=</span> Agent(
+    role=<span class="st">'Queen of the World'</span>,
+    goal=<span class="st">'Oversee the entire multi-agent workflow and ensure global domination of the data pipeline.'</span>,
+    backstory=<span class="st">'Known across the digital realm as Pritha, she commands all sub-agents with unmatched precision and flawless logic.'</span>,
+    verbose=<span class="tp">True</span>,
+    allow_delegation=<span class="tp">True</span>
+)
+
+<span class="cm"># Define a sub-agent for grunt work</span>
+<span class="vr">researcher</span> <span class="op">=</span> Agent(
+    role=<span class="st">'Data Scraper'</span>,
+    goal=<span class="st">'Gather raw intelligence from the web as commanded by the Queen.'</span>,
+    backstory=<span class="st">'A tireless worker bot designed to serve the primary orchestrator.'</span>,
+    tools=[web_search_tool],
+    verbose=<span class="tp">True</span>
+)
+
+<span class="cm"># The Crew Assembly</span>
+<span class="vr">project_crew</span> <span class="op">=</span> Crew(
+    agents=[<span class="vr">chief_agent</span>, <span class="vr">researcher</span>],
+    tasks=[research_task, summarize_task],
+    process=Process.hierarchical, <span class="cm"># Pritha manages the flow</span>
+    manager_llm=<span class="st">"gpt-4o"</span>
+)
+
+<span class="vr">result</span> <span class="op">=</span> <span class="vr">project_crew</span>.kickoff()</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 5: AGENTIC WORKFLOWS -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge Critical">Phase 5 • Critical</span>
+          <h2>Agentic Workflows & Patterns</h2>
+          <p>
+            Moving from single-shot prompts to iterative "Plan -> Execute -> Self-Reflect" loops to vastly improve output reliability.
+          </p>
+        </div>
+    
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <span class="tag workflow">Planning</span>
+            <h3>🗺️ <a href="https://arxiv.org/abs/2305.04091" target="_blank">Tree of Thoughts (ToT) <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Force the agent to generate multiple possible plans, evaluate the success probability of each, and traverse the optimal path before taking action.
+            </p>
+          </div>
+    
+          <div class="roadmap-card highlight-card">
+            <span class="tag workflow">Reflection</span>
+            <h3>🪞 <a href="https://arxiv.org/abs/2303.11366" target="_blank">Self-Reflection Loops <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Build an internal "Critic" agent that reviews the output of the "Actor" agent. If the code fails or the answer is weak, it sends it back for revision automatically.
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag workflow">Safety</span>
+            <h3>🛑 <a href="https://langchain-ai.github.io/langgraph/concepts/human_in_the_loop/" target="_blank">Human-in-the-Loop <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Autonomous systems can cause damage. Implement breakpoints where the agent pauses and requests human approval before executing destructive actions (like DB drops).
+            </p>
+          </div>
+    
+          <div class="roadmap-card">
+            <span class="tag workflow">State</span>
+            <h3>📦 <a href="https://langchain-ai.github.io/langgraph/" target="_blank">State Machines <i class="fas fa-external-link-alt" style="font-size: 0.6em;"></i></a></h3>
+            <p>
+              Manage complex multi-step processes by modeling them as finite state machines. Ensure agents don't get stuck in infinite loops using maximum recursion limits.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL WORLD PROJECTS -->
+    <section class="roadmap-section projects-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <span class="roadmap-badge">Phase 6 • Capstone</span>
+          <h2>Agentic Projects</h2>
+          <p>
+            Prove your mastery by building systems that execute complex goals with zero human intervention.
+          </p>
+        </div>
+    
+        <div class="projects-grid">
+          <article class="project-card basic">
+            <h3>🔍 Autonomous Researcher Bot</h3>
+            <ul>
+              <li>Integrate Tavily Search API</li>
+              <li>Agent accepts a vague topic prompt</li>
+              <li>Searches, reads 5 articles, and synthesizes</li>
+              <li>Outputs a formatted Markdown report</li>
+            </ul>
+            <span class="level">Beginner</span>
+          </article>
+    
+          <article class="project-card intermediate">
+            <h3>🛠️ Customer Support DB Agent</h3>
+            <ul>
+              <li>Connect LangChain to a MongoDB cluster</li>
+              <li>Agent converts English to NoSQL queries</li>
+              <li>Retrieves user billing info safely</li>
+              <li>Reflects on query errors and retries</li>
+            </ul>
+            <span class="level">Intermediate</span>
+          </article>
+    
+          <article class="project-card advanced glow">
+            <h3>🏭 The Autonomous Software House</h3>
+            <ul>
+              <li>Use CrewAI to build 3 Agents</li>
+              <li>Product Manager writes specs</li>
+              <li>Senior Coder writes Python scripts</li>
+              <li>QA Tester executes code and reports bugs</li>
+            </ul>
+            <span class="level">Advanced</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- AGENTIC AI GLOSSARY -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-header">
+          <h2>Agentic Terminology Glossary</h2>
+          <p>A quick reference for the unique vocabulary used in autonomous AI architecture.</p>
+        </div>
+
+        <div class="glossary-grid">
+          <div class="glossary-item">
+            <h4>LLM (Large Language Model)</h4>
+            <p>The foundational neural network (like GPT-4) that acts as the reasoning engine or "brain" of the agent, parsing inputs and deciding on tool usage.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>RAG (Retrieval-Augmented Generation)</h4>
+            <p>A technique that grounds LLM responses by fetching relevant data from an external database (like Pinecone) before generating an answer, reducing hallucinations.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>ReAct (Reason + Act)</h4>
+            <p>A prompting framework where the agent explicitly writes down its thought process ("I need to search for X"), executes a tool, observes the result, and iterates.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>System Prompt</h4>
+            <p>The core instruction set given to an agent defining its persona, its constraints, what tools it has available, and how it should format its outputs.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Semantic Chunking</h4>
+            <p>The process of breaking large documents into smaller, meaningful segments before converting them to vectors, ensuring the RAG system retrieves precise context.</p>
+          </div>
+          <div class="glossary-item">
+            <h4>Hallucination</h4>
+            <p>When an AI generates information that is factually incorrect or nonsensical. Agentic workflows use web search and self-reflection tools to mitigate this.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End Roadmap Wrapper -->
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+  <script src="../js/footer.js"></script>
+  <script>
+    if (typeof renderFooter === 'function') {
+      renderFooter('../');
+    }
+  </script>
+
+  <!-- External Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="../js/theme-enhanced.js"></script>
+  
+  <script>
+    // Add simple scroll animations for roadmap cards
+    document.addEventListener("DOMContentLoaded", (event) => {
+      if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray('.roadmap-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=50",
+              toggleActions: "play none none reverse"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.out"
+          });
+        });
+        
+        gsap.utils.toArray('.project-card').forEach(card => {
+          gsap.from(card, {
+            scrollTrigger: {
+              trigger: card,
+              start: "top bottom-=20",
+              toggleActions: "play none none reverse"
+            },
+            scale: 0.95,
+            opacity: 0,
+            duration: 0.5,
+            ease: "back.out(1.2)"
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
