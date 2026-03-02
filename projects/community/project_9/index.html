@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM_OS | Data Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-purple: #bc13fe;
+            --neon-cyan: #0ff;
+            --bg-dark: #050508;
+            --panel-bg: rgba(12, 12, 20, 0.95);
+            --border-glow: rgba(188, 19, 254, 0.4);
+            --text-main: #e0f7ff;
+        }
+
+        * { box-sizing: border-box; cursor: crosshair; }
+
+        body {
+            background: var(--bg-dark);
+            background-image: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Scanline Animation */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .converter-container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .terminal-header {
+            background: var(--neon-purple);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .converter-box {
+            background: var(--panel-bg);
+            border: 1px solid var(--neon-purple);
+            border-top: none;
+            padding: 2rem;
+            box-shadow: 0 0 30px rgba(188, 19, 254, 0.2), inset 0 0 15px rgba(188, 19, 254, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 0;
+            font-size: 1.1rem;
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .input-label {
+            font-size: 0.7rem;
+            color: var(--neon-purple);
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-glow);
+            color: #fff;
+            padding: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .grid-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .swap-btn {
+            background: none;
+            border: 1px solid var(--neon-purple);
+            color: var(--neon-purple);
+            padding: 5px;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .swap-btn:hover {
+            background: var(--neon-purple);
+            color: #000;
+        }
+
+        .result-panel {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid var(--neon-cyan);
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-panel::before {
+            content: "DECRYPTED_DATA";
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            font-size: 0.5rem;
+            color: var(--neon-cyan);
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+            word-break: break-all;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+        }
+
+        .btn-main {
+            background: var(--neon-purple);
+            color: #000;
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.2s;
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+        }
+
+        .btn-main:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(188, 19, 254, 0.4);
+        }
+
+        .btn-main:active { transform: translateY(0); }
+
+        #copyStatus {
+            font-size: 0.7rem;
+            color: var(--neon-cyan);
+            text-align: center;
+            height: 15px;
+            margin-top: 10px;
+            opacity: 0;
+        }
+
+        .pulse { animation: pulse-border 2s infinite; }
+
+        @keyframes pulse-border {
+            0% { border-color: var(--neon-purple); }
+            50% { border-color: var(--neon-cyan); }
+            100% { border-color: var(--neon-purple); }
+        }
+
+        /* Hide Number Spinners */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
+</head>
+<body>
+
+<div class="converter-container">
+    <div class="terminal-header">
+        <span>ID: PHANTOM-UNIT-CVT</span>
+        <span>STATUS: ENCRYPTED</span>
+    </div>
+    
+    <div class="converter-box pulse">
+        <h2>> DATA_CONVERTER</h2>
+        
+        <div class="input-wrapper">
+            <span class="input-label">Input Value</span>
+            <input type="number" id="inputValue" placeholder="0.00" value="1024" oninput="convert()">
+        </div>
+
+        <div class="grid-split">
+            <div>
+                <span class="input-label">From</span>
+                <select id="fromUnit" onchange="convert()">
+                    <option value="bit">Bits (b)</option>
+                    <option value="B">Bytes (B)</option>
+                    <option value="KB">Kilobytes (KB)</option>
+                    <option value="MB" selected>Megabytes (MB)</option>
+                    <option value="GB">Gigabytes (GB)</option>
+                    <option value="TB">Terabytes (TB)</option>
+                    <option value="PB">Petabytes (PB)</option>
+                </select>
+            </div>
+            <div>
+                <span class="input-label">To</span>
+                <select id="toUnit" onchange="convert()">
+                    <option value="bit">Bits (b)</option>
+                    <option value="B">Bytes (B)</option>
+                    <option value="KB" selected>Kilobytes (KB)</option>
+                    <option value="MB">Megabytes (MB)</option>
+                    <option value="GB">Gigabytes (GB)</option>
+                    <option value="TB">Terabytes (TB)</option>
+                    <option value="PB">Petabytes (PB)</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="swap-btn" onclick="swapUnits()">⇅ SWAP_UNITS</button>
+
+        <div class="result-panel">
+            <div class="result-value" id="resultValue">--</div>
+        </div>
+
+        <button class="btn-main" onclick="copyResult()">Execute Copy_to_Buffer</button>
+        <div id="copyStatus">UPLINK SUCCESSFUL</div>
+    </div>
+</div>
+
+<script>
+    const units = {
+        'bit': 1/8,
+        'B': 1,
+        'KB': 1024,
+        'MB': Math.pow(1024, 2),
+        'GB': Math.pow(1024, 3),
+        'TB': Math.pow(1024, 4),
+        'PB': Math.pow(1024, 5)
+    };
+
+    function convert() {
+        const val = document.getElementById('inputValue').value;
+        const from = document.getElementById('fromUnit').value;
+        const to = document.getElementById('toUnit').value;
+        const display = document.getElementById('resultValue');
+
+        if (val === "" || isNaN(val)) {
+            display.textContent = "WAITING...";
+            return;
+        }
+
+        const inputVal = parseFloat(val);
+        // Convert to base (Bytes) then to target
+        const bytes = inputVal * units[from];
+        const result = bytes / units[to];
+        
+        // Dynamic decimal places based on size
+        let formatted;
+        if (result === 0) formatted = "0";
+        else if (result < 0.00001) formatted = result.toExponential(4);
+        else formatted = Number(result.toFixed(6)).toLocaleString();
+
+        display.textContent = `${formatted} ${to}`;
+    }
+
+    function swapUnits() {
+        const from = document.getElementById('fromUnit');
+        const to = document.getElementById('toUnit');
+        const temp = from.value;
+        from.value = to.value;
+        to.value = temp;
+        convert();
+    }
+
+    async function copyResult() {
+        const result = document.getElementById('resultValue').textContent;
+        const status = document.getElementById('copyStatus');
+        
+        try {
+            await navigator.clipboard.writeText(result);
+            status.style.opacity = "1";
+            setTimeout(() => { status.style.opacity = "0"; }, 2000);
+        } catch (err) {
+            console.error('Failed to copy!', err);
+        }
+    }
+
+    // Initialize
+    convert();
+</script>
+
+</body>
+</html>
